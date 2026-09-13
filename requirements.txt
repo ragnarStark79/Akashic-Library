@@ -1,0 +1,44 @@
+# ─────────────────────────────────────────────────────────────────────────────
+# Akashic Library – Backend Python dependencies
+#
+# Python   : 3.14.x
+# Django   : 6.1.x
+#
+# Install (using the project's uv-managed venv):
+#   uv pip install -r requirements.txt --python akashic/bin/python
+#
+# ─────────────────────────────────────────────────────────────────────────────
+
+# ── Core framework ────────────────────────────────────────────────────────────
+Django>=6.1.1,<7.0
+
+# ── REST API ──────────────────────────────────────────────────────────────────
+djangorestframework>=3.15,<4.0
+
+# ── CORS (React frontend cross-origin requests) ───────────────────────────────
+django-cors-headers>=4.4,<5.0
+
+# ── PostgreSQL (transactional / identity data) ────────────────────────────────
+# psycopg2 with pre-compiled binary driver (no libpq compile dependency)
+psycopg2-binary>=2.9,<3.0
+
+# ── MongoDB (book-discovery / community documents) ────────────────────────────
+pymongo>=4.8,<5.0
+
+# ── Environment variable configuration ───────────────────────────────────────
+python-dotenv>=1.0,<2.0
+
+# ── HTTP client (external book-data integrations) ─────────────────────────────
+requests>=2.32,<3.0
+
+# ── Testing — in-memory MongoDB (eliminates live MongoDB dependency for tests) ─
+mongomock>=4.1,<5.0
+
+# ─────────────────────────────────────────────────────────────────────────────
+# Packages intentionally excluded from this foundation step:
+#   - celery / redis          (background tasks — future step)
+#   - channels                (WebSockets — future step)
+#   - stripe / payment libs   (commerce — future step)
+#   - djangorestframework-simplejwt (auth — future step)
+#   - factory_boy / faker     (test data — add when domain models exist)
+# ─────────────────────────────────────────────────────────────────────────────
