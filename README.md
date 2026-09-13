@@ -77,24 +77,35 @@ Traditional book platforms often fracture the reading experience. You might disc
 The system employs a **polyglot persistence architecture**, separating relational identity and commerce data from document-based discovery and community data.
 
 ```mermaid
-graph TD
-    User([User]) --> |HTTP/REST| React[React Frontend<br><i>(Planned)</i>]
-    React --> |JSON API| DRF[Django REST Framework]
+flowchart TD
+    User["User"]
+    React["React Frontend (Planned)"]
+    DRF["Django REST Framework"]
+    Auth["Accounts / Auth"]
+    Discovery["Discovery & Recommendations"]
+    Community["Reviews & Discussions"]
+    Commerce["Store, Cart & Orders"]
+    PostgreSQL["PostgreSQL (Relational)"]
+    MongoDB["MongoDB (Document)"]
+    External["Google Books / Open Library"]
+
+    User -->|HTTP / REST| React
+    React -->|JSON API| DRF
     
     subgraph Django Application Server
-        DRF --> Auth[Accounts / Auth]
-        DRF --> Discovery[Discovery & Recommendations]
-        DRF --> Community[Reviews & Discussions]
-        DRF --> Commerce[Store, Cart & Orders]
+        DRF --> Auth
+        DRF --> Discovery
+        DRF --> Community
+        DRF --> Commerce
     end
     
-    Auth --> PG[(PostgreSQL<br><i>Relational</i>)]
-    Commerce --> PG
+    Auth --> PostgreSQL
+    Commerce --> PostgreSQL
     
-    Discovery --> Mongo[(MongoDB<br><i>Document</i>)]
-    Community --> Mongo
+    Discovery --> MongoDB
+    Community --> MongoDB
     
-    Discovery -.-> |API Fetch| External[Google Books / Open Library]
+    Discovery -.->|API Fetch| External
 ```
 
 *Note: React communicates exclusively with the Django REST API. It never connects directly to PostgreSQL or MongoDB.*
