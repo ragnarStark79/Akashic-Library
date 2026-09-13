@@ -1,0 +1,20 @@
+class ModerationStatus:
+    VISIBLE = "VISIBLE"
+    HIDDEN = "HIDDEN"
+    DELETED = "DELETED"
+
+class ReportStatus:
+    PENDING = "PENDING"
+    REVIEWED = "REVIEWED"
+    RESOLVED = "RESOLVED"
+    DISMISSED = "DISMISSED"
+
+class TargetType:
+    DISCUSSION = "DISCUSSION"
+    REPLY = "REPLY"
+
+class ModerationAction:
+    HIDE = "HIDE"
+    RESTORE = "RESTORE"
+    RESOLVE_REPORT = "RESOLVE_REPORT"
+    DISMISS_REPORT = "DISMISS_REPORT"
