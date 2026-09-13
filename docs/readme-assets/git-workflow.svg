@@ -1,0 +1,67 @@
+<svg width="800" height="150" viewBox="0 0 800 150" xmlns="http://www.w3.org/2000/svg">
+
+  <defs>
+    <linearGradient id="glow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#818cf8" />
+      <stop offset="100%" stop-color="#38bdf8" />
+    </linearGradient>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a" />
+      <stop offset="100%" stop-color="#1e293b" />
+    </linearGradient>
+    <linearGradient id="card-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b" stop-opacity="0.8" />
+      <stop offset="100%" stop-color="#334155" stop-opacity="0.8" />
+    </linearGradient>
+    <linearGradient id="green-glow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#34d399" />
+      <stop offset="100%" stop-color="#10b981" />
+    </linearGradient>
+    <filter id="neon" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="4" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+  <style>
+    text { font-family: system-ui, -apple-system, sans-serif; }
+    .title { fill: url(#glow); font-size: 32px; font-weight: 800; letter-spacing: 4px; }
+    .subtitle { fill: #94a3b8; font-size: 14px; font-weight: 500; letter-spacing: 2px; }
+    .body { fill: #cbd5e1; font-size: 13px; }
+    .highlight { fill: #38bdf8; font-weight: 600; }
+    .card-title { fill: #f8fafc; font-size: 14px; font-weight: 700; letter-spacing: 1px; }
+    .card-stat { fill: url(#green-glow); font-size: 12px; font-weight: 800; }
+    .node-text { fill: #f8fafc; font-size: 12px; font-weight: 600; text-anchor: middle; }
+    .edge { stroke: #475569; stroke-width: 1.5; fill: none; stroke-dasharray: 4; }
+    .edge-glow { stroke: url(#glow); stroke-width: 2; fill: none; }
+  </style>
+
+  <!-- Main branch line -->
+  <path d="M50,40 L750,40" stroke="#10b981" stroke-width="4" fill="none" />
+  <circle cx="50" cy="40" r="8" fill="#10b981" />
+  <text x="50" y="25" class="highlight" font-size="12px" font-weight="700">main</text>
+  
+  <circle cx="750" cy="40" r="8" fill="#10b981" />
+  <path d="M745,35 L750,40 L745,45" stroke="white" stroke-width="2" fill="none" />
+
+  <!-- Feature branch line -->
+  <path d="M150,40 C 200,40 200,100 250,100 L550,100 C 600,100 600,40 650,40" stroke="#38bdf8" stroke-width="3" fill="none" stroke-dasharray="4" />
+  
+  <!-- Steps -->
+  <circle cx="150" cy="40" r="6" fill="white" />
+  <text x="150" y="25" class="node-text" fill="#cbd5e1" font-size="10px">Branch</text>
+
+  <circle cx="250" cy="100" r="6" fill="#38bdf8" />
+  <text x="250" y="125" class="node-text" font-size="10px">Implement</text>
+
+  <circle cx="350" cy="100" r="6" fill="#38bdf8" />
+  <text x="350" y="125" class="node-text" font-size="10px">Commit</text>
+
+  <circle cx="450" cy="100" r="6" fill="#38bdf8" />
+  <text x="450" y="125" class="node-text" font-size="10px">Push &amp; PR</text>
+
+  <circle cx="550" cy="100" r="6" fill="#38bdf8" />
+  <text x="550" y="125" class="node-text" font-size="10px">Review</text>
+
+  <circle cx="650" cy="40" r="6" fill="white" />
+  <text x="650" y="25" class="node-text" font-size="10px">Merge</text>
+</svg>

@@ -1,0 +1,70 @@
+<svg width="800" height="120" viewBox="0 0 800 120" xmlns="http://www.w3.org/2000/svg">
+
+  <defs>
+    <linearGradient id="glow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#818cf8" />
+      <stop offset="100%" stop-color="#38bdf8" />
+    </linearGradient>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a" />
+      <stop offset="100%" stop-color="#1e293b" />
+    </linearGradient>
+    <linearGradient id="card-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b" stop-opacity="0.8" />
+      <stop offset="100%" stop-color="#334155" stop-opacity="0.8" />
+    </linearGradient>
+    <linearGradient id="green-glow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#34d399" />
+      <stop offset="100%" stop-color="#10b981" />
+    </linearGradient>
+    <filter id="neon" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="4" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+  <style>
+    text { font-family: system-ui, -apple-system, sans-serif; }
+    .title { fill: url(#glow); font-size: 32px; font-weight: 800; letter-spacing: 4px; }
+    .subtitle { fill: #94a3b8; font-size: 14px; font-weight: 500; letter-spacing: 2px; }
+    .body { fill: #cbd5e1; font-size: 13px; }
+    .highlight { fill: #38bdf8; font-weight: 600; }
+    .card-title { fill: #f8fafc; font-size: 14px; font-weight: 700; letter-spacing: 1px; }
+    .card-stat { fill: url(#green-glow); font-size: 12px; font-weight: 800; }
+    .node-text { fill: #f8fafc; font-size: 12px; font-weight: 600; text-anchor: middle; }
+    .edge { stroke: #475569; stroke-width: 1.5; fill: none; stroke-dasharray: 4; }
+    .edge-glow { stroke: url(#glow); stroke-width: 2; fill: none; }
+  </style>
+
+  <!-- Line -->
+  <path d="M100,60 L700,60" class="edge-glow" stroke-width="4" opacity="0.3" />
+  <path d="M100,60 L460,60" class="edge-glow" stroke-width="4" />
+
+  <!-- Nodes -->
+  <!-- 1 -->
+  <circle cx="100" cy="60" r="16" fill="#10b981" />
+  <path d="M93,60 L98,65 L108,55" stroke="white" stroke-width="2" fill="none" />
+  <text x="100" y="95" class="node-text" fill="#94a3b8">FOUNDATION</text>
+
+  <!-- 2 -->
+  <circle cx="220" cy="60" r="16" fill="#10b981" />
+  <path d="M213,60 L218,65 L228,55" stroke="white" stroke-width="2" fill="none" />
+  <text x="220" y="95" class="node-text" fill="#94a3b8">BACKEND</text>
+
+  <!-- 3 -->
+  <circle cx="340" cy="60" r="16" fill="#10b981" />
+  <path d="M333,60 L338,65 L348,55" stroke="white" stroke-width="2" fill="none" />
+  <text x="340" y="95" class="node-text" fill="#94a3b8">DISCOVERY</text>
+
+  <!-- 4 (Active) -->
+  <circle cx="460" cy="60" r="20" fill="url(#bg)" stroke="#38bdf8" stroke-width="4" filter="url(#neon)" />
+  <circle cx="460" cy="60" r="8" fill="#38bdf8" />
+  <text x="460" y="95" class="node-text" fill="#f8fafc">REACT UI</text>
+
+  <!-- 5 -->
+  <circle cx="580" cy="60" r="16" fill="url(#bg)" stroke="#475569" stroke-width="3" />
+  <text x="580" y="95" class="node-text" fill="#475569">INTEGRATION</text>
+
+  <!-- 6 -->
+  <circle cx="700" cy="60" r="16" fill="url(#bg)" stroke="#475569" stroke-width="3" />
+  <text x="700" y="95" class="node-text" fill="#475569">PRODUCTION</text>
+</svg>

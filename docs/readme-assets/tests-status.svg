@@ -1,0 +1,38 @@
+<svg width="800" height="150" viewBox="0 0 800 150" xmlns="http://www.w3.org/2000/svg">
+
+  <defs>
+    <linearGradient id="glow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#818cf8" />
+      <stop offset="100%" stop-color="#38bdf8" />
+    </linearGradient>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a" />
+      <stop offset="100%" stop-color="#1e293b" />
+    </linearGradient>
+    <linearGradient id="card-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b" stop-opacity="0.8" />
+      <stop offset="100%" stop-color="#334155" stop-opacity="0.8" />
+    </linearGradient>
+    <linearGradient id="green-glow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#34d399" />
+      <stop offset="100%" stop-color="#10b981" />
+    </linearGradient>
+    <filter id="neon" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="4" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+  <style>
+    text { font-family: system-ui, -apple-system, sans-serif; }
+    .node-text { fill: #f8fafc; font-size: 12px; font-weight: 600; text-anchor: middle; }
+    .edge { stroke: #475569; stroke-width: 2; fill: none; }
+    .edge-glow { stroke: url(#glow); stroke-width: 2; fill: none; }
+  </style>
+
+  <rect width="100%" height="100%" fill="url(#bg)" rx="12" />
+  
+  <rect x="250" y="25" width="300" height="100" fill="url(#card-bg)" stroke="#10b981" stroke-width="2" rx="12" />
+  <text x="400" y="65" text-anchor="middle" font-size="32px" font-weight="800" fill="url(#green-glow)">341 / 341</text>
+  <text x="400" y="95" text-anchor="middle" font-size="14px" font-weight="600" fill="#cbd5e1" letter-spacing="2px">TESTS PASSING</text>
+  <text x="400" y="115" text-anchor="middle" font-size="10px" font-weight="500" fill="#64748b">Backend verified ✓</text>
+</svg>

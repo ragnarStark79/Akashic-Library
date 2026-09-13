@@ -1,185 +1,106 @@
 <div align="center">
-  <h1>📚 Akashic Library</h1>
-  <p><b>Unified Book Discovery, Community & Online Bookstore Platform</b></p>
-  <p><i>Discover. Read. Connect. Shop.</i></p>
+  <img src="docs/readme-assets/hero.svg" alt="Akashic Library Hero" />
 </div>
 
 <div align="center">
-  
+  <br />
   [![Python](https://img.shields.io/badge/Python-3.14.x-blue.svg?logo=python&logoColor=white)](#)
   [![Django](https://img.shields.io/badge/Django-6.1.1-092E20.svg?logo=django&logoColor=white)](#)
   [![DRF](https://img.shields.io/badge/DRF-3.18.1-red.svg?logo=django&logoColor=white)](#)
   [![PostgreSQL](https://img.shields.io/badge/PostgreSQL-14+-316192.svg?logo=postgresql&logoColor=white)](#)
   [![MongoDB](https://img.shields.io/badge/MongoDB-6.0+-47A248.svg?logo=mongodb&logoColor=white)](#)
   [![React](https://img.shields.io/badge/React-(Planned)-61DAFB.svg?logo=react&logoColor=white)](#)
-  [![Tests](https://img.shields.io/badge/Tests-341%20Passing-brightgreen.svg)](#)
-
 </div>
 
 <br />
 
-## 🚧 Project Status
+<div align="center">
+  <img src="docs/readme-assets/status.svg" alt="Project Status Snapshot" />
+</div>
 
-**Akashic Library is actively under development.** 
-Currently, the **backend foundation is complete and fully tested.** The React frontend is the next major phase of development.
+<br />
 
-| Component | Status | Description |
-| :--- | :---: | :--- |
-| **Backend & API** | ✅ **Complete** | Django REST Framework API, Database models, Authentication, Core Services. |
-| **Test Coverage** | ✅ **Passing** | 341/341 automated backend tests passing successfully (Verified). |
-| **Integrations** | ✅ **Complete** | External book data providers (Google Books / Open Library) integrated. |
-| **Frontend (React)** | ⏳ **Planned** | React/Vite Single Page Application integration pending. |
+## 📖 The Idea
 
----
+Traditional book platforms fracture the reading experience. You discover a book on one site, track your reading progress on another, discuss it on a forum, and purchase it from a separate digital storefront. 
 
-## 📖 What is Akashic Library?
+**Akashic Library** brings these disjointed experiences together. It is built from the ground up to unify **book discovery, personal library organization, community interaction, and digital commerce.**
 
-Traditional book platforms often fracture the reading experience. You might discover a book on one site, track your reading progress on another, discuss it on a forum, and purchase it from a separate digital storefront. 
+<br />
 
-**Akashic Library** aims to bring these disjointed experiences together into a single, cohesive platform. It is designed from the ground up to unify **book discovery, personal library organization, community interaction, and digital commerce.**
+## 🌌 Feature Ecosystem
 
-### Core Features
+<div align="center">
+  <img src="docs/readme-assets/ecosystem.svg" alt="Feature Ecosystem" />
+</div>
 
-#### 📚 Discovery
-- Search books via unified external providers (Google Books, Open Library)
-- Detailed book metadata and normalization
-- Seamless source attribution
+<br />
 
-#### 👤 Identity
-- Secure Registration and Login/Logout
-- Session-based authentication (JWT-free by design)
-- Role-aware access control
+<details>
+<summary><b>View Feature Details</b></summary>
+<br />
 
-#### ⭐ Personal Library
-- Save books to Favorites
-- Manage reading progress via custom Shelves
+- **Discovery:** Search books via unified external providers (Google Books, Open Library). Detailed metadata and seamless source attribution.
+- **Identity:** Secure Registration and Login. Session-based authentication (JWT-free) with role-aware access control.
+- **Personal Library:** Save books to Favorites. Manage reading progress via custom Shelves.
+- **Community:** Rate and review books. Join and create community discussions. Moderation capabilities.
+- **Store & Cart:** Browse physical/digital store products, manage shopping cart, secure checkout and order processing.
+</details>
 
-#### 💬 Community
-- Rate and review books
-- Join and create community discussions
-- Platform moderation capabilities
+<br />
 
-#### 🛒 Store
-- Browse physical/digital store products
-- Manage shopping cart
-- Secure checkout and order processing
-
-#### 🛡️ Administration
-- Advanced administrative capabilities
-- Role-based moderation and management
-
-*(Note: The above features represent the complete backend API implementation. The graphical UI for these features is planned for the upcoming frontend phase.)*
-
----
-
-## 🏗️ Architecture Diagram
+## 🏗️ System Architecture
 
 The system employs a **polyglot persistence architecture**, separating relational identity and commerce data from document-based discovery and community data.
 
-```mermaid
-graph TD
-    User([User]) --> |HTTP/REST| React[React Frontend<br><i>(Planned)</i>]
-    React --> |JSON API| DRF[Django REST Framework]
-    
-    subgraph Django Application Server
-        DRF --> Auth[Accounts / Auth]
-        DRF --> Discovery[Discovery & Recommendations]
-        DRF --> Community[Reviews & Discussions]
-        DRF --> Commerce[Store, Cart & Orders]
-    end
-    
-    Auth --> PG[(PostgreSQL<br><i>Relational</i>)]
-    Commerce --> PG
-    
-    Discovery --> Mongo[(MongoDB<br><i>Document</i>)]
-    Community --> Mongo
-    
-    Discovery -.-> |API Fetch| External[Google Books / Open Library]
-```
+<div align="center">
+  <img src="docs/readme-assets/architecture.svg" alt="System Architecture" />
+</div>
 
-*Note: React communicates exclusively with the Django REST API. It never connects directly to PostgreSQL or MongoDB.*
+<br />
 
----
+## 🔍 Discovery Flow
 
-## 🔄 System Workflow
+Akashic Library normalizes data from multiple external providers (Google Books, Open Library) before serving it to the client, providing a seamless "many sources → one experience" flow.
 
-```mermaid
-flowchart LR
-    A[Discover/Search Books] --> B[View Book Details]
-    B --> C{Action}
-    C -->|Library| D[Favorite / Add to Shelf]
-    C -->|Community| E[Review / Rate]
-    C -->|Community| F[Join Discussion]
-    C -->|Commerce| G[Purchase Book]
-    
-    G --> H[Cart]
-    H --> I[Checkout]
-    I --> J[Order]
-```
+<div align="center">
+  <img src="docs/readme-assets/discovery-flow.svg" alt="Discovery Flow" />
+</div>
 
----
-
-## 🔍 Book Discovery Data Flow
-
-To provide a seamless experience, Akashic Library normalizes data from multiple external providers before serving it to the client.
-
-```mermaid
-sequenceDiagram
-    participant UI as React UI (Planned)
-    participant API as Django REST API
-    participant SVC as Discovery Service
-    participant EXT as External Providers
-    participant DB as MongoDB
-
-    UI->>API: GET /api/books/?q=dune
-    API->>SVC: Search Query
-    SVC->>EXT: Fetch (Google Books, Open Library)
-    EXT-->>SVC: Raw Provider JSON
-    SVC->>SVC: Normalize to Standard Model
-    SVC->>DB: Cache/Store Normalized Book
-    SVC-->>API: List of Normalized Books
-    API-->>UI: JSON Response
-```
-
----
+<br />
 
 ## 🔐 Authentication Flow
 
-```mermaid
-sequenceDiagram
-    participant User
-    participant React as React UI (Planned)
-    participant Django as Django Auth API
-    
-    User->>React: Enters Credentials
-    React->>Django: POST /api/auth/login/
-    Django-->>React: Set-Cookie: sessionid, csrftoken
-    
-    Note over User,Django: Subsequent Requests
-    React->>Django: POST /api/cart/add/ (with Cookies + CSRF Token)
-    Django-->>React: 200 OK (Action Successful)
-```
+We utilize robust, secure Session Authentication.
 
----
+<div align="center">
+  <img src="docs/readme-assets/auth-flow.svg" alt="Authentication Flow" />
+</div>
 
-## 🌐 Frontend ↔ Backend Integration Strategy
+<br />
 
-```mermaid
-graph TD
-    UI[React Components] --> Hooks[React Hooks / Context]
-    Hooks --> Client[API Client / Service Layer]
-    Client -->|HTTP GET/POST| Django[Django REST Framework]
-    Django --> Services[Application Services]
-    Services --> DB[(Databases)]
-```
+## 🌐 Frontend ↔ Backend Boundary
 
-*The frontend relies on centralized service/API abstractions rather than directly constructing database requests or API calls within UI components.*
+The system cleanly separates the React Single Page Application from the Django backend. React communicates exclusively with the Django REST API. It never connects directly to PostgreSQL or MongoDB.
 
----
+<div align="center">
+  <img src="docs/readme-assets/frontend-backend.svg" alt="Frontend to Backend Boundary" />
+</div>
 
-## 📁 Project Structure
+<br />
 
-### Current Backend Structure
+## 📁 Project Map
+
+<div align="center">
+  <img src="docs/readme-assets/project-map.svg" alt="Project Map" />
+</div>
+
+<br />
+
+<details>
+<summary><b>View Technical Directory Structure</b></summary>
+<br />
+
 ```text
 Akashic_Library/
 ├── Akashic_Library/      # Core settings and URL routing
@@ -193,39 +114,23 @@ Akashic_Library/
 ├── requirements.txt      # Python dependencies
 └── manage.py             # Django CLI
 ```
+</details>
 
-### Intended Frontend Structure (Upcoming Phase)
-```text
-frontend/
-├── public/
-├── src/
-│   ├── assets/
-│   ├── components/
-│   ├── pages/
-│   ├── layouts/
-│   ├── hooks/
-│   ├── context/
-│   ├── services/       # Centralized API clients
-│   ├── routes/
-│   ├── App.jsx
-│   └── main.jsx
-├── .env.example
-├── package.json
-└── vite.config.js
-```
+<br />
 
----
+## 🔌 API Gateway
 
-## 🔌 API Documentation
+<div align="center">
+  <p><code>React Component ➔ HTTP/JSON ➔ Django REST Framework API</code></p>
+</div>
 
-The backend currently exposes the following key API foundations. 
+The backend exposes the following key API foundations. 
 *(Full reference available in `docs/API_REFERENCE.md`)*
 
 | Method | Endpoint | Purpose | Auth Required |
 | :--- | :--- | :--- | :---: |
 | `GET` | `/api/health/` | System health check | ❌ |
 | `POST` | `/api/auth/login/` | Establish user session | ❌ |
-| `POST` | `/api/auth/logout/` | Destroy user session | ✅ |
 | `GET` | `/api/books/` | Search across external providers | ❌ |
 | `GET` | `/api/books/<id>/` | Get normalized book details | ❌ |
 | `GET` | `/api/store/` | List store products | ❌ |
@@ -234,186 +139,120 @@ The backend currently exposes the following key API foundations.
 | `GET` | `/api/community/` | List community discussions | ❌ |
 | `GET` | `/api/recommendations/`| List personalized book suggestions | ✅ |
 
----
+<br />
 
-## ⚙️ Backend Architecture
+## ⚙️ Tech Stack & Architecture
 
-The backend is built with **Django 6.1.1** and **Django REST Framework (DRF) 3.18.1**. 
-
-Key technical implementations include:
-- **Custom User Model**: UUID-based identity with robust session authentication.
+- **Django 6.1.1** & **Django REST Framework (DRF) 3.18.1**. 
+- **Custom User Model**: UUID-based identity with session authentication.
 - **Polyglot Persistence**: 
-  - PostgreSQL for transactional reliability (Accounts, Orders).
-  - MongoDB for flexible document storage (Books, Reviews, Discussions).
-- **Service Layer Pattern**: Business logic is decoupled from views/serializers.
-- **Provider Adapters**: Extensible adapter pattern for integrating external APIs (Google Books, Open Library).
-- **Robust Testing**: Comprehensive unit and integration tests using in-memory databases (`sqlite3` and `mongomock`).
+  - **PostgreSQL** for transactional reliability (Accounts, Orders).
+  - **MongoDB** for flexible document storage (Books, Reviews, Discussions).
+- **Service Layer Pattern**: Business logic decoupled from views/serializers.
+- **Provider Adapters**: Extensible adapter pattern for integrating Google Books and Open Library.
 
----
+<br />
 
 ## 🧪 Testing
 
-The backend maintains strict test coverage, verifying domain logic, API contracts, and database interactions.
+<div align="center">
+  <img src="docs/readme-assets/tests-status.svg" alt="Tests Status: 341 Passing" />
+</div>
 
-**Current Verified Status:**
-- **341 / 341 tests passing** ✅
-- `0 issues` reported by Django check.
-- `No changes detected` by migrations check.
+The backend maintains strict test coverage, verifying domain logic, API contracts, and database interactions.
 
 ```bash
 python manage.py test --settings=Akashic_Library.test_settings
 ```
-*(Tests utilize an in-memory SQLite database and `mongomock` for rapid execution without external infrastructure dependencies.)*
 
----
+<br />
 
-## 🚀 Getting Started (Development Setup)
+## 🚀 Development Setup
 
-### Prerequisites
-- **Python** 3.14.x
-- **PostgreSQL** 14+
-- **MongoDB** 6.0+
-- **Git**
-- *(Node.js 18+ will be required for the future frontend)*
+### 1. Prerequisites & Environment
+Ensure you have **Python 3.14.x**, **PostgreSQL 14+**, and **MongoDB 6.0+**.
 
-### 1. Clone & Setup Virtual Environment
 ```bash
 git clone git@github.com:ragnarStark79/Akashic-Library.git
 cd Akashic-Library/Akashic_Library
-
 python -m venv venv
 source venv/bin/activate
 pip install -r requirements.txt
-```
-
-### 2. Environment Configuration
-**Never commit secrets to version control.**
-```bash
 cp .env.example .env
 ```
-Edit `.env` and configure your local `DJANGO_SECRET_KEY`, database credentials, and optional API keys.
+*Configure `.env` with your local database credentials.*
 
-### 3. Database Migration
+### 2. Database & Server
 ```bash
 python manage.py migrate
-```
-
-### 4. Run the Development Server
-```bash
 python manage.py runserver
 ```
-The API will be available at `http://localhost:8000/api/`.
 
----
-
-## 🛠️ Configuration & Environment
-
-Sensitive configuration is driven entirely by environment variables via `.env`.
-
-**Key Variables:**
-- `DJANGO_SECRET_KEY`
-- `DJANGO_DEBUG`
-- `POSTGRES_DB` / `POSTGRES_USER` / `POSTGRES_PASSWORD`
-- `MONGODB_URI` / `MONGODB_NAME`
-- `CORS_ALLOWED_ORIGINS`
-
-For the future React frontend, configuration will be handled via `VITE_API_BASE_URL`.
-
----
-
-## 🎨 Design & UI Vision (Upcoming Phase)
-
-The upcoming React SPA will be designed with the following principles:
-- **Book-Centric Visual Hierarchy**: Highlighting cover art, typography, and readability.
-- **Search-First Experience**: Frictionless discovery and exploration.
-- **Responsive Layouts**: Seamless experience across mobile, tablet, and desktop.
-- **Accessible Components**: Adhering to ARIA standards and keyboard navigability.
-- **Graceful States**: Polished loading skeletons, empty states, and error handling.
-
----
+<br />
 
 ## 🗺️ Development Roadmap
 
+<div align="center">
+  <img src="docs/readme-assets/roadmap.svg" alt="Development Roadmap" />
+</div>
+
+<br />
+
+<details>
+<summary><b>View Roadmap Details</b></summary>
+<br />
+
 ### ✅ Completed
-- [x] Django backend foundation
-- [x] Custom accounts & session identity
-- [x] Polyglot data architecture (PostgreSQL + MongoDB)
-- [x] Discovery layer & provider integration
-- [x] Community, reviews, and moderation APIs
-- [x] Commerce, cart, and checkout APIs
-- [x] Automated backend test suite (341 tests passing)
+- Django backend foundation
+- Custom accounts & session identity
+- Polyglot data architecture (PostgreSQL + MongoDB)
+- Discovery layer & provider integration
+- Community, reviews, and moderation APIs
+- Commerce, cart, and checkout APIs
+- Automated backend test suite (341 tests passing)
 
-### ⏳ In Progress / Next
-- [ ] React/Vite frontend foundation
-- [ ] Frontend routing & layout design
-- [ ] API client/service integration
-- [ ] Authentication and User Profile UI
-- [ ] Book discovery and search UI
+### ◉ In Progress / Next
+- React/Vite frontend foundation
+- Frontend routing & layout design
+- API client/service integration
 
-### 📅 Planned
-- [ ] Reviews and Community UI
-- [ ] Shopping Cart and Checkout UI
-- [ ] Administrative Moderation Dashboard
-- [ ] End-to-End Testing (Cypress/Playwright)
-- [ ] Production Deployment Strategy
+### ○ Planned
+- Reviews and Community UI
+- Shopping Cart and Checkout UI
+- Production Deployment Strategy
+</details>
 
----
+<br />
 
-## 🤝 Collaboration & Contribution Workflow
+## 🤝 Collaboration & Git Workflow
 
 This repository utilizes branch protection. **Direct pushes to `main` are prohibited.**
 
-### Workflow
-1. **Clone** the repository.
-2. **Branch** off `main` for your work.
-3. **Commit** using the convention below.
-4. **Push** your branch to GitHub.
-5. **Open a Pull Request** against `main`.
-6. **Merge** only after code review and CI checks pass.
+<div align="center">
+  <img src="docs/readme-assets/git-workflow.svg" alt="Git Collaboration Workflow" />
+</div>
 
 ```bash
 git checkout main
 git pull origin main
 git checkout -b feature/your-feature-name
 
-# Make your changes...
-git add .
-git commit -m "feat: add awesome new functionality"
+# Make changes
+git commit -m "feat: add feature"
 git push -u origin feature/your-feature-name
 ```
 
-### Branch Naming Convention
-- `feature/<feature-name>`
-- `fix/<bug-name>`
-- `refactor/<area>`
-- `docs/<documentation-change>`
-- `test/<testing-change>`
-- `chore/<maintenance-task>`
+<br />
 
-### Commit Convention
-- `feat:` for new features.
-- `fix:` for bug fixes.
-- `docs:` for documentation updates.
-- `refactor:` for code refactoring without behavior changes.
-- `test:` for adding or updating tests.
-- `chore:` for maintenance, dependencies, or tooling.
-
----
-
-## 🔒 Security Notes
+## 🔒 Security
 
 - **Never** commit `.env` files or expose credentials.
 - **Backend Responsibility**: Authentication, authorization, and sensitive business logic strictly remain on the Django backend.
 - Do not place backend secrets in React environment variables (`VITE_`).
 - All external API communication happens Server-to-Server to protect API keys.
 
----
+<br />
 
-## 🎓 Academic / Project Context
+## 🎓 Academic Context
 
 This platform is developed as a comprehensive academic final-year/semester project demonstrating full-stack engineering, polyglot persistence, software architecture patterns, and API design.
-
----
-<div align="center">
-  <p><i>Akashic Library — Expanding the digital reading experience.</i></p>
-</div>
