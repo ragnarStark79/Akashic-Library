@@ -33,6 +33,8 @@ from .exceptions import (
     BookNotFoundError,
     DuplicateReviewError,
     MongoDBUnavailableError,
+    ReplyNotFoundError,
+    ReplyPermissionError,
     ReviewNotFoundError,
     ReviewPermissionError,
 )
@@ -42,6 +44,8 @@ from .reviews_serializers import (
     AggregateRatingSerializer,
     ReviewCreateSerializer,
     ReviewDetailSerializer,
+    ReviewReplyCreateSerializer,
+    ReviewReplySerializer,
     ReviewUpdateSerializer,
 )
 
@@ -88,6 +92,24 @@ def _enrich_reviews(reviews: list[dict]) -> list[dict]:
     for review in reviews:
         review["_author"] = author_map.get(review.get("user_id"))
     return reviews
+
+
+def _enrich_reply(reply: dict) -> dict:
+    """Attach safe author info to a reply dict."""
+    reply["_author"] = _get_author(reply.get("user_id", ""))
+    return reply
+
+
+def _enrich_replies(replies: list[dict]) -> list[dict]:
+    """Bulk-enrich replies with author info."""
+    unique_ids = {r.get("user_id") for r in replies if r.get("user_id")}
+    author_map: dict[str, dict | None] = {}
+    for uid in unique_ids:
+        author_map[uid] = _get_author(uid)
+    for reply in replies:
+        reply["_author"] = author_map.get(reply.get("user_id"))
+    return replies
+
 
 
 def _paginate_params(request):
@@ -224,49 +246,11 @@ def _review_create(request, book_id: str):
 # ─── Get single review ────────────────────────────────────────────────────────
 
 
-@api_view(["GET"])
-@authentication_classes([])
-@permission_classes([AllowAny])
-def review_detail(request, book_id: str, review_id: str):
-    """GET /api/books/<book_id>/reviews/<review_id>/
-
-    Get a single review. Public — no authentication required.
-    """
-    try:
-        review = reviews_repository.get_review(review_id)
-    except ReviewNotFoundError as exc:
-        return Response({"detail": str(exc)}, status=status.HTTP_404_NOT_FOUND)
-    except MongoDBUnavailableError:
-        return Response(
-            {"detail": "Reviews are temporarily unavailable."},
-            status=status.HTTP_503_SERVICE_UNAVAILABLE,
-        )
-
-    # Ensure the review belongs to the requested book.
-    if review.get("book_id") != book_id:
-        return Response({"detail": "Review not found."}, status=status.HTTP_404_NOT_FOUND)
-
-    review = _enrich_review(review)
-    return Response(ReviewDetailSerializer(review).data, status=status.HTTP_200_OK)
+# ─── Get, Update & Delete single review ──────────────────────────────────────
 
 
-# ─── Update review ────────────────────────────────────────────────────────────
-
-
-@api_view(["PATCH"])
-@permission_classes([IsAuthenticated])
-def review_update(request, book_id: str, review_id: str):
-    """PATCH /api/books/<book_id>/reviews/<review_id>/update/
-
-    Update the authenticated user's own review. All fields optional.
-
-    NEVER accepted: user_id, helpful_count, moderation_status, timestamps.
-
-    Errors:
-      400 — invalid input
-      403 — review belongs to another user
-      404 — review not found
-    """
+def _do_review_update(request, book_id: str, review_id: str):
+    """Internal helper to update the authenticated user's own review."""
     ser = ReviewUpdateSerializer(data=request.data)
     if not ser.is_valid():
         return Response(ser.errors, status=status.HTTP_400_BAD_REQUEST)
@@ -297,25 +281,30 @@ def review_update(request, book_id: str, review_id: str):
             status=status.HTTP_503_SERVICE_UNAVAILABLE,
         )
 
+    # Ensure the review belongs to the requested book.
+    if updated.get("book_id") != book_id:
+        return Response({"detail": "Review not found."}, status=status.HTTP_404_NOT_FOUND)
+
     updated = _enrich_review(updated)
     return Response(ReviewDetailSerializer(updated).data, status=status.HTTP_200_OK)
 
 
-# ─── Delete review ────────────────────────────────────────────────────────────
-
-
-@api_view(["DELETE"])
-@permission_classes([IsAuthenticated])
-def review_delete(request, book_id: str, review_id: str):
-    """DELETE /api/books/<book_id>/reviews/<review_id>/delete/
-
-    Delete the authenticated user's own review.
-
-    Errors:
-      403 — review belongs to another user
-      404 — review not found
-    """
+def _do_review_delete(request, book_id: str, review_id: str):
+    """Internal helper to delete the authenticated user's own review."""
     user_id = _user_id(request)
+
+    # Check that the review belongs to the requested book if found.
+    try:
+        existing = reviews_repository.get_review(review_id)
+        if existing.get("book_id") != book_id:
+            return Response({"detail": "Review not found."}, status=status.HTTP_404_NOT_FOUND)
+    except ReviewNotFoundError as exc:
+        return Response({"detail": str(exc)}, status=status.HTTP_404_NOT_FOUND)
+    except MongoDBUnavailableError:
+        return Response(
+            {"detail": "Reviews are temporarily unavailable."},
+            status=status.HTTP_503_SERVICE_UNAVAILABLE,
+        )
 
     try:
         deleted = reviews_repository.delete_review(review_id=review_id, user_id=user_id)
@@ -332,6 +321,216 @@ def review_delete(request, book_id: str, review_id: str):
     if not deleted:
         return Response({"detail": "Review not found."}, status=status.HTTP_404_NOT_FOUND)
     return Response(status=status.HTTP_204_NO_CONTENT)
+
+
+@api_view(["GET", "PATCH", "DELETE"])
+@permission_classes([AllowAny])
+def review_detail(request, book_id: str, review_id: str):
+    """GET/PATCH/DELETE /api/books/<book_id>/reviews/<review_id>/
+
+    GET: Public — get single review.
+    PATCH: Authenticated — update own review.
+    DELETE: Authenticated — delete own review.
+    """
+    if request.method == "PATCH":
+        if not request.user.is_authenticated:
+            return Response(
+                {"detail": "Authentication credentials were not provided."},
+                status=status.HTTP_401_UNAUTHORIZED,
+            )
+        return _do_review_update(request, book_id, review_id)
+
+    if request.method == "DELETE":
+        if not request.user.is_authenticated:
+            return Response(
+                {"detail": "Authentication credentials were not provided."},
+                status=status.HTTP_401_UNAUTHORIZED,
+            )
+        return _do_review_delete(request, book_id, review_id)
+
+    # GET
+    try:
+        review = reviews_repository.get_review(review_id)
+    except ReviewNotFoundError as exc:
+        return Response({"detail": str(exc)}, status=status.HTTP_404_NOT_FOUND)
+    except MongoDBUnavailableError:
+        return Response(
+            {"detail": "Reviews are temporarily unavailable."},
+            status=status.HTTP_503_SERVICE_UNAVAILABLE,
+        )
+
+    # Ensure the review belongs to the requested book.
+    if review.get("book_id") != book_id:
+        return Response({"detail": "Review not found."}, status=status.HTTP_404_NOT_FOUND)
+
+    # Visibility check: If review is hidden or rejected, only author or moderator may view it.
+    mod_status = review.get("moderation_status")
+    if mod_status in ["HIDDEN", "REJECTED"]:
+        user = request.user
+        is_mod = user.is_authenticated and getattr(user, "role", None) in ["MODERATOR", "ADMIN"]
+        is_author = user.is_authenticated and str(user.id) == str(review.get("user_id"))
+        if not (is_mod or is_author):
+            return Response({"detail": "Review not found."}, status=status.HTTP_404_NOT_FOUND)
+
+    review = _enrich_review(review)
+    return Response(ReviewDetailSerializer(review).data, status=status.HTTP_200_OK)
+
+
+@api_view(["PATCH"])
+@permission_classes([IsAuthenticated])
+def review_update(request, book_id: str, review_id: str):
+    """PATCH /api/books/<book_id>/reviews/<review_id>/update/
+
+    Update the authenticated user's own review.
+    """
+    return _do_review_update(request, book_id, review_id)
+
+
+@api_view(["DELETE"])
+@permission_classes([IsAuthenticated])
+def review_delete(request, book_id: str, review_id: str):
+    """DELETE /api/books/<book_id>/reviews/<review_id>/delete/
+
+    Delete the authenticated user's own review.
+    """
+    return _do_review_delete(request, book_id, review_id)
+
+
+# ─── Current user review retrieval ───────────────────────────────────────────
+
+
+@api_view(["GET"])
+@permission_classes([IsAuthenticated])
+def user_book_review(request, book_id: str):
+    """GET /api/books/<book_id>/my-review/
+
+    Return the authenticated user's own review for this book.
+    Returns 404 if the user has not reviewed this book.
+    """
+    if not repository.book_exists(book_id):
+        return Response(
+            {"detail": f"Book {book_id!r} not found."},
+            status=status.HTTP_404_NOT_FOUND,
+        )
+
+    user_id = _user_id(request)
+    try:
+        review = reviews_repository.get_user_review_for_book(user_id=user_id, book_id=book_id)
+    except MongoDBUnavailableError:
+        return Response(
+            {"detail": "Reviews are temporarily unavailable."},
+            status=status.HTTP_503_SERVICE_UNAVAILABLE,
+        )
+
+    if not review:
+        return Response(
+            {"detail": "No review found for current user."},
+            status=status.HTTP_404_NOT_FOUND,
+        )
+
+    review = _enrich_review(review)
+    return Response(ReviewDetailSerializer(review).data, status=status.HTTP_200_OK)
+
+
+# ─── Review Replies ──────────────────────────────────────────────────────────
+
+
+@api_view(["GET", "POST"])
+def review_replies_list_create(request, book_id: str, review_id: str):
+    """GET/POST /api/books/<book_id>/reviews/<review_id>/replies/
+
+    GET: Public — list all replies to an approved review.
+    POST: Authenticated — submit a new reply.
+    """
+    if not repository.book_exists(book_id):
+        return Response(
+            {"detail": f"Book {book_id!r} not found."},
+            status=status.HTTP_404_NOT_FOUND,
+        )
+
+    if request.method == "GET":
+        try:
+            replies = reviews_repository.list_replies_for_review(review_id=review_id, book_id=book_id)
+        except ReviewNotFoundError as exc:
+            return Response({"detail": str(exc)}, status=status.HTTP_404_NOT_FOUND)
+        except MongoDBUnavailableError:
+            return Response(
+                {"detail": "Replies are temporarily unavailable."},
+                status=status.HTTP_503_SERVICE_UNAVAILABLE,
+            )
+
+        replies = _enrich_replies(replies)
+        return Response(ReviewReplySerializer(replies, many=True).data, status=status.HTTP_200_OK)
+
+    # POST — require authentication
+    if not request.user.is_authenticated:
+        return Response(
+            {"detail": "Authentication credentials were not provided."},
+            status=status.HTTP_401_UNAUTHORIZED,
+        )
+
+    ser = ReviewReplyCreateSerializer(data=request.data)
+    if not ser.is_valid():
+        return Response(ser.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    user_id = _user_id(request)
+    body = ser.validated_data["body"]
+
+    try:
+        reply = reviews_repository.create_reply(
+            user_id=user_id,
+            book_id=book_id,
+            review_id=review_id,
+            body=body,
+        )
+    except ReviewNotFoundError as exc:
+        return Response({"detail": str(exc)}, status=status.HTTP_404_NOT_FOUND)
+    except MongoDBUnavailableError:
+        return Response(
+            {"detail": "Replies are temporarily unavailable."},
+            status=status.HTTP_503_SERVICE_UNAVAILABLE,
+        )
+
+    reply = _enrich_reply(reply)
+    return Response(ReviewReplySerializer(reply).data, status=status.HTTP_201_CREATED)
+
+
+@api_view(["DELETE"])
+@permission_classes([IsAuthenticated])
+def review_reply_delete(request, book_id: str, review_id: str, reply_id: str):
+    """DELETE /api/books/<book_id>/reviews/<review_id>/replies/<reply_id>/delete/
+
+    Delete the authenticated user's own reply.
+    """
+    if not repository.book_exists(book_id):
+        return Response(
+            {"detail": f"Book {book_id!r} not found."},
+            status=status.HTTP_404_NOT_FOUND,
+        )
+
+    user_id = _user_id(request)
+    try:
+        deleted = reviews_repository.delete_reply(
+            reply_id=reply_id,
+            user_id=user_id,
+            review_id=review_id,
+            book_id=book_id,
+        )
+    except ReplyNotFoundError as exc:
+        return Response({"detail": str(exc)}, status=status.HTTP_404_NOT_FOUND)
+    except ReplyPermissionError as exc:
+        return Response({"detail": str(exc)}, status=status.HTTP_403_FORBIDDEN)
+    except MongoDBUnavailableError:
+        return Response(
+            {"detail": "Replies are temporarily unavailable."},
+            status=status.HTTP_503_SERVICE_UNAVAILABLE,
+        )
+
+    if not deleted:
+        return Response({"detail": "Reply not found."}, status=status.HTTP_404_NOT_FOUND)
+
+    return Response(status=status.HTTP_204_NO_CONTENT)
+
 
 
 # ─── Aggregate rating ─────────────────────────────────────────────────────────
