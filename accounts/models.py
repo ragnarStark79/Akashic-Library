@@ -175,5 +175,13 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     @property
     def is_moderator(self):
-        """True if the user has at least MODERATOR privileges."""
-        return self.role in (UserRole.MODERATOR, UserRole.STORE_MANAGER, UserRole.ADMIN)
+        """True if the user has at least MODERATOR privileges (MODERATOR or ADMIN).
+
+        Store Managers do not automatically possess Community moderation privileges.
+        """
+        return self.role in (UserRole.MODERATOR, UserRole.ADMIN)
+
+    @property
+    def is_store_manager(self):
+        """True if the user has STORE_MANAGER or ADMIN privileges."""
+        return self.role in (UserRole.STORE_MANAGER, UserRole.ADMIN)
