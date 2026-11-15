@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_standard" name="shell-type"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Lora:ital,wght@0,400;0,500;0,600;1,400&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={"darkMode":"class","theme":{"extend":{"colors":{"text-secondary":"#827E75","surface-container-lowest":"#ffffff","on-primary-fixed-variant":"#02504c","on-secondary-fixed-variant":"#384b3f","accent-sage":"#A8BDAE","surface-variant":"#d4e6e2","primary-container":"#185c58","error-container":"#ffdad6","on-surface-variant":"#3f4947","outline-variant":"#bfc8c7","secondary":"#506356","on-primary":"#ffffff","surface":"#ebfdf8","text-primary":"#263633","outline":"#6f7978","primary-fixed-dim":"#93d2cc","surface-glass":"rgba(252, 250, 245, 0.82)","surface-tint":"#276864","inverse-primary":"#93d2cc","on-secondary-container":"#55695c","accent-terracotta":"#C58B70","inverse-on-surface":"#e2f5f0","on-tertiary-fixed-variant":"#683b26","on-primary-fixed":"#00201e","surface-dim":"#ccded9","surface-container-high":"#daece7","on-secondary-fixed":"#0d1f15","inverse-surface":"#233330","background":"#ebfdf8","on-surface":"#0e1e1c","tertiary":"#5b311c","surface-container-low":"#e5f8f3","error":"#ba1a1a","bg-page":"#F5F1E9","glass-border":"rgba(234, 227, 216, 0.65)","secondary-fixed":"#d2e8d8","secondary-container":"#d2e8d8","on-tertiary-fixed":"#331202","on-background":"#0e1e1c","surface-container-highest":"#d4e6e2","on-error":"#ffffff","on-error-container":"#93000a","surface-container":"#dff2ed","surface-bright":"#ebfdf8","secondary-fixed-dim":"#b6ccbc","accent-teal":"#185C58","on-tertiary-container":"#f8b89b","on-secondary":"#ffffff","tertiary-fixed-dim":"#f8b89b","on-tertiary":"#ffffff","on-primary-container":"#93d2cc","primary-fixed":"#afeee9","surface-inset":"#EAE3D8","tertiary-fixed":"#ffdbcc","primary":"#004440","tertiary-container":"#764730","surface-porcelain":"#FCFAF5"},"borderRadius":{"DEFAULT":"0.25rem","lg":"0.5rem","xl":"0.75rem","full":"9999px"},"spacing":{"space-md":"1rem","margin":"3rem","space-sm":"0.5rem","gutter":"1.5rem","margin-mobile":"1.25rem","space-xs":"0.25rem","space-xl":"2.5rem","space-lg":"1.5rem","gutter-mobile":"1rem"},"fontFamily":{"display":["Lora"],"caption":["Inter"],"body-lead":["Inter"],"label-md":["Inter"],"headline-lg":["Lora"],"body-sm":["Inter"],"headline-sm":["Lora"],"body-base":["Inter"],"label-sm":["Inter"],"headline-lg-mobile":["Lora"],"headline-md":["Lora"],"display-mobile":["Lora"]},"fontSize":{"display":["48px",{"lineHeight":"56px","letterSpacing":"-0.02em","fontWeight":"500"}],"caption":["11px",{"lineHeight":"16px","letterSpacing":"0.02em","fontWeight":"500"}],"body-lead":["18px",{"lineHeight":"28px","fontWeight":"400"}],"label-md":["14px",{"lineHeight":"20px","letterSpacing":"0.01em","fontWeight":"500"}],"headline-lg":["36px",{"lineHeight":"44px","letterSpacing":"-0.015em","fontWeight":"500"}],"body-sm":["13px",{"lineHeight":"20px","fontWeight":"400"}],"headline-sm":["20px",{"lineHeight":"28px","fontWeight":"600"}],"body-base":["15px",{"lineHeight":"24px","fontWeight":"400"}],"label-sm":["12px",{"lineHeight":"16px","letterSpacing":"0.04em","fontWeight":"600"}],"headline-lg-mobile":["28px",{"lineHeight":"36px","letterSpacing":"-0.01em","fontWeight":"500"}],"headline-md":["26px",{"lineHeight":"34px","fontWeight":"500"}],"display-mobile":["34px",{"lineHeight":"42px","letterSpacing":"-0.01em","fontWeight":"500"}]}}}};</script></head><body class="bg-bg-page font-body-base text-text-primary antialiased selection:bg-accent-sage/30 selection:text-primary"><header class="fixed top-0 left-0 right-0 z-50 pointer-events-none pt-4"><div class="h-20 max-w-[1360px] mx-auto px-margin flex items-center justify-between pointer-events-auto"><div class="w-full flex items-center justify-between px-6 py-2.5 bg-surface-glass backdrop-blur-md rounded-full shadow-[0_4px_16px_rgba(38,54,51,0.06),0_1px_3px_rgba(38,54,51,0.04)]"><a class="flex items-center gap-3 group" data-path="discover" href="#"><span class="w-8 h-8 rounded-full bg-accent-teal flex items-center justify-center text-surface-porcelain shadow-[inset_1px_1px_2px_rgba(255,255,255,0.25)]"><span class="material-symbols-outlined text-[18px]">menu_book</span></span><div class="flex flex-col"><span class="font-headline-sm text-headline-sm text-accent-teal font-display tracking-tight leading-none group-hover:text-primary transition-colors">Akashic Library</span><span class="font-caption text-caption text-text-secondary tracking-widest uppercase mt-0.5">Custodial Archives</span></div></a><nav class="hidden lg:flex items-center gap-1.5 p-1 rounded-full bg-surface-inset/40" data-active-classes="bg-accent-teal text-surface-porcelain font-label-md text-label-md rounded-full shadow-[0_2px_8px_rgba(24,92,88,0.2)]"><a class="px-4 py-1.5 rounded-full font-label-md text-label-md text-text-secondary hover:text-text-primary hover:bg-surface-porcelain/60 transition-all" data-path="discover" href="#">Discover</a><a class="px-4 py-1.5 rounded-full font-label-md text-label-md text-text-secondary hover:text-text-primary hover:bg-surface-porcelain/60 transition-all" data-path="genres" href="#">Genres</a><a aria-current="page" class="px-4 py-1.5 transition-all bg-accent-teal text-surface-porcelain font-label-md text-label-md rounded-full shadow-[0_2px_8px_rgba(24,92,88,0.2)]" data-path="community" href="#">Community</a><a class="px-4 py-1.5 rounded-full font-label-md text-label-md text-text-secondary hover:text-text-primary hover:bg-surface-porcelain/60 transition-all" data-path="my-library" href="#">My Library</a><a class="px-4 py-1.5 rounded-full font-label-md text-label-md text-text-secondary hover:text-text-primary hover:bg-surface-porcelain/60 transition-all" data-path="about" href="#">About</a></nav><div class="flex items-center gap-3.5"><button class="flex items-center gap-2 pl-3 pr-3.5 py-1.5 rounded-full bg-surface-inset/60 text-text-secondary hover:text-text-primary hover:bg-surface-inset transition-all shadow-[inset_1px_1px_3px_rgba(38,54,51,0.06),inset_-1px_-1px_3px_rgba(255,255,255,0.7)]" type="button"><span class="material-symbols-outlined text-[17px] text-accent-teal">search</span><span class="font-body-sm text-body-sm hidden sm:inline text-text-secondary">Search folios...</span><kbd class="hidden md:inline font-caption text-caption px-1.5 py-0.5 rounded bg-surface-porcelain/80 text-text-secondary">⌘K</kbd></button><div class="h-5 w-[1px] bg-glass-border hidden sm:block"></div><a class="flex items-center gap-2 pl-1 pr-2.5 py-1 rounded-full hover:bg-surface-porcelain/70 transition-all group" data-path="my-library" href="#" title="Elena Solanas (Patron)"><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div><div class="hidden xl:flex flex-col text-left"><span class="font-label-sm text-label-sm text-text-primary group-hover:text-accent-teal leading-tight">Elena Solanas</span><span class="font-caption text-caption text-text-secondary leading-tight">Patron Fellow</span></div></a></div></div></div></header><main class="w-full max-w-[1360px] mx-auto px-margin pt-20 bg-bg-page"><div class="flex flex-col w-full">
+<!-- Interactive State Simulation Console (Subtle Archival Switchboard) -->
+<div class="w-full mb-8 p-3 rounded-2xl bg-surface-glass backdrop-blur-md shadow-[0_4px_16px_rgba(38,54,51,0.05),0_1px_3px_rgba(38,54,51,0.03)] flex flex-wrap items-center justify-between gap-4">
+<div class="flex items-center gap-2.5">
+<span class="w-2.5 h-2.5 rounded-full bg-accent-teal animate-pulse"></span>
+<span class="font-caption text-caption text-text-primary uppercase tracking-widest font-semibold">State Simulator</span>
+<span class="font-caption text-caption text-text-secondary hidden sm:inline">• Test Phase 5A.3 Contexts:</span>
+</div>
+<div class="flex flex-wrap items-center gap-1.5" id="state-toggles">
+<button class="state-pill px-3 py-1.5 rounded-full font-label-sm text-label-sm bg-accent-teal text-surface-porcelain shadow-[0_2px_8px_rgba(24,92,88,0.2)] transition-all" id="btn-state-active" onclick="switchState('active')" type="button">
+        1. Active Feed
+      </button>
+<button class="state-pill px-3 py-1.5 rounded-full font-label-sm text-label-sm bg-surface-porcelain text-text-secondary hover:text-text-primary transition-all" id="btn-state-composer" onclick="switchState('composer')" type="button">
+        2. Composer Open
+      </button>
+<button class="state-pill px-3 py-1.5 rounded-full font-label-sm text-label-sm bg-surface-porcelain text-text-secondary hover:text-text-primary transition-all" id="btn-state-empty" onclick="switchState('empty')" type="button">
+        3. Pristine Agora (Zero)
+      </button>
+<button class="state-pill px-3 py-1.5 rounded-full font-label-sm text-label-sm bg-surface-porcelain text-text-secondary hover:text-text-primary transition-all" id="btn-state-auth" onclick="switchState('auth')" type="button">
+        4. Auth Intercept
+      </button>
+<button class="state-pill px-3 py-1.5 rounded-full font-label-sm text-label-sm bg-surface-porcelain text-text-secondary hover:text-text-primary transition-all" id="btn-state-inflight" onclick="switchState('inflight')" type="button">
+        5. Submission In-Flight
+      </button>
+</div>
+</div>
+<!-- Editorial Header & Invitation -->
+<section class="w-full mb-12">
+<div class="flex flex-col max-w-4xl">
+<div class="flex flex-wrap items-center gap-2 mb-3">
+<span class="px-2.5 py-0.5 rounded-full bg-accent-sage/20 text-accent-teal font-caption text-caption uppercase tracking-wider font-semibold">
+          Akashic Community • Dialogues &amp; Literary Inquiry
+        </span>
+<span class="font-caption text-caption text-text-secondary hidden md:inline">/</span>
+<span class="font-caption text-caption text-text-secondary hidden md:inline">Phase 5A.3 Design Specification</span>
+</div>
+<h1 class="font-display text-display text-text-primary font-medium tracking-tight mb-4 leading-tight">
+        The Agora of Contemplation: Community Dialogues
+      </h1>
+<p class="font-body-lead text-body-lead text-text-secondary leading-relaxed mb-8 max-w-3xl">
+        A calm, unhurried space for patrons, scholars, and readers to deliberate on literary paradoxes, philosophical treatises, and thematic horizons across the Akashic catalog.
+      </p>
+<div class="flex flex-wrap items-center gap-4">
+<button class="px-6 py-3 rounded-full bg-accent-teal text-surface-porcelain font-label-md text-label-md flex items-center gap-2 shadow-[0_4px_12px_rgba(24,92,88,0.22)] hover:bg-primary transition-all transform hover:-translate-y-0.5" onclick="switchState('composer')" type="button">
+<span class="material-symbols-outlined text-[19px]">edit_note</span>
+<span>+ Begin a Dialogue</span>
+</button>
+<a class="px-5 py-3 rounded-full bg-surface-porcelain text-text-primary font-label-md text-label-md shadow-[0_4px_12px_rgba(38,54,51,0.06),0_1px_3px_rgba(38,54,51,0.04)] hover:shadow-[0_10px_24px_rgba(38,54,51,0.09)] transition-all flex items-center gap-2" href="#anchor-catalog">
+<span class="material-symbols-outlined text-[19px] text-accent-terracotta">collections_bookmark</span>
+<span>Browse by Folio Anchor</span>
+</a>
+<div class="flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-surface-inset/60 text-text-secondary font-caption text-caption shadow-[inset_1px_1px_3px_rgba(38,54,51,0.06)]">
+<span class="w-1.5 h-1.5 rounded-full bg-accent-sage"></span>
+<span>Authenticated Patron Ledger #892-BOR Active</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Two-Column Editorial Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start mb-20">
+<!-- PRIMARY COLUMN (approx 68% / 8 columns) -->
+<div class="lg:col-span-8 flex flex-col gap-6">
+<!-- Dynamic Intercept Banner (Conditional view for Auth Intercept state) -->
+<div class="hidden p-6 rounded-2xl bg-surface-porcelain shadow-[0_4px_16px_rgba(38,54,51,0.08)] flex-col gap-4" id="auth-banner">
+<div class="flex items-start gap-4">
+<div class="w-12 h-12 rounded-full bg-accent-terracotta/15 flex items-center justify-center text-accent-terracotta shrink-0">
+<span class="material-symbols-outlined text-[24px]">vpn_key</span>
+</div>
+<div class="flex flex-col">
+<span class="font-caption text-caption text-accent-terracotta font-semibold uppercase tracking-wider">Patron Authentication Required</span>
+<h3 class="font-headline-sm text-headline-sm text-text-primary mt-0.5">Please Present Your Akashic Seal to Post</h3>
+<p class="font-body-sm text-body-sm text-text-secondary mt-1">
+              Archival dialogues are open to public reading, but inscribing a thesis into the permanent Agora requires an active library ledger seal. Your drafted prompt will be preserved across verification.
+            </p>
+</div>
+</div>
+<div class="flex items-center gap-3 pt-2 justify-end">
+<button class="px-4 py-2 rounded-full bg-surface-inset/60 text-text-secondary font-label-md text-label-md hover:text-text-primary transition-all" onclick="switchState('active')" type="button">Dismiss</button>
+<button class="px-5 py-2 rounded-full bg-accent-teal text-surface-porcelain font-label-md text-label-md shadow-[0_2px_8px_rgba(24,92,88,0.2)]" type="button">Verify Patron Seal</button>
+</div>
+</div>
+<!-- Search & Filters Recessed Bar -->
+<div class="p-5 rounded-2xl bg-surface-porcelain shadow-[0_4px_12px_rgba(38,54,51,0.04)] flex flex-col gap-4">
+<!-- Recessed Search Input -->
+<div class="relative w-full flex items-center rounded-xl bg-surface-inset shadow-[inset_2px_2px_5px_rgba(38,54,51,0.08),inset_-2px_-2px_5px_rgba(255,255,255,0.7)] px-4 py-3">
+<span class="material-symbols-outlined text-text-secondary text-[20px] mr-3">manage_search</span>
+<input class="w-full bg-transparent text-text-primary placeholder:text-text-secondary font-body-base text-body-base focus:outline-none" placeholder="Filter dialogues by topic, thesis, or keyword..." type="text"/>
+<kbd class="hidden md:inline font-caption text-caption px-2 py-0.5 rounded bg-surface-porcelain text-text-secondary shadow-sm">esc to clear</kbd>
+</div>
+<!-- Filter Pills & Sorting Row -->
+<div class="flex flex-wrap items-center justify-between gap-3 pt-1">
+<div class="flex flex-wrap items-center gap-2">
+<button class="px-3.5 py-1.5 rounded-full bg-accent-teal text-surface-porcelain font-label-sm text-label-sm shadow-[0_2px_6px_rgba(24,92,88,0.18)]">
+              All Dialogues (24)
+            </button>
+<button class="px-3.5 py-1.5 rounded-full bg-surface-inset/70 text-text-secondary hover:text-text-primary hover:bg-surface-inset font-label-sm text-label-sm transition-all">
+              Book Inquiries (11)
+            </button>
+<button class="px-3.5 py-1.5 rounded-full bg-surface-inset/70 text-text-secondary hover:text-text-primary hover:bg-surface-inset font-label-sm text-label-sm transition-all">
+              Philosophical Theses (6)
+            </button>
+<button class="px-3.5 py-1.5 rounded-full bg-surface-inset/70 text-text-secondary hover:text-text-primary hover:bg-surface-inset font-label-sm text-label-sm transition-all">
+              Literary Form &amp; Translation (4)
+            </button>
+<button class="px-3.5 py-1.5 rounded-full bg-surface-inset/70 text-text-secondary hover:text-text-primary hover:bg-surface-inset font-label-sm text-label-sm transition-all">
+              Speculative Poetics (3)
+            </button>
+</div>
+<div class="flex items-center gap-2">
+<span class="font-caption text-caption text-text-secondary">Ordering:</span>
+<button class="px-3 py-1 rounded-full bg-surface-inset/50 text-text-primary font-label-sm text-label-sm flex items-center gap-1.5 hover:bg-surface-inset transition-colors">
+<span>Most Resonant Recent</span>
+<span class="material-symbols-outlined text-[16px]">expand_more</span>
+</button>
+</div>
+</div>
+</div>
+<!-- INLINE COMPOSER PANEL (State Controlled) -->
+<section class="hidden flex-col p-8 rounded-3xl bg-surface-porcelain shadow-[0_10px_24px_rgba(38,54,51,0.08),0_2px_6px_rgba(38,54,51,0.03)] transition-all" id="composer-panel">
+<!-- Header / Contributor seal -->
+<div class="flex flex-wrap items-center justify-between pb-6 mb-6">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-surface-porcelain font-headline-sm text-headline-sm">
+              E
+            </div>
+<div class="flex flex-col">
+<div class="flex items-center gap-2">
+<span class="font-headline-sm text-headline-sm text-text-primary">Begin an Archival Dialogue</span>
+<span class="px-2 py-0.5 rounded bg-accent-sage/30 text-accent-teal font-caption text-caption font-semibold">Inscriber Mode</span>
+</div>
+<span class="font-caption text-caption text-text-secondary">Elena Solanas • Patron #892-BOR • Inscribing as Verified Patron</span>
+</div>
+</div>
+<button class="w-8 h-8 rounded-full bg-surface-inset/60 hover:bg-surface-inset flex items-center justify-center text-text-secondary transition-colors" onclick="switchState('active')" title="Collapse composer" type="button">
+<span class="material-symbols-outlined text-[18px]">close</span>
+</button>
+</div>
+<!-- In-Flight State Indicator (Simulated) -->
+<div class="hidden mb-6 p-4 rounded-xl bg-accent-teal/10 flex items-center gap-3" id="inflight-loader">
+<span class="material-symbols-outlined text-accent-teal text-[22px] animate-spin">progress_activity</span>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-accent-teal font-semibold">Inscribing Thesis into Akashic Ledger...</span>
+<span class="font-caption text-caption text-text-secondary">Securing cryptographic timestamp and cross-referencing Folio index #44.</span>
+</div>
+</div>
+<!-- Form Elements -->
+<div class="flex flex-col gap-5">
+<!-- Title / Thesis Field -->
+<div class="flex flex-col gap-1.5">
+<label class="font-label-md text-label-md text-text-primary flex items-center justify-between">
+<span>Dialogue Thesis / Title <span class="text-accent-terracotta">*</span></span>
+<span class="font-caption text-caption text-text-secondary">Concise philosophical framing</span>
+</label>
+<div class="rounded-xl bg-surface-inset shadow-[inset_2px_2px_5px_rgba(38,54,51,0.08),inset_-2px_-2px_5px_rgba(255,255,255,0.7)] p-3">
+<input class="w-full bg-transparent text-text-primary font-headline-sm text-headline-sm focus:outline-none placeholder:text-text-secondary/60" id="composer-title" placeholder="Formulate your central inquiry..." type="text" value="The ontological reality of Pierre Menard's identical Quixote"/>
+</div>
+</div>
+<!-- Dual Field: Category & Folio Anchor -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<!-- Category Selection -->
+<div class="flex flex-col gap-1.5">
+<label class="font-label-sm text-label-sm text-text-primary">Intellectual Category <span class="text-accent-terracotta">*</span></label>
+<div class="rounded-xl bg-surface-inset shadow-[inset_2px_2px_5px_rgba(38,54,51,0.08),inset_-2px_-2px_5px_rgba(255,255,255,0.7)] px-3 py-2.5 flex items-center justify-between">
+<span class="font-body-base text-body-base text-text-primary">Philosophical Theses</span>
+<span class="material-symbols-outlined text-text-secondary text-[18px]">unfold_more</span>
+</div>
+</div>
+<!-- Folio Anchor -->
+<div class="flex flex-col gap-1.5">
+<label class="font-label-sm text-label-sm text-text-primary">Anchored Folio or Author (Optional)</label>
+<div class="rounded-xl bg-surface-inset shadow-[inset_2px_2px_5px_rgba(38,54,51,0.08),inset_-2px_-2px_5px_rgba(255,255,255,0.7)] px-3 py-2 flex items-center justify-between">
+<div class="flex items-center gap-2 truncate">
+<span class="material-symbols-outlined text-accent-terracotta text-[18px]">auto_stories</span>
+<span class="font-body-sm text-body-sm text-text-primary truncate">Ficciones by Jorge Luis Borges (1944)</span>
+</div>
+<button class="text-text-secondary hover:text-text-primary text-[14px] shrink-0 ml-1" type="button">✕</button>
+</div>
+</div>
+</div>
+<!-- Textarea -->
+<div class="flex flex-col gap-1.5">
+<label class="font-label-md text-label-md text-text-primary flex items-center justify-between">
+<span>Inquiry Thesis &amp; Contemplative Text <span class="text-accent-terracotta">*</span></span>
+<span class="font-caption text-caption text-text-secondary">Minimum 100 characters for archival resonance</span>
+</label>
+<div class="rounded-2xl bg-surface-inset shadow-[inset_2px_2px_5px_rgba(38,54,51,0.08),inset_-2px_-2px_5px_rgba(255,255,255,0.7)] p-4">
+<textarea class="w-full bg-transparent text-text-primary font-body-base text-body-base focus:outline-none resize-none leading-relaxed" id="composer-text" placeholder="Inscribe the full context of your meditation. We encourage citations of specific editions, historical tensions, or poetic hermeneutics..." rows="5">Borges claims that Menard's seventeenth-century fragment, while verbally identical to Cervantes, is infinitely richer and more ambiguous. What does this reveal about the temporal dependency of meaning? Does the reader create the work, or does the author's historical coordinate alter the ontological weight of the text?</textarea>
+</div>
+<!-- Character Depth Counter -->
+<div class="flex items-center justify-between px-1">
+<span class="font-caption text-caption text-accent-teal font-medium">✓ Depth threshold satisfied (372 / 100 characters)</span>
+<span class="font-caption text-caption text-text-secondary">Standard Prose Layout</span>
+</div>
+</div>
+<!-- Archival Discourse Guidelines notice -->
+<div class="p-4 rounded-xl bg-accent-sage/15 flex items-start gap-3">
+<span class="material-symbols-outlined text-accent-teal text-[20px] shrink-0 mt-0.5">verified_user</span>
+<p class="font-caption text-caption text-text-primary leading-normal">
+<strong class="font-semibold text-accent-teal">Archival Discourse Guidelines:</strong> Dialogues are enduring literary exchanges permanently indexed to the library catalog. Please uphold respectful inquiry, precise folio page citations, and generous textual hermeneutics.
+            </p>
+</div>
+<!-- Action Buttons -->
+<div class="flex flex-wrap items-center justify-between gap-4 pt-3">
+<button class="px-4 py-2 rounded-full font-label-md text-label-md text-text-secondary hover:text-text-primary transition-colors flex items-center gap-1.5" type="button">
+<span class="material-symbols-outlined text-[18px]">bookmark_border</span>
+<span>Save Draft to Desk</span>
+</button>
+<div class="flex items-center gap-3">
+<button class="px-5 py-2.5 rounded-full font-label-md text-label-md text-text-secondary hover:text-text-primary hover:bg-surface-inset/60 transition-all" onclick="switchState('active')" type="button">
+                Cancel
+              </button>
+<button class="px-6 py-2.5 rounded-full bg-accent-teal text-surface-porcelain font-label-md text-label-md shadow-[0_4px_12px_rgba(24,92,88,0.25)] hover:bg-primary transition-all flex items-center gap-2" onclick="simulateSubmit()" type="button">
+<span class="material-symbols-outlined text-[18px]">send</span>
+<span>+ Submit Dialogue to Agora</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+<!-- EMPTY STATE VIEW (Controlled via simulator) -->
+<section class="hidden flex-col items-center text-center p-16 rounded-3xl bg-surface-porcelain shadow-[0_4px_16px_rgba(38,54,51,0.04)]" id="empty-state">
+<div class="w-20 h-20 rounded-full bg-surface-inset/80 flex items-center justify-center text-accent-teal mb-6 shadow-[inset_1px_1px_3px_rgba(38,54,51,0.06)]">
+<span class="material-symbols-outlined text-[36px]">history_edu</span>
+</div>
+<span class="font-caption text-caption uppercase tracking-widest text-accent-terracotta font-semibold mb-2">Uncarved Lectern</span>
+<h3 class="font-display text-headline-lg text-text-primary mb-3">The Chamber of Discourse Awaits</h3>
+<p class="font-body-base text-body-base text-text-secondary max-w-md mx-auto mb-8 leading-relaxed">
+          No patron has yet inscribed a deliberation under this filter criteria. Be the first custodian to post an inquiry into the permanent record.
+        </p>
+<button class="px-6 py-3 rounded-full bg-accent-teal text-surface-porcelain font-label-md text-label-md shadow-[0_4px_12px_rgba(24,92,88,0.2)] hover:bg-primary transition-all flex items-center gap-2" onclick="switchState('composer')" type="button">
+<span class="material-symbols-outlined text-[18px]">edit_square</span>
+<span>Inscribe the Initial Dialogue</span>
+</button>
+</section>
+<!-- ACTIVE DISCUSSION FEED (Cards) -->
+<div class="flex flex-col gap-5" id="active-feed">
+<!-- CARD 1 -->
+<article class="p-7 rounded-3xl bg-surface-porcelain shadow-[0_4px_12px_rgba(38,54,51,0.06),0_1px_3px_rgba(38,54,51,0.04)] hover:shadow-[0_10px_24px_rgba(38,54,51,0.09)] transition-all flex flex-col gap-4 group">
+<!-- Category & Anchor Header -->
+<div class="flex flex-wrap items-center justify-between gap-2.5">
+<div class="flex flex-wrap items-center gap-2">
+<span class="px-3 py-1 rounded-full bg-accent-sage/20 text-accent-teal font-label-sm text-label-sm font-medium">
+                Philosophical Theses
+              </span>
+<a class="px-3 py-1 rounded-full bg-surface-inset/60 hover:bg-surface-inset text-text-secondary hover:text-text-primary font-caption text-caption flex items-center gap-1.5 transition-colors" href="#">
+<span class="material-symbols-outlined text-accent-terracotta text-[14px]">auto_stories</span>
+<span>Anchored to: Ficciones by Jorge Luis Borges • Folio #01</span>
+</a>
+</div>
+<span class="font-caption text-caption text-text-secondary">Inscribed 3 days ago</span>
+</div>
+<!-- Title -->
+<h2 class="font-display text-headline-sm text-text-primary group-hover:text-accent-teal transition-colors leading-snug">
+<a href="#">Does the labyrinth in Borges represent spatial geometry or temporal branching?</a>
+</h2>
+<!-- Excerpt -->
+<p class="font-body-base text-body-base text-text-secondary leading-relaxed line-clamp-3">
+            In examining "The Garden of Forking Paths", Ts'ui Pên's riddle hinges on an infinite web of divergent futures enacted simultaneously. How do we reconcile this with the physical labyrinth described in "The Library of Babel"? If the library has no center and no boundary, is it a prison of matter, or a temporal prison where all utterances exist prior to their speaker?
+          </p>
+<!-- Footer Metadata & Contributor -->
+<div class="pt-4 flex flex-wrap items-center justify-between gap-4">
+<div class="flex items-center gap-2.5">
+<div class="w-7 h-7 rounded-full bg-surface-inset flex items-center justify-center text-accent-teal font-label-sm text-label-sm font-semibold">
+                MA
+              </div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-text-primary">Marcus Aureliano</span>
+<span class="font-caption text-caption text-text-secondary">Patron #402 • Verified Custodian</span>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<span class="font-caption text-caption text-text-secondary flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-accent-teal">forum</span>
+<span>14 Contemplative Responses</span>
+</span>
+<span class="font-caption text-caption text-text-secondary hidden sm:inline">•</span>
+<span class="font-caption text-caption text-text-secondary hidden sm:inline">Last by Clara Beauchamp 4h ago</span>
+<a class="font-label-sm text-label-sm text-accent-teal hover:text-primary font-semibold flex items-center gap-1 group-hover:translate-x-0.5 transition-transform" href="#">
+<span>Enter Dialogue</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</a>
+</div>
+</div>
+</article>
+<!-- CARD 2 -->
+<article class="p-7 rounded-3xl bg-surface-porcelain shadow-[0_4px_12px_rgba(38,54,51,0.06),0_1px_3px_rgba(38,54,51,0.04)] hover:shadow-[0_10px_24px_rgba(38,54,51,0.09)] transition-all flex flex-col gap-4 group">
+<div class="flex flex-wrap items-center justify-between gap-2.5">
+<div class="flex flex-wrap items-center gap-2">
+<span class="px-3 py-1 rounded-full bg-secondary-container/40 text-on-secondary-fixed-variant font-label-sm text-label-sm font-medium">
+                Literary Form &amp; Translation
+              </span>
+<a class="px-3 py-1 rounded-full bg-surface-inset/60 hover:bg-surface-inset text-text-secondary hover:text-text-primary font-caption text-caption flex items-center gap-1.5 transition-colors" href="#">
+<span class="material-symbols-outlined text-accent-terracotta text-[14px]">auto_stories</span>
+<span>Anchored to: Invisible Cities by Italo Calvino</span>
+</a>
+</div>
+<span class="font-caption text-caption text-text-secondary">Inscribed 1 week ago</span>
+</div>
+<h2 class="font-display text-headline-sm text-text-primary group-hover:text-accent-teal transition-colors leading-snug">
+<a href="#">Memory and melancholia: Translating the subtle grief of Marco Polo's dialogues</a>
+</h2>
+<p class="font-body-base text-body-base text-text-secondary leading-relaxed line-clamp-3">
+            Calvino structures Kublai Khan's empire not as physical conquer, but as an empire of fading memories where cities exist only while they are spoken. Notice how William Weaver renders the fragile Italian syntax in chapter four: words balance on the threshold of extinction. Does this melancholy reflect post-war European urbanism or a deeper linguistic fatalism?
+          </p>
+<div class="pt-4 flex flex-wrap items-center justify-between gap-4">
+<div class="flex items-center gap-2.5">
+<div class="w-7 h-7 rounded-full bg-surface-inset flex items-center justify-center text-accent-teal font-label-sm text-label-sm font-semibold">
+                JV
+              </div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-text-primary">Julian Vance</span>
+<span class="font-caption text-caption text-text-secondary">Patron #1042 • Resident Reader</span>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<span class="font-caption text-caption text-text-secondary flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-accent-teal">forum</span>
+<span>9 Contemplative Responses</span>
+</span>
+<span class="font-caption text-caption text-text-secondary hidden sm:inline">•</span>
+<span class="font-caption text-caption text-text-secondary hidden sm:inline">Last response yesterday</span>
+<a class="font-label-sm text-label-sm text-accent-teal hover:text-primary font-semibold flex items-center gap-1 group-hover:translate-x-0.5 transition-transform" href="#">
+<span>Enter Dialogue</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</a>
+</div>
+</div>
+</article>
+<!-- CARD 3 -->
+<article class="p-7 rounded-3xl bg-surface-porcelain shadow-[0_4px_12px_rgba(38,54,51,0.06),0_1px_3px_rgba(38,54,51,0.04)] hover:shadow-[0_10px_24px_rgba(38,54,51,0.09)] transition-all flex flex-col gap-4 group">
+<div class="flex flex-wrap items-center justify-between gap-2.5">
+<div class="flex flex-wrap items-center gap-2">
+<span class="px-3 py-1 rounded-full bg-accent-sage/20 text-accent-teal font-label-sm text-label-sm font-medium">
+                Speculative Poetics
+              </span>
+<span class="px-3 py-1 rounded-full bg-surface-inset/60 text-text-secondary font-caption text-caption flex items-center gap-1.5">
+<span class="material-symbols-outlined text-text-secondary text-[14px]">public</span>
+<span>General Literary Inquiry • Unanchored</span>
+</span>
+</div>
+<span class="font-caption text-caption text-text-secondary">Inscribed 2 weeks ago</span>
+</div>
+<h2 class="font-display text-headline-sm text-text-primary group-hover:text-accent-teal transition-colors leading-snug">
+<a href="#">Solitude versus community in the modern reading ritual: Why physical marginalia matters</a>
+</h2>
+<p class="font-body-base text-body-base text-text-secondary leading-relaxed line-clamp-3">
+            A contemplation on how digital feeds degrade deep hermeneutics. Can an asynchronous ledger restore the patient cadence of monastic scriptoriums? When Coleridge penned notes in Charles Lamb's books, it wasn't social media broadcasting; it was an intimate epistolary dialogue stretching across decades.
+          </p>
+<div class="pt-4 flex flex-wrap items-center justify-between gap-4">
+<div class="flex items-center gap-2.5">
+<div class="w-7 h-7 rounded-full bg-surface-inset flex items-center justify-center text-accent-teal font-label-sm text-label-sm font-semibold">
+                CB
+              </div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-text-primary">Clara Beauchamp</span>
+<span class="font-caption text-caption text-text-secondary">Patron #619 • Scholar of Speculative Thought</span>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<span class="font-caption text-caption text-text-secondary flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-accent-teal">forum</span>
+<span>22 Contemplative Responses</span>
+</span>
+<a class="font-label-sm text-label-sm text-accent-teal hover:text-primary font-semibold flex items-center gap-1 group-hover:translate-x-0.5 transition-transform" href="#">
+<span>Enter Dialogue</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</a>
+</div>
+</div>
+</article>
+</div>
+<!-- Pagination / Ledger Folio Navigation -->
+<div class="flex items-center justify-between pt-6 px-2">
+<span class="font-caption text-caption text-text-secondary">
+          Displaying Dialogues 1–3 of 24 • Archival Volume IX
+        </span>
+<div class="flex items-center gap-2">
+<button class="px-3.5 py-1.5 rounded-full bg-surface-porcelain text-text-secondary shadow-sm hover:text-text-primary font-label-sm text-label-sm disabled:opacity-50">
+            ← Previous Folio
+          </button>
+<span class="px-3 py-1 font-caption text-caption text-text-primary bg-surface-inset/50 rounded-full">1 of 8</span>
+<button class="px-3.5 py-1.5 rounded-full bg-surface-porcelain text-text-primary shadow-sm hover:bg-surface-inset/60 font-label-sm text-label-sm">
+            Next Folio →
+          </button>
+</div>
+</div>
+</div>
+<!-- SECONDARY SIDEBAR COLUMN (approx 32% / 4 columns) -->
+<div class="lg:col-span-4 flex flex-col gap-6">
+<!-- Card 1: Community Charter & Archival Ethos -->
+<section class="p-7 rounded-3xl bg-surface-porcelain shadow-[0_4px_12px_rgba(38,54,51,0.06),0_1px_3px_rgba(38,54,51,0.04)] flex flex-col">
+<div class="flex items-center gap-2.5 mb-4 text-accent-teal">
+<span class="material-symbols-outlined text-[22px]">balance</span>
+<h3 class="font-headline-sm text-headline-sm font-display">The Archival Ethos</h3>
+</div>
+<p class="font-body-sm text-body-sm text-text-secondary mb-5 leading-relaxed">
+          The Agora rejects dopamine mechanics, ephemeral trends, and gamified metrics. All contributions are preserved as living literary commentary.
+        </p>
+<ul class="space-y-3.5 mb-6">
+<li class="flex items-start gap-3">
+<span class="w-5 h-5 rounded-full bg-accent-sage/20 text-accent-teal flex items-center justify-center shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[13px]">check</span>
+</span>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-text-primary font-semibold">Slow Hermeneutics</span>
+<span class="font-caption text-caption text-text-secondary">Thoughtful, substantive inquiry over hasty reactions.</span>
+</div>
+</li>
+<li class="flex items-start gap-3">
+<span class="w-5 h-5 rounded-full bg-accent-sage/20 text-accent-teal flex items-center justify-center shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[13px]">check</span>
+</span>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-text-primary font-semibold">Folio Citations</span>
+<span class="font-caption text-caption text-text-secondary">Anchoring assertions to edition numbers and chapter passages.</span>
+</div>
+</li>
+<li class="flex items-start gap-3">
+<span class="w-5 h-5 rounded-full bg-accent-sage/20 text-accent-teal flex items-center justify-center shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[13px]">check</span>
+</span>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-text-primary font-semibold">Zero Vanity Metrics</span>
+<span class="font-caption text-caption text-text-secondary">No algorithmic feeds, upvote counts, or artificial streaks.</span>
+</div>
+</li>
+</ul>
+<a class="font-body-sm text-body-sm text-accent-teal hover:text-primary font-medium underline decoration-accent-terracotta/70 underline-offset-4 flex items-center gap-1.5 self-start" href="#">
+<span>Read the Complete Custodial Covenant</span>
+<span class="material-symbols-outlined text-[16px]">north_east</span>
+</a>
+</section>
+<!-- Card 2: Currently Deliberating Folios -->
+<section class="p-7 rounded-3xl bg-surface-porcelain shadow-[0_4px_12px_rgba(38,54,51,0.06),0_1px_3px_rgba(38,54,51,0.04)] flex flex-col" id="anchor-catalog">
+<div class="flex items-center justify-between mb-4">
+<div class="flex items-center gap-2 text-accent-teal">
+<span class="material-symbols-outlined text-[20px] text-accent-terracotta">menu_book</span>
+<h3 class="font-headline-sm text-headline-sm font-display">Active Anchor Folios</h3>
+</div>
+<span class="font-caption text-caption text-text-secondary">Live Catalog</span>
+</div>
+<p class="font-body-sm text-body-sm text-text-secondary mb-5">
+          Volumes currently igniting the deepest exchange among custodial fellows:
+        </p>
+<div class="flex flex-col gap-3">
+<!-- Item 1 -->
+<div class="p-3.5 rounded-2xl bg-surface-inset/40 hover:bg-surface-inset/70 transition-colors flex items-center justify-between">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-text-primary font-semibold">Ficciones</span>
+<span class="font-caption text-caption text-text-secondary">Jorge Luis Borges • 1944</span>
+</div>
+<span class="px-2.5 py-1 rounded-full bg-accent-sage/30 text-accent-teal font-caption text-caption font-semibold">
+              6 Dialogues
+            </span>
+</div>
+<!-- Item 2 -->
+<div class="p-3.5 rounded-2xl bg-surface-inset/40 hover:bg-surface-inset/70 transition-colors flex items-center justify-between">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-text-primary font-semibold">The Book of Disquiet</span>
+<span class="font-caption text-caption text-text-secondary">Fernando Pessoa • 1982</span>
+</div>
+<span class="px-2.5 py-1 rounded-full bg-accent-sage/30 text-accent-teal font-caption text-caption font-semibold">
+              4 Dialogues
+            </span>
+</div>
+<!-- Item 3 -->
+<div class="p-3.5 rounded-2xl bg-surface-inset/40 hover:bg-surface-inset/70 transition-colors flex items-center justify-between">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-text-primary font-semibold">The Poetics of Space</span>
+<span class="font-caption text-caption text-text-secondary">Gaston Bachelard • 1958</span>
+</div>
+<span class="px-2.5 py-1 rounded-full bg-accent-sage/30 text-accent-teal font-caption text-caption font-semibold">
+              3 Dialogues
+            </span>
+</div>
+</div>
+<button class="mt-4 py-2 w-full text-center font-caption text-caption uppercase tracking-wider text-text-secondary hover:text-accent-teal transition-colors">
+          View All 42 Catalog Anchors ↓
+        </button>
+</section>
+<!-- Card 3: Custodial Inscription Guidelines & Ledger Verification -->
+<section class="p-7 rounded-3xl bg-surface-porcelain shadow-[0_4px_12px_rgba(38,54,51,0.06),0_1px_3px_rgba(38,54,51,0.04)] flex flex-col">
+<div class="flex items-center gap-2 mb-3 text-accent-terracotta">
+<span class="material-symbols-outlined text-[20px]">fingerprint</span>
+<h3 class="font-headline-sm text-headline-sm font-display text-text-primary">Ledger Inscription Rule</h3>
+</div>
+<p class="font-body-sm text-body-sm text-text-secondary leading-relaxed mb-4">
+          All cataloged dialogues remain open to the public without barriers. To inscribe a thesis or reply, an authenticated patron token is required to ensure accountability and prevent synthetic spam.
+        </p>
+<div class="p-3.5 rounded-xl bg-surface-inset/60 shadow-[inset_1px_1px_3px_rgba(38,54,51,0.05)] flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-accent-teal"></span>
+<span class="font-caption text-caption text-text-primary font-semibold">Elena Solanas (Verified)</span>
+</div>
+<span class="font-caption text-caption text-accent-teal">Seal #892-BOR</span>
+</div>
+</section>
+</div>
+</div>
+<!-- Archival State Blueprints & Secondary Conditions Matrix -->
+<section class="w-full mt-10 pt-12 pb-16">
+<div class="flex flex-col mb-8">
+<div class="flex items-center gap-2 text-accent-terracotta mb-2">
+<span class="material-symbols-outlined text-[18px]">architecture</span>
+<span class="font-caption text-caption uppercase tracking-widest font-semibold">Phase 5A.3 Architectural Specifications</span>
+</div>
+<h2 class="font-display text-headline-md text-text-primary">Archival State Blueprints &amp; Exception Conditions</h2>
+<p class="font-body-sm text-body-sm text-text-secondary max-w-2xl mt-1">
+        Documentation of discrete UI resilience behaviors within the non-gamified Akashic framework.
+      </p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
+<!-- Blueprint A -->
+<div class="p-6 rounded-3xl bg-surface-porcelain shadow-[0_4px_12px_rgba(38,54,51,0.05)] flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between mb-4">
+<span class="font-caption text-caption font-semibold px-2.5 py-0.5 rounded-full bg-accent-sage/20 text-accent-teal">State A</span>
+<span class="material-symbols-outlined text-text-secondary text-[18px]">nature</span>
+</div>
+<h4 class="font-headline-sm text-headline-sm text-text-primary mb-2">Pristine Agora</h4>
+<p class="font-body-sm text-body-sm text-text-secondary leading-relaxed mb-4">
+            Zero-discussion state for nascent folios. Provides welcoming humanistic copy rather than cold database "No records found" messages.
+          </p>
+</div>
+<button class="w-full py-2 rounded-xl bg-surface-inset/50 hover:bg-surface-inset text-accent-teal font-label-sm text-label-sm transition-colors text-center" onclick="switchState('empty')" type="button">
+          Simulate Empty State
+        </button>
+</div>
+<!-- Blueprint B -->
+<div class="p-6 rounded-3xl bg-surface-porcelain shadow-[0_4px_12px_rgba(38,54,51,0.05)] flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between mb-4">
+<span class="font-caption text-caption font-semibold px-2.5 py-0.5 rounded-full bg-accent-terracotta/20 text-accent-terracotta">State B</span>
+<span class="material-symbols-outlined text-text-secondary text-[18px]">lock_clock</span>
+</div>
+<h4 class="font-headline-sm text-headline-sm text-text-primary mb-2">Authentication Intercept</h4>
+<p class="font-body-sm text-body-sm text-text-secondary leading-relaxed mb-4">
+            Preserves unauthenticated user intent when attempting to author. Caches text inputs in local session storage during patron ledger seal validation.
+          </p>
+</div>
+<button class="w-full py-2 rounded-xl bg-surface-inset/50 hover:bg-surface-inset text-accent-teal font-label-sm text-label-sm transition-colors text-center" onclick="switchState('auth')" type="button">
+          Simulate Auth Intercept
+        </button>
+</div>
+<!-- Blueprint C -->
+<div class="p-6 rounded-3xl bg-surface-porcelain shadow-[0_4px_12px_rgba(38,54,51,0.05)] flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between mb-4">
+<span class="font-caption text-caption font-semibold px-2.5 py-0.5 rounded-full bg-secondary-container text-on-secondary-fixed-variant">State C</span>
+<span class="material-symbols-outlined text-text-secondary text-[18px]">sync</span>
+</div>
+<h4 class="font-headline-sm text-headline-sm text-text-primary mb-2">Submission In-Flight</h4>
+<p class="font-body-sm text-body-sm text-text-secondary leading-relaxed mb-4">
+            Non-blocking tactile sealing state. Inputs soften, showing non-destructive cryptographic hashing without disruptive modal spinners.
+          </p>
+</div>
+<button class="w-full py-2 rounded-xl bg-surface-inset/50 hover:bg-surface-inset text-accent-teal font-label-sm text-label-sm transition-colors text-center" onclick="switchState('inflight')" type="button">
+          Simulate In-Flight Sealing
+        </button>
+</div>
+<!-- Blueprint D -->
+<div class="p-6 rounded-3xl bg-surface-porcelain shadow-[0_4px_12px_rgba(38,54,51,0.05)] flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between mb-4">
+<span class="font-caption text-caption font-semibold px-2.5 py-0.5 rounded-full bg-accent-terracotta/20 text-accent-terracotta">State D</span>
+<span class="material-symbols-outlined text-text-secondary text-[18px]">rule</span>
+</div>
+<h4 class="font-headline-sm text-headline-sm text-text-primary mb-2">Discourse Validation</h4>
+<p class="font-body-sm text-body-sm text-text-secondary leading-relaxed mb-4">
+            Gentle editorial guidance when a thesis falls below the contemplative depth threshold (100 characters) or lacks appropriate category anchors.
+          </p>
+</div>
+<button class="w-full py-2 rounded-xl bg-surface-inset/50 hover:bg-surface-inset text-accent-teal font-label-sm text-label-sm transition-colors text-center" onclick="simulateValidationError()" type="button">
+          Simulate Validation Notice
+        </button>
+</div>
+</div>
+</section>
+<!-- Technical Colophon & Privacy Reassurance -->
+<div class="w-full p-6 rounded-2xl bg-surface-inset/40 shadow-[inset_1px_1px_3px_rgba(38,54,51,0.06)] flex flex-col md:flex-row items-center justify-between gap-4 text-text-secondary">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-accent-teal text-[20px]">shield</span>
+<p class="font-caption text-caption">
+<strong>Custodial Privacy Guarantee:</strong> The Agora operates without tracking telemetry, behavioural analytics, or sponsored priority. All discussions belong to their author under the Open Scholar Covenant.
+      </p>
+</div>
+<span class="font-caption text-caption text-text-secondary shrink-0">Archival Hash: 77f9..2b8a • 2024</span>
+</div>
+<!-- Interactive State Controller Script -->
+<script>
+    function switchState(stateName) {
+      const activeFeed = document.getElementById('active-feed');
+      const composerPanel = document.getElementById('composer-panel');
+      const emptyState = document.getElementById('empty-state');
+      const authBanner = document.getElementById('auth-banner');
+      const inflightLoader = document.getElementById('inflight-loader');
+
+      // Reset pill styles
+      const pills = document.querySelectorAll('.state-pill');
+      pills.forEach(p => {
+        p.classList.remove('bg-accent-teal', 'text-surface-porcelain', 'shadow-[0_2px_8px_rgba(24,92,88,0.2)]');
+        p.classList.add('bg-surface-porcelain', 'text-text-secondary');
+      });
+
+      // Highlight active button
+      const activeBtn = document.getElementById('btn-state-' + stateName);
+      if (activeBtn) {
+        activeBtn.classList.remove('bg-surface-porcelain', 'text-text-secondary');
+        activeBtn.classList.add('bg-accent-teal', 'text-surface-porcelain', 'shadow-[0_2px_8px_rgba(24,92,88,0.2)]');
+      }
+
+      // Hide all dynamic sections
+      activeFeed.classList.remove('hidden');
+      composerPanel.classList.add('hidden');
+      emptyState.classList.add('hidden');
+      authBanner.classList.add('hidden');
+      authBanner.classList.remove('flex');
+      inflightLoader.classList.add('hidden');
+
+      if (stateName === 'active') {
+        activeFeed.classList.remove('hidden');
+      } else if (stateName === 'composer') {
+        composerPanel.classList.remove('hidden');
+        composerPanel.classList.add('flex');
+        composerPanel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      } else if (stateName === 'empty') {
+        activeFeed.classList.add('hidden');
+        emptyState.classList.remove('hidden');
+        emptyState.classList.add('flex');
+      } else if (stateName === 'auth') {
+        authBanner.classList.remove('hidden');
+        authBanner.classList.add('flex');
+        authBanner.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      } else if (stateName === 'inflight') {
+        composerPanel.classList.remove('hidden');
+        composerPanel.classList.add('flex');
+        inflightLoader.classList.remove('hidden');
+        inflightLoader.classList.add('flex');
+        composerPanel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+
+    function simulateSubmit() {
+      switchState('inflight');
+      setTimeout(() => {
+        alert("Thesis successfully inscribed into the Akashic Ledger #Folio-44.");
+        switchState('active');
+      }, 1600);
+    }
+
+    function simulateValidationError() {
+      switchState('composer');
+      const textarea = document.getElementById('composer-text');
+      textarea.value = "Too short thesis.";
+      textarea.classList.add('text-accent-terracotta');
+      alert("Discourse Guidance: Your inquiry contains 18 characters. To maintain the contemplative depth of the Agora, please provide at least 100 characters of context.");
+    }
+  </script>
+</div></main><footer class="w-full bg-surface-porcelain/90 mt-24 shadow-[0_-2px_12px_rgba(38,54,51,0.02)]"><div class="max-w-[1360px] mx-auto px-margin py-16"><div class="grid grid-cols-1 md:grid-cols-3 gap-12 mb-16"><div class="flex flex-col"><h3 class="font-headline-sm text-headline-sm font-display text-accent-teal mb-4 flex items-center gap-2"><span class="material-symbols-outlined text-[20px] text-accent-terracotta">meeting_room</span>The Reading Rooms</h3><p class="font-body-sm text-body-sm text-text-secondary mb-5 max-w-sm">Dedicated silent sanctuaries, scholar alcoves, and archival consultation chambers spread across four historic quadrangles.</p><ul class="space-y-2.5"><li class="font-body-sm text-body-sm"><a class="text-text-primary hover:text-accent-teal underline decoration-accent-terracotta/60 underline-offset-4 transition-colors" href="#">North Transept Sanctuary</a></li><li class="font-body-sm text-body-sm"><a class="text-text-primary hover:text-accent-teal underline decoration-accent-terracotta/60 underline-offset-4 transition-colors" href="#">Rare Manuscripts Rotunda</a></li><li class="font-body-sm text-body-sm"><a class="text-text-primary hover:text-accent-teal underline decoration-accent-terracotta/60 underline-offset-4 transition-colors" href="#">Papyrology &amp; Folio Desk</a></li><li class="font-body-sm text-body-sm"><a class="text-text-primary hover:text-accent-teal underline decoration-accent-terracotta/60 underline-offset-4 transition-colors" href="#">Fellows' Private Study Suites</a></li></ul></div><div class="flex flex-col"><h3 class="font-headline-sm text-headline-sm font-display text-accent-teal mb-4 flex items-center gap-2"><span class="material-symbols-outlined text-[20px] text-accent-terracotta">auto_stories</span>Collections &amp; Folios</h3><p class="font-body-sm text-body-sm text-text-secondary mb-5 max-w-sm">Carefully preserved codices, restored architectural treatises, and living anthologies maintained in regulated climatic vaults.</p><ul class="space-y-2.5"><li class="font-body-sm text-body-sm"><a class="text-text-primary hover:text-accent-teal underline decoration-accent-terracotta/60 underline-offset-4 transition-colors" href="#">The Alexandrian Reconstructions</a></li><li class="font-body-sm text-body-sm"><a class="text-text-primary hover:text-accent-teal underline decoration-accent-terracotta/60 underline-offset-4 transition-colors" href="#">Renaissance Cartography Vault</a></li><li class="font-body-sm text-body-sm"><a class="text-text-primary hover:text-accent-teal underline decoration-accent-terracotta/60 underline-offset-4 transition-colors" href="#">Humanist Correspondence 1520–1680</a></li><li class="font-body-sm text-body-sm"><a class="text-text-primary hover:text-accent-teal underline decoration-accent-terracotta/60 underline-offset-4 transition-colors" href="#">Speculative Natural Philosophy</a></li></ul></div><div class="flex flex-col"><h3 class="font-headline-sm text-headline-sm font-display text-accent-teal mb-4 flex items-center gap-2"><span class="material-symbols-outlined text-[20px] text-accent-terracotta">history_edu</span>Colophon &amp; Custody</h3><p class="font-body-sm text-body-sm text-text-secondary mb-5 max-w-sm">Set in Lora and Inter types. Crafted on warm porcelain surfaces with soft tactile depth and non-destructive archival indexing.</p><div class="p-4 rounded-xl bg-surface-inset/50 shadow-[inset_1px_1px_3px_rgba(38,54,51,0.06)]"><p class="font-caption text-caption text-text-secondary mb-2">CUSTODIAL OFFICE: SCRIPTORIUM VII</p><p class="font-body-sm text-body-sm text-text-primary mb-3">Perpetual access granted under Royal Charter &amp; Open Scholar Covenant 1884.</p><div class="flex items-center gap-2 text-accent-terracotta font-caption text-caption"><span class="w-2 h-2 rounded-full bg-accent-sage"></span>Climatic control: 18.5°C • RH 48%</div></div></div></div><div class="flex flex-col md:flex-row items-center justify-between pt-8 border-t border-surface-inset gap-4 text-text-secondary"><div class="flex items-center gap-2"><span class="font-headline-sm text-headline-sm font-display text-accent-teal">Akashic Library</span><span class="font-caption text-caption text-text-secondary">• Non-commercial Archival Repository</span></div><p class="font-caption text-caption text-text-secondary">© 2024 The Curators &amp; Wardens of the Akashic Library. All cataloged folios preserved in perpetuity.</p></div></div></footer></body></html>
