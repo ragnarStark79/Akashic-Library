@@ -1,0 +1,73 @@
+.fallbackContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 48vh;
+  padding: var(--space-12, 48px) var(--space-4, 16px);
+  text-align: center;
+}
+
+.sealRing {
+  position: relative;
+  width: 48px;
+  height: 48px;
+  margin-bottom: var(--space-4, 16px);
+}
+
+.spinner {
+  width: 48px;
+  height: 48px;
+  border: 2.5px solid var(--color-border-subtle, #E2DACD);
+  border-top-color: var(--color-action-primary, #185C58);
+  border-radius: 50%;
+  animation: rotateSeal 1.1s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+.innerAura {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--color-accent-secondary, #A8BDAE);
+  opacity: 0.6;
+  animation: pulseAura 2.2s ease-in-out infinite;
+}
+
+.label {
+  font-family: var(--font-family-serif, Georgia, serif);
+  font-size: var(--font-size-base, 1rem);
+  color: var(--color-text-primary, #263633);
+  margin: 0 0 var(--space-2, 8px) 0;
+  letter-spacing: 0.02em;
+}
+
+.subtext {
+  font-family: var(--font-family-sans, -apple-system, BlinkMacSystemFont, sans-serif);
+  font-size: var(--font-size-sm, 0.875rem);
+  color: var(--color-text-secondary, #635F57);
+  margin: 0;
+}
+
+@keyframes rotateSeal {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes pulseAura {
+  0%, 100% {
+    transform: translate(-50%, -50%) scale(0.85);
+    opacity: 0.4;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.15);
+    opacity: 0.8;
+  }
+}
