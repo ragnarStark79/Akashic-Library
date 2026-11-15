@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+
+<html class="h-full" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_tab" name="shell-type"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Lora:ital,wght@0,500;0,600;1,400&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { colors: { "accent-teal": "#185C58", "surface-tint": "#276864", "accent-sage": "#A8BDAE", "surface-inset": "#EAE3D8", "primary-container": "#185c58", "surface-porcelain": "#FCFAF5", "surface-variant": "#d4e6e2", "on-surface": "#0e1e1c", "inverse-surface": "#233330", "error": "#ba1a1a", "surface-container-lowest": "#ffffff", "tertiary": "#5b311c", "secondary-fixed-dim": "#b6ccbc", "on-tertiary": "#ffffff", "on-tertiary-fixed-variant": "#683b26", "tertiary-fixed-dim": "#f8b89b", "secondary": "#506356", "on-error-container": "#93000a", "secondary-fixed": "#d2e8d8", "accent-terracotta": "#C58B70", "surface-container-highest": "#d4e6e2", "on-background": "#0e1e1c", "surface-glass": "rgba(252, 250, 245, 0.82)", "on-surface-variant": "#3f4947", "on-primary-fixed": "#00201e", "inverse-primary": "#93d2cc", "on-secondary-container": "#55695c", "bg-page": "#F5F1E9", "primary": "#004440", "tertiary-fixed": "#ffdbcc", "text-secondary": "#827E75", "on-primary": "#ffffff", "surface-dim": "#ccded9", "surface-container": "#dff2ed", "glass-border": "rgba(234, 227, 216, 0.65)", "on-secondary-fixed-variant": "#384b3f", "on-primary-container": "#93d2cc", "tertiary-container": "#764730", "surface-container-low": "#e5f8f3", "surface": "#ebfdf8", "outline-variant": "#bfc8c7", "on-secondary": "#ffffff", "surface-bright": "#ebfdf8", "primary-fixed-dim": "#93d2cc", "surface-container-high": "#daece7", "on-secondary-fixed": "#0d1f15", "on-error": "#ffffff", "primary-fixed": "#afeee9", "on-primary-fixed-variant": "#02504c", "inverse-on-surface": "#e2f5f0", "text-primary": "#263633", "outline": "#6f7978", "on-tertiary-fixed": "#331202", "on-tertiary-container": "#f8b89b", "background": "#ebfdf8", "secondary-container": "#d2e8d8", "error-container": "#ffdad6" }, borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, spacing: { "space-xs": "0.25rem", "space-md": "1rem", "margin": "3rem", "space-sm": "0.5rem", "gutter": "1.5rem", "margin-mobile": "1.25rem", "space-lg": "1.5rem", "space-xl": "2.5rem", "gutter-mobile": "1rem" }, fontFamily: { "headline-sm": ["Lora"], "headline-md": ["Lora"], "label-md": ["Inter"], "caption": ["Inter"], "label-sm": ["Inter"], "display": ["Lora"], "headline-lg-mobile": ["Lora"], "body-sm": ["Inter"], "body-base": ["Inter"], "display-mobile": ["Lora"], "headline-lg": ["Lora"], "body-lead": ["Inter"] }, fontSize: { "headline-sm": ["20px", { "lineHeight": "28px", "fontWeight": "600" }], "headline-md": ["26px", { "lineHeight": "34px", "fontWeight": "500" }], "label-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500" }], "caption": ["11px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500" }], "label-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.04em", "fontWeight": "600" }], "display": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "500" }], "headline-lg-mobile": ["28px", { "lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "500" }], "body-sm": ["13px", { "lineHeight": "20px", "fontWeight": "400" }], "body-base": ["15px", { "lineHeight": "24px", "fontWeight": "400" }], "display-mobile": ["34px", { "lineHeight": "42px", "letterSpacing": "-0.01em", "fontWeight": "500" }], "headline-lg": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.015em", "fontWeight": "500" }], "body-lead": ["18px", { "lineHeight": "28px", "fontWeight": "400" }] } } } }</script><style>@layer base{body{margin:0;padding:0;overscroll-behavior-y:none;-webkit-tap-highlight-color:transparent;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}}::-webkit-scrollbar{display:none;}</style><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head><body class="min-h-full bg-bg-page text-text-primary antialiased selection:bg-accent-sage/30 flex flex-col"><header class="fixed top-0 w-full z-50 pt-safe"><div class="h-20 px-margin-mobile flex items-center justify-between"><div class="w-full h-14 bg-surface-porcelain/85 backdrop-blur-xl rounded-full px-space-md flex items-center justify-between shadow-[0_4px_16px_rgba(38,54,51,0.06),0_1px_3px_rgba(38,54,51,0.04)]"><div class="flex items-center gap-space-sm"><button aria-label="Menu Toggle" class="w-11 h-11 rounded-full flex items-center justify-center text-accent-teal hover:bg-surface-inset/50 transition-colors"><span class="material-symbols-outlined text-[22px]">menu</span></button><a class="font-headline-md text-headline-sm tracking-tight text-accent-teal font-medium pl-space-xs" data-path="reading-room" href="#">Akashic</a></div><div class="flex items-center gap-space-xs"><button aria-label="Search Archives" class="w-11 h-11 rounded-full flex items-center justify-center text-text-secondary hover:text-accent-teal hover:bg-surface-inset/50 transition-colors"><span class="material-symbols-outlined text-[22px]">search</span></button><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center ml-space-xs"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></div></header><main class="flex-1 flex flex-col relative w-full pt-20 pb-28 bg-bg-page"><div class="flex flex-col w-full">
+<!-- Search Field & Refinement Header -->
+<section class="px-margin-mobile pt-space-xs pb-space-sm flex flex-col gap-space-sm">
+<!-- Tactile Inset Search Bar -->
+<div class="w-full bg-surface-inset rounded-full p-[3px] shadow-[inset_2px_2px_5px_rgba(38,54,51,0.08),inset_-2px_-2px_5px_rgba(255,255,255,0.7)] flex items-center transition-all focus-within:bg-surface-porcelain">
+<div class="w-10 h-10 flex items-center justify-center text-text-secondary pl-space-xs">
+<span class="material-symbols-outlined text-[20px]">search</span>
+</div>
+<input aria-label="Search Codex" class="flex-1 bg-transparent border-0 outline-none font-body-base text-body-base text-text-primary px-space-xs placeholder:text-text-secondary" type="text" value="Jorge Luis Borges"/>
+<button aria-label="Clear search input" class="w-9 h-9 rounded-full flex items-center justify-center text-text-secondary hover:text-accent-teal hover:bg-surface-porcelain/60 mr-space-xs transition-colors">
+<span class="material-symbols-outlined text-[18px]">close</span>
+</button>
+</div>
+<!-- Query Status Line -->
+<div class="flex items-center justify-between px-space-xs">
+<p class="font-body-sm text-body-sm text-text-secondary">
+        Showing <span class="font-semibold text-text-primary" id="results-count-label">24</span> folios for <span class="font-headline-sm text-body-sm italic text-accent-teal">“Jorge Luis Borges”</span>
+</p>
+<span class="font-caption text-caption text-text-secondary tracking-wider uppercase">Vault Sec. VII</span>
+</div>
+<!-- Refinement Bar: Filter Trigger & Sort Capsule -->
+<div class="flex items-center gap-space-sm pt-space-xs">
+<!-- Filter Button with tactile badge -->
+<button class="flex-1 h-11 bg-surface-porcelain rounded-full px-space-md flex items-center justify-between shadow-[0_4px_12px_rgba(38,54,51,0.06),0_1px_3px_rgba(38,54,51,0.04)] active:shadow-[inset_2px_2px_5px_rgba(38,54,51,0.08)] hover:scale-[1.01] transition-transform" id="open-filter-btn" type="button">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-accent-teal text-[19px]">tune</span>
+<span class="font-label-md text-label-md text-text-primary font-medium">Filters</span>
+</div>
+<span class="w-6 h-6 rounded-full bg-accent-teal text-surface-porcelain font-label-sm text-caption flex items-center justify-center" id="active-filter-badge">3</span>
+</button>
+<!-- Sort Capsule dropdown emulator -->
+<div class="relative">
+<button class="h-11 bg-surface-porcelain rounded-full px-space-md flex items-center gap-space-xs shadow-[0_4px_12px_rgba(38,54,51,0.06),0_1px_3px_rgba(38,54,51,0.04)] text-text-primary" id="sort-selector-btn">
+<span class="material-symbols-outlined text-text-secondary text-[18px]">sort</span>
+<span class="font-label-sm text-label-sm">Relevance</span>
+<span class="material-symbols-outlined text-text-secondary text-[16px]">expand_more</span>
+</button>
+</div>
+</div>
+<!-- Horizontally Scrollable Active Filter Pills -->
+<div class="flex items-center gap-space-xs overflow-x-auto no-scrollbar py-space-xs -mx-margin-mobile px-margin-mobile">
+<button class="active-chip inline-flex items-center gap-1.5 h-7 px-3 bg-surface-porcelain rounded-full shadow-[0_2px_6px_rgba(38,54,51,0.05)] text-accent-teal font-label-sm text-caption shrink-0 hover:bg-surface-inset/60 transition-colors">
+<span>Philosophy &amp; Fiction</span>
+<span class="material-symbols-outlined text-[14px] text-text-secondary">close</span>
+</button>
+<button class="active-chip inline-flex items-center gap-1.5 h-7 px-3 bg-surface-porcelain rounded-full shadow-[0_2px_6px_rgba(38,54,51,0.05)] text-accent-teal font-label-sm text-caption shrink-0 hover:bg-surface-inset/60 transition-colors">
+<span>Original Manuscripts</span>
+<span class="material-symbols-outlined text-[14px] text-text-secondary">close</span>
+</button>
+<button class="active-chip inline-flex items-center gap-1.5 h-7 px-3 bg-surface-porcelain rounded-full shadow-[0_2px_6px_rgba(38,54,51,0.05)] text-accent-teal font-label-sm text-caption shrink-0 hover:bg-surface-inset/60 transition-colors">
+<span>1940–1980</span>
+<span class="material-symbols-outlined text-[14px] text-text-secondary">close</span>
+</button>
+<button class="inline-flex items-center h-7 px-2 font-label-sm text-caption text-accent-terracotta underline underline-offset-4 shrink-0 hover:text-accent-teal transition-colors" id="clear-all-chips">
+        Clear all
+      </button>
+</div>
+</section>
+<!-- Curated Search Results List -->
+<section class="px-margin-mobile flex flex-col gap-space-md pt-space-xs">
+<!-- Folio 01: Ficciones -->
+<article class="bg-surface-porcelain rounded-xl p-space-md shadow-[0_4px_12px_rgba(38,54,51,0.06),0_1px_3px_rgba(38,54,51,0.04)] flex gap-space-md items-start">
+<div class="w-24 shrink-0 aspect-[2/3] rounded-lg overflow-hidden bg-surface-inset shadow-[2px_4px_10px_rgba(38,54,51,0.12)] relative">
+<img class="w-full h-full object-cover" data-alt="Vintage hardcover book jacket of Ficciones by Jorge Luis Borges featuring intricate celestial labyrinths and etched antique compass geometries in muted sage and parchment tones, warm library lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCq7SxUwO7qo4pAb6yiXjDusjtyGuucCJB12QJ0P61-KwOLilf1yM2SiHCxpANuuhEJM2gfItOKrEACgXrClsAF5-vk6xQLNF-oo7YzEfPgPr8TTJW_AbdfafI8aM3_8kzkOPy3ScyJ9hnYVVRPA3wKF8wgA2WSqWZXMIDbPJ6ZOaLclDs2TxqnX_xCb_P6yJk16XRvCfEG9mdAw-_TkDBIpif80tErz3XRUUL2F3g"/>
+<div class="absolute inset-y-0 left-0 w-1.5 bg-gradient-to-r from-black/25 via-black/10 to-transparent"></div>
+</div>
+<div class="flex-1 flex flex-col justify-between min-w-0">
+<div>
+<div class="flex items-center justify-between gap-space-xs mb-1">
+<span class="font-caption text-caption text-accent-terracotta tracking-wider uppercase font-semibold">Sanctuary Folio #01</span>
+<div class="flex items-center text-accent-teal gap-0.5">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-label-sm text-caption">4.8</span>
+</div>
+</div>
+<h2 class="font-headline-sm text-headline-sm text-text-primary leading-snug truncate">Ficciones</h2>
+<p class="font-body-sm text-body-sm text-text-secondary mb-space-xs">Jorge Luis Borges • 1944</p>
+<div class="flex flex-wrap gap-1 mb-space-sm">
+<span class="inline-block px-2 py-0.5 rounded-full bg-secondary-container text-on-secondary-container font-caption text-caption">Metaphysical Infinity</span>
+<span class="inline-block px-2 py-0.5 rounded-full bg-secondary-container text-on-secondary-container font-caption text-caption">Short Stories</span>
+</div>
+</div>
+<div class="flex items-center justify-between pt-1">
+<span class="font-caption text-caption text-text-secondary italic">Folio Vault • Stacks III</span>
+<button aria-label="Add Ficciones to personal shelf" class="shelf-btn h-8 px-3 rounded-full bg-surface-inset text-accent-teal hover:bg-accent-teal hover:text-surface-porcelain font-label-sm text-caption flex items-center gap-1 transition-all shadow-[0_2px_4px_rgba(38,54,51,0.04)] active:scale-95" type="button">
+<span class="material-symbols-outlined text-[15px]">bookmark_add</span>
+<span>Add to Shelf</span>
+</button>
+</div>
+</div>
+</article>
+<!-- Folio 02: The Aleph -->
+<article class="bg-surface-porcelain rounded-xl p-space-md shadow-[0_4px_12px_rgba(38,54,51,0.06),0_1px_3px_rgba(38,54,51,0.04)] flex gap-space-md items-start">
+<div class="w-24 shrink-0 aspect-[2/3] rounded-lg overflow-hidden bg-surface-inset shadow-[2px_4px_10px_rgba(38,54,51,0.12)] relative">
+<img class="w-full h-full object-cover" data-alt="Cover of The Aleph and Other Stories by Jorge Luis Borges showing a shimmering holographic sphere reflecting all points in the universe, textured ivory paper with gold foil stamping." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC9UBQzdaB-L-wwgdMtv3A6D1_RE9RiJVjop0iwCLwHcB2EkFJItx5ss7NB9ULqKIaRtWk4Fr4JDW_TpwnqBrZtGZDQiLl3k-EWzC0QymBB--q3Fk9Z-lqOfTu-WLglnE3myDgIWDpidXjFw8wEtInWsj6QM0Zz95Ukl-pRMlm_MmonArNde6-2nW2uF_ZB7ppKLSmXfUBvUE201ahA1q9Fjib4U6yslyJ_Hr7M2PA"/>
+<div class="absolute inset-y-0 left-0 w-1.5 bg-gradient-to-r from-black/25 via-black/10 to-transparent"></div>
+</div>
+<div class="flex-1 flex flex-col justify-between min-w-0">
+<div>
+<div class="flex items-center justify-between gap-space-xs mb-1">
+<span class="font-caption text-caption text-accent-teal tracking-wider uppercase font-semibold">Critical Edition</span>
+<div class="flex items-center text-accent-teal gap-0.5">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-label-sm text-caption">4.7</span>
+</div>
+</div>
+<h2 class="font-headline-sm text-headline-sm text-text-primary leading-snug truncate">The Aleph</h2>
+<p class="font-body-sm text-body-sm text-text-secondary mb-space-xs">Jorge Luis Borges • 1949</p>
+<div class="flex flex-wrap gap-1 mb-space-sm">
+<span class="inline-block px-2 py-0.5 rounded-full bg-secondary-container text-on-secondary-container font-caption text-caption">Cosmic Point</span>
+<span class="inline-block px-2 py-0.5 rounded-full bg-secondary-container text-on-secondary-container font-caption text-caption">Labyrinths</span>
+</div>
+</div>
+<div class="flex items-center justify-between pt-1">
+<span class="font-caption text-caption text-text-secondary italic">Manuscripts Room B</span>
+<button aria-label="Add The Aleph to personal shelf" class="shelf-btn h-8 px-3 rounded-full bg-surface-inset text-accent-teal hover:bg-accent-teal hover:text-surface-porcelain font-label-sm text-caption flex items-center gap-1 transition-all shadow-[0_2px_4px_rgba(38,54,51,0.04)] active:scale-95" type="button">
+<span class="material-symbols-outlined text-[15px]">bookmark_add</span>
+<span>Add to Shelf</span>
+</button>
+</div>
+</div>
+</article>
+<!-- Folio 03: Labyrinths -->
+<article class="bg-surface-porcelain rounded-xl p-space-md shadow-[0_4px_12px_rgba(38,54,51,0.06),0_1px_3px_rgba(38,54,51,0.04)] flex gap-space-md items-start">
+<div class="w-24 shrink-0 aspect-[2/3] rounded-lg overflow-hidden bg-surface-inset shadow-[2px_4px_10px_rgba(38,54,51,0.12)] relative">
+<img class="w-full h-full object-cover" data-alt="Classic book jacket of Labyrinths Selected Stories by Jorge Luis Borges featuring minimalist architectural maze lines over terracotta and deep forest teal linen fabric." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA-q2dtA5ufaZL4QPxTFFR0Ic4GEmbk95TW9BSk1DQC6ZCl_rzJbqdPHjHuWi0gyEB9f_q6OnbfxqD3BUZSJAp65QJ5f2ZnrzutvUy-L6cfRboakbP4rv7ob5sdoYxmA7Jqyf-_x-hi3QPkucyg0jY9zvp3WFV_GRA2btViZFXEpswNHXoDY7RlEtoWlH-gwxHWamRjbvkJNpbGgAv2g2XQQ_elSm_VKJFr3VOevz0"/>
+<div class="absolute inset-y-0 left-0 w-1.5 bg-gradient-to-r from-black/25 via-black/10 to-transparent"></div>
+</div>
+<div class="flex-1 flex flex-col justify-between min-w-0">
+<div>
+<div class="flex items-center justify-between gap-space-xs mb-1">
+<span class="font-caption text-caption text-accent-terracotta tracking-wider uppercase font-semibold">Folio Anthology</span>
+<div class="flex items-center text-accent-teal gap-0.5">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-label-sm text-caption">4.9</span>
+</div>
+</div>
+<h2 class="font-headline-sm text-headline-sm text-text-primary leading-snug truncate">Labyrinths</h2>
+<p class="font-body-sm text-body-sm text-text-secondary mb-space-xs">Jorge Luis Borges • 1962</p>
+<div class="flex flex-wrap gap-1 mb-space-sm">
+<span class="inline-block px-2 py-0.5 rounded-full bg-secondary-container text-on-secondary-container font-caption text-caption">Anthology</span>
+<span class="inline-block px-2 py-0.5 rounded-full bg-secondary-container text-on-secondary-container font-caption text-caption">Philosophical Fiction</span>
+</div>
+</div>
+<div class="flex items-center justify-between pt-1">
+<span class="font-caption text-caption text-text-secondary italic">Scholarly Marginalia</span>
+<button aria-label="Add Labyrinths to personal shelf" class="shelf-btn h-8 px-3 rounded-full bg-surface-inset text-accent-teal hover:bg-accent-teal hover:text-surface-porcelain font-label-sm text-caption flex items-center gap-1 transition-all shadow-[0_2px_4px_rgba(38,54,51,0.04)] active:scale-95" type="button">
+<span class="material-symbols-outlined text-[15px]">bookmark_add</span>
+<span>Add to Shelf</span>
+</button>
+</div>
+</div>
+</article>
+<!-- Folio 04: The Book of Sand -->
+<article class="bg-surface-porcelain rounded-xl p-space-md shadow-[0_4px_12px_rgba(38,54,51,0.06),0_1px_3px_rgba(38,54,51,0.04)] flex gap-space-md items-start">
+<div class="w-24 shrink-0 aspect-[2/3] rounded-lg overflow-hidden bg-surface-inset shadow-[2px_4px_10px_rgba(38,54,51,0.12)] relative">
+<img class="w-full h-full object-cover" data-alt="Cover of The Book of Sand by Jorge Luis Borges portraying desert sand dunes turning into infinite fluttering book pages under a dusky warm twilight sky, soft warm ivory and sepia." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBmg3ddzbOpaT1LcTQBx4uR17UwBlwHxczmVj1alkWQEjkNi-KL1MrpveUleaVGGkDfkY6e_tT7RvxjFz7YcCfOnmMZkhd8ipsdvUzw8uPbgstZdMwXZgICvysAd-uJR45_tIPX8kSnnn8vrhyC8WI8k3mkYx3RiBp3euILlhoUpCPnlSNPXJWddqlR618HoFPAZmSVnhJbUMa-ud4ox9QFpoFDw3IF0Kdq7TBHsH8"/>
+<div class="absolute inset-y-0 left-0 w-1.5 bg-gradient-to-r from-black/25 via-black/10 to-transparent"></div>
+</div>
+<div class="flex-1 flex flex-col justify-between min-w-0">
+<div>
+<div class="flex items-center justify-between gap-space-xs mb-1">
+<span class="font-caption text-caption text-accent-teal tracking-wider uppercase font-semibold">Late Prose</span>
+<div class="flex items-center text-accent-teal gap-0.5">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-label-sm text-caption">4.6</span>
+</div>
+</div>
+<h2 class="font-headline-sm text-headline-sm text-text-primary leading-snug truncate">The Book of Sand</h2>
+<p class="font-body-sm text-body-sm text-text-secondary mb-space-xs">Jorge Luis Borges • 1975</p>
+<div class="flex flex-wrap gap-1 mb-space-sm">
+<span class="inline-block px-2 py-0.5 rounded-full bg-secondary-container text-on-secondary-container font-caption text-caption">Infinite Folios</span>
+<span class="inline-block px-2 py-0.5 rounded-full bg-secondary-container text-on-secondary-container font-caption text-caption">Epiphanies</span>
+</div>
+</div>
+<div class="flex items-center justify-between pt-1">
+<span class="font-caption text-caption text-text-secondary italic">Physical Rare Archive</span>
+<button aria-label="Add The Book of Sand to personal shelf" class="shelf-btn h-8 px-3 rounded-full bg-surface-inset text-accent-teal hover:bg-accent-teal hover:text-surface-porcelain font-label-sm text-caption flex items-center gap-1 transition-all shadow-[0_2px_4px_rgba(38,54,51,0.04)] active:scale-95" type="button">
+<span class="material-symbols-outlined text-[15px]">bookmark_add</span>
+<span>Add to Shelf</span>
+</button>
+</div>
+</div>
+</article>
+<!-- Folio 05: Seven Nights -->
+<article class="bg-surface-porcelain rounded-xl p-space-md shadow-[0_4px_12px_rgba(38,54,51,0.06),0_1px_3px_rgba(38,54,51,0.04)] flex gap-space-md items-start">
+<div class="w-24 shrink-0 aspect-[2/3] rounded-lg overflow-hidden bg-surface-inset shadow-[2px_4px_10px_rgba(38,54,51,0.12)] relative">
+<img class="w-full h-full object-cover" data-alt="Cover of Seven Nights by Jorge Luis Borges showing a solitary antique reading lantern illuminating an open leather ledger on a mahogany desk in darkness." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBTCJFMnNZDuSlUr5eaiEeSd4-FVOJYoQ8MFai5lmvECfHfrDw0v_mbhSjlHakpNV01CyRY7SYCdbVssvahxS3K6acGs3U96FobhorBynQg4lpnkr1PCg2iUlIB1VC0rrvQh5y5og_m6mOks-Qf1-OxXbMGQA2oMBHNwq0Uc9Cuv6wPyL1rjewwcAiFXOKKZlnFPp_2FG-jSt4TvRfI3kjKU_ozFWJfmEoSIy-XZOE"/>
+<div class="absolute inset-y-0 left-0 w-1.5 bg-gradient-to-r from-black/25 via-black/10 to-transparent"></div>
+</div>
+<div class="flex-1 flex flex-col justify-between min-w-0">
+<div>
+<div class="flex items-center justify-between gap-space-xs mb-1">
+<span class="font-caption text-caption text-accent-terracotta tracking-wider uppercase font-semibold">Oral Lectern</span>
+<div class="flex items-center text-accent-teal gap-0.5">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-label-sm text-caption">4.8</span>
+</div>
+</div>
+<h2 class="font-headline-sm text-headline-sm text-text-primary leading-snug truncate">Seven Nights</h2>
+<p class="font-body-sm text-body-sm text-text-secondary mb-space-xs">Jorge Luis Borges • 1980</p>
+<div class="flex flex-wrap gap-1 mb-space-sm">
+<span class="inline-block px-2 py-0.5 rounded-full bg-secondary-container text-on-secondary-container font-caption text-caption">Lectures &amp; Esoterica</span>
+<span class="inline-block px-2 py-0.5 rounded-full bg-secondary-container text-on-secondary-container font-caption text-caption">Kabbalah &amp; Nightmares</span>
+</div>
+</div>
+<div class="flex items-center justify-between pt-1">
+<span class="font-caption text-caption text-text-secondary italic">Audio-Marginalia Vault</span>
+<button aria-label="Add Seven Nights to personal shelf" class="shelf-btn h-8 px-3 rounded-full bg-surface-inset text-accent-teal hover:bg-accent-teal hover:text-surface-porcelain font-label-sm text-caption flex items-center gap-1 transition-all shadow-[0_2px_4px_rgba(38,54,51,0.04)] active:scale-95" type="button">
+<span class="material-symbols-outlined text-[15px]">bookmark_add</span>
+<span>Add to Shelf</span>
+</button>
+</div>
+</div>
+</article>
+</section>
+<!-- Contemplative Pagination Navigation -->
+<section class="px-margin-mobile pt-space-lg flex items-center justify-center">
+<div class="bg-surface-porcelain rounded-full px-space-sm py-1 shadow-[0_4px_12px_rgba(38,54,51,0.06),0_1px_3px_rgba(38,54,51,0.04)] flex items-center gap-1">
+<button aria-label="Previous Page" class="w-8 h-8 rounded-full flex items-center justify-center text-text-secondary hover:text-accent-teal disabled:opacity-40" disabled="">
+<span class="material-symbols-outlined text-[18px]">chevron_left</span>
+</button>
+<button aria-current="page" class="w-8 h-8 rounded-full bg-accent-teal text-surface-porcelain font-label-sm text-caption font-semibold flex items-center justify-center shadow-sm">
+        1
+      </button>
+<button class="w-8 h-8 rounded-full text-text-primary hover:bg-surface-inset/60 font-label-sm text-caption flex items-center justify-center transition-colors">
+        2
+      </button>
+<button class="w-8 h-8 rounded-full text-text-primary hover:bg-surface-inset/60 font-label-sm text-caption flex items-center justify-center transition-colors">
+        3
+      </button>
+<button aria-label="Next Page" class="w-8 h-8 rounded-full flex items-center justify-center text-text-primary hover:text-accent-teal transition-colors">
+<span class="material-symbols-outlined text-[18px]">chevron_right</span>
+</button>
+</div>
+</section>
+<!-- Interactive Tactile Filter Drawer / Bottom Sheet -->
+<div class="fixed inset-0 z-50 pointer-events-none transition-all duration-300" id="filter-drawer-container">
+<!-- Backdrop Overlay -->
+<div class="absolute inset-0 bg-on-surface/40 backdrop-blur-sm opacity-0 transition-opacity duration-300" id="drawer-backdrop"></div>
+<!-- Slide-up Panel -->
+<div class="absolute inset-x-0 bottom-0 max-h-[751px] bg-surface-porcelain rounded-t-[28px] shadow-[0_-12px_32px_rgba(38,54,51,0.18)] flex flex-col translate-y-full transition-transform duration-300 ease-out" id="drawer-panel">
+<!-- Tactile Grab Handle -->
+<div class="w-full flex justify-center pt-3 pb-1">
+<div class="w-10 h-1 rounded-full bg-surface-inset"></div>
+</div>
+<!-- Drawer Header -->
+<div class="px-space-md py-space-xs flex items-center justify-between">
+<div>
+<h3 class="font-headline-sm text-headline-sm text-text-primary">Filter Archives</h3>
+<p class="font-body-sm text-caption text-text-secondary">Refine literary codices &amp; manuscripts</p>
+</div>
+<div class="flex items-center gap-space-xs">
+<button class="font-label-sm text-caption text-accent-terracotta hover:underline px-2 py-1" id="drawer-reset-btn" type="button">
+            Reset All
+          </button>
+<button aria-label="Close Filter Drawer" class="w-9 h-9 rounded-full bg-surface-inset/60 hover:bg-surface-inset flex items-center justify-center text-text-primary transition-colors" id="drawer-close-btn">
+<span class="material-symbols-outlined text-[18px]">close</span>
+</button>
+</div>
+</div>
+<!-- Drawer Scrollable Content -->
+<div class="flex-1 overflow-y-auto px-space-md py-space-sm space-y-space-md">
+<!-- Category 1: Genre & Subject -->
+<fieldset class="space-y-space-xs">
+<legend class="font-label-md text-label-md text-text-primary font-semibold block mb-2">Subject &amp; Theme</legend>
+<div class="grid grid-cols-1 gap-2">
+<label class="filter-option flex items-center justify-between p-2.5 rounded-xl bg-surface-inset/40 hover:bg-surface-inset/70 cursor-pointer transition-colors">
+<div class="flex items-center gap-2.5">
+<input checked="" class="accent-accent-teal w-4 h-4 rounded" type="checkbox"/>
+<span class="font-body-sm text-body-sm text-text-primary">Philosophy &amp; Fiction</span>
+</div>
+<span class="font-caption text-caption text-text-secondary bg-surface-porcelain px-2 py-0.5 rounded-full">14</span>
+</label>
+<label class="filter-option flex items-center justify-between p-2.5 rounded-xl bg-surface-inset/40 hover:bg-surface-inset/70 cursor-pointer transition-colors">
+<div class="flex items-center gap-2.5">
+<input checked="" class="accent-accent-teal w-4 h-4 rounded" type="checkbox"/>
+<span class="font-body-sm text-body-sm text-text-primary">Metaphysics &amp; Labyrinths</span>
+</div>
+<span class="font-caption text-caption text-text-secondary bg-surface-porcelain px-2 py-0.5 rounded-full">8</span>
+</label>
+<label class="filter-option flex items-center justify-between p-2.5 rounded-xl bg-surface-inset/40 hover:bg-surface-inset/70 cursor-pointer transition-colors">
+<div class="flex items-center gap-2.5">
+<input class="accent-accent-teal w-4 h-4 rounded" type="checkbox"/>
+<span class="font-body-sm text-body-sm text-text-primary">Poetry &amp; Essays</span>
+</div>
+<span class="font-caption text-caption text-text-secondary bg-surface-porcelain px-2 py-0.5 rounded-full">5</span>
+</label>
+<label class="filter-option flex items-center justify-between p-2.5 rounded-xl bg-surface-inset/40 hover:bg-surface-inset/70 cursor-pointer transition-colors">
+<div class="flex items-center gap-2.5">
+<input class="accent-accent-teal w-4 h-4 rounded" type="checkbox"/>
+<span class="font-body-sm text-body-sm text-text-primary">Literary Criticism</span>
+</div>
+<span class="font-caption text-caption text-text-secondary bg-surface-porcelain px-2 py-0.5 rounded-full">3</span>
+</label>
+</div>
+</fieldset>
+<!-- Category 2: Era / Century Segmented -->
+<fieldset class="space-y-space-xs">
+<legend class="font-label-md text-label-md text-text-primary font-semibold block mb-2">Publication Era</legend>
+<div class="grid grid-cols-3 gap-1.5 p-1 bg-surface-inset rounded-xl shadow-[inset_1px_1px_3px_rgba(38,54,51,0.06)]">
+<button class="era-tab py-2 rounded-lg font-label-sm text-caption text-text-secondary hover:text-text-primary transition-colors text-center" type="button">
+              Classical
+            </button>
+<button class="era-tab py-2 rounded-lg bg-surface-porcelain font-label-sm text-caption text-accent-teal font-semibold shadow-sm text-center" type="button">
+              20th C. (18)
+            </button>
+<button class="era-tab py-2 rounded-lg font-label-sm text-caption text-text-secondary hover:text-text-primary transition-colors text-center" type="button">
+              Contemporary
+            </button>
+</div>
+</fieldset>
+<!-- Category 3: Archival Availability -->
+<fieldset class="space-y-space-xs">
+<legend class="font-label-md text-label-md text-text-primary font-semibold block mb-2">Archival Availability</legend>
+<div class="space-y-2">
+<label class="toggle-row flex items-center justify-between p-2.5 rounded-xl bg-surface-inset/30 cursor-pointer">
+<span class="font-body-sm text-body-sm text-text-primary">Sanctuary Essential Folios</span>
+<input checked="" class="accent-accent-teal w-4 h-4 rounded" type="checkbox"/>
+</label>
+<label class="toggle-row flex items-center justify-between p-2.5 rounded-xl bg-surface-inset/30 cursor-pointer">
+<span class="font-body-sm text-body-sm text-text-primary">Scholarly Marginalia Available</span>
+<input class="accent-accent-teal w-4 h-4 rounded" type="checkbox"/>
+</label>
+<label class="toggle-row flex items-center justify-between p-2.5 rounded-xl bg-surface-inset/30 cursor-pointer">
+<span class="font-body-sm text-body-sm text-text-primary">Physical Rare Stock Archive</span>
+<input checked="" class="accent-accent-teal w-4 h-4 rounded" type="checkbox"/>
+</label>
+</div>
+</fieldset>
+<!-- Category 4: Language Expression -->
+<fieldset class="space-y-space-xs pb-space-sm">
+<legend class="font-label-md text-label-md text-text-primary font-semibold block mb-2">Language &amp; Edition</legend>
+<div class="flex flex-wrap gap-2">
+<button class="lang-pill px-3 py-1.5 rounded-full bg-accent-teal text-surface-porcelain font-label-sm text-caption shadow-sm" type="button">Spanish (Original)</button>
+<button class="lang-pill px-3 py-1.5 rounded-full bg-surface-inset text-text-primary hover:bg-surface-inset/80 font-label-sm text-caption" type="button">English Translation</button>
+<button class="lang-pill px-3 py-1.5 rounded-full bg-surface-inset text-text-primary hover:bg-surface-inset/80 font-label-sm text-caption" type="button">French</button>
+<button class="lang-pill px-3 py-1.5 rounded-full bg-surface-inset text-text-primary hover:bg-surface-inset/80 font-label-sm text-caption" type="button">All Editions</button>
+</div>
+</fieldset>
+</div>
+<!-- Drawer Action Bar -->
+<div class="p-space-md bg-surface-porcelain shadow-[0_-4px_16px_rgba(38,54,51,0.06)] flex items-center gap-space-sm">
+<button class="flex-1 h-12 rounded-full bg-surface-inset text-text-primary font-label-md text-label-md hover:bg-surface-inset/80 transition-colors" id="drawer-cancel-btn" type="button">
+          Cancel
+        </button>
+<button class="flex-[2] h-12 rounded-full bg-accent-teal text-surface-porcelain font-label-md text-label-md font-medium shadow-[0_4px_12px_rgba(24,92,88,0.25)] hover:scale-[1.01] active:scale-95 transition-all" id="drawer-apply-btn" type="button">
+          Apply Filters (24 Folios)
+        </button>
+</div>
+</div>
+</div>
+</div>
+<script>
+  (function initTactileDiscovery() {
+    const container = document.getElementById('filter-drawer-container');
+    const backdrop = document.getElementById('drawer-backdrop');
+    const panel = document.getElementById('drawer-panel');
+    const openBtn = document.getElementById('open-filter-btn');
+    const closeBtn = document.getElementById('drawer-close-btn');
+    const cancelBtn = document.getElementById('drawer-cancel-btn');
+    const applyBtn = document.getElementById('drawer-apply-btn');
+    const badge = document.getElementById('active-filter-badge');
+    const clearChipsBtn = document.getElementById('clear-all-chips');
+    const shelfButtons = document.querySelectorAll('.shelf-btn');
+
+    function openDrawer() {
+      container.classList.remove('pointer-events-none');
+      container.classList.add('pointer-events-auto');
+      backdrop.classList.remove('opacity-0');
+      backdrop.classList.add('opacity-100');
+      panel.classList.remove('translate-y-full');
+      panel.classList.add('translate-y-0');
+    }
+
+    function closeDrawer() {
+      backdrop.classList.remove('opacity-100');
+      backdrop.classList.add('opacity-0');
+      panel.classList.remove('translate-y-0');
+      panel.classList.add('translate-y-full');
+      setTimeout(() => {
+        container.classList.remove('pointer-events-auto');
+        container.classList.add('pointer-events-none');
+      }, 300);
+    }
+
+    if (openBtn) openBtn.addEventListener('click', openDrawer);
+    if (closeBtn) closeBtn.addEventListener('click', closeDrawer);
+    if (cancelBtn) cancelBtn.addEventListener('click', closeDrawer);
+    if (backdrop) backdrop.addEventListener('click', closeDrawer);
+
+    if (applyBtn) {
+      applyBtn.addEventListener('click', () => {
+        // Tally checked inputs
+        const checkedCount = container.querySelectorAll('input[type="checkbox"]:checked').length;
+        if (badge) badge.textContent = checkedCount;
+        closeDrawer();
+      });
+    }
+
+    // Toggle Shelf Button micro-interaction
+    shelfButtons.forEach(btn => {
+      btn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        const icon = this.querySelector('.material-symbols-outlined');
+        const text = this.querySelector('span:last-child');
+        const isSaved = this.dataset.saved === 'true';
+
+        if (!isSaved) {
+          this.dataset.saved = 'true';
+          this.classList.remove('bg-surface-inset', 'text-accent-teal');
+          this.classList.add('bg-accent-teal', 'text-surface-porcelain');
+          if (icon) {
+            icon.textContent = 'bookmark_added';
+            icon.style.fontVariationSettings = "'FILL' 1";
+          }
+          if (text) text.textContent = 'On Shelf';
+        } else {
+          this.dataset.saved = 'false';
+          this.classList.add('bg-surface-inset', 'text-accent-teal');
+          this.classList.remove('bg-accent-teal', 'text-surface-porcelain');
+          if (icon) {
+            icon.textContent = 'bookmark_add';
+            icon.style.fontVariationSettings = "'FILL' 0";
+          }
+          if (text) text.textContent = 'Add to Shelf';
+        }
+      });
+    });
+
+    // Remove active chips
+    document.querySelectorAll('.active-chip').forEach(chip => {
+      chip.addEventListener('click', function() {
+        this.style.opacity = '0';
+        this.style.transform = 'scale(0.8)';
+        setTimeout(() => this.remove(), 180);
+      });
+    });
+
+    if (clearChipsBtn) {
+      clearChipsBtn.addEventListener('click', function() {
+        document.querySelectorAll('.active-chip').forEach(c => c.remove());
+        this.remove();
+        if (badge) badge.textContent = '0';
+      });
+    }
+
+    // Interactive Era Segment Tabs
+    document.querySelectorAll('.era-tab').forEach(tab => {
+      tab.addEventListener('click', function() {
+        document.querySelectorAll('.era-tab').forEach(t => {
+          t.classList.remove('bg-surface-porcelain', 'text-accent-teal', 'font-semibold', 'shadow-sm');
+          t.classList.add('text-text-secondary');
+        });
+        this.classList.add('bg-surface-porcelain', 'text-accent-teal', 'font-semibold', 'shadow-sm');
+        this.classList.remove('text-text-secondary');
+      });
+    });
+
+    // Language pills toggle
+    document.querySelectorAll('.lang-pill').forEach(pill => {
+      pill.addEventListener('click', function() {
+        document.querySelectorAll('.lang-pill').forEach(p => {
+          p.classList.remove('bg-accent-teal', 'text-surface-porcelain', 'shadow-sm');
+          p.classList.add('bg-surface-inset', 'text-text-primary');
+        });
+        this.classList.remove('bg-surface-inset', 'text-text-primary');
+        this.classList.add('bg-accent-teal', 'text-surface-porcelain', 'shadow-sm');
+      });
+    });
+  })();
+</script><footer class="mt-space-xl px-margin-mobile pb-space-lg text-center flex flex-col items-center gap-space-sm"><div class="w-12 h-[1px] bg-accent-sage/40 mb-space-xs"></div><p class="font-caption text-caption text-text-secondary tracking-widest uppercase">Colophon &amp; Preservation</p><p class="font-body-sm text-body-sm text-text-secondary max-w-xs leading-relaxed">Transcribed into perpetual digital archive under the guardianship of the Akashic Society.</p><div class="flex items-center justify-center gap-space-md pt-space-xs"><a class="font-label-sm text-caption text-accent-teal hover:text-accent-terracotta underline decoration-accent-terracotta decoration-1 underline-offset-4 transition-colors" data-path="codex-register" href="#">Register</a><span class="text-accent-sage">•</span><a class="font-label-sm text-caption text-accent-teal hover:text-accent-terracotta underline decoration-accent-terracotta decoration-1 underline-offset-4 transition-colors" data-path="provenance-record" href="#">Provenance</a><span class="text-accent-sage">•</span><a class="font-label-sm text-caption text-accent-teal hover:text-accent-terracotta underline decoration-accent-terracotta decoration-1 underline-offset-4 transition-colors" data-path="preservation-vault" href="#">Vault Index</a></div></footer></main><nav class="fixed bottom-0 w-full z-50 pb-safe pointer-events-none" data-active-classes="text-accent-teal bg-surface-inset/60 font-semibold"><div class="px-margin-mobile pb-space-sm flex justify-center"><div class="pointer-events-auto h-16 w-full max-w-md bg-surface-porcelain/90 backdrop-blur-xl rounded-full px-space-sm flex items-center justify-around shadow-[0_10px_24px_rgba(38,54,51,0.08),0_2px_6px_rgba(38,54,51,0.04)]"><a class="flex flex-col items-center justify-center w-14 h-12 rounded-full text-text-secondary transition-all hover:text-accent-teal" data-path="reading-room" href="#"><span class="material-symbols-outlined text-[20px]">auto_stories</span><span class="font-label-sm text-caption mt-[1px]">Read</span></a><a aria-current="page" class="flex flex-col items-center justify-center w-14 h-12 rounded-full transition-all text-accent-teal bg-surface-inset/60 font-semibold" data-path="catalogue-stacks" href="#"><span class="material-symbols-outlined text-[20px]">local_library</span><span class="font-label-sm text-caption mt-[1px]">Stacks</span></a><a class="flex flex-col items-center justify-center w-14 h-12 rounded-full text-text-secondary transition-all hover:text-accent-teal" data-path="curated-folios" href="#"><span class="material-symbols-outlined text-[20px]">bookmarks</span><span class="font-label-sm text-caption mt-[1px]">Folios</span></a><a class="flex flex-col items-center justify-center w-14 h-12 rounded-full text-text-secondary transition-all hover:text-accent-teal" data-path="preservation-vault" href="#"><span class="material-symbols-outlined text-[20px]">history_edu</span><span class="font-label-sm text-caption mt-[1px]">Vault</span></a></div></div></nav></body></html>

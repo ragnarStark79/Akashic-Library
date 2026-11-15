@@ -1,0 +1,115 @@
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  padding: var(--space-6);
+  background-color: var(--color-surface);
+  border-radius: var(--radius-xl);
+  border: var(--border-thin) solid var(--color-border-subtle);
+  box-shadow: var(--shadow-soft);
+  position: sticky;
+  top: 90px;
+}
+
+.sidebarHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: var(--space-3);
+  border-bottom: var(--border-thin) solid var(--color-border-subtle);
+}
+
+.title {
+  font-family: var(--font-family-heading);
+  font-size: 1.125rem;
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
+  margin: 0;
+}
+
+.resetBtn {
+  background: none;
+  border: none;
+  padding: 0;
+  font-size: var(--font-caption);
+  color: var(--color-action-highlight);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
+}
+
+.filterGroup {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.groupTitle {
+  font-family: var(--font-family-body);
+  font-size: var(--font-small);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: var(--space-1);
+}
+
+.optionList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.optionLabel {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-1) var(--space-2);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-size: var(--font-small);
+  color: var(--color-text-primary);
+  transition: background-color var(--duration-fast) var(--ease-standard);
+}
+
+.optionLabel:hover {
+  background-color: var(--color-surface-hover);
+}
+
+.optionLabel input {
+  margin-right: var(--space-2);
+  accent-color: var(--color-action-primary);
+  width: 16px;
+  height: 16px;
+}
+
+.yearInputRow {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.yearInput {
+  flex: 1;
+  height: 36px;
+  padding: 0 var(--space-2);
+  border-radius: var(--radius-sm);
+  border: var(--border-thin) solid var(--color-border-subtle);
+  background-color: var(--color-surface-inset);
+  font-size: var(--font-small);
+  color: var(--color-text-primary);
+  box-sizing: border-box;
+}
+
+.yearInput:focus {
+  outline: 2px solid var(--color-border-focus);
+  outline-offset: 1px;
+}
+
+.applyRow {
+  padding-top: var(--space-2);
+}
+

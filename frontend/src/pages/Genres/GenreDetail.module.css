@@ -1,0 +1,283 @@
+.page {
+  padding: var(--space-6) 0 var(--space-16);
+  width: 100%;
+}
+
+/* ── Breadcrumb & Header ── */
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--font-caption);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-3);
+  flex-wrap: wrap;
+}
+
+.breadcrumbSeparator {
+  color: var(--color-border-subtle);
+}
+
+.introDossier {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  max-width: 860px;
+  margin-bottom: var(--space-8);
+}
+
+.dossierBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: 4px var(--space-3);
+  border-radius: var(--radius-pill);
+  background-color: rgba(168, 189, 174, 0.25);
+  color: var(--color-action-primary);
+  font-size: var(--font-caption);
+  font-weight: var(--font-weight-medium);
+  width: fit-content;
+}
+
+.title {
+  font-family: var(--font-family-heading);
+  font-size: clamp(2rem, 4vw, 2.75rem);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-action-primary);
+  margin: 0;
+  line-height: var(--line-height-tight);
+}
+
+.description {
+  font-size: var(--font-body-lg);
+  line-height: var(--line-height-relaxed);
+  color: var(--color-text-secondary);
+  margin: 0;
+}
+
+/* ── Genre Search & Sub-Filter Bar ── */
+.searchFilterBar {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  background-color: var(--color-surface);
+  border: var(--border-thin) solid var(--color-border-subtle);
+  border-radius: var(--radius-2xl);
+  padding: var(--space-3) var(--space-4);
+  box-shadow: var(--shadow-soft);
+  margin-bottom: var(--space-12);
+  flex-wrap: wrap;
+}
+
+.searchInputWrapper {
+  flex: 1;
+  min-width: 260px;
+  position: relative;
+}
+
+.genreSearchInput {
+  width: 100%;
+  height: 42px;
+  padding: 0 var(--space-4) 0 var(--space-10);
+  border-radius: var(--radius-pill);
+  border: none;
+  background-color: var(--color-surface-inset);
+  box-shadow: var(--shadow-inset);
+  font-size: var(--font-small);
+  color: var(--color-text-primary);
+  box-sizing: border-box;
+}
+
+.genreSearchInput:focus {
+  outline: 2px solid var(--color-border-focus);
+  background-color: var(--color-surface);
+}
+
+.searchIcon {
+  position: absolute;
+  left: var(--space-3);
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--color-text-secondary);
+}
+
+.themePillsRow {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+.themePill {
+  height: 36px;
+  padding: 0 var(--space-3);
+  border-radius: var(--radius-pill);
+  border: var(--border-thin) solid var(--color-border-subtle);
+  background-color: var(--color-surface);
+  color: var(--color-text-primary);
+  font-size: var(--font-caption);
+  font-weight: var(--font-weight-medium);
+  cursor: pointer;
+  transition: all var(--duration-fast) var(--ease-standard);
+  display: inline-flex;
+  align-items: center;
+}
+
+.themePill:hover {
+  background-color: var(--color-surface-hover);
+}
+
+.themePill.active {
+  background-color: var(--color-action-primary);
+  color: var(--color-action-primary-text);
+  border-color: var(--color-action-primary);
+}
+
+/* ── Section: Spotlight Dossier (Asymmetric 12-col) ── */
+.spotlightCard {
+  background-color: var(--color-surface);
+  border-radius: var(--radius-2xl);
+  border: var(--border-thin) solid var(--color-border-subtle);
+  padding: var(--space-8);
+  box-shadow: var(--shadow-elevated);
+  margin-bottom: var(--space-16);
+  display: grid;
+  grid-template-columns: 7fr 5fr;
+  gap: var(--space-8);
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.spotlightThemesMatrix {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-3);
+  margin: var(--space-4) 0;
+}
+
+.themeBox {
+  background-color: var(--color-surface-inset);
+  border-radius: var(--radius-md);
+  padding: var(--space-3);
+}
+
+.themeBoxTitle {
+  font-size: var(--font-small);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-action-primary);
+  margin: 0 0 2px;
+}
+
+.themeBoxDesc {
+  font-size: var(--font-caption);
+  color: var(--color-text-secondary);
+  line-height: var(--line-height-normal);
+  margin: 0;
+}
+
+.curatorNote {
+  background-color: var(--color-bg-page);
+  border-radius: var(--radius-md);
+  padding: var(--space-3) var(--space-4);
+  font-size: var(--font-small);
+  color: var(--color-text-secondary);
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  margin-top: var(--space-4);
+}
+
+.spotlightShowcase {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-4);
+}
+
+.showcaseBook {
+  width: 110px;
+  aspect-ratio: 2 / 3;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-elevated);
+  background-color: var(--color-surface-inset);
+  position: relative;
+  transition: transform var(--duration-fast) var(--ease-standard);
+}
+
+.showcaseBook:hover {
+  transform: translateY(-6px);
+}
+
+.showcaseBook img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ── Section: Disciplines Horizontal Carousel / Bento ── */
+.currentsSection {
+  margin-bottom: var(--space-16);
+}
+
+.sectionHeadingRow {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: var(--space-6);
+}
+
+.sectionTitle {
+  font-family: var(--font-family-heading);
+  font-size: 1.75rem;
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-action-primary);
+  margin: 0;
+}
+
+.currentsScrollRow {
+  display: flex;
+  gap: var(--space-6);
+  overflow-x: auto;
+  padding-bottom: var(--space-4);
+  scroll-snap-type: x mandatory;
+}
+
+.currentCard {
+  min-width: 300px;
+  max-width: 320px;
+  flex-shrink: 0;
+  scroll-snap-align: start;
+  background-color: var(--color-surface);
+  border: var(--border-thin) solid var(--color-border-subtle);
+  border-radius: var(--radius-xl);
+  padding: var(--space-6);
+  box-shadow: var(--shadow-soft);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* ── Section: Essential Readings (Books Grid) ── */
+.readingsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: var(--space-6);
+}
+
+@media (max-width: 900px) {
+  .spotlightCard {
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+  }
+
+  .spotlightThemesMatrix {
+    grid-template-columns: 1fr;
+  }
+}
+
