@@ -7,8 +7,9 @@ from accounts.models import UserRole
 
 from .serializers import (
     DiscussionSerializer, DiscussionUpdateSerializer,
-    ReplySerializer, ReplyUpdateSerializer,
-    ReportSerializer, ModerationActionSerializer, ReportResolutionSerializer
+    ReplySerializer, ReplyCreateSerializer, ReplyUpdateSerializer,
+    ReportSerializer, ModerationActionSerializer, ReportResolutionSerializer,
+    ModerationAuditSerializer
 )
 from .services import CommunityService, ReplyService, ModerationService
 
@@ -36,9 +37,7 @@ def _parse_pagination(request, default_limit=20):
     return skip, limit, None
 
 
-class IsModerator(BasePermission):
-    def has_permission(self, request, view):
-        return request.user.is_authenticated and request.user.role in [UserRole.MODERATOR, UserRole.ADMIN]
+from .permissions import IsModerator
 
 class DiscussionListCreateView(APIView):
     def get(self, request):
@@ -47,12 +46,15 @@ class DiscussionListCreateView(APIView):
             return err
         book_id = request.query_params.get("book_id")
         topic_type = request.query_params.get("topic_type")
+        q = request.query_params.get("q")
         
         filters = {}
         if book_id:
             filters["book_id"] = book_id
         if topic_type:
             filters["topic_type"] = topic_type
+        if q:
+            filters["q"] = q
             
         discussions = CommunityService.list_discussions(filters, skip=skip, limit=limit)
         serializer = DiscussionSerializer(discussions, many=True)
@@ -124,6 +126,10 @@ class ReplyListCreateView(APIView):
             return err
         
         is_mod = request.user.is_authenticated and request.user.role in [UserRole.MODERATOR, UserRole.ADMIN]
+        if not is_mod:
+            disc = CommunityService.get_discussion(discussion_id, for_moderator=False)
+            if not disc:
+                return Response({"error": "Discussion not found."}, status=status.HTTP_404_NOT_FOUND)
         replies = ReplyService.list_replies(discussion_id, skip=skip, limit=limit, for_moderator=is_mod)
         return Response(ReplySerializer(replies, many=True).data)
 
@@ -131,13 +137,18 @@ class ReplyListCreateView(APIView):
         if not request.user.is_authenticated:
             return Response(status=status.HTTP_401_UNAUTHORIZED)
             
-        serializer = ReplyUpdateSerializer(data=request.data)
+        serializer = ReplyCreateSerializer(data=request.data)
         if serializer.is_valid():
             try:
                 doc = ReplyService.create_reply(
                     user_id=str(request.user.id),
                     discussion_id=discussion_id,
-                    body=serializer.validated_data["body"]
+                    body=serializer.validated_data["body"],
+                    parent_id=serializer.validated_data.get("parent_id"),
+                    book_id=serializer.validated_data.get("book_id"),
+                    page_reference=serializer.validated_data.get("page_reference"),
+                    chapter_reference=serializer.validated_data.get("chapter_reference"),
+                    passage_excerpt=serializer.validated_data.get("passage_excerpt"),
                 )
                 return Response(ReplySerializer(doc).data, status=status.HTTP_201_CREATED)
             except ValidationError as e:
@@ -145,17 +156,25 @@ class ReplyListCreateView(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 class ReplyDetailView(APIView):
-    def patch(self, request, reply_id):
+    def patch(self, request, reply_id, discussion_id=None):
         if not request.user.is_authenticated:
             return Response(status=status.HTTP_401_UNAUTHORIZED)
             
         serializer = ReplyUpdateSerializer(data=request.data)
         if serializer.is_valid():
             try:
+                if discussion_id:
+                    existing = ReplyService.get_reply(reply_id)
+                    if not existing or str(existing.get("discussion_id")) != str(discussion_id):
+                        return Response(status=status.HTTP_404_NOT_FOUND)
+
                 doc = ReplyService.update_reply(
                     user_id=str(request.user.id),
                     doc_id=reply_id,
-                    body=serializer.validated_data["body"]
+                    body=serializer.validated_data.get("body"),
+                    page_reference=serializer.validated_data.get("page_reference"),
+                    chapter_reference=serializer.validated_data.get("chapter_reference"),
+                    passage_excerpt=serializer.validated_data.get("passage_excerpt"),
                 )
                 return Response(ReplySerializer(doc).data)
             except ValidationError as e:
@@ -167,10 +186,15 @@ class ReplyDetailView(APIView):
                 return Response({"error": err_str}, status=status.HTTP_400_BAD_REQUEST)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-    def delete(self, request, reply_id):
+    def delete(self, request, reply_id, discussion_id=None):
         if not request.user.is_authenticated:
             return Response(status=status.HTTP_401_UNAUTHORIZED)
         try:
+            if discussion_id:
+                existing = ReplyService.get_reply(reply_id)
+                if not existing or str(existing.get("discussion_id")) != str(discussion_id):
+                    return Response(status=status.HTTP_404_NOT_FOUND)
+
             ReplyService.delete_reply(str(request.user.id), reply_id)
             return Response(status=status.HTTP_204_NO_CONTENT)
         except ValidationError as e:
@@ -196,7 +220,7 @@ class ReportCreateView(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 class ModerationReportListView(APIView):
-    permission_classes = [IsModerator]
+    permission_classes = [IsAuthenticated, IsModerator]
     
     def get(self, request):
         skip, limit, err = _parse_pagination(request, default_limit=50)
@@ -204,15 +228,24 @@ class ModerationReportListView(APIView):
             return err
         
         status_filter = request.query_params.get("status")
+        target_type_filter = request.query_params.get("target_type")
         filters = {}
         if status_filter:
             filters["status"] = status_filter
+        if target_type_filter:
+            filters["target_type"] = target_type_filter
             
         reports = ModerationService.list_reports(filters, skip=skip, limit=limit)
         return Response(ReportSerializer(reports, many=True).data)
 
 class ModerationReportDetailView(APIView):
-    permission_classes = [IsModerator]
+    permission_classes = [IsAuthenticated, IsModerator]
+
+    def get(self, request, report_id):
+        doc = ModerationService.get_report(report_id)
+        if not doc:
+            return Response({"error": "Report not found."}, status=status.HTTP_404_NOT_FOUND)
+        return Response(ReportSerializer(doc).data)
     
     def patch(self, request, report_id):
         serializer = ReportResolutionSerializer(data=request.data)
@@ -230,14 +263,18 @@ class ModerationReportDetailView(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 class ModerationHideView(APIView):
-    permission_classes = [IsModerator]
+    permission_classes = [IsAuthenticated, IsModerator]
     
     def post(self, request, target_type, target_id):
         serializer = ModerationActionSerializer(data=request.data)
         if serializer.is_valid():
             try:
                 ModerationService.hide_content(
-                    str(request.user.id), target_type, target_id, serializer.validated_data.get("note", "")
+                    moderator_id=str(request.user.id),
+                    target_type=target_type,
+                    target_id=target_id,
+                    note=serializer.validated_data.get("note", ""),
+                    report_id=serializer.validated_data.get("report_id"),
                 )
                 return Response(status=status.HTTP_204_NO_CONTENT)
             except ValidationError as e:
@@ -245,16 +282,40 @@ class ModerationHideView(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 class ModerationRestoreView(APIView):
-    permission_classes = [IsModerator]
+    permission_classes = [IsAuthenticated, IsModerator]
     
     def post(self, request, target_type, target_id):
         serializer = ModerationActionSerializer(data=request.data)
         if serializer.is_valid():
             try:
                 ModerationService.restore_content(
-                    str(request.user.id), target_type, target_id, serializer.validated_data.get("note", "")
+                    moderator_id=str(request.user.id),
+                    target_type=target_type,
+                    target_id=target_id,
+                    note=serializer.validated_data.get("note", ""),
+                    report_id=serializer.validated_data.get("report_id"),
                 )
                 return Response(status=status.HTTP_204_NO_CONTENT)
             except ValidationError as e:
                 return Response({"error": str(e)}, status=status.HTTP_400_BAD_REQUEST)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+class ModerationAuditListView(APIView):
+    permission_classes = [IsAuthenticated, IsModerator]
+
+    def get(self, request):
+        skip, limit, err = _parse_pagination(request, default_limit=50)
+        if err:
+            return err
+        filters = {}
+        if request.query_params.get("target_type"):
+            filters["target_type"] = request.query_params.get("target_type")
+        if request.query_params.get("target_id"):
+            filters["target_id"] = request.query_params.get("target_id")
+        if request.query_params.get("report_id"):
+            filters["report_id"] = request.query_params.get("report_id")
+        if request.query_params.get("action"):
+            filters["action"] = request.query_params.get("action")
+
+        audits = ModerationService.list_audits(filters, skip=skip, limit=limit)
+        return Response(ModerationAuditSerializer(audits, many=True).data)
