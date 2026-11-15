@@ -1,0 +1,54 @@
+/**
+ * Akashic Library Discovery Design System — Phase 0
+ * Surface System: Base, Raised, Inset, Elevated, and Glassmorphism Foundations.
+ */
+
+/* 1. Base Surface (Flat Page Canvas) */
+.surface-base {
+  background-color: var(--color-bg-page);
+  border: none;
+  box-shadow: var(--shadow-none);
+}
+
+/* 2. Raised Surface (Standard Cards & Tactile Widgets) */
+.surface-raised {
+  background-color: var(--color-surface);
+  border: var(--border-thin) solid var(--color-border-subtle);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-soft);
+  transition: transform var(--duration-normal) var(--ease-standard),
+              box-shadow var(--duration-normal) var(--ease-standard);
+}
+
+.surface-raised:hover {
+  box-shadow: var(--shadow-raised);
+}
+
+/* 3. Inset Surface (Inputs, Search Wells & Recessed Areas) */
+.surface-inset {
+  background-color: var(--color-surface-inset);
+  border: var(--border-thin) solid var(--color-border-subtle);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-inset);
+  transition: border-color var(--duration-fast) var(--ease-standard),
+              box-shadow var(--duration-fast) var(--ease-standard);
+}
+
+/* 4. Elevated Surface (Modals, Popovers, Dropdowns) */
+.surface-elevated {
+  background-color: var(--color-surface);
+  border: var(--border-thin) solid var(--color-border-subtle);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-overlay);
+}
+
+/* 5. Glassmorphism Surface (Approved for Floating Navbar & Overlays) */
+.surface-glass {
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: var(--glass-border);
+  border-radius: var(--radius-pill);
+  box-shadow: var(--shadow-glass);
+}
+

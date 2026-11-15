@@ -1,0 +1,157 @@
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  font-family: var(--font-family-body);
+  font-weight: var(--font-weight-medium);
+  border-radius: var(--radius-pill);
+  border: var(--border-thin) solid transparent;
+  cursor: pointer;
+  user-select: none;
+  white-space: nowrap;
+  text-decoration: none;
+  transition: background-color var(--duration-fast) var(--ease-standard),
+              border-color var(--duration-fast) var(--ease-standard),
+              box-shadow var(--duration-fast) var(--ease-standard),
+              transform var(--duration-fast) var(--ease-standard),
+              color var(--duration-fast) var(--ease-standard);
+  position: relative;
+}
+
+/* Sizing */
+.sm {
+  height: 32px;
+  padding: 0 var(--space-3);
+  font-size: var(--font-small);
+}
+
+.md {
+  height: 40px;
+  padding: 0 var(--space-4);
+  font-size: var(--font-body);
+}
+
+.lg {
+  height: 48px;
+  padding: 0 var(--space-6);
+  font-size: var(--font-body-lg);
+}
+
+.fullWidth {
+  width: 100%;
+}
+
+/* ── Primary Variant (Deep Teal) ── */
+.primary {
+  background-color: var(--color-action-primary);
+  color: var(--color-action-primary-text);
+  box-shadow: var(--shadow-soft);
+}
+
+.primary:hover:not(:disabled):not(.loading) {
+  background-color: var(--color-action-primary-hover);
+  box-shadow: var(--shadow-raised);
+  transform: translateY(-1px);
+}
+
+.primary:active:not(:disabled):not(.loading) {
+  background-color: var(--color-action-primary-pressed);
+  transform: translateY(1px);
+  box-shadow: var(--shadow-none);
+}
+
+/* ── Secondary Variant (Soft Sage) ── */
+.secondary {
+  background-color: var(--color-action-secondary);
+  color: var(--color-action-secondary-text);
+  box-shadow: 0 2px 6px rgba(38, 54, 51, 0.05);
+}
+
+.secondary:hover:not(:disabled):not(.loading) {
+  background-color: var(--color-action-secondary-hover);
+  box-shadow: var(--shadow-soft);
+  transform: translateY(-1px);
+}
+
+.secondary:active:not(:disabled):not(.loading) {
+  background-color: var(--color-action-secondary-pressed);
+  transform: translateY(1px);
+}
+
+/* ── Subtle Variant (Porcelain surface with fine border) ── */
+.subtle {
+  background-color: var(--color-surface);
+  color: var(--color-text-primary);
+  border-color: var(--color-border-subtle);
+  box-shadow: var(--shadow-soft);
+}
+
+.subtle:hover:not(:disabled):not(.loading) {
+  background-color: var(--color-surface-hover);
+  border-color: #D3C9BA;
+  box-shadow: var(--shadow-raised);
+  transform: translateY(-1px);
+}
+
+.subtle:active:not(:disabled):not(.loading) {
+  background-color: var(--color-surface-inset);
+  transform: translateY(1px);
+  box-shadow: var(--shadow-none);
+}
+
+/* ── Link Variant ── */
+.link {
+  background: transparent;
+  color: var(--color-action-primary);
+  padding-left: 0;
+  padding-right: 0;
+  border-radius: 0;
+}
+
+.link:hover:not(:disabled):not(.loading) {
+  color: var(--color-action-primary-hover);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.link:active:not(:disabled):not(.loading) {
+  color: var(--color-action-primary-pressed);
+}
+
+/* ── Focus Visible State ── */
+.button:focus-visible {
+  outline: 2px solid var(--color-border-focus);
+  outline-offset: 2px;
+}
+
+/* ── Disabled State ── */
+.button:disabled,
+.disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  pointer-events: none;
+  box-shadow: none;
+}
+
+/* ── Loading State ── */
+.loading {
+  cursor: wait;
+}
+
+.spinner {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  border: 2px solid currentColor;
+  border-right-color: transparent;
+  border-radius: 50%;
+  animation: spin 0.75s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+

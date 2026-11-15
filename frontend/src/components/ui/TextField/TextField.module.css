@@ -1,0 +1,104 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  width: 100%;
+}
+
+.label {
+  font-family: var(--font-family-body);
+  font-size: var(--font-small);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-primary);
+}
+
+.inputWrapper {
+  display: flex;
+  align-items: center;
+  background-color: var(--color-surface-inset);
+  border: var(--border-thin) solid var(--color-border-subtle);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-inset);
+  padding: 0 var(--space-3);
+  height: 42px;
+  transition: border-color var(--duration-fast) var(--ease-standard),
+              box-shadow var(--duration-fast) var(--ease-standard),
+              background-color var(--duration-fast) var(--ease-standard);
+  position: relative;
+}
+
+.inputWrapper:hover:not(.disabledWrapper) {
+  border-color: #D3C9BA;
+}
+
+.inputWrapper:focus-within:not(.disabledWrapper) {
+  border-color: var(--color-border-focus);
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: 2px;
+  background-color: var(--color-surface);
+}
+
+.input {
+  flex: 1;
+  border: none;
+  background: transparent;
+  padding: var(--space-2) 0;
+  font-family: var(--font-family-body);
+  font-size: var(--font-body);
+  color: var(--color-text-primary);
+  outline: none;
+  min-width: 0;
+}
+
+.input::placeholder {
+  color: var(--color-text-muted);
+}
+
+.iconSlot {
+  display: flex;
+  align-items: center;
+  color: var(--color-text-secondary);
+  flex-shrink: 0;
+}
+
+.leftIcon {
+  margin-right: var(--space-2);
+}
+
+.rightIcon {
+  margin-left: var(--space-2);
+}
+
+/* Error State */
+.errorWrapper {
+  border-color: var(--color-feedback-error);
+  background-color: var(--color-feedback-error-bg);
+}
+
+.errorWrapper:focus-within {
+  border-color: var(--color-feedback-error);
+  outline-color: rgba(185, 74, 45, 0.4);
+}
+
+.errorMessage {
+  font-size: var(--font-caption);
+  color: var(--color-feedback-error);
+  font-weight: var(--font-weight-medium);
+}
+
+.helperText {
+  font-size: var(--font-caption);
+  color: var(--color-text-secondary);
+}
+
+/* Disabled State */
+.disabledWrapper {
+  opacity: 0.6;
+  cursor: not-allowed;
+  background-color: #E2DBD0;
+}
+
+.disabledWrapper .input {
+  cursor: not-allowed;
+}
+
