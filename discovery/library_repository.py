@@ -49,7 +49,7 @@ LIBRARY_COLLECTION = "library_entries"
 
 # ─── Reading status constants ─────────────────────────────────────────────────
 
-READING_STATUSES = ("WANT_TO_READ", "READING", "READ")
+READING_STATUSES = ("WANT_TO_READ", "READING", "READ", "ABANDONED")
 VALID_STATUSES = set(READING_STATUSES)
 
 # ─── Pagination defaults ──────────────────────────────────────────────────────

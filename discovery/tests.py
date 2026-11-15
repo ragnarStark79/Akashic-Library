@@ -215,6 +215,42 @@ class OpenLibraryNormalizationTests(TestCase):
         self.assertIsNone(book.isbn13)
         self.assertEqual(book.subjects, [])
 
+    def test_normalize_language_codes(self):
+        """3-letter ISO 639-2 language codes are converted to 2-letter ISO 639-1."""
+        test_cases = [
+            (["eng"], "en"),
+            (["ita"], "it"),
+            (["spa"], "es"),
+            (["fre"], "fr"),
+            (["fra"], "fr"),
+            (["ger"], "de"),
+            (["deu"], "de"),
+            (["pol"], "pl"),
+            (["rus"], "ru"),
+            (["lat"], "la"),
+        ]
+        for raw_codes, expected in test_cases:
+            book = self.provider.normalize({
+                "key": "/works/OL1W",
+                "title": "Language Test",
+                "language": raw_codes,
+            })
+            self.assertEqual(book.language, expected, f"Failed for {raw_codes}")
+
+    def test_normalize_language_prefers_target_language_when_present(self):
+        """When multiple languages are present, target_language is selected if available."""
+        raw = {
+            "key": "/works/OL1W",
+            "title": "Multilingual",
+            "language": ["cat", "ita", "fre", "eng"],
+        }
+        book_it = self.provider.normalize(raw, target_language="it")
+        self.assertEqual(book_it.language, "it")
+        book_fr = self.provider.normalize(raw, target_language="fr")
+        self.assertEqual(book_fr.language, "fr")
+        book_none = self.provider.normalize(raw)
+        self.assertEqual(book_none.language, "ca")
+
 
 # ─── Provider HTTP / error handling ──────────────────────────────────────────
 
@@ -306,6 +342,40 @@ class OpenLibraryProviderHTTPTests(TestCase):
         mock_get.side_effect = Timeout()
         with self.assertRaises(ProviderTimeoutError):
             self.provider.search("anything")
+
+    @patch("discovery.providers.open_library.requests.get")
+    def test_search_with_subject_and_pagination(self, mock_get):
+        """Search passes subject and offset for page 2 correctly."""
+        mock_resp = MagicMock()
+        mock_resp.status_code = 200
+        mock_resp.json.return_value = OPEN_LIBRARY_SEARCH_RESPONSE
+        mock_resp.raise_for_status.return_value = None
+        mock_get.return_value = mock_resp
+
+        results = self.provider.search("", subject="Fiction", page=2)
+        self.assertEqual(len(results), 1)
+
+        mock_get.assert_called_once()
+        _, kwargs = mock_get.call_args
+        params = kwargs.get("params", {})
+        self.assertEqual(params.get("subject"), "fiction")
+        self.assertEqual(params.get("offset"), 20)
+        self.assertEqual(params.get("limit"), 20)
+
+    @patch("discovery.providers.open_library.requests.get")
+    def test_search_with_language_param(self, mock_get):
+        """Search maps 2-letter language code to 3-letter for Open Library."""
+        mock_resp = MagicMock()
+        mock_resp.status_code = 200
+        mock_resp.json.return_value = OPEN_LIBRARY_SEARCH_RESPONSE
+        mock_resp.raise_for_status.return_value = None
+        mock_get.return_value = mock_resp
+
+        self.provider.search("Dante", language="it")
+        mock_get.assert_called_once()
+        _, kwargs = mock_get.call_args
+        params = kwargs.get("params", {})
+        self.assertEqual(params.get("language"), "ita")
 
     @patch("discovery.providers.open_library.requests.get")
     def test_get_by_id_not_found_returns_none(self, mock_get):
@@ -511,9 +581,9 @@ class BookSearchServiceTests(TestCase):
 
     @patch("discovery.repository.upsert_book")
     @patch("discovery.repository.search_books")
-    @patch("discovery.providers.google_books.GoogleBooksProvider.search")
-    def test_provider_called_when_no_local_results(self, mock_gb_search, mock_repo_search, mock_upsert):
-        """Provider is called when local catalog is empty and query is given."""
+    @patch("discovery.providers.open_library.OpenLibraryProvider.search")
+    def test_provider_called_when_no_local_results(self, mock_ol_search, mock_repo_search, mock_upsert):
+        """Active provider (Open Library) is called when local catalog is empty and query is given."""
         from discovery.services import BookSearchService
 
         # First call returns zero results (triggers provider fallback).
@@ -524,25 +594,71 @@ class BookSearchServiceTests(TestCase):
 
         book = NormalizedBook(
             title="Provider Book", authors=["P Author"],
-            source_name="google_books", source_id="prov1",
+            source_name="open_library", source_id="prov1",
         )
-        mock_gb_search.return_value = [book]
+        mock_ol_search.return_value = [book]
 
         result = BookSearchService.search(query="provider book", page=1)
         # Provider should have been called.
-        mock_gb_search.assert_called_once()
+        mock_ol_search.assert_called_once()
         self.assertEqual(result["count"], 1)
 
     @patch("discovery.repository.upsert_book")
     @patch("discovery.repository.search_books")
-    @patch("discovery.providers.google_books.GoogleBooksProvider.search")
     @patch("discovery.providers.open_library.OpenLibraryProvider.search")
-    def test_all_providers_fail_returns_empty_results(self, mock_ol, mock_gb, mock_repo_search, mock_upsert):
+    def test_subject_only_search_queries_provider_when_local_empty(self, mock_ol_search, mock_repo_search, mock_upsert):
+        """Subject-only search queries provider when local results are empty."""
+        from discovery.services import BookSearchService
+
+        empty = {"count": 0, "page": 1, "page_size": 20, "results": []}
+        one_result = {"count": 1, "page": 1, "page_size": 20, "results": [{"id": "abc", "title": "Philosophy Book"}]}
+        mock_repo_search.side_effect = [empty, one_result]
+
+        book = NormalizedBook(
+            title="Philosophy Book", authors=["P Author"],
+            source_name="open_library", source_id="prov1",
+            subjects=["Philosophy"],
+        )
+        mock_ol_search.return_value = [book]
+
+        result = BookSearchService.search(subject="Philosophy", page=1)
+        mock_ol_search.assert_called_once()
+        _, kwargs = mock_ol_search.call_args
+        self.assertEqual(kwargs.get("subject"), "Philosophy")
+        self.assertEqual(result["count"], 1)
+
+    @patch("discovery.repository.upsert_book")
+    @patch("discovery.repository.search_books")
+    @patch("discovery.providers.open_library.OpenLibraryProvider.search")
+    def test_provider_pagination_called_for_page_2_when_local_insufficient(self, mock_ol_search, mock_repo_search, mock_upsert):
+        """Provider is queried for page 2 when local results cannot satisfy page 2."""
+        from discovery.services import BookSearchService
+
+        # Local catalog only has 20 results (not enough for page 2 at page_size=20)
+        page1_results = {"count": 20, "page": 2, "page_size": 20, "results": []}
+        page2_updated = {"count": 40, "page": 2, "page_size": 20, "results": [{"id": "p2_book", "title": "Page 2 Book"}]}
+        mock_repo_search.side_effect = [page1_results, page2_updated]
+
+        book = NormalizedBook(
+            title="Page 2 Book", authors=["P Author"],
+            source_name="open_library", source_id="prov2",
+        )
+        mock_ol_search.return_value = [book]
+
+        result = BookSearchService.search(query="Dune", page=2, page_size=20)
+        mock_ol_search.assert_called_once()
+        _, kwargs = mock_ol_search.call_args
+        self.assertEqual(kwargs.get("page"), 2)
+        self.assertEqual(result["count"], 40)
+
+    @patch("discovery.repository.upsert_book")
+    @patch("discovery.repository.search_books")
+    @patch("discovery.providers.open_library.OpenLibraryProvider.search")
+    def test_all_providers_fail_returns_empty_results(self, mock_ol, mock_repo_search, mock_upsert):
         """When all providers fail, empty local results are returned cleanly."""
         from discovery.services import BookSearchService
         empty = {"count": 0, "page": 1, "page_size": 20, "results": []}
         mock_repo_search.return_value = empty
-        mock_gb.side_effect = ProviderError("Google Books is down")
         mock_ol.side_effect = ProviderError("Open Library is down")
 
         result = BookSearchService.search(query="something", page=1)
@@ -551,23 +667,145 @@ class BookSearchServiceTests(TestCase):
 
     @patch("discovery.repository.upsert_book")
     @patch("discovery.repository.search_books")
-    @patch("discovery.providers.google_books.GoogleBooksProvider.search")
-    @patch("discovery.providers.open_library.OpenLibraryProvider.search")
-    def test_first_provider_fails_second_called(self, mock_ol, mock_gb, mock_repo_search, mock_upsert):
-        """When Google Books fails, Open Library is tried."""
+    def test_first_provider_fails_second_called(self, mock_repo_search, mock_upsert):
+        """When the first provider in a chain fails, the next provider is tried."""
+        from discovery import services
         from discovery.services import BookSearchService
+
         empty = {"count": 0, "page": 1, "page_size": 20, "results": []}
         mock_repo_search.return_value = empty
-        mock_gb.side_effect = ProviderError("Google Books is down")
-        book = NormalizedBook(
-            title="OL Book", authors=["OL Author"],
-            source_name="open_library", source_id="OL999W",
-        )
-        mock_ol.return_value = [book]
 
-        # Should not raise.
-        BookSearchService.search(query="ol book", page=1)
-        mock_ol.assert_called_once()
+        mock_p1 = MagicMock()
+        mock_p1.name = "provider_1"
+        mock_p1.search.side_effect = ProviderError("Provider 1 is down")
+
+        mock_p2 = MagicMock()
+        mock_p2.name = "provider_2"
+        book = NormalizedBook(
+            title="P2 Book", authors=["P2 Author"],
+            source_name="provider_2", source_id="p2_1",
+        )
+        mock_p2.search.return_value = [book]
+
+        with patch.object(services, "_PROVIDERS", [mock_p1, mock_p2]):
+            BookSearchService.search(query="p2 book", page=1)
+            mock_p1.search.assert_called_once()
+            mock_p2.search.assert_called_once()
+
+    @patch("discovery.repository.upsert_book")
+    @patch("discovery.repository.search_books")
+    @patch("discovery.providers.open_library.OpenLibraryProvider.search")
+    def test_author_search_queries_provider_with_author(self, mock_ol_search, mock_repo_search, mock_upsert):
+        """Author-specific search forwards author param to provider."""
+        from discovery.services import BookSearchService
+
+        empty = {"count": 0, "page": 1, "page_size": 20, "results": []}
+        found = {
+            "count": 1,
+            "page": 1,
+            "page_size": 20,
+            "results": [{"id": "ry_1", "title": "Fourth Wing", "authors": [{"name": "Rebecca Yarros"}]}],
+        }
+        mock_repo_search.side_effect = [empty, found]
+
+        book = NormalizedBook(
+            title="Fourth Wing",
+            authors=["Rebecca Yarros"],
+            source_name="open_library",
+            source_id="OL1",
+        )
+        mock_ol_search.return_value = [book]
+
+        result = BookSearchService.search(author="Rebecca Yarros", page=1)
+        mock_ol_search.assert_called_once()
+        _, kwargs = mock_ol_search.call_args
+        self.assertEqual(kwargs.get("author"), "Rebecca Yarros")
+        self.assertEqual(result["count"], 1)
+
+    @patch("discovery.repository.upsert_book")
+    @patch("discovery.repository.search_books")
+    @patch("discovery.providers.open_library.OpenLibraryProvider.search")
+    def test_isbn_search_queries_provider_with_isbn(self, mock_ol_search, mock_repo_search, mock_upsert):
+        """ISBN search forwards normalized isbn param to provider."""
+        from discovery.services import BookSearchService
+
+        empty = {"count": 0, "page": 1, "page_size": 20, "results": []}
+        found = {
+            "count": 1,
+            "page": 1,
+            "page_size": 20,
+            "results": [{"id": "hobbit_1", "title": "The Hobbit", "authors": [{"name": "J.R.R. Tolkien"}]}],
+        }
+        mock_repo_search.side_effect = [empty, found]
+
+        book = NormalizedBook(
+            title="The Hobbit",
+            authors=["J.R.R. Tolkien"],
+            isbn13="9780345339683",
+            source_name="open_library",
+            source_id="OL2",
+        )
+        mock_ol_search.return_value = [book]
+
+        result = BookSearchService.search(isbn="9780345339683", page=1)
+        mock_ol_search.assert_called_once()
+        _, kwargs = mock_ol_search.call_args
+        self.assertEqual(kwargs.get("isbn"), "9780345339683")
+        self.assertEqual(result["count"], 1)
+
+    @patch("discovery.repository.upsert_book")
+    @patch("discovery.repository.search_books")
+    @patch("discovery.providers.open_library.OpenLibraryProvider.search")
+    def test_editorial_genre_resolves_to_open_library_aliases(self, mock_ol_search, mock_repo_search, mock_upsert):
+        """Editorial classifications resolve to Open Library aliases."""
+        from discovery.services import BookSearchService
+
+        empty = {"count": 0, "page": 1, "page_size": 20, "results": []}
+        found = {
+            "count": 1,
+            "page": 1,
+            "page_size": 20,
+            "results": [{"id": "arch_1", "title": "Architecture Book"}],
+        }
+        mock_repo_search.side_effect = [empty, found]
+
+        book = NormalizedBook(
+            title="Architecture Book",
+            authors=["Architect A"],
+            subjects=["architectural theory"],
+            source_name="open_library",
+            source_id="OL3",
+        )
+        mock_ol_search.return_value = [book]
+
+        result = BookSearchService.search(subject="Architectural Theory & Spatial Poetics", page=1)
+        mock_ol_search.assert_called_once()
+        _, kwargs = mock_ol_search.call_args
+        self.assertEqual(kwargs.get("subject"), "architectural theory")
+        self.assertEqual(result["count"], 1)
+
+    def test_test_store_books_excluded_from_search(self):
+        """Test Store Book records are never returned in discovery search."""
+        from discovery import repository
+
+        col = self._mock_db["books"]
+        col.insert_one({"_id": "book_test_1", "title": "Test Store Book"})
+        col.insert_one({"_id": "book_test_2", "title": "Fantasy Book A"})
+
+        # Insert a real discovery book
+        real_book = NormalizedBook(
+            title="A Genuine Folio",
+            authors=["Real Author"],
+            source_name="open_library",
+            source_id="OL_REAL",
+        )
+        repository.upsert_book(real_book)
+
+        results = repository.search_books(page=1, page_size=10)
+        titles = [b["title"] for b in results["results"]]
+        self.assertNotIn("Test Store Book", titles)
+        self.assertNotIn("Fantasy Book A", titles)
+        self.assertIn("A Genuine Folio", titles)
 
 
 # ─── API View tests ───────────────────────────────────────────────────────────

@@ -16,6 +16,7 @@ Indexes (created by ensure_indexes()):
 """
 
 import logging
+import re
 from datetime import UTC, datetime
 from typing import Any
 
@@ -27,6 +28,7 @@ from pymongo.errors import DuplicateKeyError, PyMongoError
 
 from .db import get_db
 from .exceptions import BookNotFoundError, MongoDBUnavailableError
+from .genre_mappings import resolve_subject_aliases
 from .models import NormalizedBook
 
 logger = logging.getLogger(__name__)
@@ -130,6 +132,7 @@ def book_exists(book_id: str) -> bool:
 def search_books(
     *,
     query: str = "",
+    title: str = "",
     author: str = "",
     isbn: str = "",
     subject: str = "",
@@ -139,18 +142,21 @@ def search_books(
     year_to: int | None = None,
     page: int = 1,
     page_size: int = DEFAULT_PAGE_SIZE,
+    featured: bool = False,
 ) -> dict[str, Any]:
     """Search the local MongoDB books collection.
 
     Supported filters:
-      query      Full-text search (title + description).
+      query      All-fields search across title, authors, subjects, ISBNs, description.
+      title      Case-insensitive match on book title.
       author     Case-insensitive substring match on author name.
-      isbn       ISBN-10 or ISBN-13 (strips hyphens).
-      subject    Case-insensitive substring on subjects array.
+      isbn       ISBN-10 or ISBN-13 (normalized, hyphens and whitespace removed).
+      subject    Case-insensitive substring on subjects array (with editorial alias mapping).
       language   Exact BCP-47 code (e.g. "en").
       publisher  Case-insensitive substring on publication.publisher.
       year_from  Min publication year (inclusive, 4-digit).
       year_to    Max publication year (inclusive, 4-digit).
+      featured   When True, filters exclusively for genuine provider records with covers.
 
     Returns a paginated result dict:
         {
@@ -159,37 +165,79 @@ def search_books(
             "page_size": <items per page>,
             "results": [<doc>, ...]
         }
-
-    Deferred filters (data source not yet available):
-      in_store     — requires Step 6 StoreProduct
-      available_now — requires Step 6 inventory
-      min_rating   — can be added once reviews exist (post-query filter)
     """
     page_size = min(max(1, page_size), MAX_PAGE_SIZE)
     page = max(1, page)
     skip = (page - 1) * page_size
 
     col = _get_collection()
-    filter_doc: dict[str, Any] = {}
+    filter_doc: dict[str, Any] = {
+        # Exclude non-discovery test-store artifacts or test dummy documents
+        "title": {
+            "$not": {"$regex": r"^(Test Store Book|Community Test Book|Fantasy Book [A-D])"}
+        },
+        "sources": {"$exists": True, "$ne": None},
+    }
 
-    if query:
-        filter_doc["$text"] = {"$search": query}
-    if author:
-        filter_doc["authors.name"] = {"$regex": author, "$options": "i"}
-    if isbn:
-        clean_isbn = isbn.replace("-", "").strip()
+    if featured:
+        filter_doc["sources.open_library"] = {"$exists": True}
+        filter_doc["covers.0"] = {"$exists": True}
+        filter_doc["title"] = {
+            "$not": {
+                "$regex": r"(?i)^(Test Store Book|Community Test Book|Fantasy Book [A-D]|Clean Code|C.digo Limpo|Clean Coding|Art of Clean Code|Hands-On Software|Czysty kod|The clean coder)"
+            }
+        }
+
+    if title and title.strip():
+        filter_doc["title"] = {"$regex": re.escape(title.strip()), "$options": "i"}
+
+    if author and author.strip():
+        filter_doc["authors.name"] = {"$regex": re.escape(author.strip()), "$options": "i"}
+
+    if isbn and isbn.strip():
+        clean_isbn = re.sub(r"[^0-9Xx]", "", isbn).strip().upper()
         if len(clean_isbn) == 13:
             filter_doc["identifiers.isbn13"] = clean_isbn
         elif len(clean_isbn) == 10:
             filter_doc["identifiers.isbn10"] = clean_isbn
-        else:
+        elif clean_isbn:
             # Try both fields for unknown-length ISBNs.
             filter_doc["$or"] = [
                 {"identifiers.isbn13": clean_isbn},
                 {"identifiers.isbn10": clean_isbn},
             ]
-    if subject:
-        filter_doc["subjects"] = {"$regex": subject, "$options": "i"}
+
+    if subject and subject.strip():
+        aliases = resolve_subject_aliases(subject)
+        if len(aliases) == 1:
+            filter_doc["subjects"] = {"$regex": re.escape(aliases[0]), "$options": "i"}
+        elif aliases:
+            alias_pattern = "|".join(re.escape(a) for a in aliases)
+            filter_doc["subjects"] = {"$regex": alias_pattern, "$options": "i"}
+
+    if query and query.strip():
+        clean_q = query.strip()
+        escaped_q = re.escape(clean_q)
+        clean_isbn_q = re.sub(r"[^0-9Xx]", "", clean_q).upper()
+
+        everything_or: list[dict[str, Any]] = [
+            {"title": {"$regex": escaped_q, "$options": "i"}},
+            {"authors.name": {"$regex": escaped_q, "$options": "i"}},
+            {"subjects": {"$regex": escaped_q, "$options": "i"}},
+            {"description": {"$regex": escaped_q, "$options": "i"}},
+        ]
+        if clean_isbn_q and len(clean_isbn_q) in (10, 13):
+            everything_or.extend([
+                {"identifiers.isbn13": clean_isbn_q},
+                {"identifiers.isbn10": clean_isbn_q},
+            ])
+
+        if "$or" in filter_doc:
+            existing_or = filter_doc.pop("$or")
+            filter_doc["$and"] = [{"$or": everything_or}, {"$or": existing_or}]
+        else:
+            filter_doc["$or"] = everything_or
+
     if language:
         filter_doc["publication.language"] = language
     if publisher:
@@ -203,9 +251,70 @@ def search_books(
         filter_doc["publication.published_date"] = year_filter
 
     try:
-        total = col.count_documents(filter_doc)
-        cursor = col.find(filter_doc, sort=[("_id", DESCENDING)]).skip(skip).limit(page_size)
-        results = [_serialize(doc) for doc in cursor]
+        if featured:
+            candidate_cursor = col.find(filter_doc, sort=[("_id", ASCENDING)]).limit(150)
+            seen_stems: set[str] = set()
+            seen_authors: set[str] = set()
+            seen_tokens: set[str] = set()
+            diverse_docs: list[dict[str, Any]] = []
+
+            def _stem(t: str) -> str:
+                w = re.sub(r"[^a-zA-Z0-9\s]", "", t.lower()).split()
+                return " ".join(w[:2]) if len(w) >= 2 else (w[0] if w else "")
+
+            for doc in candidate_cursor:
+                t = doc.get("title", "").strip()
+                s = _stem(t)
+                authors = [a.get("name", "").strip() for a in doc.get("authors", []) if a.get("name")]
+                if not authors:
+                    continue
+                primary_author = authors[0].lower()
+
+                if s and s in seen_stems:
+                    continue
+
+                words = set(re.sub(r"[^a-zA-Z0-9\s]", "", t.lower()).split())
+                title_key_tokens = {
+                    w for w in words if len(w) > 3 and w not in {"with", "from", "other", "stories", "book", "edition", "volume"}
+                }
+
+                if any(tok in seen_tokens for tok in title_key_tokens):
+                    continue
+
+                author_collision = False
+                for a in authors:
+                    a_low = a.lower()
+                    if a_low in seen_authors:
+                        author_collision = True
+                        break
+                    for tok in a_low.split():
+                        if len(tok) > 3 and tok in seen_tokens:
+                            author_collision = True
+                            break
+                    if author_collision:
+                        break
+
+                if author_collision:
+                    continue
+
+                seen_stems.add(s)
+                seen_authors.add(primary_author)
+                seen_tokens.update(title_key_tokens)
+                for a in authors:
+                    for tok in a.lower().split():
+                        if len(tok) > 3:
+                            seen_tokens.add(tok)
+
+                diverse_docs.append(doc)
+                if len(diverse_docs) == page_size:
+                    break
+
+            results = [_serialize(doc) for doc in diverse_docs]
+            total = len(results)
+        else:
+            total = col.count_documents(filter_doc)
+            cursor = col.find(filter_doc, sort=[("_id", ASCENDING)]).skip(skip).limit(page_size)
+            results = [_serialize(doc) for doc in cursor]
     except PyMongoError as exc:
         logger.error("MongoDB search failed: %s", exc)
         raise MongoDBUnavailableError("Search is temporarily unavailable.") from exc
@@ -227,7 +336,7 @@ def upsert_book(book: NormalizedBook) -> str:
     Deduplication strategy (deterministic, in priority order):
       1. ISBN-13 (strongest canonical identifier)
       2. ISBN-10
-      3. Provider-specific ID (e.g. Google Books volume ID)
+      3. Provider-specific ID (e.g. Google Books volume ID or Open Library work key)
       4. Insert as new document (no match found)
 
     Returns the string ObjectId of the upserted/matched document.
@@ -237,29 +346,37 @@ def upsert_book(book: NormalizedBook) -> str:
     now = datetime.now(UTC)
     doc["updated_at"] = now
 
-    # Build the upsert filter based on available identifiers.
-    upsert_filter = _build_upsert_filter(book)
+    # Match existing document in priority order:
+    existing = None
+    if book.isbn13:
+        existing = col.find_one({"identifiers.isbn13": book.isbn13}, {"_id": 1})
+    if not existing and book.isbn10:
+        existing = col.find_one({"identifiers.isbn10": book.isbn10}, {"_id": 1})
+    if not existing and not book.isbn13 and not book.isbn10 and book.source_name and book.source_id:
+        existing = col.find_one({f"sources.{book.source_name}.id": book.source_id}, {"_id": 1})
 
-    if upsert_filter:
-        # $setOnInsert sets created_at only on a true insert.
-        result = col.update_one(
-            upsert_filter,
-            {
-                "$set": doc,
-                "$setOnInsert": {"created_at": now},
-            },
-            upsert=True,
-        )
-        if result.upserted_id:
-            return str(result.upserted_id)
-        # Matched an existing document — fetch its _id.
-        existing = col.find_one(upsert_filter, {"_id": 1})
-        return str(existing["_id"]) if existing else ""
-    else:
-        # No stable identifier — always insert.
+    if existing:
+        col.update_one({"_id": existing["_id"]}, {"$set": doc})
+        return str(existing["_id"])
+
+    # No existing document matched — insert as new document.
+    try:
         doc["created_at"] = now
         result = col.insert_one(doc)
         return str(result.inserted_id)
+    except DuplicateKeyError:
+        # If another index key conflict occurred (e.g. isbn10 vs isbn13), recover gracefully
+        conflicting = None
+        if book.isbn13:
+            conflicting = col.find_one({"identifiers.isbn13": book.isbn13}, {"_id": 1})
+        if not conflicting and book.isbn10:
+            conflicting = col.find_one({"identifiers.isbn10": book.isbn10}, {"_id": 1})
+        if not conflicting and book.source_name and book.source_id:
+            conflicting = col.find_one({f"sources.{book.source_name}.id": book.source_id}, {"_id": 1})
+        if conflicting:
+            col.update_one({"_id": conflicting["_id"]}, {"$set": doc})
+            return str(conflicting["_id"])
+        raise
 
 
 def import_book(book: NormalizedBook) -> str:
