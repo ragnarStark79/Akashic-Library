@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+
+<html class="h-full" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_standard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&amp;family=Inter:wght@300..700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "inverse-on-surface": "#e2f5f0", "on-tertiary": "#ffffff", "background": "#ebfdf8", "on-tertiary-container": "#f8b89b", "outline-variant": "#bfc8c7", "on-secondary-fixed-variant": "#384b3f", "outline": "#6f7978", "primary-fixed-dim": "#93d2cc", "accent-sage": "#A8BDAE", "error": "#ba1a1a", "on-surface": "#0e1e1c", "on-secondary": "#ffffff", "on-background": "#0e1e1c", "surface-container-highest": "#d4e6e2", "surface-container-lowest": "#ffffff", "bg-page": "#F5F1E9", "surface-container-low": "#e5f8f3", "tertiary": "#5b311c", "tertiary-fixed": "#ffdbcc", "on-secondary-fixed": "#0d1f15", "surface-inset": "#EAE3D8", "on-primary": "#ffffff", "on-tertiary-fixed-variant": "#683b26", "text-primary": "#263633", "inverse-surface": "#233330", "inverse-primary": "#93d2cc", "surface-dim": "#ccded9", "text-secondary": "#827E75", "surface-bright": "#ebfdf8", "on-primary-fixed-variant": "#02504c", "secondary-fixed-dim": "#b6ccbc", "tertiary-container": "#764730", "secondary": "#506356", "on-error": "#ffffff", "accent-terracotta": "#C58B70", "surface-glass": "rgba(252, 250, 245, 0.82)", "surface-variant": "#d4e6e2", "on-tertiary-fixed": "#331202", "tertiary-fixed-dim": "#f8b89b", "accent-teal": "#185C58", "secondary-fixed": "#d2e8d8", "surface": "#ebfdf8", "surface-container": "#dff2ed", "on-error-container": "#93000a", "surface-porcelain": "#FCFAF5", "on-surface-variant": "#3f4947", "primary-container": "#185c58", "on-primary-container": "#93d2cc", "error-container": "#ffdad6", "surface-container-high": "#daece7", "glass-border": "rgba(234, 227, 216, 0.65)", "primary-fixed": "#afeee9", "primary": "#004440", "surface-tint": "#276864", "secondary-container": "#d2e8d8", "on-primary-fixed": "#00201e", "on-secondary-container": "#55695c" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "space-xl": "2.5rem", "margin-mobile": "1.25rem", "space-md": "1rem", "space-lg": "1.5rem", "margin": "3rem", "gutter": "1.5rem", "space-sm": "0.5rem", "gutter-mobile": "1rem", "space-xs": "0.25rem" }, "fontFamily": { "label-sm": ["Inter"], "display": ["Lora"], "headline-lg-mobile": ["Lora"], "headline-sm": ["Lora"], "caption": ["Inter"], "headline-md": ["Lora"], "body-sm": ["Inter"], "display-mobile": ["Lora"], "headline-lg": ["Lora"], "body-lead": ["Inter"], "label-md": ["Inter"], "body-base": ["Inter"] }, "fontSize": { "label-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.04em", "fontWeight": "600" }], "display": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "500" }], "headline-lg-mobile": ["28px", { "lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "500" }], "headline-sm": ["20px", { "lineHeight": "28px", "fontWeight": "600" }], "caption": ["11px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500" }], "headline-md": ["26px", { "lineHeight": "34px", "fontWeight": "500" }], "body-sm": ["13px", { "lineHeight": "20px", "fontWeight": "400" }], "display-mobile": ["34px", { "lineHeight": "42px", "letterSpacing": "-0.01em", "fontWeight": "500" }], "headline-lg": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.015em", "fontWeight": "500" }], "body-lead": ["18px", { "lineHeight": "28px", "fontWeight": "400" }], "label-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500" }], "body-base": ["15px", { "lineHeight": "24px", "fontWeight": "400" }] } } } };</script></head><body class="bg-bg-page text-on-surface font-body-base text-body-base antialiased min-h-screen flex flex-col"><header class="fixed top-0 left-0 right-0 z-50 pt-space-md pointer-events-none"><div class="max-w-[1360px] mx-auto px-gutter-mobile lg:px-margin flex justify-center"><div class="pointer-events-auto h-16 bg-surface-glass backdrop-blur-xl rounded-full px-space-lg flex items-center justify-between gap-space-lg shadow-[0_10px_24px_rgba(38,54,51,0.08),0_2px_6px_rgba(38,54,51,0.04)] w-full max-w-5xl"><a class="flex items-center gap-space-xs text-on-surface transition-opacity hover:opacity-80" data-path="discover" href="#"><span class="font-display text-headline-sm italic font-medium tracking-tight text-primary-container">Akashic Library</span></a><nav class="hidden md:flex items-center gap-space-xs" data-active-classes="bg-primary-container text-on-primary font-label-md text-label-md rounded-full px-space-md py-space-xs shadow-[0_2px_8px_rgba(24,92,88,0.25)]"><a class="px-space-md py-space-xs rounded-full font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-all" data-path="discover" href="#">Discover</a><a class="px-space-md py-space-xs rounded-full font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-all" data-path="genres" href="#">Genres</a><a class="px-space-md py-space-xs rounded-full font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-all" data-path="community" href="#">Community</a><a aria-current="page" class="transition-all bg-primary-container text-on-primary font-label-md text-label-md rounded-full px-space-md py-space-xs shadow-[0_2px_8px_rgba(24,92,88,0.25)]" data-path="my-library" href="#">My Library</a><a class="px-space-md py-space-xs rounded-full font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-all" data-path="about" href="#">About</a></nav><div class="flex items-center gap-space-sm"><button aria-label="Search Archive" class="w-10 h-10 rounded-full bg-surface-inset shadow-[inset_1px_1px_3px_rgba(38,54,51,0.1),inset_-1px_-1px_3px_rgba(255,255,255,0.8)] flex items-center justify-center text-on-surface-variant hover:text-on-surface transition-colors" type="button"><span class="material-symbols-outlined text-[19px]">search</span></button><div class="flex items-center gap-space-xs pl-space-xs py-space-xs pr-space-md rounded-full bg-surface-porcelain shadow-[0_2px_8px_rgba(38,54,51,0.06)]"><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center font-label-sm text-label-sm text-on-primary">ES</div><div class="hidden sm:flex flex-col text-left"><span class="font-label-sm text-label-sm leading-none text-on-surface font-semibold">Elena Solanas</span><span class="font-caption text-caption leading-none text-text-secondary mt-0.5">Patron Folio</span></div></div></div></div></div></header><main class="w-full flex-1 pt-space-xl bg-bg-page max-w-[1360px] mx-auto px-gutter-mobile lg:px-margin"><div class="flex flex-col w-full pb-space-xl">
+<!-- Top Context Navigation & Literary Folio Anchor -->
+<section class="w-full flex flex-col gap-space-md pt-space-xs">
+<!-- Breadcrumb & Sibling Route -->
+<div class="flex flex-wrap items-center justify-between text-label-md font-label-md text-text-secondary">
+<a class="inline-flex items-center gap-space-xs hover:text-primary transition-colors group" href="#">
+<span class="material-symbols-outlined text-[18px] group-hover:-translate-x-0.5 transition-transform">arrow_back</span>
+<span class="text-text-primary font-medium">Return to Folio Details</span>
+<span class="text-accent-terracotta italic font-display">(Ficciones)</span>
+</a>
+<a class="inline-flex items-center gap-space-xs text-primary hover:text-primary-container transition-colors font-medium" href="#">
+<span>View Public Reader Reviews</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</a>
+</div>
+<!-- Literary Folio Anchor Card -->
+<div class="w-full bg-surface-porcelain rounded-xl p-space-lg shadow-[0_4px_20px_rgba(38,54,51,0.06),0_1px_3px_rgba(38,54,51,0.04)] relative overflow-hidden">
+<!-- Ambient Archival Watermark Pattern -->
+<div class="absolute -right-8 -bottom-10 pointer-events-none opacity-[0.04] text-text-primary select-none">
+<span class="material-symbols-outlined text-[240px]">menu_book</span>
+</div>
+<div class="flex flex-col lg:flex-row items-start justify-between gap-space-lg relative z-10">
+<div class="flex flex-col sm:flex-row gap-space-md items-start max-w-4xl">
+<!-- Miniature Book Cover Thumbnail -->
+<div class="w-24 sm:w-28 shrink-0 aspect-[2/3] rounded-lg bg-surface-inset shadow-[inset_1px_1px_3px_rgba(38,54,51,0.15),0_8px_16px_rgba(38,54,51,0.12)] p-1.5 flex flex-col justify-between overflow-hidden relative group">
+<div class="h-full w-full rounded bg-gradient-to-br from-primary-container via-primary to-inverse-surface p-2 flex flex-col justify-between text-on-primary">
+<div class="flex items-center justify-between text-[8px] font-caption tracking-widest uppercase opacity-75">
+<span>SUR</span>
+<span>1944</span>
+</div>
+<div class="text-center my-auto">
+<span class="font-display italic text-[14px] leading-tight block">Ficciones</span>
+<span class="font-caption text-[8px] tracking-wider uppercase opacity-85 block mt-0.5">J. L. Borges</span>
+</div>
+<div class="text-[7px] text-center font-caption tracking-tight opacity-60">Gamma-7</div>
+</div>
+</div>
+<!-- Folio Metadata & Section Title -->
+<div class="space-y-space-xs">
+<div class="flex flex-wrap items-center gap-x-space-sm gap-y-1">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-accent-terracotta font-semibold">Folio #01</span>
+<span class="text-text-secondary">•</span>
+<span class="font-label-sm text-label-sm text-text-secondary">Shelf Gamma-7</span>
+<span class="text-text-secondary">•</span>
+<span class="font-label-sm text-label-sm text-text-secondary">Borges Wing</span>
+<span class="text-text-secondary">•</span>
+<span class="font-caption text-caption text-text-secondary font-mono bg-surface-inset px-2 py-0.5 rounded-full">Acc. ID: #BOR-1944-AR</span>
+</div>
+<h1 class="font-display text-headline-lg text-text-primary font-medium tracking-tight">
+              Voices from the Reading Room: <span class="italic text-primary-container">Marginalia &amp; Annotations</span>
+</h1>
+<p class="font-body-base text-body-base text-on-surface-variant max-w-3xl leading-relaxed">
+              A quiet digital desk for in-passage reflections, handwritten pencil notes, and contemplative marginalia. Distinct from public reader critiques: marginalia captures spontaneous, solitary thoughts anchored directly to specific passages, labyrinths, and folios.
+            </p>
+<div class="pt-space-xs flex items-center gap-space-xs text-text-secondary">
+<span class="w-1.5 h-1.5 rounded-full bg-accent-sage"></span>
+<span class="font-caption text-caption tracking-wide uppercase text-accent-teal font-semibold">Phase 5A.2 Design Reference</span>
+<span class="font-caption text-caption">• Proposed Future Marginalia Experience • Demonstration Folio</span>
+</div>
+</div>
+</div>
+<!-- Archival Status Indicator Tag -->
+<div class="self-start lg:self-center shrink-0 flex flex-col items-start lg:items-end gap-1 bg-surface-inset/60 px-space-md py-space-sm rounded-xl">
+<div class="flex items-center gap-1.5 text-accent-teal font-label-sm text-label-sm font-semibold">
+<span class="w-2 h-2 rounded-full bg-accent-teal animate-pulse"></span>
+            Reading Desk Engaged
+          </div>
+<span class="font-caption text-caption text-text-secondary">Patron Folio Ledger: Active</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Interactive State Simulation Bar (Design Review Switcher) -->
+<section class="w-full mt-space-md bg-surface-glass backdrop-blur-md rounded-2xl p-space-sm shadow-[0_4px_16px_rgba(38,54,51,0.04)]">
+<div class="flex flex-col sm:flex-row items-center justify-between gap-space-sm px-space-xs">
+<div class="flex items-center gap-space-xs text-text-secondary shrink-0">
+<span class="material-symbols-outlined text-[18px] text-accent-terracotta">tune</span>
+<span class="font-label-sm text-label-sm font-semibold tracking-wider uppercase text-text-primary">State Simulation Console:</span>
+</div>
+<div class="flex flex-wrap items-center gap-1.5 overflow-x-auto w-full sm:w-auto pb-1 sm:pb-0" id="state-button-bar">
+<button class="sim-btn px-3 py-1.5 rounded-full font-label-sm text-label-sm transition-all bg-primary-container text-on-primary shadow-sm" data-sim-state="all" type="button">
+          1. All Notes &amp; Desk
+        </button>
+<button class="sim-btn px-3 py-1.5 rounded-full font-label-sm text-label-sm transition-all bg-surface-porcelain text-on-surface-variant hover:text-text-primary hover:bg-surface-inset" data-sim-state="private" type="button">
+          2. Private Only (My Notes)
+        </button>
+<button class="sim-btn px-3 py-1.5 rounded-full font-label-sm text-label-sm transition-all bg-surface-porcelain text-on-surface-variant hover:text-text-primary hover:bg-surface-inset" data-sim-state="shared" type="button">
+          3. Shared Marginalia
+        </button>
+<button class="sim-btn px-3 py-1.5 rounded-full font-label-sm text-label-sm transition-all bg-surface-porcelain text-on-surface-variant hover:text-text-primary hover:bg-surface-inset" data-sim-state="empty" type="button">
+          4. Empty Reading Room
+        </button>
+<button class="sim-btn px-3 py-1.5 rounded-full font-label-sm text-label-sm transition-all bg-surface-porcelain text-on-surface-variant hover:text-text-primary hover:bg-surface-inset" data-sim-state="submitting" type="button">
+          5. Inscription In-Progress
+        </button>
+<button class="sim-btn px-3 py-1.5 rounded-full font-label-sm text-label-sm transition-all bg-surface-porcelain text-on-surface-variant hover:text-text-primary hover:bg-surface-inset" data-sim-state="unauthenticated" type="button">
+          6. Unauthenticated
+        </button>
+</div>
+</div>
+</section>
+<!-- Notification Banner for Dynamic State Feedbacks -->
+<div class="hidden mt-space-sm px-space-md py-space-xs rounded-xl bg-surface-inset text-text-primary text-label-sm font-label-sm items-center justify-between" id="state-status-pill">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-[18px] text-accent-terracotta">info</span>
+<span id="state-status-text">Simulating Active Desk View</span>
+</div>
+<span class="font-caption text-caption text-text-secondary">Demonstration preview only</span>
+</div>
+<!-- Main Dual-Column Layout: Left Composer & Right Ledger -->
+<main class="w-full mt-space-lg grid grid-cols-1 lg:grid-cols-12 gap-gutter items-start">
+<!-- LEFT COLUMN: The Annotation Composer (5 cols) -->
+<aside class="lg:col-span-5 flex flex-col gap-space-md sticky top-24">
+<div class="w-full bg-surface-porcelain rounded-2xl p-space-lg shadow-[0_8px_24px_rgba(38,54,51,0.06),0_1px_3px_rgba(38,54,51,0.04)] transition-all" id="composer-card">
+<!-- Composer Header -->
+<div class="flex items-start justify-between pb-space-sm">
+<div class="space-y-0.5">
+<div class="flex items-center gap-space-xs text-accent-teal">
+<span class="material-symbols-outlined text-[20px]">edit_note</span>
+<span class="font-label-sm text-label-sm uppercase tracking-wider font-semibold">The Reading Desk</span>
+</div>
+<h2 class="font-display text-headline-sm text-text-primary font-medium">Record a Reflection</h2>
+</div>
+<span class="font-caption text-caption px-2 py-1 rounded-full bg-surface-inset text-text-secondary">Pencil v2.4</span>
+</div>
+<p class="font-body-sm text-body-sm text-text-secondary pb-space-md">
+          Anchor a thought to a passage or fleeting contemplation. Your words inhabit the parchment margins of this folio.
+        </p>
+<!-- Form Elements -->
+<form class="space-y-space-md" id="annotation-form" onsubmit="event.preventDefault();">
+<!-- Visibility Selector (Segmented Radio Group) -->
+<div class="space-y-space-xs">
+<label class="block font-label-sm text-label-sm text-text-primary font-semibold">
+              Inscription Visibility
+            </label>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-space-xs p-1 bg-surface-inset rounded-xl shadow-[inset_1px_1px_3px_rgba(38,54,51,0.08),inset_-1px_-1px_3px_rgba(255,255,255,0.7)]">
+<!-- Private Option -->
+<label class="cursor-pointer flex items-center gap-2 p-2 rounded-lg bg-surface-porcelain shadow-sm transition-all" id="label-vis-private">
+<input checked="" class="accent-accent-teal sr-only" id="vis-private" name="visibility" type="radio" value="private"/>
+<div class="w-6 h-6 rounded-full bg-surface-inset flex items-center justify-center text-accent-terracotta shrink-0" id="icon-container-private">
+<span class="material-symbols-outlined text-[15px]" style="font-variation-settings: 'FILL' 1;">lock</span>
+</div>
+<div class="flex flex-col leading-tight min-w-0">
+<span class="font-label-sm text-label-sm text-text-primary font-semibold truncate">Private Reflection</span>
+<span class="font-caption text-[10px] text-text-secondary truncate">Only on your desk</span>
+</div>
+</label>
+<!-- Shared Option -->
+<label class="cursor-pointer flex items-center gap-2 p-2 rounded-lg hover:bg-surface-porcelain/60 transition-all opacity-85" id="label-vis-shared">
+<input class="accent-accent-teal sr-only" id="vis-shared" name="visibility" type="radio" value="shared"/>
+<div class="w-6 h-6 rounded-full bg-surface-inset flex items-center justify-center text-accent-sage shrink-0" id="icon-container-shared">
+<span class="material-symbols-outlined text-[15px]">groups</span>
+</div>
+<div class="flex flex-col leading-tight min-w-0">
+<span class="font-label-sm text-label-sm text-text-primary font-semibold truncate">Shared Marginalia</span>
+<span class="font-caption text-[10px] text-text-secondary truncate">Open to reading room</span>
+</div>
+</label>
+</div>
+<!-- Dynamic Visibility Clarifier Note -->
+<p class="font-caption text-caption text-text-secondary italic pt-0.5" id="visibility-hint">
+              • Kept strictly in your personal reading ledger; visible only to Elena Solanas.
+            </p>
+</div>
+<!-- Anchor Reference Input -->
+<div class="space-y-space-xs">
+<div class="flex items-center justify-between">
+<label class="font-label-sm text-label-sm text-text-primary font-semibold" for="anchor-reference">
+                Folio / Page Reference <span class="text-accent-terracotta">*</span>
+</label>
+<span class="font-caption text-caption text-text-secondary">E.g., Page 114, Sec. 3</span>
+</div>
+<div class="relative">
+<input class="w-full bg-surface-inset text-text-primary font-label-md text-label-md rounded-xl px-space-md py-2.5 focus:outline-none focus:bg-surface-porcelain focus:ring-2 focus:ring-accent-teal shadow-[inset_2px_2px_5px_rgba(38,54,51,0.08),inset_-2px_-2px_5px_rgba(255,255,255,0.7)] transition-all" id="anchor-reference" placeholder="Page 114 • The Garden of Forking Paths" type="text" value="Page 114 • The Garden of Forking Paths"/>
+<span class="material-symbols-outlined absolute right-3 top-3 text-[18px] text-text-secondary pointer-events-none">bookmark</span>
+</div>
+</div>
+<!-- Anchor Excerpt (Optional) -->
+<div class="space-y-space-xs">
+<div class="flex items-center justify-between">
+<label class="font-label-sm text-label-sm text-text-primary font-semibold" for="anchor-excerpt">
+                Quoted Passage or Anchor Phrase <span class="font-caption text-caption text-text-secondary font-normal">(Optional)</span>
+</label>
+<span class="font-caption text-caption text-text-secondary">Italicized on folio</span>
+</div>
+<textarea class="w-full bg-surface-inset text-text-primary font-display italic text-body-sm rounded-xl px-space-md py-2.5 focus:outline-none focus:bg-surface-porcelain focus:ring-2 focus:ring-accent-teal shadow-[inset_2px_2px_5px_rgba(38,54,51,0.08),inset_-2px_-2px_5px_rgba(255,255,255,0.7)] transition-all resize-none leading-relaxed" id="anchor-excerpt" placeholder="Transcribe an excerpt or phrase from the folio being contemplated..." rows="2">“The labyrinth is not merely geometric; it is temporal and linguistic. Each sentence branched into divergent bifurcations.”</textarea>
+</div>
+<!-- Main Writing Area -->
+<div class="space-y-space-xs">
+<div class="flex items-center justify-between">
+<label class="font-label-sm text-label-sm text-text-primary font-semibold" for="reflection-text">
+                Contemplation / Marginal Observation
+              </label>
+<span class="font-caption text-caption text-accent-teal font-mono" id="char-counter">248 characters • Thoughtful depth</span>
+</div>
+<textarea class="w-full bg-surface-inset text-text-primary font-body-base text-body-base rounded-xl p-space-md focus:outline-none focus:bg-surface-porcelain focus:ring-2 focus:ring-accent-teal shadow-[inset_2px_2px_5px_rgba(38,54,51,0.08),inset_-2px_-2px_5px_rgba(255,255,255,0.7)] transition-all resize-none leading-relaxed" id="reflection-text" placeholder="Transcribe your contemplation, question, or marginal observation here. Write with the patience of an unhurried reader..." rows="5">Borges suggests that time itself is an infinite web of choices made simultaneously. Does Ts'ui Pên's novel exist as an impossibility or as a literal depiction of quantum superposition written decades early?</textarea>
+</div>
+<!-- Literary Guidance Advisory -->
+<div class="bg-surface-inset/60 rounded-xl p-space-sm flex items-start gap-space-xs">
+<span class="material-symbols-outlined text-[18px] text-accent-terracotta shrink-0 mt-0.5">stylus_note</span>
+<p class="font-caption text-caption text-text-secondary leading-snug">
+              Marginalia captures spontaneous insight during the act of reading. For full thematic appraisals or critiques of the complete work, please visit the <a class="text-text-primary underline decoration-accent-terracotta hover:text-primary" href="#">Reader Reviews</a> alcove.
+            </p>
+</div>
+<!-- Buttons & Draft Autosave -->
+<div class="pt-space-xs flex flex-col gap-space-sm">
+<div class="flex items-center gap-space-sm">
+<button class="flex-1 py-3 px-space-lg rounded-full bg-primary hover:bg-primary-container text-on-primary font-label-md text-label-md font-medium tracking-wide shadow-[0_4px_12px_rgba(24,92,88,0.25)] hover:scale-[1.01] active:scale-[0.99] transition-all flex items-center justify-center gap-space-xs" id="inscribe-btn" type="button">
+<span class="material-symbols-outlined text-[18px]" id="inscribe-icon">clock_loader_40</span>
+<span id="inscribe-label">Inscribe Marginalia to Desk</span>
+</button>
+<button class="py-3 px-space-md rounded-full bg-surface-porcelain hover:bg-surface-inset text-text-primary font-label-md text-label-md transition-all shadow-sm" id="clear-btn" type="button">
+                Clear Desk
+              </button>
+</div>
+<div class="flex items-center justify-between text-caption font-caption text-text-secondary px-space-xs">
+<span class="flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-accent-sage"></span>
+<span id="autosave-label">Autosaved to local desk scratchpad</span>
+</span>
+<span>2 mins ago</span>
+</div>
+</div>
+</form>
+</div>
+<!-- Quick Desk Summary Widget -->
+<div class="w-full bg-surface-porcelain rounded-xl p-space-md shadow-[0_2px_8px_rgba(38,54,51,0.04)] flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-full bg-surface-inset flex items-center justify-center text-text-primary">
+<span class="material-symbols-outlined text-[20px]">history_edu</span>
+</div>
+<div>
+<div class="font-label-md text-label-md text-text-primary font-semibold">Elena Solanas’s Desk</div>
+<div class="font-caption text-caption text-text-secondary">5 Inscribed • 3 Public Contributions</div>
+</div>
+</div>
+<a class="font-label-sm text-label-sm text-accent-teal hover:underline decoration-accent-terracotta" href="#">Ledger Export</a>
+</div>
+</aside>
+<!-- RIGHT COLUMN: Marginalia Ledger & Feed (7 cols) -->
+<div class="lg:col-span-7 flex flex-col gap-space-md">
+<!-- Ledger Header & Filter Controls -->
+<div class="w-full bg-surface-porcelain rounded-2xl p-space-md shadow-[0_4px_16px_rgba(38,54,51,0.04)] flex flex-col sm:flex-row items-center justify-between gap-space-md">
+<!-- Title & Counter -->
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-[22px] text-primary">auto_stories</span>
+<div>
+<h3 class="font-display text-headline-sm text-text-primary font-semibold" id="ledger-title">
+              Folio Marginalia <span class="font-body-base text-body-base text-text-secondary font-normal" id="ledger-count">(8 Inscribed)</span>
+</h3>
+</div>
+</div>
+<!-- Filter Pills & Sort Selector -->
+<div class="flex flex-wrap items-center gap-space-xs w-full sm:w-auto justify-end">
+<!-- Filter Tabs -->
+<div class="flex items-center bg-surface-inset p-1 rounded-full shadow-[inset_1px_1px_3px_rgba(38,54,51,0.08)]">
+<button class="filter-tab px-3 py-1 rounded-full font-label-sm text-label-sm transition-all bg-primary-container text-on-primary" data-filter="all" type="button">
+              All (8)
+            </button>
+<button class="filter-tab px-3 py-1 rounded-full font-label-sm text-label-sm transition-all text-text-secondary hover:text-text-primary" data-filter="private" type="button">
+              My Private (5)
+            </button>
+<button class="filter-tab px-3 py-1 rounded-full font-label-sm text-label-sm transition-all text-text-secondary hover:text-text-primary" data-filter="shared" type="button">
+              Shared (3)
+            </button>
+</div>
+<!-- Sort Dropdown -->
+<div class="relative">
+<select class="bg-surface-inset font-label-sm text-label-sm text-text-primary rounded-full px-3 py-1.5 pr-8 appearance-none focus:outline-none focus:ring-1 focus:ring-accent-teal shadow-[inset_1px_1px_3px_rgba(38,54,51,0.08)] cursor-pointer">
+<option>Sort: By Folio Page</option>
+<option>Sort: Recently Inscribed</option>
+<option>Sort: Most Resonant</option>
+</select>
+<span class="material-symbols-outlined absolute right-2.5 top-2 text-[16px] text-text-secondary pointer-events-none">expand_more</span>
+</div>
+</div>
+</div>
+<!-- Feed Container -->
+<div class="space-y-space-md" id="marginalia-feed">
+<!-- CARD 1: Private Annotation (Elena Solanas) -->
+<article class="marginalia-card group relative bg-surface-porcelain rounded-2xl p-space-lg shadow-[0_4px_16px_rgba(38,54,51,0.05),0_1px_3px_rgba(38,54,51,0.03)] hover:shadow-[0_10px_24px_rgba(38,54,51,0.09)] transition-all duration-300" data-card-type="private">
+<div class="flex flex-col gap-space-sm">
+<!-- Badge & Location Bar -->
+<div class="flex flex-wrap items-center justify-between gap-space-xs">
+<div class="flex items-center gap-space-xs">
+<!-- Private Badge -->
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-surface-inset text-tertiary-container font-label-sm text-label-sm font-semibold shadow-[inset_1px_1px_2px_rgba(38,54,51,0.06)]">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">lock</span>
+                  Private Note • My Reading Desk
+                </span>
+<!-- Folio Location -->
+<span class="font-label-sm text-label-sm text-text-secondary bg-surface-inset/60 px-2.5 py-1 rounded-full">
+                  Page 114 • The Garden of Forking Paths
+                </span>
+</div>
+<!-- Timestamp -->
+<span class="font-caption text-caption text-text-secondary">
+                Inscribed 12 Oct 2024
+              </span>
+</div>
+<!-- Quoted Anchor Excerpt -->
+<blockquote class="pl-space-md py-1 bg-gradient-to-r from-accent-terracotta/15 via-transparent to-transparent rounded-l-sm">
+<p class="font-display italic text-body-sm text-text-primary leading-relaxed">
+                “The labyrinth is not merely geometric; it is temporal and linguistic. Each sentence branched into divergent bifurcations.”
+              </p>
+</blockquote>
+<!-- Reflection Body -->
+<p class="font-body-base text-body-base text-text-primary leading-relaxed">
+              Borges suggests that time itself is an infinite web of choices made simultaneously. Does Ts'ui Pên's novel exist as an impossibility or as a literal depiction of quantum superposition written decades early? The narrator realizes that death and survival are both enacted across different branches.
+            </p>
+<!-- Card Actions -->
+<div class="pt-space-xs flex items-center justify-between text-label-sm font-label-sm text-text-secondary">
+<div class="flex items-center gap-space-md">
+<button class="hover:text-primary transition-colors flex items-center gap-1" type="button">
+<span class="material-symbols-outlined text-[16px]">edit</span>
+                  Edit Note
+                </button>
+<button class="hover:text-accent-teal transition-colors flex items-center gap-1" type="button">
+<span class="material-symbols-outlined text-[16px]">share</span>
+                  Make Shared...
+                </button>
+<button class="hover:text-error transition-colors flex items-center gap-1" type="button">
+<span class="material-symbols-outlined text-[16px]">delete</span>
+                  Delete
+                </button>
+</div>
+<div class="flex items-center gap-1 text-text-secondary font-caption text-caption">
+<span class="material-symbols-outlined text-[14px]">draw</span>
+<span>Marginal Pencil</span>
+</div>
+</div>
+</div>
+</article>
+<!-- CARD 2: Shared Marginalia (Marcus Aureliano) -->
+<article class="marginalia-card group relative bg-surface-porcelain rounded-2xl p-space-lg shadow-[0_4px_16px_rgba(38,54,51,0.05),0_1px_3px_rgba(38,54,51,0.03)] hover:shadow-[0_10px_24px_rgba(38,54,51,0.09)] transition-all duration-300" data-card-type="shared">
+<div class="flex flex-col gap-space-sm">
+<!-- Badge, Patron info & Location -->
+<div class="flex flex-wrap items-center justify-between gap-space-xs">
+<div class="flex flex-wrap items-center gap-space-xs">
+<!-- Shared Badge -->
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-secondary-container text-on-secondary-container font-label-sm text-label-sm font-semibold">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">menu_book</span>
+                  Shared with Reading Room
+                </span>
+<!-- Folio Location -->
+<span class="font-label-sm text-label-sm text-text-secondary bg-surface-inset/60 px-2.5 py-1 rounded-full">
+                  Page 67 • The Library of Babel
+                </span>
+</div>
+<!-- Timestamp -->
+<span class="font-caption text-caption text-text-secondary">
+                Shared 28 Sep 2024
+              </span>
+</div>
+<!-- Contributing Patron Header -->
+<div class="flex items-center gap-space-xs py-1">
+<div class="w-7 h-7 rounded-full bg-primary-container text-on-primary flex items-center justify-center font-label-sm text-[11px] font-bold">
+                MA
+              </div>
+<div class="flex items-center gap-1.5">
+<span class="font-label-md text-label-md text-text-primary font-semibold">Marcus Aureliano</span>
+<span class="font-caption text-caption text-text-secondary font-mono">(Patron #402)</span>
+<span class="px-2 py-0.5 rounded-full bg-accent-sage/30 text-accent-teal font-caption text-[10px] font-semibold uppercase tracking-wider">Verified Custodian</span>
+</div>
+</div>
+<!-- Quoted Anchor Excerpt -->
+<blockquote class="pl-space-md py-1 bg-gradient-to-r from-accent-teal/15 via-transparent to-transparent rounded-l-sm">
+<p class="font-display italic text-body-sm text-text-primary leading-relaxed">
+                “The universe (which others call the Library) is composed of an indefinite and perhaps infinite number of hexagonal galleries...”
+              </p>
+</blockquote>
+<!-- Reflection Body -->
+<p class="font-body-base text-body-base text-text-primary leading-relaxed">
+              Notice how the physical geometry of the hexagon dictates the psychological isolation of the librarians. The architecture is totalitarian because it contains every conceivable truth alongside every conceivable falsehood. To search for a specific volume is an act of pious despair.
+            </p>
+<!-- Card Bottom Bar: Resonance Counter & Patron Response -->
+<div class="pt-space-xs flex items-center justify-between text-label-sm font-label-sm text-text-secondary">
+<button class="group/res inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface-inset hover:bg-surface-inset/80 text-text-primary transition-all" type="button">
+<span class="material-symbols-outlined text-[17px] text-accent-terracotta group-hover/res:scale-110 transition-transform">favorite</span>
+<span class="font-medium text-accent-teal">14 patrons found this resonant</span>
+</button>
+<div class="flex items-center gap-space-sm text-text-secondary">
+<button class="hover:text-primary transition-colors flex items-center gap-1 font-label-sm text-label-sm" type="button">
+<span class="material-symbols-outlined text-[16px]">reply</span>
+                  Contemplate in Ledger
+                </button>
+</div>
+</div>
+</div>
+</article>
+<!-- CARD 3: Private Annotation (Elena Solanas) -->
+<article class="marginalia-card group relative bg-surface-porcelain rounded-2xl p-space-lg shadow-[0_4px_16px_rgba(38,54,51,0.05),0_1px_3px_rgba(38,54,51,0.03)] hover:shadow-[0_10px_24px_rgba(38,54,51,0.09)] transition-all duration-300" data-card-type="private">
+<div class="flex flex-col gap-space-sm">
+<!-- Badge & Location -->
+<div class="flex flex-wrap items-center justify-between gap-space-xs">
+<div class="flex items-center gap-space-xs">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-surface-inset text-tertiary-container font-label-sm text-label-sm font-semibold shadow-[inset_1px_1px_2px_rgba(38,54,51,0.06)]">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">lock</span>
+                  Private Note • My Reading Desk
+                </span>
+<span class="font-label-sm text-label-sm text-text-secondary bg-surface-inset/60 px-2.5 py-1 rounded-full">
+                  Page 42 • Pierre Menard, Author of the Quixote
+                </span>
+</div>
+<span class="font-caption text-caption text-text-secondary">
+                Inscribed 18 Sep 2024
+              </span>
+</div>
+<!-- Reflection Body (No Quote Variant) -->
+<p class="font-body-base text-body-base text-text-primary leading-relaxed">
+              The profound irony that writing the identical seventeenth-century text verbatim in the twentieth century yields an infinitely richer, more anachronistic masterpiece. The context of reading creates the book, not the letters. Cervantes’ phrase is mere rhetorical praise of history; Menard’s is an astonishing contemporary interrogation of historical truth.
+            </p>
+<!-- Card Actions -->
+<div class="pt-space-xs flex items-center justify-between text-label-sm font-label-sm text-text-secondary">
+<div class="flex items-center gap-space-md">
+<button class="hover:text-primary transition-colors flex items-center gap-1" type="button">
+<span class="material-symbols-outlined text-[16px]">edit</span>
+                  Edit Note
+                </button>
+<button class="hover:text-accent-teal transition-colors flex items-center gap-1" type="button">
+<span class="material-symbols-outlined text-[16px]">share</span>
+                  Make Shared...
+                </button>
+<button class="hover:text-error transition-colors flex items-center gap-1" type="button">
+<span class="material-symbols-outlined text-[16px]">delete</span>
+                  Delete
+                </button>
+</div>
+<span class="font-caption text-caption text-text-secondary">Unanchored passage note</span>
+</div>
+</div>
+</article>
+<!-- CARD 4: Shared Marginalia (Clara Beauchamp) -->
+<article class="marginalia-card group relative bg-surface-porcelain rounded-2xl p-space-lg shadow-[0_4px_16px_rgba(38,54,51,0.05),0_1px_3px_rgba(38,54,51,0.03)] hover:shadow-[0_10px_24px_rgba(38,54,51,0.09)] transition-all duration-300" data-card-type="shared">
+<div class="flex flex-col gap-space-sm">
+<!-- Badge & Location -->
+<div class="flex flex-wrap items-center justify-between gap-space-xs">
+<div class="flex flex-wrap items-center gap-space-xs">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-secondary-container text-on-secondary-container font-label-sm text-label-sm font-semibold">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">menu_book</span>
+                  Shared with Reading Room
+                </span>
+<span class="font-label-sm text-label-sm text-text-secondary bg-surface-inset/60 px-2.5 py-1 rounded-full">
+                  Page 89 • Tlön, Uqbar, Orbis Tertius
+                </span>
+</div>
+<span class="font-caption text-caption text-text-secondary">
+                Shared 04 Aug 2024
+              </span>
+</div>
+<!-- Patron Info -->
+<div class="flex items-center gap-space-xs py-1">
+<div class="w-7 h-7 rounded-full bg-tertiary-container text-on-tertiary flex items-center justify-center font-label-sm text-[11px] font-bold">
+                CB
+              </div>
+<div class="flex items-center gap-1.5">
+<span class="font-label-md text-label-md text-text-primary font-semibold">Clara Beauchamp</span>
+<span class="font-caption text-caption text-text-secondary font-mono">(Patron #619)</span>
+<span class="font-caption text-caption text-text-secondary italic">• Scholar of Speculative Thought</span>
+</div>
+</div>
+<!-- Reflection Body -->
+<p class="font-body-base text-body-base text-text-primary leading-relaxed">
+              Idealism pushed to its material limit: hrönir are objects brought into existence through collective forgetting and desperate search. Our modern digital architecture feels uncannily like Orbis Tertius: we search for an imagined consensus until search engines physically fabricate the artifacts we expected to find.
+            </p>
+<!-- Card Bottom -->
+<div class="pt-space-xs flex items-center justify-between text-label-sm font-label-sm text-text-secondary">
+<button class="group/res inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface-inset hover:bg-surface-inset/80 text-text-primary transition-all" type="button">
+<span class="material-symbols-outlined text-[17px] text-accent-terracotta group-hover/res:scale-110 transition-transform">favorite</span>
+<span class="font-medium text-accent-teal">29 patrons found this resonant</span>
+</button>
+<button class="hover:text-primary transition-colors flex items-center gap-1 font-label-sm text-label-sm" type="button">
+<span class="material-symbols-outlined text-[16px]">reply</span>
+                Contemplate in Ledger
+              </button>
+</div>
+</div>
+</article>
+</div>
+<!-- Simulated Empty Feed State (Hidden by default, triggered via toolbar) -->
+<div class="hidden w-full bg-surface-porcelain rounded-2xl p-space-xl text-center space-y-space-md shadow-[0_4px_16px_rgba(38,54,51,0.04)]" id="simulated-empty-view">
+<div class="w-16 h-16 rounded-full bg-surface-inset mx-auto flex items-center justify-center text-text-secondary shadow-[inset_1px_1px_3px_rgba(38,54,51,0.1)]">
+<span class="material-symbols-outlined text-[32px] text-accent-terracotta">draw</span>
+</div>
+<div class="space-y-space-xs max-w-md mx-auto">
+<h4 class="font-display text-headline-sm text-text-primary font-medium">A Pristine Margin Awaits</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+            No private reflections or public marginalia have yet been inscribed for this view. Take up your quill in the desk composer on the left to anchor the first contemplation to Ficciones.
+          </p>
+</div>
+<button class="px-space-lg py-2.5 rounded-full bg-primary hover:bg-primary-container text-on-primary font-label-md text-label-md transition-all shadow-sm" onclick="document.getElementById('reflection-text').focus()" type="button">
+          Inscribe First Note
+        </button>
+</div>
+</div>
+</main>
+<!-- Archival Edge States & Exception Matrix (Phase 5A.2 Review Grid) -->
+<section class="w-full mt-space-xl pt-space-lg">
+<div class="flex flex-col gap-space-xs mb-space-md">
+<div class="flex items-center gap-space-xs text-accent-teal">
+<span class="material-symbols-outlined text-[18px]">view_quilt</span>
+<span class="font-label-sm text-label-sm uppercase tracking-wider font-semibold">Architectural State Matrix</span>
+</div>
+<h3 class="font-display text-headline-md text-text-primary font-medium">
+        Archival Exception &amp; State Blueprints
+      </h3>
+<p class="font-body-sm text-body-sm text-text-secondary max-w-2xl">
+        Mandatory Phase 5A.2 specifications illustrating edge states, network interruptions, and authentication boundaries within the reading room ecosystem.
+      </p>
+</div>
+<!-- 4-Card Responsive Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter">
+<!-- STATE A: Empty Reading Room -->
+<div class="bg-surface-porcelain rounded-2xl p-space-md shadow-[0_4px_16px_rgba(38,54,51,0.04)] flex flex-col justify-between space-y-space-md">
+<div class="space-y-space-sm">
+<div class="flex items-center justify-between">
+<span class="font-caption text-caption uppercase tracking-wider px-2 py-0.5 rounded-full bg-surface-inset font-semibold text-text-secondary">State A</span>
+<span class="material-symbols-outlined text-[18px] text-accent-sage">library_books</span>
+</div>
+<div class="h-28 rounded-xl bg-surface-inset flex items-center justify-center p-3 relative overflow-hidden shadow-[inset_1px_1px_3px_rgba(38,54,51,0.08)]">
+<!-- Notebook with pencil illustration -->
+<div class="flex items-center gap-3">
+<div class="w-12 h-16 rounded bg-surface-porcelain shadow-sm flex flex-col justify-between p-1.5">
+<div class="w-full h-1 bg-surface-inset rounded"></div>
+<div class="w-3/4 h-1 bg-surface-inset rounded"></div>
+<div class="w-full h-1 bg-surface-inset rounded"></div>
+<div class="w-1/2 h-1 bg-accent-sage rounded"></div>
+</div>
+<div class="w-1 h-14 bg-accent-terracotta rounded-full rotate-12 shadow-sm"></div>
+</div>
+</div>
+<h4 class="font-display text-headline-sm text-text-primary text-[18px] leading-snug">Empty Reading Room</h4>
+<p class="font-body-sm text-body-sm text-text-secondary leading-relaxed">
+            “A Pristine Margin Awaits: No private notes or shared marginalia have yet been inscribed for Ficciones. Take up your quill and anchor your first contemplation to a page.”
+          </p>
+</div>
+<div class="pt-space-xs text-caption font-caption text-accent-teal font-medium">
+          Triggers: Zero DB Records for Folio
+        </div>
+</div>
+<!-- STATE B: Inscription In Progress / Saving -->
+<div class="bg-surface-porcelain rounded-2xl p-space-md shadow-[0_4px_16px_rgba(38,54,51,0.04)] flex flex-col justify-between space-y-space-md">
+<div class="space-y-space-sm">
+<div class="flex items-center justify-between">
+<span class="font-caption text-caption uppercase tracking-wider px-2 py-0.5 rounded-full bg-surface-inset font-semibold text-text-secondary">State B</span>
+<span class="material-symbols-outlined text-[18px] text-accent-teal animate-spin">progress_activity</span>
+</div>
+<div class="h-28 rounded-xl bg-surface-inset flex flex-col items-center justify-center p-3 space-y-2 shadow-[inset_1px_1px_3px_rgba(38,54,51,0.08)]">
+<div class="w-8 h-8 rounded-full border-2 border-accent-teal border-t-transparent animate-spin"></div>
+<span class="font-caption text-caption text-text-primary font-mono">syncing_ledger_tx#98</span>
+</div>
+<h4 class="font-display text-headline-sm text-text-primary text-[18px] leading-snug">Inscription In Progress</h4>
+<p class="font-body-sm text-body-sm text-text-secondary leading-relaxed">
+            “Sealing Marginal Note... Inscribing reflection to your private folio ledger with cryptographic patron stamping.” Inputs lock to prevent race writes.
+          </p>
+</div>
+<div class="pt-space-xs text-caption font-caption text-accent-teal font-medium">
+          Triggers: Network Flight &amp; Hash Sealing
+        </div>
+</div>
+<!-- STATE C: Unauthenticated State -->
+<div class="bg-surface-porcelain rounded-2xl p-space-md shadow-[0_4px_16px_rgba(38,54,51,0.04)] flex flex-col justify-between space-y-space-md">
+<div class="space-y-space-sm">
+<div class="flex items-center justify-between">
+<span class="font-caption text-caption uppercase tracking-wider px-2 py-0.5 rounded-full bg-surface-inset font-semibold text-text-secondary">State C</span>
+<span class="material-symbols-outlined text-[18px] text-tertiary-container">lock_person</span>
+</div>
+<div class="h-28 rounded-xl bg-surface-inset flex flex-col items-center justify-center p-3 space-y-2 shadow-[inset_1px_1px_3px_rgba(38,54,51,0.08)]">
+<span class="material-symbols-outlined text-[28px] text-tertiary-container">badge</span>
+<span class="font-label-sm text-label-sm text-text-primary">Guest Session</span>
+</div>
+<h4 class="font-display text-headline-sm text-text-primary text-[18px] leading-snug">Authentication Intercept</h4>
+<p class="font-body-sm text-body-sm text-text-secondary leading-relaxed">
+            “Patron Ledger Required: Recording private margin notes and viewing restricted folio marginalia requires an active patron inscription.”
+          </p>
+</div>
+<div class="pt-space-xs">
+<button class="w-full py-2 px-3 rounded-full bg-surface-inset text-text-primary hover:bg-primary hover:text-on-primary font-label-sm text-label-sm transition-all text-center" type="button">
+            Authenticate &amp; Enter Desk
+          </button>
+</div>
+</div>
+<!-- STATE D: Save Interrupted / Exception -->
+<div class="bg-surface-porcelain rounded-2xl p-space-md shadow-[0_4px_16px_rgba(38,54,51,0.04)] flex flex-col justify-between space-y-space-md">
+<div class="space-y-space-sm">
+<div class="flex items-center justify-between">
+<span class="font-caption text-caption uppercase tracking-wider px-2 py-0.5 rounded-full bg-surface-inset font-semibold text-text-secondary">State D</span>
+<span class="material-symbols-outlined text-[18px] text-accent-terracotta">cloud_off</span>
+</div>
+<div class="h-28 rounded-xl bg-surface-inset flex flex-col items-center justify-center p-3 space-y-1.5 shadow-[inset_1px_1px_3px_rgba(38,54,51,0.08)]">
+<span class="material-symbols-outlined text-[26px] text-accent-terracotta">sync_problem</span>
+<span class="font-caption text-caption text-accent-terracotta font-semibold">Local Storage Preserved</span>
+</div>
+<h4 class="font-display text-headline-sm text-text-primary text-[18px] leading-snug">Sync Interrupted</h4>
+<p class="font-body-sm text-body-sm text-text-secondary leading-relaxed">
+            “Inscription Interrupted: Unable to sync with the archival ledger. Your draft has been safely retained in temporary desk memory.”
+          </p>
+</div>
+<div class="pt-space-xs">
+<button class="w-full py-2 px-3 rounded-full bg-surface-inset text-accent-teal hover:bg-surface-porcelain font-label-sm text-label-sm transition-all text-center" type="button">
+            Retry Ledger Sync
+          </button>
+</div>
+</div>
+</div>
+</section>
+<!-- Privacy, Custodial Integrity & Phase 5B Colophon -->
+<section class="w-full mt-space-lg bg-surface-inset/50 rounded-2xl p-space-md">
+<div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-space-sm">
+<div class="flex items-start gap-space-sm">
+<span class="material-symbols-outlined text-[20px] text-accent-teal mt-0.5">verified_user</span>
+<div class="space-y-0.5">
+<div class="font-label-md text-label-md text-text-primary font-semibold">
+            Privacy &amp; Data Integrity Colophon
+          </div>
+<p class="font-caption text-caption text-text-secondary leading-relaxed max-w-4xl">
+            In accordance with Akashic Phase 5A.2 architectural guidelines, privacy thresholds and room sharing visibility are rendered here as interactive design specifications. Backend persistence contracts, cryptographic folio hashing, and custodial sync are scheduled for deployment in Phase 5B.
+          </p>
+</div>
+</div>
+<div class="shrink-0 flex items-center gap-space-xs font-mono font-caption text-caption text-text-secondary">
+<span>ARCH-SPEC: 5A.2</span>
+<span>•</span>
+<span>CRC: OK</span>
+</div>
+</div>
+</section>
+</div>
+<!-- Inline Interactive Script for Micro-interactions and Simulation Switcher -->
+<script>
+  (function initMarginaliaDesk() {
+    // Visibility pill toggle logic
+    const visPrivate = document.getElementById('vis-private');
+    const visShared = document.getElementById('vis-shared');
+    const labelPrivate = document.getElementById('label-vis-private');
+    const labelShared = document.getElementById('label-vis-shared');
+    const visibilityHint = document.getElementById('visibility-hint');
+
+    function updateVisibilityUI() {
+      if (visPrivate && visPrivate.checked) {
+        labelPrivate.classList.add('bg-surface-porcelain', 'shadow-sm');
+        labelPrivate.classList.remove('opacity-85');
+        labelShared.classList.remove('bg-surface-porcelain', 'shadow-sm');
+        labelShared.classList.add('opacity-85');
+        visibilityHint.textContent = '• Kept strictly in your personal reading ledger; visible only to Elena Solanas.';
+      } else if (visShared && visShared.checked) {
+        labelShared.classList.add('bg-surface-porcelain', 'shadow-sm');
+        labelShared.classList.remove('opacity-85');
+        labelPrivate.classList.remove('bg-surface-porcelain', 'shadow-sm');
+        labelPrivate.classList.add('opacity-85');
+        visibilityHint.textContent = '• Shared publicly with patrons currently studying Ficciones in the Reading Room.';
+      }
+    }
+
+    if (labelPrivate && labelShared) {
+      labelPrivate.addEventListener('click', () => {
+        visPrivate.checked = true;
+        updateVisibilityUI();
+      });
+      labelShared.addEventListener('click', () => {
+        visShared.checked = true;
+        updateVisibilityUI();
+      });
+    }
+
+    // Textarea word/char count
+    const reflectionText = document.getElementById('reflection-text');
+    const charCounter = document.getElementById('char-counter');
+    if (reflectionText && charCounter) {
+      reflectionText.addEventListener('input', () => {
+        const count = reflectionText.value.length;
+        charCounter.textContent = count + ' characters • ' + (count > 150 ? 'Thoughtful depth' : 'Brief notation');
+      });
+    }
+
+    // Filter Tabs
+    const filterTabs = document.querySelectorAll('.filter-tab');
+    const cards = document.querySelectorAll('.marginalia-card');
+    const emptyView = document.getElementById('simulated-empty-view');
+
+    filterTabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        filterTabs.forEach(t => {
+          t.classList.remove('bg-primary-container', 'text-on-primary');
+          t.classList.add('text-text-secondary');
+        });
+        tab.classList.add('bg-primary-container', 'text-on-primary');
+        tab.classList.remove('text-text-secondary');
+
+        const filter = tab.dataset.filter;
+        let visibleCount = 0;
+
+        cards.forEach(card => {
+          const type = card.dataset.cardType;
+          if (filter === 'all' || type === filter) {
+            card.classList.remove('hidden');
+            visibleCount++;
+          } else {
+            card.classList.add('hidden');
+          }
+        });
+
+        if (emptyView) {
+          if (visibleCount === 0) {
+            emptyView.classList.remove('hidden');
+          } else {
+            emptyView.classList.add('hidden');
+          }
+        }
+      });
+    });
+
+    // Inscribe Button feedback
+    const inscribeBtn = document.getElementById('inscribe-btn');
+    const inscribeLabel = document.getElementById('inscribe-label');
+    const inscribeIcon = document.getElementById('inscribe-icon');
+    const autosaveLabel = document.getElementById('autosave-label');
+
+    if (inscribeBtn) {
+      inscribeBtn.addEventListener('click', () => {
+        const originalText = inscribeLabel.textContent;
+        inscribeLabel.textContent = 'Inscribing to Ledger...';
+        inscribeIcon.textContent = 'progress_activity';
+        inscribeIcon.classList.add('animate-spin');
+        inscribeBtn.disabled = true;
+
+        setTimeout(() => {
+          inscribeLabel.textContent = 'Inscribed into Margin!';
+          inscribeIcon.textContent = 'check_circle';
+          inscribeIcon.classList.remove('animate-spin');
+          autosaveLabel.textContent = 'Sealed to folio ledger just now';
+
+          setTimeout(() => {
+            inscribeLabel.textContent = originalText;
+            inscribeIcon.textContent = 'feather';
+            inscribeBtn.disabled = false;
+          }, 2200);
+        }, 800);
+      });
+    }
+
+    // State Simulation Bar Controller
+    const simButtons = document.querySelectorAll('.sim-btn');
+    const stateStatusPill = document.getElementById('state-status-pill');
+    const stateStatusText = document.getElementById('state-status-text');
+    const composerCard = document.getElementById('composer-card');
+
+    simButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        simButtons.forEach(b => {
+          b.classList.remove('bg-primary-container', 'text-on-primary');
+          b.classList.add('bg-surface-porcelain', 'text-on-surface-variant');
+        });
+        btn.classList.add('bg-primary-container', 'text-on-primary');
+        btn.classList.remove('bg-surface-porcelain', 'text-on-surface-variant');
+
+        const state = btn.dataset.simState;
+        stateStatusPill.classList.remove('hidden');
+        stateStatusPill.classList.add('flex');
+
+        // Reset elements
+        cards.forEach(c => c.classList.remove('hidden'));
+        emptyView.classList.add('hidden');
+        composerCard.classList.remove('opacity-40', 'pointer-events-none');
+
+        if (state === 'all') {
+          stateStatusText.textContent = 'State 1 Active: All Inscriptions & Active Desk visible.';
+        } else if (state === 'private') {
+          stateStatusText.textContent = 'State 2 Active: Filtering feed to Private Desk Notes only (Patron: Elena Solanas).';
+          cards.forEach(c => {
+            if (c.dataset.cardType !== 'private') c.classList.add('hidden');
+          });
+        } else if (state === 'shared') {
+          stateStatusText.textContent = 'State 3 Active: Filtering feed to Shared Reading Room Marginalia.';
+          cards.forEach(c => {
+            if (c.dataset.cardType !== 'shared') c.classList.add('hidden');
+          });
+        } else if (state === 'empty') {
+          stateStatusText.textContent = 'State 4 Active: Empty Reading Room simulation. No marginalia registered.';
+          cards.forEach(c => c.classList.add('hidden'));
+          emptyView.classList.remove('hidden');
+        } else if (state === 'submitting') {
+          stateStatusText.textContent = 'State 5 Active: Inscription in-progress state. Locking composer inputs.';
+          inscribeBtn.click();
+        } else if (state === 'unauthenticated') {
+          stateStatusText.textContent = 'State 6 Active: Unauthenticated visitor. Patron credentials required to write.';
+          composerCard.classList.add('opacity-40', 'pointer-events-none');
+        }
+      });
+    });
+  })();
+</script></main><footer class="w-full bg-surface-porcelain pt-space-xl pb-space-lg shadow-[0_-4px_20px_rgba(38,54,51,0.03)] mt-space-xl"><div class="max-w-[1360px] mx-auto px-gutter-mobile lg:px-margin"><div class="grid grid-cols-1 md:grid-cols-3 gap-gutter lg:gap-space-xl pb-space-xl"><div class="space-y-space-sm"><h3 class="font-display text-headline-sm text-primary-container italic font-medium">The Reading Rooms</h3><p class="font-body-sm text-body-sm text-on-surface-variant max-w-sm">Reserved sanctuaries of quiet inquiry, physical archival collections, and contemplative study halls open to scholarly patrons globally.</p><ul class="space-y-space-xs pt-space-xs font-label-md text-label-md"><li class="text-on-surface-variant"><span class="text-accent-terracotta">I.</span> North Atrium: Manuscripts &amp; Inkunabeln</li><li class="text-on-surface-variant"><span class="text-accent-terracotta">II.</span> Scriptorium &amp; Restored Folios</li><li class="text-on-surface-variant"><span class="text-accent-terracotta">III.</span> East Pavilion: Rare Typographies</li></ul></div><div class="space-y-space-sm"><h3 class="font-display text-headline-sm text-primary-container italic font-medium">Collections &amp; Folios</h3><ul class="space-y-space-xs font-label-md text-label-md text-on-surface-variant"><li class="hover:text-primary transition-colors cursor-pointer">Continental Architectural Treatises</li><li class="hover:text-primary transition-colors cursor-pointer">Curated Epistolary Collections</li><li class="hover:text-primary transition-colors cursor-pointer">Monastic Binding &amp; Paper History</li><li class="hover:text-primary transition-colors cursor-pointer">The Anthologies of Natural Philosophy</li><li class="hover:text-primary transition-colors cursor-pointer">Index of Illuminated Scripts</li></ul></div><div class="space-y-space-sm"><h3 class="font-display text-headline-sm text-primary-container italic font-medium">Colophon &amp; Custody</h3><p class="font-body-sm text-body-sm text-on-surface-variant">Typeset with care in Lora &amp; Inter. Bound in soft porcelain surfaces, warm stone recessed wells, and quiet deep teal undertones.</p><div class="pt-space-xs text-on-surface-variant font-caption text-caption space-y-space-xs"><p>Supervised by the Custodians of the Akashic Registry.</p><p class="text-text-secondary">© 2024 Akashic Library Archive. All rights reserved across reading halls.</p></div></div></div><div class="pt-space-md flex flex-col sm:flex-row items-center justify-between text-text-secondary font-caption text-caption gap-space-sm"><div class="flex items-center gap-space-md"><span>Folio Edition 3.4.1</span><span>Permanent Archival Paper Standard</span><span>Non-circulating Registry</span></div><div class="flex items-center gap-space-sm"><span class="w-2 h-2 rounded-full bg-accent-teal"></span><span class="text-on-surface-variant font-label-sm text-label-sm">Reading Rooms Open</span></div></div></div></footer></body></html>
