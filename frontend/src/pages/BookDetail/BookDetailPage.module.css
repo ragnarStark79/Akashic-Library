@@ -1,0 +1,1725 @@
+/**
+ * Akashic Library — Phase 3: Book Details Experience
+ * Design System Compliant Modular Styles (Lora + Inter, Warm Ivory + Deep Teal)
+ */
+
+.page {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  background-color: var(--color-bg-page);
+  color: var(--color-text-primary);
+  padding-bottom: var(--space-16);
+  overflow-x: hidden;
+}
+
+/* ── Ambient Background Lighting ── */
+.ambientBloomTopRight {
+  position: absolute;
+  top: 0;
+  right: 15%;
+  width: 420px;
+  height: 420px;
+  border-radius: var(--radius-pill);
+  background: radial-gradient(circle, rgba(168, 189, 174, 0.18) 0%, transparent 70%);
+  filter: blur(48px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.ambientBloomTopLeft {
+  position: absolute;
+  top: 180px;
+  left: 5%;
+  width: 360px;
+  height: 360px;
+  border-radius: var(--radius-pill);
+  background: radial-gradient(circle, rgba(197, 139, 112, 0.12) 0%, transparent 70%);
+  filter: blur(48px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.contentWrapper {
+  position: relative;
+  z-index: 1;
+  max-width: 1360px;
+  margin: 0 auto;
+  padding: var(--space-4) var(--space-6) var(--space-12);
+}
+
+@media (max-width: 768px) {
+  .contentWrapper {
+    padding: var(--space-2) var(--space-4) var(--space-8);
+  }
+}
+
+/* ── Breadcrumb & Ledger Bar ── */
+.breadcrumbBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  padding: var(--space-3) 0 var(--space-6);
+  border-bottom: 1px solid rgba(226, 218, 205, 0.6);
+  margin-bottom: var(--space-8);
+}
+
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  font-family: var(--font-family-body);
+  font-size: var(--font-small);
+  color: var(--color-text-secondary);
+}
+
+.breadcrumbLink {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  background: none;
+  border: none;
+  padding: 0;
+  color: var(--color-text-secondary);
+  font-family: var(--font-family-body);
+  font-size: var(--font-small);
+  cursor: pointer;
+  transition: color 0.15s ease;
+  text-decoration: none;
+}
+
+.breadcrumbLink:hover {
+  color: var(--color-action-primary);
+}
+
+.breadcrumbSeparator {
+  color: var(--color-accent-secondary);
+  user-select: none;
+}
+
+.breadcrumbActive {
+  color: var(--color-text-primary);
+  font-weight: var(--font-weight-medium);
+  max-width: 300px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.provenanceBadgeGroup {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.vaultPill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  border-radius: var(--radius-pill);
+  background-color: var(--color-surface-inset);
+  color: var(--color-action-primary);
+  font-size: var(--font-caption);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  box-shadow: 0 1px 3px rgba(38, 54, 51, 0.05);
+}
+
+.vaultDot {
+  width: 6px;
+  height: 6px;
+  border-radius: var(--radius-pill);
+  background-color: var(--color-action-primary);
+}
+
+.accessionNumber {
+  font-family: var(--font-family-body);
+  font-size: var(--font-caption);
+  color: var(--color-text-muted);
+}
+
+/* ── Two-Column Main Stage ── */
+.mainStage {
+  display: grid;
+  grid-template-columns: 5fr 7fr;
+  gap: var(--space-8);
+  align-items: start;
+  margin-bottom: var(--space-12);
+}
+
+@media (max-width: 1024px) {
+  .mainStage {
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+  }
+}
+
+/* ── Left Column: Book Jacket & Bibliographic Box ── */
+.leftColumn {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.jacketCard {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: var(--space-8) var(--space-6) var(--space-6);
+  border-radius: var(--radius-xl);
+  background-color: var(--color-surface);
+  box-shadow: 0 12px 32px rgba(38, 54, 51, 0.08), 0 2px 6px rgba(38, 54, 51, 0.04);
+  border: 1px solid rgba(226, 218, 205, 0.6);
+}
+
+.ribbonTag {
+  position: absolute;
+  top: -12px;
+  left: var(--space-6);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 14px;
+  border-radius: var(--radius-pill);
+  background-color: var(--raw-ink-green);
+  color: var(--color-surface);
+  font-family: var(--font-family-body);
+  font-size: var(--font-caption);
+  font-weight: var(--font-weight-medium);
+  letter-spacing: 0.03em;
+  box-shadow: 0 4px 12px rgba(38, 54, 51, 0.15);
+  z-index: 2;
+}
+
+.coverContainer {
+  position: relative;
+  width: 100%;
+  max-width: 320px;
+  aspect-ratio: 2 / 3;
+  margin-top: var(--space-2);
+  margin-bottom: var(--space-6);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: 8px 16px 36px rgba(38, 54, 51, 0.22), 2px 4px 12px rgba(38, 54, 51, 0.12);
+  background-color: var(--color-surface-inset);
+}
+
+.coverImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Spine depth effects */
+.spineShadow {
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 28px;
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.35) 0%, rgba(0, 0, 0, 0.12) 40%, transparent 100%);
+  pointer-events: none;
+  z-index: 2;
+}
+
+.spineLine {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 7px;
+  width: 1px;
+  background: rgba(255, 255, 255, 0.22);
+  pointer-events: none;
+  z-index: 2;
+}
+
+.embossSeal {
+  position: absolute;
+  bottom: var(--space-3);
+  right: var(--space-3);
+  padding: 4px 10px;
+  border-radius: var(--radius-xs);
+  background: rgba(252, 250, 245, 0.85);
+  backdrop-filter: blur(8px);
+  font-family: var(--font-family-heading);
+  font-size: 11px;
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: 0.15em;
+  color: var(--color-text-primary);
+  text-transform: uppercase;
+  box-shadow: 0 1px 4px rgba(38, 54, 51, 0.1);
+  z-index: 2;
+}
+
+/* Fallback cover styling */
+.fallbackCover {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, var(--color-surface-inset) 0%, #DCD3C5 100%);
+  padding: var(--space-6);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: center;
+}
+
+.fallbackHeader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  color: var(--color-action-primary);
+  font-size: var(--font-caption);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: var(--font-weight-semibold);
+}
+
+.fallbackTitle {
+  font-family: var(--font-family-heading);
+  font-size: 1.25rem;
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+  line-height: var(--line-height-tight);
+}
+
+.fallbackAuthor {
+  font-family: var(--font-family-body);
+  font-size: var(--font-small);
+  color: var(--color-text-secondary);
+}
+
+/* Shelf Action Bar */
+.actionShelfBar {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.actionButtonRow {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  width: 100%;
+}
+
+.shelfButton {
+  flex: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  padding: 12px var(--space-4);
+  border-radius: var(--radius-pill);
+  background-color: var(--color-action-primary);
+  color: #ffffff;
+  border: none;
+  font-family: var(--font-family-body);
+  font-size: var(--font-small);
+  font-weight: var(--font-weight-medium);
+  box-shadow: 0 4px 16px rgba(24, 92, 88, 0.24);
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.shelfButton:hover:not(:disabled) {
+  background-color: var(--raw-deep-teal-hover);
+  transform: translateY(-1px);
+}
+
+.shelfButton:active:not(:disabled) {
+  transform: scale(0.98);
+}
+
+.shelfButton:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.iconActionButton {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-pill);
+  background-color: var(--color-surface-inset);
+  color: var(--color-text-primary);
+  border: 1px solid rgba(226, 218, 205, 0.7);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  box-shadow: inset 1px 1px 2px rgba(38, 54, 51, 0.06), inset -1px -1px 2px rgba(255, 255, 255, 0.7);
+}
+
+.iconActionButton:hover {
+  background-color: var(--color-surface);
+  color: var(--color-action-primary);
+  border-color: var(--color-action-primary);
+}
+
+.iconActionButtonActive {
+  background-color: var(--color-action-primary);
+  color: #ffffff;
+  border-color: var(--color-action-primary);
+  box-shadow: 0 2px 8px rgba(24, 92, 88, 0.3);
+}
+
+.iconActionButtonActive:hover {
+  background-color: var(--raw-deep-teal-hover);
+  color: #ffffff;
+}
+
+/* Shelf Status Selection Dropdown */
+.shelfDropdownContainer {
+  position: relative;
+  flex: 1;
+  display: flex;
+}
+
+.dropdownChevron {
+  transition: transform 0.2s ease;
+  margin-left: 2px;
+}
+
+.chevronOpen {
+  transform: rotate(180deg);
+}
+
+.shelfMenu {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  right: 0;
+  z-index: 50;
+  background-color: var(--color-surface);
+  border: 1px solid rgba(226, 218, 205, 0.9);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 10px 25px rgba(38, 54, 51, 0.15), 0 2px 6px rgba(38, 54, 51, 0.08);
+  padding: var(--space-2);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  backdrop-filter: blur(8px);
+}
+
+.shelfMenuItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+  padding: 10px 14px;
+  border-radius: var(--radius-md);
+  background: transparent;
+  border: 1px solid transparent;
+  color: var(--color-text-primary);
+  text-align: left;
+  cursor: pointer;
+  width: 100%;
+  transition: all 0.15s ease;
+}
+
+.shelfMenuItem:hover:not(:disabled) {
+  background-color: var(--color-surface-inset);
+  border-color: rgba(226, 218, 205, 0.8);
+}
+
+.shelfMenuItem:focus-visible {
+  outline: 2px solid var(--color-action-primary);
+  outline-offset: -1px;
+}
+
+.shelfMenuItemActive {
+  background-color: rgba(24, 92, 88, 0.08);
+  border-color: rgba(24, 92, 88, 0.25);
+}
+
+.shelfMenuLabel {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.statusName {
+  font-family: var(--font-family-body);
+  font-size: var(--font-small);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-primary);
+}
+
+.statusDescription {
+  font-size: 11px;
+  color: var(--color-text-secondary);
+}
+
+.statusCheck {
+  color: var(--color-action-primary);
+  flex-shrink: 0;
+}
+
+.shelfFeedbackBanner {
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-md);
+  font-size: var(--font-small);
+  line-height: var(--line-height-body);
+  text-align: center;
+}
+
+.shelfFeedbackSuccess {
+  background-color: var(--color-feedback-success-bg);
+  color: var(--color-feedback-success);
+  border: 1px solid var(--color-action-secondary);
+}
+
+.shelfFeedbackAuth {
+  background-color: var(--color-feedback-warning-bg);
+  color: var(--color-feedback-warning);
+  border: 1px solid #E4C89D;
+}
+
+.shelfFeedbackError {
+  background-color: var(--color-feedback-error-bg);
+  color: var(--color-feedback-error);
+  border: 1px solid #FECACA;
+}
+
+.shelfFeedbackNotice {
+  background-color: var(--color-surface-inset);
+  color: var(--color-text-secondary);
+  border: 1px solid rgba(226, 218, 205, 0.9);
+  text-align: left;
+  line-height: 1.5;
+}
+
+.patronCountPill {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  padding: 8px var(--space-4);
+  border-radius: var(--radius-pill);
+  background-color: rgba(234, 227, 216, 0.5);
+  color: var(--color-text-secondary);
+  font-size: var(--font-caption);
+  text-align: center;
+}
+
+.patronCountHighlight {
+  color: var(--color-text-primary);
+  font-weight: var(--font-weight-medium);
+}
+
+/* Bibliographic Record Box */
+.bibliographicBox {
+  padding: var(--space-6);
+  border-radius: var(--radius-xl);
+  background-color: var(--color-surface-inset);
+  box-shadow: inset 2px 2px 6px rgba(38, 54, 51, 0.07), inset -2px -2px 6px rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(226, 218, 205, 0.8);
+}
+
+.bibliographicHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: var(--space-3);
+  border-bottom: 1px solid rgba(216, 208, 195, 0.8);
+  margin-bottom: var(--space-4);
+}
+
+.bibliographicTitle {
+  font-family: var(--font-family-heading);
+  font-size: var(--font-h3);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+  margin: 0;
+}
+
+.archiveVerifiedTag {
+  padding: 2px 8px;
+  border-radius: var(--radius-pill);
+  background-color: rgba(168, 189, 174, 0.35);
+  color: var(--color-action-primary);
+  font-size: var(--font-caption);
+  font-weight: var(--font-weight-semibold);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.bibList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  margin: 0;
+  padding: 0;
+  font-size: var(--font-small);
+}
+
+.bibRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: var(--space-3);
+  padding: 4px 0;
+}
+
+.bibLabel {
+  color: var(--color-text-secondary);
+  font-weight: var(--font-weight-regular);
+  flex-shrink: 0;
+}
+
+.bibValue {
+  color: var(--color-text-primary);
+  font-weight: var(--font-weight-medium);
+  text-align: right;
+  word-break: break-word;
+}
+
+.bibValueMono {
+  font-family: monospace;
+  font-size: 13px;
+}
+
+.bibSubjectsRow {
+  padding-top: var(--space-2);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.subjectChipList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.subjectChip {
+  padding: 3px 10px;
+  border-radius: var(--radius-pill);
+  background-color: var(--color-surface);
+  color: var(--color-text-primary);
+  font-size: var(--font-caption);
+  box-shadow: 0 1px 3px rgba(38, 54, 51, 0.06);
+  border: 1px solid rgba(226, 218, 205, 0.7);
+}
+
+.externalRepositories {
+  margin-top: var(--space-4);
+  padding-top: var(--space-3);
+  border-top: 1px solid rgba(216, 208, 195, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  font-size: var(--font-caption);
+}
+
+.repoLinks {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.repoLink {
+  color: var(--color-action-primary);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  transition: opacity 0.15s ease;
+}
+
+.repoLink:hover {
+  text-decoration: underline;
+  opacity: 0.85;
+}
+
+/* ── Access & Reading Options Section ── */
+.accessSection {
+  margin-top: var(--space-6);
+  padding: var(--space-4);
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 2px 8px rgba(38, 54, 51, 0.04);
+}
+
+.accessSectionHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-4);
+  padding-bottom: var(--space-3);
+  border-bottom: 1px solid var(--color-border-subtle);
+}
+
+.accessHeaderLeft {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.accessHeaderIcon {
+  color: var(--color-action-primary);
+  flex-shrink: 0;
+}
+
+.accessTitle {
+  font-family: var(--font-family-heading);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin: 0;
+}
+
+.accessSubtitle {
+  font-size: var(--font-caption);
+  color: var(--color-text-secondary);
+  margin: 2px 0 0 0;
+}
+
+.accessList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.accessItem {
+  padding: var(--space-3);
+  background-color: rgba(245, 241, 233, 0.5);
+  border: 1px solid rgba(226, 218, 205, 0.8);
+  border-radius: var(--radius-md);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  transition: all 0.2s ease;
+}
+
+.accessItem:hover {
+  background-color: #fff;
+  box-shadow: 0 2px 6px rgba(38, 54, 51, 0.06);
+}
+
+.accessItemTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.accessItemHeader {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  color: var(--color-text-primary);
+}
+
+.accessProvider {
+  font-weight: 600;
+  font-size: 13px;
+}
+
+.accessTypeBadge {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 2px 8px;
+  border-radius: var(--radius-pill);
+}
+
+.badgeStore {
+  background-color: rgba(24, 92, 88, 0.12);
+  color: var(--color-action-primary);
+  border: 1px solid rgba(24, 92, 88, 0.25);
+}
+
+.badgePurchase {
+  background-color: rgba(30, 64, 175, 0.1);
+  color: #1E40AF;
+  border: 1px solid rgba(30, 64, 175, 0.25);
+}
+
+.badgePreview {
+  background-color: rgba(180, 83, 9, 0.1);
+  color: #B45309;
+  border: 1px solid rgba(180, 83, 9, 0.25);
+}
+
+.badgeBorrow {
+  background-color: rgba(109, 40, 217, 0.1);
+  color: #6D28D9;
+  border: 1px solid rgba(109, 40, 217, 0.25);
+}
+
+.badgePublicDomain {
+  background-color: rgba(161, 98, 7, 0.12);
+  color: #854D0E;
+  border: 1px solid rgba(161, 98, 7, 0.3);
+}
+
+.badgeInfo {
+  background-color: rgba(100, 116, 139, 0.12);
+  color: #475569;
+  border: 1px solid rgba(100, 116, 139, 0.25);
+}
+
+.accessAvailabilityBadge {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--color-action-primary);
+  background-color: rgba(24, 92, 88, 0.06);
+  padding: 2px 8px;
+  border-radius: var(--radius-pill);
+}
+
+.accessItemBody {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.accessItemLabel {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--color-text-primary);
+}
+
+.accessItemDesc {
+  font-size: 12px;
+  color: var(--color-text-secondary);
+  margin: 0;
+  line-height: 1.4;
+}
+
+.accessJurisdiction {
+  font-size: 11px;
+  font-style: italic;
+  color: var(--color-text-secondary);
+}
+
+.accessItemActions {
+  margin-top: 4px;
+}
+
+.accessLinkBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--color-action-primary);
+  background-color: #fff;
+  border: 1px solid var(--color-action-primary);
+  border-radius: var(--radius-pill);
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.accessLinkBtn:hover {
+  background-color: var(--color-action-primary);
+  color: #fff;
+}
+
+.storeInformationalNotice {
+  padding: 6px 10px;
+  font-size: 11px;
+  line-height: 1.4;
+  color: #555;
+  background-color: rgba(24, 92, 88, 0.04);
+  border-left: 3px solid var(--color-action-primary);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+}
+
+/* ── Right Column: Dossier, Synopsis, Tabs ── */
+.rightColumn {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.headerAttribution {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.volEyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  align-self: flex-start;
+  padding: 4px 12px;
+  border-radius: var(--radius-pill);
+  background-color: var(--color-surface-inset);
+  color: var(--color-accent-highlight);
+  font-size: var(--font-caption);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.bookTitle {
+  font-family: var(--font-family-heading);
+  font-size: var(--font-display);
+  line-height: var(--line-height-tight);
+  color: var(--color-text-primary);
+  margin: var(--space-1) 0;
+  letter-spacing: -0.015em;
+}
+
+.authorRow {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  font-family: var(--font-family-heading);
+  font-size: 1.25rem;
+  color: var(--color-action-primary);
+}
+
+.verifiedBadge {
+  display: inline-flex;
+  align-items: center;
+  color: var(--color-action-primary);
+  opacity: 0.8;
+}
+
+.consensusRow {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+  padding-top: var(--space-2);
+}
+
+.starRating {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  color: var(--color-accent-highlight);
+}
+
+.ratingValue {
+  font-family: var(--font-family-body);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-small);
+  color: var(--color-text-primary);
+  margin-left: 4px;
+}
+
+.ratingMax {
+  color: var(--color-text-secondary);
+  font-size: var(--font-caption);
+}
+
+.curatorChoiceBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 10px;
+  border-radius: var(--radius-pill);
+  background-color: rgba(168, 189, 174, 0.35);
+  color: var(--color-action-primary);
+  font-size: var(--font-caption);
+  font-weight: var(--font-weight-medium);
+}
+
+/* Editorial Overview Card */
+.overviewCard {
+  position: relative;
+  padding: var(--space-6);
+  border-radius: var(--radius-xl);
+  background-color: var(--color-surface);
+  box-shadow: 0 4px 16px rgba(38, 54, 51, 0.05);
+  border: 1px solid rgba(226, 218, 205, 0.6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.quoteMark {
+  position: absolute;
+  top: var(--space-4);
+  right: var(--space-6);
+  font-size: 48px;
+  line-height: 1;
+  color: rgba(168, 189, 174, 0.3);
+  font-family: serif;
+  user-select: none;
+  pointer-events: none;
+}
+
+.pullQuote {
+  font-family: var(--font-family-heading);
+  font-size: 1.25rem;
+  font-style: italic;
+  color: var(--color-action-primary);
+  line-height: var(--line-height-relaxed);
+  margin: 0;
+  padding-right: var(--space-8);
+}
+
+.descriptionBody {
+  font-family: var(--font-family-body);
+  font-size: var(--font-body);
+  line-height: var(--line-height-relaxed);
+  color: var(--color-text-primary);
+}
+
+.descriptionBody p {
+  margin: 0 0 var(--space-3) 0;
+}
+
+.descriptionBody p:last-child {
+  margin-bottom: 0;
+}
+
+.thematicChipsRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  padding-top: var(--space-2);
+}
+
+.thematicChip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 12px;
+  border-radius: var(--radius-pill);
+  background-color: var(--color-surface-inset);
+  color: var(--color-text-secondary);
+  font-size: var(--font-caption);
+  font-weight: var(--font-weight-medium);
+}
+
+/* ── Interactive Folio Tabs ── */
+.folioTabsSection {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.tabList {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px;
+  border-radius: var(--radius-pill);
+  background-color: var(--color-surface-inset);
+  box-shadow: inset 1px 1px 3px rgba(38, 54, 51, 0.08), inset -1px -1px 3px rgba(255, 255, 255, 0.7);
+  max-width: 480px;
+}
+
+.tabButton {
+  flex: 1;
+  padding: 8px var(--space-3);
+  border-radius: var(--radius-pill);
+  border: none;
+  background: transparent;
+  color: var(--color-text-secondary);
+  font-family: var(--font-family-body);
+  font-size: var(--font-small);
+  font-weight: var(--font-weight-medium);
+  cursor: pointer;
+  transition: all 0.15s ease;
+  text-align: center;
+}
+
+.tabButtonActive {
+  background-color: var(--color-action-primary);
+  color: #ffffff;
+  box-shadow: 0 2px 8px rgba(24, 92, 88, 0.25);
+}
+
+.tabContentPanel {
+  padding: var(--space-6);
+  border-radius: var(--radius-xl);
+  background-color: var(--color-surface);
+  box-shadow: 0 4px 12px rgba(38, 54, 51, 0.05);
+  border: 1px solid rgba(226, 218, 205, 0.6);
+}
+
+.tabGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: var(--space-4);
+}
+
+.tabCard {
+  padding: var(--space-4);
+  border-radius: var(--radius-md);
+  background-color: rgba(234, 227, 216, 0.45);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: var(--space-2);
+}
+
+.tabCardTitle {
+  font-family: var(--font-family-heading);
+  font-size: var(--font-small);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
+  margin: 0;
+}
+
+.tabCardDesc {
+  font-family: var(--font-family-body);
+  font-size: var(--font-caption);
+  color: var(--color-text-secondary);
+  line-height: var(--line-height-body);
+  margin: 0;
+}
+
+/* ── Section: Reading Salons & Marginalia (Community Notes) ── */
+.readingSalonsSection {
+  margin-top: var(--space-12);
+  margin-bottom: var(--space-12);
+  padding-top: var(--space-8);
+  border-top: 1px solid rgba(226, 218, 205, 0.6);
+}
+
+.salonsHeader {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+  margin-bottom: var(--space-6);
+}
+
+.salonsActions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+
+.viewAllReviewsBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: 8px 16px;
+  background-color: var(--color-surface-inset);
+  color: var(--color-text-primary);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-pill);
+  font-family: var(--font-family-body);
+  font-size: var(--font-small);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--duration-fast) var(--ease-standard);
+  text-decoration: none;
+}
+
+.viewAllReviewsBtn:hover {
+  background-color: #fff;
+  border-color: var(--color-action-primary);
+  color: var(--color-action-primary);
+}
+
+.writeReviewBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: 8px 18px;
+  background-color: var(--color-action-primary);
+  color: #fff;
+  border: none;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-family-body);
+  font-size: var(--font-small);
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(24, 92, 88, 0.2);
+  transition: all var(--duration-fast) var(--ease-standard);
+  text-decoration: none;
+}
+
+.writeReviewBtn:hover {
+  background-color: #124542;
+  transform: translateY(-1px);
+}
+
+.viewAllFooterRow {
+  display: flex;
+  justify-content: center;
+  margin-top: calc(-1 * var(--space-4));
+  margin-bottom: var(--space-8);
+}
+
+.salonsEyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--color-accent-highlight);
+  font-size: var(--font-caption);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+
+.salonsTitle {
+  font-family: var(--font-family-heading);
+  font-size: var(--font-h2);
+  color: var(--color-text-primary);
+  margin: 0 0 4px 0;
+}
+
+.salonsSubtitle {
+  font-family: var(--font-family-body);
+  font-size: var(--font-small);
+  color: var(--color-text-secondary);
+  margin: 0;
+}
+
+.reviewsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: var(--space-6);
+  margin-bottom: var(--space-8);
+}
+
+@media (max-width: 640px) {
+  .reviewsGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.reviewCard {
+  padding: var(--space-6);
+  border-radius: var(--radius-xl);
+  background-color: var(--color-surface);
+  box-shadow: 0 4px 16px rgba(38, 54, 51, 0.06);
+  border: 1px solid rgba(226, 218, 205, 0.6);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: var(--space-4);
+}
+
+.reviewHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.reviewerInfo {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.avatarInitial {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-pill);
+  background-color: rgba(24, 92, 88, 0.15);
+  color: var(--color-action-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: var(--font-weight-bold);
+  font-size: 13px;
+}
+
+.reviewerName {
+  font-family: var(--font-family-body);
+  font-size: var(--font-small);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+  margin: 0;
+}
+
+.reviewDate {
+  font-size: var(--font-caption);
+  color: var(--color-text-secondary);
+}
+
+.reviewBody {
+  font-family: var(--font-family-body);
+  font-size: var(--font-small);
+  line-height: var(--line-height-relaxed);
+  color: var(--color-text-primary);
+  margin: 0;
+}
+
+.emptyReviewsCard {
+  padding: var(--space-8);
+  border-radius: var(--radius-xl);
+  background-color: var(--color-surface);
+  border: 1px dashed var(--color-border-subtle);
+  text-align: center;
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-8);
+}
+
+/* Annotation Composer */
+.composerCard {
+  padding: var(--space-6);
+  border-radius: var(--radius-xl);
+  background-color: var(--color-surface);
+  box-shadow: 0 4px 16px rgba(38, 54, 51, 0.06);
+  border: 1px solid rgba(226, 218, 205, 0.6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+/* Horizontal Shared Annotations Preview (Phase 5B.2) */
+.annotationsHorizontalGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: var(--space-4);
+  margin-bottom: var(--space-6);
+}
+
+@media (max-width: 640px) {
+  .annotationsHorizontalGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.annotationPreviewCard {
+  padding: var(--space-5);
+  border-radius: var(--radius-lg);
+  background-color: var(--color-surface);
+  box-shadow: 0 4px 14px rgba(38, 54, 51, 0.05);
+  border: 1px solid rgba(226, 218, 205, 0.6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  transition: all 0.2s ease;
+}
+
+.annotationPreviewCard:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(38, 54, 51, 0.08);
+}
+
+.annotationLocationChip {
+  font-size: 11px;
+  color: var(--color-text-secondary);
+  background-color: var(--color-surface-inset);
+  padding: 3px 8px;
+  border-radius: var(--radius-pill);
+  align-self: flex-start;
+}
+
+.annotationExcerpt {
+  font-family: var(--font-family-heading);
+  font-style: italic;
+  font-size: 13px;
+  color: var(--color-text-secondary);
+  margin: 0;
+  line-height: 1.4;
+  border-left: 2px solid var(--color-action-primary);
+  padding-left: 8px;
+}
+
+.annotationPreviewBody {
+  font-family: var(--font-family-body);
+  font-size: 13px;
+  color: var(--color-text-primary);
+  line-height: 1.5;
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.emptyAnnotationsCard {
+  padding: var(--space-8);
+  border-radius: var(--radius-xl);
+  background-color: var(--color-surface);
+  border: 1px dashed var(--color-border-subtle);
+  text-align: center;
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-6);
+}
+
+.composerHeader {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.composerTitle {
+  font-family: var(--font-family-heading);
+  font-size: var(--font-h3);
+  color: var(--color-text-primary);
+  margin: 0;
+}
+
+.composerTextarea {
+  width: 100%;
+  padding: var(--space-4);
+  border-radius: var(--radius-md);
+  background-color: var(--color-surface-inset);
+  color: var(--color-text-primary);
+  font-family: var(--font-family-body);
+  font-size: var(--font-small);
+  border: 1px solid transparent;
+  box-shadow: inset 2px 2px 5px rgba(38, 54, 51, 0.08), inset -2px -2px 5px rgba(255, 255, 255, 0.7);
+  resize: vertical;
+  min-height: 90px;
+}
+
+.composerTextarea:focus {
+  outline: none;
+  background-color: var(--color-surface);
+  border-color: var(--color-border-focus);
+}
+
+.composerFooter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+
+.composerNote {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: var(--font-caption);
+  color: var(--color-text-secondary);
+}
+
+/* ── Section: Resonant Folios (Related Works) ── */
+.relatedSection {
+  margin-top: var(--space-12);
+  margin-bottom: var(--space-12);
+  width: 100%;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.relatedHeader {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--space-4);
+  margin-bottom: var(--space-6);
+}
+
+.relatedEyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--color-action-primary);
+  font-size: var(--font-caption);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+
+.relatedTitle {
+  font-family: var(--font-family-heading);
+  font-size: var(--font-h2);
+  color: var(--color-text-primary);
+  margin: 0 0 4px 0;
+}
+
+.relatedSubtitle {
+  font-family: var(--font-family-body);
+  font-size: var(--font-small);
+  color: var(--color-text-secondary);
+  margin: 0;
+}
+
+.carouselNavButtons {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.carouselButton {
+  width: 38px;
+  height: 38px;
+  border-radius: var(--radius-pill);
+  background-color: var(--color-surface-inset);
+  color: var(--color-text-primary);
+  border: 1px solid rgba(226, 218, 205, 0.7);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  touch-action: manipulation;
+}
+
+.carouselButton:hover {
+  background-color: var(--color-surface);
+  color: var(--color-action-primary);
+}
+
+.relatedShelf {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  scroll-snap-type: x mandatory;
+  gap: var(--space-4);
+  padding: var(--space-2) var(--space-1) var(--space-4);
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  touch-action: manipulation;
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-border-subtle) transparent;
+}
+
+.relatedShelf::-webkit-scrollbar {
+  height: 6px;
+}
+
+.relatedShelf::-webkit-scrollbar-thumb {
+  background-color: var(--color-border-subtle);
+  border-radius: var(--radius-pill);
+}
+
+.relatedShelf::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .relatedShelf {
+    scroll-behavior: auto;
+  }
+}
+
+.carouselItemWrapper,
+.relatedShelf > * {
+  flex: 0 0 250px;
+  width: 250px;
+  max-width: 250px;
+  min-width: 250px;
+  scroll-snap-align: start;
+  box-sizing: border-box;
+  display: flex;
+}
+
+.carouselCard {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.relatedShelf img {
+  object-fit: contain;
+}
+
+/* Tablet (960px / 768px) */
+@media (max-width: 1024px) {
+  .carouselItemWrapper,
+  .relatedShelf > * {
+    flex: 0 0 220px;
+    width: 220px;
+    max-width: 220px;
+    min-width: 220px;
+  }
+}
+
+@media (max-width: 768px) {
+  .carouselItemWrapper,
+  .relatedShelf > * {
+    flex: 0 0 200px;
+    width: 200px;
+    max-width: 200px;
+    min-width: 200px;
+  }
+}
+
+/* Mobile (440px / 390px) */
+@media (max-width: 480px) {
+  .carouselItemWrapper,
+  .relatedShelf > * {
+    flex: 0 0 185px;
+    width: 185px;
+    max-width: 185px;
+    min-width: 185px;
+  }
+}
+
+/* Small Mobile (360px) */
+@media (max-width: 360px) {
+  .carouselItemWrapper,
+  .relatedShelf > * {
+    flex: 0 0 165px;
+    width: 165px;
+    max-width: 165px;
+    min-width: 165px;
+  }
+}
+
+/* ── Section: Archival Colophon Banner ── */
+.colophonBanner {
+  margin-top: var(--space-8);
+  padding: var(--space-6) var(--space-8);
+  border-radius: var(--radius-xl);
+  background-color: var(--color-surface-inset);
+  box-shadow: inset 2px 2px 5px rgba(38, 54, 51, 0.06), inset -2px -2px 5px rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(226, 218, 205, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--space-6);
+}
+
+.colophonLeft {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.colophonIconBadge {
+  width: 52px;
+  height: 52px;
+  border-radius: var(--radius-pill);
+  background-color: var(--color-surface);
+  color: var(--color-action-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(38, 54, 51, 0.08);
+  flex-shrink: 0;
+}
+
+.colophonTitle {
+  font-family: var(--font-family-heading);
+  font-size: var(--font-h3);
+  color: var(--color-text-primary);
+  margin: 0 0 4px 0;
+}
+
+.colophonText {
+  font-family: var(--font-family-body);
+  font-size: var(--font-small);
+  color: var(--color-text-secondary);
+  margin: 0;
+}
+
+/* ── Loading and Error States ── */
+.loadingContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+  gap: var(--space-4);
+  text-align: center;
+}
+
+.loadingSpinner {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-pill);
+  border: 3px solid rgba(24, 92, 88, 0.15);
+  border-top-color: var(--color-action-primary);
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.errorContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 50vh;
+  gap: var(--space-4);
+  text-align: center;
+  padding: var(--space-12) var(--space-4);
+}
+
+.errorTitle {
+  font-family: var(--font-family-heading);
+  font-size: var(--font-h2);
+  color: var(--color-feedback-error);
+  margin: 0;
+}
+
+.errorDesc {
+  font-family: var(--font-family-body);
+  font-size: var(--font-body);
+  color: var(--color-text-secondary);
+  max-width: 480px;
+  margin: 0;
+}
+
+/* ── Accessible Share Modal ── */
+.modalBackdrop {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(38, 54, 51, 0.45);
+  backdrop-filter: blur(4px);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-4);
+}
+
+.modalDialog {
+  width: 100%;
+  max-width: 520px;
+  background-color: var(--color-surface);
+  border-radius: var(--radius-xl);
+  padding: var(--space-6);
+  box-shadow: 0 16px 40px rgba(38, 54, 51, 0.2);
+  border: 1px solid rgba(226, 218, 205, 0.8);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  outline: none;
+}
+
+.modalHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.modalTitle {
+  font-family: var(--font-family-heading);
+  font-size: var(--font-h3);
+  color: var(--color-text-primary);
+  margin: 0;
+}
+
+.citationBox {
+  padding: var(--space-3);
+  border-radius: var(--radius-md);
+  background-color: var(--color-surface-inset);
+  font-family: var(--font-family-heading);
+  font-size: var(--font-small);
+  color: var(--color-text-primary);
+  line-height: var(--line-height-relaxed);
+  border: 1px solid var(--color-border-subtle);
+}
+

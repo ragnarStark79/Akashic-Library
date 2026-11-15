@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+
+<html class="h-full" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_standard" name="shell-type"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Lora:ital,wght@0,500;0,600;1,400&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"surface-dim":"#ccded9","bg-page":"#F5F1E9","secondary":"#506356","on-surface-variant":"#3f4947","error-container":"#ffdad6","on-tertiary":"#ffffff","background":"#ebfdf8","on-error-container":"#93000a","surface-variant":"#d4e6e2","surface-inset":"#EAE3D8","tertiary-fixed":"#ffdbcc","on-error":"#ffffff","on-primary":"#ffffff","on-primary-container":"#93d2cc","accent-teal":"#185C58","on-secondary-fixed-variant":"#384b3f","glass-border":"rgba(234, 227, 216, 0.65)","primary":"#004440","surface":"#ebfdf8","on-primary-fixed-variant":"#02504c","on-surface":"#0e1e1c","tertiary":"#5b311c","surface-glass":"rgba(252, 250, 245, 0.82)","text-secondary":"#827E75","surface-container-high":"#daece7","outline":"#6f7978","secondary-fixed":"#d2e8d8","on-tertiary-fixed":"#331202","inverse-surface":"#233330","secondary-container":"#d2e8d8","accent-terracotta":"#C58B70","inverse-on-surface":"#e2f5f0","primary-fixed-dim":"#93d2cc","on-tertiary-container":"#f8b89b","surface-container":"#dff2ed","surface-container-lowest":"#ffffff","secondary-fixed-dim":"#b6ccbc","error":"#ba1a1a","tertiary-container":"#764730","surface-bright":"#ebfdf8","inverse-primary":"#93d2cc","outline-variant":"#bfc8c7","primary-container":"#185c58","on-tertiary-fixed-variant":"#683b26","tertiary-fixed-dim":"#f8b89b","primary-fixed":"#afeee9","surface-tint":"#276864","on-secondary-container":"#55695c","text-primary":"#263633","on-secondary":"#ffffff","on-primary-fixed":"#00201e","on-background":"#0e1e1c","surface-container-low":"#e5f8f3","accent-sage":"#A8BDAE","on-secondary-fixed":"#0d1f15","surface-porcelain":"#FCFAF5","surface-container-highest":"#d4e6e2"},borderRadius:{"DEFAULT":"0.25rem","lg":"0.5rem","xl":"0.75rem","full":"9999px"},spacing:{"margin":"3rem","space-lg":"1.5rem","gutter":"1.5rem","space-md":"1rem","margin-mobile":"1.25rem","space-xs":"0.25rem","space-sm":"0.5rem","space-xl":"2.5rem","gutter-mobile":"1rem"},fontFamily:{"label-sm":["Inter"],"display-mobile":["Lora"],"headline-lg-mobile":["Lora"],"headline-lg":["Lora"],"caption":["Inter"],"body-sm":["Inter"],"headline-sm":["Lora"],"body-lead":["Inter"],"display":["Lora"],"body-base":["Inter"],"headline-md":["Lora"],"label-md":["Inter"]},fontSize:{"label-sm":["12px",{lineHeight:"16px",letterSpacing:"0.04em",fontWeight:"600"}],"display-mobile":["34px",{lineHeight:"42px",letterSpacing:"-0.01em",fontWeight:"500"}],"headline-lg-mobile":["28px",{lineHeight:"36px",letterSpacing:"-0.01em",fontWeight:"500"}],"headline-lg":["36px",{lineHeight:"44px",letterSpacing:"-0.015em",fontWeight:"500"}],"caption":["11px",{lineHeight:"16px",letterSpacing:"0.02em",fontWeight:"500"}],"body-sm":["13px",{lineHeight:"20px",fontWeight:"400"}],"headline-sm":["20px",{lineHeight:"28px",fontWeight:"600"}],"body-lead":["18px",{lineHeight:"28px",fontWeight:"400"}],"display":["48px",{lineHeight:"56px",letterSpacing:"-0.02em",fontWeight:"500"}],"body-base":["15px",{lineHeight:"24px",fontWeight:"400"}],"headline-md":["26px",{lineHeight:"34px",fontWeight:"500"}],"label-md":["14px",{lineHeight:"20px",letterSpacing:"0.01em",fontWeight:"500"}]}}}}</script></head><body class="bg-bg-page font-body-base text-text-primary min-h-screen flex flex-col antialiased selection:bg-accent-sage/30"><header class="fixed top-0 left-0 right-0 z-50 flex justify-center pt-space-sm px-margin-mobile md:px-margin pointer-events-none"><div class="pointer-events-auto h-16 w-full max-w-[1360px] bg-surface-glass backdrop-blur-md rounded-full shadow-[0_8px_24px_rgba(38,54,51,0.08)] px-space-md md:px-space-lg flex items-center justify-between transition-all"><div class="flex items-center gap-space-sm"><a class="flex items-center gap-3 group" data-path="discover" href="#"><img alt="Akashic Library Icon" class="w-8 h-8 rounded-full object-cover shadow-[0_2px_6px_rgba(38,54,51,0.12)]" src="https://lh3.googleusercontent.com/aida/ALJJyrBvp9BCD31Baic9wo29_IOXUpinweeUDK-5tgVopu-gHf95PuDgGEz9xO3rJ5bcH9hUwWbcugpfVj_fnM7_wYiW4cgiL9E1ADfRMEChwms2QDOBAjbvWskjkpepUmJzgMCbTSEWI4G2Ct1DgIS9TPkzAzY-yIaHyvu6HXmGJBgfny0tk-rgasJsjytL3FNk5pEKjUNmMkoMT9MM7VQkbyAbfuCC28BR0DrGPjBNkh9x"/><span class="font-headline-sm text-headline-sm text-primary tracking-tight group-hover:text-accent-teal transition-colors">Akashic</span></a></div><nav class="hidden md:flex items-center gap-1.5 p-1 bg-surface-inset/50 rounded-full" data-active-classes="bg-accent-teal text-surface-porcelain font-semibold shadow-[0_2px_8px_rgba(24,92,88,0.25)]"><a class="px-space-md py-1.5 rounded-full font-label-md text-label-md text-text-secondary hover:text-text-primary hover:bg-surface-porcelain/60 transition-all" data-path="discover" href="#">Discover</a><a class="px-space-md py-1.5 rounded-full font-label-md text-label-md text-text-secondary hover:text-text-primary hover:bg-surface-porcelain/60 transition-all" data-path="genres" href="#">Genres</a><a class="px-space-md py-1.5 rounded-full font-label-md text-label-md text-text-secondary hover:text-text-primary hover:bg-surface-porcelain/60 transition-all" data-path="community" href="#">Community</a><a class="px-space-md py-1.5 rounded-full font-label-md text-label-md text-text-secondary hover:text-text-primary hover:bg-surface-porcelain/60 transition-all" data-path="my-library" href="#">My Library</a><a class="px-space-md py-1.5 rounded-full font-label-md text-label-md text-text-secondary hover:text-text-primary hover:bg-surface-porcelain/60 transition-all" data-path="about" href="#">About</a></nav><div class="flex items-center gap-space-sm"><button aria-label="Search Catalog" class="flex items-center justify-center w-10 h-10 rounded-full bg-surface-inset/60 text-text-primary hover:bg-surface-porcelain hover:shadow-[0_2px_8px_rgba(38,54,51,0.06)] active:shadow-[inset_1px_1px_3px_rgba(38,54,51,0.15)] transition-all" type="button"><span class="material-symbols-outlined text-[20px]">search</span></button><a class="hidden sm:inline-flex items-center px-space-lg py-2 rounded-full font-label-md text-label-md bg-accent-teal text-surface-porcelain shadow-[0_4px_12px_rgba(24,92,88,0.2)] hover:opacity-95 active:scale-95 transition-all" data-path="sign-in" href="#">Sign In</a></div></div></header><main class="flex-1 w-full pt-16"><div class="flex flex-col w-full">
+<!-- Archival Ambient Lighting Gradient -->
+<div class="relative w-full max-w-[1360px] mx-auto px-margin-mobile md:px-margin pb-space-xl">
+<!-- Top Decorative Subtle Bloom -->
+<div class="absolute top-0 right-1/4 w-96 h-96 bg-accent-sage/15 rounded-full blur-3xl pointer-events-none -z-10"></div>
+<div class="absolute top-48 left-10 w-80 h-80 bg-accent-terracotta/10 rounded-full blur-3xl pointer-events-none -z-10"></div>
+<!-- Section 1: Breadcrumbs & Archival Folio Ledger Path -->
+<section class="pt-space-md pb-space-lg flex flex-col sm:flex-row sm:items-center justify-between gap-space-sm">
+<nav aria-label="Folio Breadcrumbs" class="flex items-center gap-2 text-text-secondary font-label-sm text-label-sm">
+<a class="hover:text-accent-teal transition-colors flex items-center gap-1 group" href="#">
+<span class="material-symbols-outlined text-[16px] group-hover:-translate-x-0.5 transition-transform">arrow_back</span>
+<span>Catalog</span>
+</a>
+<span class="text-accent-sage">/</span>
+<a class="hover:text-accent-teal transition-colors" href="#">Speculative Philosophy</a>
+<span class="text-accent-sage">/</span>
+<span class="text-text-primary font-medium">Folio #1944.08 • Ficciones</span>
+</nav>
+<div class="flex items-center gap-space-sm self-start sm:self-auto">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface-inset/60 text-secondary font-caption text-caption tracking-wider uppercase">
+<span class="w-1.5 h-1.5 rounded-full bg-accent-teal animate-pulse"></span>
+          Sanctuary Vault Certified
+        </span>
+<span class="text-text-secondary font-caption text-caption">Acc. No. 892-BOR</span>
+</div>
+</section>
+<!-- Section 2: Editorial Two-Column Main Stage -->
+<section class="grid grid-cols-1 lg:grid-cols-12 gap-gutter items-start mb-space-xl">
+<!-- Left Column: Book Physicality, Desk Actions & Archival Provenance (5 cols) -->
+<div class="lg:col-span-5 flex flex-col gap-space-lg">
+<!-- Book Jacket Card with tactile shadow and physical spine depth -->
+<div class="relative group p-space-lg bg-surface-porcelain rounded-2xl shadow-[0_12px_32px_rgba(38,54,51,0.08),0_2px_6px_rgba(38,54,51,0.04)] flex flex-col items-center">
+<!-- Folio Collector Ribbon Tag -->
+<div class="absolute -top-3 left-8 px-3.5 py-1 rounded-full bg-primary text-surface-porcelain font-label-sm text-label-sm tracking-wide shadow-md flex items-center gap-1.5 z-10">
+<span class="material-symbols-outlined text-[14px] text-accent-sage">auto_stories</span>
+<span>Folio No. 01 • Sanctuary Archive</span>
+</div>
+<!-- 2:3 Vertical Physical Book Representation -->
+<div class="relative w-full max-w-[320px] aspect-[2/3] mt-2 mb-space-md rounded-xl overflow-hidden shadow-[8px_16px_36px_rgba(38,54,51,0.22),2px_4px_12px_rgba(38,54,51,0.12)] transition-transform duration-500 group-hover:scale-[1.015]">
+<!-- Spine Fold Effect Shadow -->
+<div class="absolute inset-y-0 left-0 w-8 bg-gradient-to-r from-black/35 via-black/15 to-transparent z-20 pointer-events-none"></div>
+<div class="absolute inset-y-0 left-2 w-[1px] bg-white/20 z-20 pointer-events-none"></div>
+<img class="w-full h-full object-cover" data-alt="Exquisite vintage cloth-bound book cover for Ficciones by Jorge Luis Borges. Deep midnight teal and muted terracotta linen textured binding with intricate gold foil embossed labyrinth geometry, infinite hexagonal diagrams, and delicate serif typography reading FICCIONES in classical Spanish press layout." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBe4gDxIdb_K9Ybya_CducjShQJDEujWjvLAs9VhzJp6pI4IixfzqtTQMgDniWXYUmQHX92dtPmeCIbwkMMfwCUKA737CzI7DNk62J6JpUajPRzhDB14NS-WTB9PWL7Xgh3usaejTC9wVgqAwel9pKSnDeFpGdOiYfk-ly5FzDD8k_COAKwG1jmFwQ2a6V0MxGA4gqq-e-zFKfI9moSjkPXzCelGOu8v9wjochsoeo"/>
+<!-- Bottom Corner Emboss Seal Overlay -->
+<div class="absolute bottom-4 right-4 z-20 px-2.5 py-1 rounded-md bg-surface-glass backdrop-blur-md shadow-sm">
+<span class="font-headline-sm text-label-sm text-primary tracking-widest font-serif">BORGES</span>
+</div>
+</div>
+<!-- Quick Action Shelf Bar -->
+<div class="w-full flex flex-col gap-2.5 pt-2">
+<div class="flex items-center gap-2">
+<button class="flex-1 py-3 px-space-md rounded-full bg-accent-teal text-surface-porcelain font-label-md text-label-md flex items-center justify-center gap-2 shadow-[0_4px_16px_rgba(24,92,88,0.24)] hover:bg-primary active:scale-[0.98] transition-all cursor-pointer" id="btn-shelf" onclick="toggleShelfState(this)">
+<span class="material-symbols-outlined text-[18px]">bookmark_add</span>
+<span id="shelf-text">Add to Reading Shelf</span>
+</button>
+<button class="w-12 h-12 rounded-full bg-surface-inset/70 text-text-primary hover:bg-surface-porcelain hover:text-accent-teal flex items-center justify-center shadow-[inset_1px_1px_3px_rgba(38,54,51,0.08),inset_-1px_-1px_3px_rgba(255,255,255,0.8)] active:shadow-inner transition-all cursor-pointer" title="Mark as Read / Completed">
+<span class="material-symbols-outlined text-[20px]">done_all</span>
+</button>
+<button class="w-12 h-12 rounded-full bg-surface-inset/70 text-text-primary hover:bg-surface-porcelain hover:text-accent-terracotta flex items-center justify-center shadow-[inset_1px_1px_3px_rgba(38,54,51,0.08),inset_-1px_-1px_3px_rgba(255,255,255,0.8)] active:shadow-inner transition-all cursor-pointer" title="Transcribe Quote / Annotate">
+<span class="material-symbols-outlined text-[20px]">edit_note</span>
+</button>
+<button class="w-12 h-12 rounded-full bg-surface-inset/70 text-text-primary hover:bg-surface-porcelain hover:text-accent-teal flex items-center justify-center shadow-[inset_1px_1px_3px_rgba(38,54,51,0.08),inset_-1px_-1px_3px_rgba(255,255,255,0.8)] active:shadow-inner transition-all cursor-pointer" title="Share Folio Record">
+<span class="material-symbols-outlined text-[20px]">share</span>
+</button>
+</div>
+<!-- Reading Status Indicator Pill -->
+<div class="flex items-center justify-center gap-2 py-2 px-space-md rounded-full bg-surface-inset/40 text-text-secondary font-caption text-caption">
+<span class="material-symbols-outlined text-[15px] text-accent-teal">group</span>
+<span>Currently in contemplation by <strong class="text-text-primary font-medium">1,420 archivist members</strong></span>
+</div>
+</div>
+</div>
+<!-- Curated Provenance / Edition Details Box (Recessed dual-shadow stone well) -->
+<div class="p-space-lg rounded-2xl bg-surface-inset shadow-[inset_2px_2px_6px_rgba(38,54,51,0.07),inset_-2px_-2px_6px_rgba(255,255,255,0.7)]">
+<div class="flex items-center justify-between pb-space-sm mb-space-sm">
+<span class="font-headline-sm text-headline-sm text-text-primary tracking-tight">Bibliographic Record</span>
+<span class="font-caption text-caption uppercase tracking-wider text-accent-teal bg-secondary-container/60 px-2 py-0.5 rounded-full">Archive Verified</span>
+</div>
+<dl class="space-y-2.5 font-body-sm text-body-sm">
+<div class="flex justify-between py-1">
+<dt class="text-text-secondary">Original Folio</dt>
+<dd class="text-text-primary font-medium text-right">Ficciones (Editorial Sur, 1944)</dd>
+</div>
+<div class="flex justify-between py-1">
+<dt class="text-text-secondary">English Translation</dt>
+<dd class="text-text-primary font-medium text-right">Anthony Kerrigan &amp; Norman T. di Giovanni</dd>
+</div>
+<div class="flex justify-between py-1">
+<dt class="text-text-secondary">Standard ISBN-13</dt>
+<dd class="text-text-primary font-mono text-caption text-right">978-0802130303</dd>
+</div>
+<div class="flex justify-between py-1">
+<dt class="text-text-secondary">Extent &amp; Typography</dt>
+<dd class="text-text-primary font-medium text-right">174 pages • Caslon 11/14pt</dd>
+</div>
+<div class="flex justify-between py-1">
+<dt class="text-text-secondary">Language System</dt>
+<dd class="text-text-primary font-medium text-right">Spanish (Castilian) → English</dd>
+</div>
+<div class="pt-2">
+<dt class="text-text-secondary mb-1.5 block">Archival Classifications</dt>
+<dd class="flex flex-wrap gap-1.5">
+<span class="px-2.5 py-0.5 rounded-full bg-surface-porcelain text-text-primary font-caption text-caption shadow-[0_1px_3px_rgba(38,54,51,0.06)]">Labyrinthine Fiction</span>
+<span class="px-2.5 py-0.5 rounded-full bg-surface-porcelain text-text-primary font-caption text-caption shadow-[0_1px_3px_rgba(38,54,51,0.06)]">Metaphysical Paradox</span>
+<span class="px-2.5 py-0.5 rounded-full bg-surface-porcelain text-text-primary font-caption text-caption shadow-[0_1px_3px_rgba(38,54,51,0.06)]">Infinite Recursion</span>
+<span class="px-2.5 py-0.5 rounded-full bg-surface-porcelain text-text-primary font-caption text-caption shadow-[0_1px_3px_rgba(38,54,51,0.06)]">Argentine Modernism</span>
+</dd>
+</div>
+</dl>
+<!-- External Scholarly Repositories -->
+<div class="mt-space-md pt-space-sm flex items-center justify-between text-caption font-caption">
+<span class="text-text-secondary">Open Scholarly Records:</span>
+<div class="flex items-center gap-space-sm">
+<a class="text-accent-teal hover:underline flex items-center gap-0.5" href="#">WorldCat <span class="material-symbols-outlined text-[12px]">open_in_new</span></a>
+<span class="text-outline-variant">•</span>
+<a class="text-accent-teal hover:underline flex items-center gap-0.5" href="#">Internet Archive <span class="material-symbols-outlined text-[12px]">open_in_new</span></a>
+<span class="text-outline-variant">•</span>
+<a class="text-accent-teal hover:underline flex items-center gap-0.5" href="#">OpenLibrary <span class="material-symbols-outlined text-[12px]">open_in_new</span></a>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Column: Literary Dossier, Deep Synopsis & Story Matrix (7 cols) -->
+<div class="lg:col-span-7 flex flex-col gap-space-lg">
+<!-- Header & Attribution Section -->
+<div class="space-y-space-xs">
+<div class="flex items-center gap-3">
+<span class="px-3 py-1 rounded-full bg-surface-inset text-accent-terracotta font-label-sm text-label-sm tracking-widest uppercase font-semibold">
+              Sanctuary Essential Folio • Vol. 1944
+            </span>
+<span class="text-text-secondary text-caption font-caption">Buenos Aires, Argentina</span>
+</div>
+<h1 class="font-display text-display text-primary tracking-tight">
+            Ficciones
+          </h1>
+<div class="flex flex-wrap items-center gap-x-4 gap-y-2 pt-1">
+<a class="font-headline-sm text-headline-sm text-accent-teal hover:text-primary transition-colors flex items-center gap-1.5 group" href="#">
+<span>Jorge Luis Borges</span>
+<span class="material-symbols-outlined text-[18px] opacity-70 group-hover:translate-x-0.5 transition-transform">verified</span>
+</a>
+<span class="text-text-secondary font-caption text-caption">•</span>
+<span class="text-text-secondary font-body-sm text-body-sm">National Prize for Literature Grand Laureate</span>
+</div>
+<!-- Critical Consensus & Rosette -->
+<div class="pt-2 flex flex-wrap items-center gap-space-md">
+<div class="flex items-center gap-1 text-accent-terracotta">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">star_half</span>
+<span class="font-label-md text-label-md text-text-primary ml-1.5 font-bold">4.8</span>
+<span class="text-text-secondary font-body-sm text-body-sm">/ 5.0</span>
+</div>
+<span class="text-outline-variant">|</span>
+<span class="text-text-secondary font-body-sm text-body-sm">2,840 contemplative marginalia entries</span>
+<div class="ml-auto inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-secondary-container text-on-secondary-container font-label-sm text-label-sm shadow-sm">
+<span class="material-symbols-outlined text-[16px] text-accent-teal">workspace_premium</span>
+<span>Curator’s Choice</span>
+</div>
+</div>
+</div>
+<!-- Editorial Pull Quote & Narrative Core -->
+<div class="relative p-space-lg rounded-2xl bg-surface-porcelain shadow-[0_4px_16px_rgba(38,54,51,0.05)] space-y-space-md">
+<!-- Decorative Quote Icon Mark -->
+<span class="material-symbols-outlined text-[48px] text-accent-sage/30 absolute top-4 right-6 pointer-events-none select-none">format_quote</span>
+<blockquote class="font-headline-md text-headline-md text-primary font-serif italic leading-relaxed pr-8">
+            “The universe (which others call the Library) is composed of an indefinite and perhaps infinite number of hexagonal galleries, with vast air shafts between, surrounded by very low railings...”
+          </blockquote>
+<div class="space-y-3 text-text-primary font-body-base text-body-base leading-relaxed">
+<p>
+              Divided into two masterwork suites—<em>El jardín de senderos que se bifurcan</em> (The Garden of Forking Paths, 1941) and <em>Artificios</em> (Artifices, 1944)—<strong class="font-medium">Ficciones</strong> stands as the monumental cornerstone of twentieth-century philosophical speculation. Borges dismantles linear causality, presenting literature not as mere chronological narrative, but as an infinite combinatorial game of labyrinthine mirror-rooms, fictitious encyclopedias, and counter-factual cosmologies.
+            </p>
+<p>
+              Across these sixteen terse meditations, Borges introduces the secret society that invents the imaginary planet of <em>Tlön</em>, the hapless detective caught in an inescapable kabbalistic trap in <em>Death and the Compass</em>, and the French symbolist <em>Pierre Menard</em>, who undertakes the impossible enterprise of composing <em>Don Quixote</em> word-for-word in the twentieth century.
+            </p>
+</div>
+<!-- Literary Key Dimensions Tags -->
+<div class="pt-space-xs flex flex-wrap gap-2">
+<span class="px-3 py-1 rounded-full bg-surface-inset text-secondary font-label-sm text-label-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">all_inclusive</span> Metaphysical Infinity
+            </span>
+<span class="px-3 py-1 rounded-full bg-surface-inset text-secondary font-label-sm text-label-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">psychology</span> Counterfeit Realities
+            </span>
+<span class="px-3 py-1 rounded-full bg-surface-inset text-secondary font-label-sm text-label-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">schema</span> Multiversal Forking
+            </span>
+<span class="px-3 py-1 rounded-full bg-surface-inset text-secondary font-label-sm text-label-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">menu_book</span> The Apocryphal Book
+            </span>
+</div>
+</div>
+<!-- Interactive Folio Tabs (Tactile Segmented Switcher) -->
+<div class="space-y-space-md">
+<div class="p-1 rounded-full bg-surface-inset flex items-center gap-1 w-full max-w-lg shadow-[inset_1px_1px_3px_rgba(38,54,51,0.08),inset_-1px_-1px_3px_rgba(255,255,255,0.7)]" role="tablist">
+<button class="flex-1 py-2 px-3 rounded-full font-label-md text-label-md text-surface-porcelain bg-accent-teal shadow-md transition-all text-center cursor-pointer" id="tab-cycles-btn" onclick="switchTab('cycles')" role="tab">
+              The Two Cycles
+            </button>
+<button class="flex-1 py-2 px-3 rounded-full font-label-md text-label-md text-text-secondary hover:text-text-primary transition-all text-center cursor-pointer" id="tab-themes-btn" onclick="switchTab('themes')" role="tab">
+              Themes &amp; Paradoxes
+            </button>
+<button class="flex-1 py-2 px-3 rounded-full font-label-md text-label-md text-text-secondary hover:text-text-primary transition-all text-center cursor-pointer" id="tab-pathways-btn" onclick="switchTab('pathways')" role="tab">
+              Reading Pathways
+            </button>
+</div>
+<!-- Tab Content 1: The Two Cycles (Stories Overview) -->
+<div class="space-y-space-md" id="tab-cycles-content">
+<!-- Cycle A: The Garden of Forking Paths -->
+<div class="p-space-md rounded-2xl bg-surface-porcelain shadow-[0_4px_12px_rgba(38,54,51,0.05)]">
+<div class="flex items-center justify-between pb-2 mb-2">
+<span class="font-headline-sm text-headline-sm text-primary">Part I: El jardín de senderos que se bifurcan (1941)</span>
+<span class="font-caption text-caption text-text-secondary">8 Canonical Fictions</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-sm pt-2">
+<!-- Story 1 -->
+<div class="p-space-sm rounded-xl bg-surface-inset/40 hover:bg-surface-inset transition-colors flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between">
+<h4 class="font-headline-sm text-label-md text-text-primary font-bold">Tlön, Uqbar, Orbis Tertius</h4>
+<span class="text-caption text-text-secondary font-mono">01</span>
+</div>
+<p class="font-body-sm text-body-sm text-text-secondary mt-1 line-clamp-2">
+                      A secret cabal creates an encyclopedia depicting an idealist world that begins to physically displace our own reality.
+                    </p>
+</div>
+<span class="text-caption text-accent-teal mt-2 font-medium">Concept: Idealism as Virus</span>
+</div>
+<!-- Story 2 -->
+<div class="p-space-sm rounded-xl bg-surface-inset/40 hover:bg-surface-inset transition-colors flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between">
+<h4 class="font-headline-sm text-label-md text-text-primary font-bold">The Library of Babel</h4>
+<span class="text-caption text-text-secondary font-mono">03</span>
+</div>
+<p class="font-body-sm text-body-sm text-text-secondary mt-1 line-clamp-2">
+                      An infinite honeycomb of hexagonal rooms containing every book that could ever be written from twenty-five orthographic symbols.
+                    </p>
+</div>
+<span class="text-caption text-accent-teal mt-2 font-medium">Concept: Combinatorial Infinity</span>
+</div>
+<!-- Story 3 -->
+<div class="p-space-sm rounded-xl bg-surface-inset/40 hover:bg-surface-inset transition-colors flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between">
+<h4 class="font-headline-sm text-label-md text-text-primary font-bold">Pierre Menard, Quixote Author</h4>
+<span class="text-caption text-text-secondary font-mono">04</span>
+</div>
+<p class="font-body-sm text-body-sm text-text-secondary mt-1 line-clamp-2">
+                      A writer resolves to produce not another Don Quixote, but the Quixote itself, word-for-word, from his modern consciousness.
+                    </p>
+</div>
+<span class="text-caption text-accent-teal mt-2 font-medium">Concept: Anachronistic Authorship</span>
+</div>
+<!-- Story 4 -->
+<div class="p-space-sm rounded-xl bg-surface-inset/40 hover:bg-surface-inset transition-colors flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between">
+<h4 class="font-headline-sm text-label-md text-text-primary font-bold">The Garden of Forking Paths</h4>
+<span class="text-caption text-text-secondary font-mono">08</span>
+</div>
+<p class="font-body-sm text-body-sm text-text-secondary mt-1 line-clamp-2">
+                      A Chinese spy in wartime England uncovers an ancient labyrinth that exists not in space, but in time where all possibilities occur simultaneously.
+                    </p>
+</div>
+<span class="text-caption text-accent-teal mt-2 font-medium">Concept: Quantum Branching</span>
+</div>
+</div>
+</div>
+<!-- Cycle B: Artificios -->
+<div class="p-space-md rounded-2xl bg-surface-porcelain shadow-[0_4px_12px_rgba(38,54,51,0.05)]">
+<div class="flex items-center justify-between pb-2 mb-2">
+<span class="font-headline-sm text-headline-sm text-primary">Part II: Artificios (1944)</span>
+<span class="font-caption text-caption text-text-secondary">6 Later Inventions + 3 Addenda</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-sm pt-2">
+<!-- Story 5 -->
+<div class="p-space-sm rounded-xl bg-surface-inset/40 hover:bg-surface-inset transition-colors flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between">
+<h4 class="font-headline-sm text-label-md text-text-primary font-bold">Funes the Memorious</h4>
+<span class="text-caption text-text-secondary font-mono">09</span>
+</div>
+<p class="font-body-sm text-body-sm text-text-secondary mt-1 line-clamp-2">
+                      A young gaucho suffers a fall from a horse and awakens cursed with absolute sensory recall—incapable of general thought or forgetting.
+                    </p>
+</div>
+<span class="text-caption text-accent-teal mt-2 font-medium">Concept: The Agony of Total Memory</span>
+</div>
+<!-- Story 6 -->
+<div class="p-space-sm rounded-xl bg-surface-inset/40 hover:bg-surface-inset transition-colors flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between">
+<h4 class="font-headline-sm text-label-md text-text-primary font-bold">Death and the Compass</h4>
+<span class="text-caption text-text-secondary font-mono">11</span>
+</div>
+<p class="font-body-sm text-body-sm text-text-secondary mt-1 line-clamp-2">
+                      Detective Erik Lönnrot investigates a murder with geometric reasoning, only to discover his deductions construct his own execution.
+                    </p>
+</div>
+<span class="text-caption text-accent-teal mt-2 font-medium">Concept: The Detective as Labyrinth Maker</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Tab Content 2: Themes & Paradoxes (Hidden by default) -->
+<div class="hidden space-y-space-sm" id="tab-themes-content">
+<div class="p-space-md rounded-2xl bg-surface-porcelain shadow-[0_4px_12px_rgba(38,54,51,0.05)] grid grid-cols-1 sm:grid-cols-2 gap-space-md">
+<div class="p-space-sm rounded-xl bg-surface-inset/50">
+<span class="font-headline-sm text-label-md text-primary font-bold flex items-center gap-1.5 mb-1">
+<span class="material-symbols-outlined text-[16px] text-accent-terracotta">emergency</span>
+                  The Infinite Library
+                </span>
+<p class="font-body-sm text-body-sm text-text-secondary">
+                  If language is finite in alphabet but boundless in permutation, every truth, every blasphemy, and the history of your death already exists on a shelf.
+                </p>
+</div>
+<div class="p-space-sm rounded-xl bg-surface-inset/50">
+<span class="font-headline-sm text-label-md text-primary font-bold flex items-center gap-1.5 mb-1">
+<span class="material-symbols-outlined text-[16px] text-accent-terracotta">emergency</span>
+                  The Treachery of Mirrors
+                </span>
+<p class="font-body-sm text-body-sm text-text-secondary">
+                  Mirrors and copulation are abominable because they multiply the visible universe without increasing its fundamental essence.
+                </p>
+</div>
+<div class="p-space-sm rounded-xl bg-surface-inset/50">
+<span class="font-headline-sm text-label-md text-primary font-bold flex items-center gap-1.5 mb-1">
+<span class="material-symbols-outlined text-[16px] text-accent-terracotta">emergency</span>
+                  The Dreamed Dreamer
+                </span>
+<p class="font-body-sm text-body-sm text-text-secondary">
+                  In <em>The Circular Ruins</em>, a wizard dreams a son into reality, only to discover with relief and humiliation that he too is an illusion being dreamed by another.
+                </p>
+</div>
+<div class="p-space-sm rounded-xl bg-surface-inset/50">
+<span class="font-headline-sm text-label-md text-primary font-bold flex items-center gap-1.5 mb-1">
+<span class="material-symbols-outlined text-[16px] text-accent-terracotta">emergency</span>
+                  The Apocryphal Book
+                </span>
+<p class="font-body-sm text-body-sm text-text-secondary">
+                  Borges treats imaginary tomes with the exact bibliographic apparatus of scholarly research, dissolving the boundary between invention and history.
+                </p>
+</div>
+</div>
+</div>
+<!-- Tab Content 3: Reading Pathways (Hidden by default) -->
+<div class="hidden space-y-space-sm" id="tab-pathways-content">
+<div class="p-space-md rounded-2xl bg-surface-porcelain shadow-[0_4px_12px_rgba(38,54,51,0.05)] space-y-3">
+<div class="p-3 rounded-xl bg-surface-inset/40 flex items-start gap-3">
+<span class="w-7 h-7 rounded-full bg-accent-teal text-surface-porcelain flex items-center justify-center font-bold text-caption shrink-0">1</span>
+<div>
+<h5 class="font-headline-sm text-label-md text-primary font-bold">The Cosmological Pathway</h5>
+<p class="font-body-sm text-body-sm text-text-secondary">Start with <em>The Library of Babel</em> → <em>The Lottery in Babylon</em> → <em>The Circular Ruins</em>.</p>
+</div>
+</div>
+<div class="p-3 rounded-xl bg-surface-inset/40 flex items-start gap-3">
+<span class="w-7 h-7 rounded-full bg-accent-teal text-surface-porcelain flex items-center justify-center font-bold text-caption shrink-0">2</span>
+<div>
+<h5 class="font-headline-sm text-label-md text-primary font-bold">The Paradoxical Detective Pathway</h5>
+<p class="font-body-sm text-body-sm text-text-secondary">Start with <em>The Garden of Forking Paths</em> → <em>Death and the Compass</em> → <em>The Theme of the Traitor and the Hero</em>.</p>
+</div>
+</div>
+<div class="p-3 rounded-xl bg-surface-inset/40 flex items-start gap-3">
+<span class="w-7 h-7 rounded-full bg-accent-teal text-surface-porcelain flex items-center justify-center font-bold text-caption shrink-0">3</span>
+<div>
+<h5 class="font-headline-sm text-label-md text-primary font-bold">The Meta-Literary Pathway</h5>
+<p class="font-body-sm text-body-sm text-text-secondary">Start with <em>Pierre Menard</em> → <em>Tlön, Uqbar, Orbis Tertius</em> → <em>The Secret Miracle</em>.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 3: Marginalia & Reader Salons (Community Reviews & Annotations) -->
+<section class="mt-space-xl pt-space-lg mb-space-xl">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-space-sm mb-space-lg">
+<div>
+<div class="flex items-center gap-2 mb-1">
+<span class="material-symbols-outlined text-[20px] text-accent-terracotta">forum</span>
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-accent-terracotta font-semibold">Reading Salons &amp; Notes</span>
+</div>
+<h2 class="font-headline-lg text-headline-lg text-primary tracking-tight">Voices from the Reading Room</h2>
+<p class="font-body-base text-body-base text-text-secondary">Marginal notes left by sanctuary patrons studying the Argentine texts.</p>
+</div>
+<!-- Filter Pill Well -->
+<div class="p-1 rounded-full bg-surface-inset flex items-center gap-1 shadow-[inset_1px_1px_3px_rgba(38,54,51,0.08),inset_-1px_-1px_3px_rgba(255,255,255,0.7)] self-start md:self-auto">
+<button class="px-3 py-1.5 rounded-full font-label-sm text-label-sm bg-accent-teal text-surface-porcelain shadow-sm">All Annotations (42)</button>
+<button class="px-3 py-1.5 rounded-full font-label-sm text-label-sm text-text-secondary hover:text-text-primary transition-colors">Scholarly Notes</button>
+<button class="px-3 py-1.5 rounded-full font-label-sm text-label-sm text-text-secondary hover:text-text-primary transition-colors">Curator Reflections</button>
+</div>
+</div>
+<!-- 3 Editorial Review Cards Mosaic -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter mb-space-lg">
+<!-- Review 1: Scholarly Note -->
+<article class="p-space-lg rounded-2xl bg-surface-porcelain shadow-[0_4px_16px_rgba(38,54,51,0.06)] flex flex-col justify-between relative group hover:shadow-[0_8px_24px_rgba(38,54,51,0.1)] transition-all">
+<div class="space-y-space-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2.5">
+<div class="w-9 h-9 rounded-full bg-accent-teal/20 text-accent-teal flex items-center justify-center font-bold text-label-sm">
+                  ES
+                </div>
+<div>
+<h4 class="font-headline-sm text-label-md text-text-primary font-bold">Elena Solanas</h4>
+<span class="text-caption text-text-secondary">Buenos Aires Archives • 4 days ago</span>
+</div>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-secondary-container text-on-secondary-container font-caption text-caption">Curator Note</span>
+</div>
+<!-- Citation Highlight -->
+<div class="p-space-sm rounded-lg bg-surface-inset/60 text-secondary font-headline-sm text-body-sm italic">
+              “On the infinite permutations of the hexagonal galleries...”
+            </div>
+<p class="font-body-base text-body-sm text-text-primary leading-relaxed">
+              Borges did not invent the multiverse to solve physics problems; he arrived at it through philosophical despair. To read <em>The Garden of Forking Paths</em> alongside modern quantum theory reveals how human narrative instinctively anticipates physical symmetry.
+            </p>
+</div>
+<div class="pt-space-md mt-space-sm flex items-center justify-between text-text-secondary font-caption text-caption">
+<button class="flex items-center gap-1 hover:text-accent-teal transition-colors">
+<span class="material-symbols-outlined text-[16px] text-accent-terracotta" style="font-variation-settings: 'FILL' 1;">favorite</span>
+<span>184 patrons agreed</span>
+</button>
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">reply</span>
+<span>12 salons</span>
+</span>
+</div>
+</article>
+<!-- Review 2: Reading Room Marginalia -->
+<article class="p-space-lg rounded-2xl bg-surface-porcelain shadow-[0_4px_16px_rgba(38,54,51,0.06)] flex flex-col justify-between relative group hover:shadow-[0_8px_24px_rgba(38,54,51,0.1)] transition-all">
+<div class="space-y-space-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2.5">
+<div class="w-9 h-9 rounded-full bg-accent-terracotta/20 text-accent-terracotta flex items-center justify-center font-bold text-label-sm">
+                  MH
+                </div>
+<div>
+<h4 class="font-headline-sm text-label-md text-text-primary font-bold">Marcus H. Vance</h4>
+<span class="text-caption text-text-secondary">Oxford Scriptorium • 2 weeks ago</span>
+</div>
+</div>
+<div class="flex text-accent-terracotta">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+</div>
+<!-- Citation Highlight -->
+<div class="p-space-sm rounded-lg bg-surface-inset/60 text-secondary font-headline-sm text-body-sm italic">
+              “Funes could not sleep; he knew the shape of every cloud...”
+            </div>
+<p class="font-body-base text-body-sm text-text-primary leading-relaxed">
+              Re-reading <em>Funes the Memorious</em> in our era of algorithmic archival storage hits differently. Borges shows us that human wisdom depends strictly on the grace of forgetting, abstraction, and generalization. Total recall is pure paralysis.
+            </p>
+</div>
+<div class="pt-space-md mt-space-sm flex items-center justify-between text-text-secondary font-caption text-caption">
+<button class="flex items-center gap-1 hover:text-accent-teal transition-colors">
+<span class="material-symbols-outlined text-[16px] text-accent-terracotta" style="font-variation-settings: 'FILL' 1;">favorite</span>
+<span>96 patrons agreed</span>
+</button>
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">reply</span>
+<span>4 salons</span>
+</span>
+</div>
+</article>
+<!-- Review 3: Literary Analysis -->
+<article class="p-space-lg rounded-2xl bg-surface-porcelain shadow-[0_4px_16px_rgba(38,54,51,0.06)] flex flex-col justify-between relative group hover:shadow-[0_8px_24px_rgba(38,54,51,0.1)] transition-all">
+<div class="space-y-space-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2.5">
+<div class="w-9 h-9 rounded-full bg-accent-sage/30 text-primary flex items-center justify-center font-bold text-label-sm">
+                  AR
+                </div>
+<div>
+<h4 class="font-headline-sm text-label-md text-text-primary font-bold">Aria Reyes</h4>
+<span class="text-caption text-text-secondary">Comparative Lit Fellow • 1 month ago</span>
+</div>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-surface-inset text-text-secondary font-caption text-caption">Scholarly Marginalia</span>
+</div>
+<!-- Citation Highlight -->
+<div class="p-space-sm rounded-lg bg-surface-inset/60 text-secondary font-headline-sm text-body-sm italic">
+              “He examined the work of Menard word by word...”
+            </div>
+<p class="font-body-base text-body-sm text-text-primary leading-relaxed">
+<em>Pierre Menard</em> is the funniest and most devastating short fiction ever written about literary criticism. It proves that a text is not a static object—it is entirely re-authored by the historical horizon of the reader looking at it.
+            </p>
+</div>
+<div class="pt-space-md mt-space-sm flex items-center justify-between text-text-secondary font-caption text-caption">
+<button class="flex items-center gap-1 hover:text-accent-teal transition-colors">
+<span class="material-symbols-outlined text-[16px] text-accent-terracotta" style="font-variation-settings: 'FILL' 1;">favorite</span>
+<span>211 patrons agreed</span>
+</button>
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">reply</span>
+<span>19 salons</span>
+</span>
+</div>
+</article>
+</div>
+<!-- Restrained Inset Composer Card -->
+<div class="p-space-lg rounded-2xl bg-surface-porcelain shadow-[0_4px_16px_rgba(38,54,51,0.06)]">
+<div class="flex items-center gap-2 mb-space-sm">
+<span class="material-symbols-outlined text-[18px] text-accent-teal">edit</span>
+<h3 class="font-headline-sm text-headline-sm text-primary">Inscribe an Annotation in the Reading Room</h3>
+</div>
+<div class="relative">
+<textarea class="w-full p-space-md rounded-xl bg-surface-inset text-text-primary placeholder:text-text-secondary font-body-base text-body-base shadow-[inset_2px_2px_5px_rgba(38,54,51,0.08),inset_-2px_-2px_5px_rgba(255,255,255,0.7)] focus:outline-none focus:bg-surface-porcelain transition-all resize-none" placeholder="Share your contemplation on Borges’s labyrinths, citations, or metaphysical paradoxes..." rows="3"></textarea>
+</div>
+<div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-space-sm mt-space-sm">
+<div class="flex items-center gap-2 text-text-secondary font-caption text-caption">
+<span class="material-symbols-outlined text-[16px]">lock_open</span>
+<span>Contemplative annotations are permanently preserved in the community folio ledger.</span>
+</div>
+<button class="px-space-lg py-2 rounded-full bg-accent-teal text-surface-porcelain font-label-md text-label-md shadow-[0_4px_12px_rgba(24,92,88,0.2)] hover:bg-primary active:scale-95 transition-all self-end cursor-pointer" onclick="submitAnnotation()" type="button">
+            Preserve Annotation
+          </button>
+</div>
+</div>
+</section>
+<!-- Section 4: Kindred Explorations (Related Philosophical Folios) -->
+<section class="mt-space-xl mb-space-xl">
+<div class="flex items-end justify-between mb-space-lg">
+<div>
+<div class="flex items-center gap-2 mb-1">
+<span class="material-symbols-outlined text-[18px] text-accent-teal">hub</span>
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-accent-teal font-semibold">Resonant Folios</span>
+</div>
+<h2 class="font-headline-lg text-headline-lg text-primary tracking-tight">Kindred Explorations</h2>
+<p class="font-body-base text-body-base text-text-secondary">Texts that inhabit the same speculative labyrinth of mirrors, time, and memory.</p>
+</div>
+<div class="hidden sm:flex items-center gap-2">
+<button aria-label="Previous folios" class="w-10 h-10 rounded-full bg-surface-inset text-text-primary hover:bg-surface-porcelain flex items-center justify-center shadow-sm cursor-pointer">
+<span class="material-symbols-outlined text-[20px]">chevron_left</span>
+</button>
+<button aria-label="Next folios" class="w-10 h-10 rounded-full bg-surface-inset text-text-primary hover:bg-surface-porcelain flex items-center justify-center shadow-sm cursor-pointer">
+<span class="material-symbols-outlined text-[20px]">chevron_right</span>
+</button>
+</div>
+</div>
+<!-- 5-Card Responsive Shelf Grid -->
+<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-space-md">
+<!-- Book 1: The Aleph -->
+<div class="group p-space-sm rounded-xl bg-surface-porcelain shadow-[0_4px_12px_rgba(38,54,51,0.06)] hover:shadow-[0_10px_24px_rgba(38,54,51,0.12)] transition-all flex flex-col justify-between">
+<div class="space-y-space-xs">
+<div class="relative w-full aspect-[2/3] rounded-lg overflow-hidden shadow-md mb-2">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Clothbound cover design for The Aleph by Jorge Luis Borges featuring radiant spherical geometric rings in deep jade and muted gold leaf over antique parchment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCoGBbmSJy364NRsaLwvsK4GBF2KCCjS8t3uv7NwJdQjmwU7btqyC3_5HqGMTpvaBKS_ZtggcZgE7NfxAC_MOYby01CLuvnZXyaFwnFaNhe54sdjitdeUkPmD3q0CyaU3gj3dzWbfGAhXOwNrCZteRgQaFG-81jRQfLpjLqQ4Ou49mjbi2OM57vEhZSikoUBlzgbyBySEPY9xM7lSkYm_bq1SbKDCkjyFGnn_Ubm0M"/>
+<span class="absolute top-2 right-2 px-1.5 py-0.5 rounded bg-surface-glass backdrop-blur-sm text-caption text-primary font-bold">1949</span>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-surface-inset text-secondary font-caption text-caption inline-block">Cosmic Point</span>
+<h4 class="font-headline-sm text-label-md text-text-primary font-bold truncate group-hover:text-accent-teal transition-colors">The Aleph and Other Stories</h4>
+<p class="font-body-sm text-caption text-text-secondary">Jorge Luis Borges</p>
+</div>
+<div class="pt-2 flex items-center justify-between text-caption">
+<span class="text-accent-terracotta flex items-center">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span> 4.7
+            </span>
+<a class="text-accent-teal font-label-sm text-caption hover:underline" href="#">View Folio →</a>
+</div>
+</div>
+<!-- Book 2: Invisible Cities -->
+<div class="group p-space-sm rounded-xl bg-surface-porcelain shadow-[0_4px_12px_rgba(38,54,51,0.06)] hover:shadow-[0_10px_24px_rgba(38,54,51,0.12)] transition-all flex flex-col justify-between">
+<div class="space-y-space-xs">
+<div class="relative w-full aspect-[2/3] rounded-lg overflow-hidden shadow-md mb-2">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Delicate architectural line drawing cover for Invisible Cities by Italo Calvino showing impossible suspension bridges, thin towers, and ethereal cities on stilts in sepia and sage." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBUu_XORiT1_03j0LkeECJA-FqQGRpuT0Kho3YKYp3Ky6ts_Lt2iDlN4jJ-QvZKGkjCEK-vWhwLIuLMDd9SGC7HspX-h9nH5b3QnzpYWq6uhNOFga2lKNg-tgpj9vefrLOydPFGwB2R0TTrsCTVsxWHz0HL_kv84ihESqVe_QbY9vgjhkk5hCkQOUyJRnwIF-24j1_3J5rCkLJ_l5Og0AoCpLXEEbdHRAWncWEtPRw"/>
+<span class="absolute top-2 right-2 px-1.5 py-0.5 rounded bg-surface-glass backdrop-blur-sm text-caption text-primary font-bold">1972</span>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-surface-inset text-secondary font-caption text-caption inline-block">Urban Fabulism</span>
+<h4 class="font-headline-sm text-label-md text-text-primary font-bold truncate group-hover:text-accent-teal transition-colors">Invisible Cities</h4>
+<p class="font-body-sm text-caption text-text-secondary">Italo Calvino</p>
+</div>
+<div class="pt-2 flex items-center justify-between text-caption">
+<span class="text-accent-terracotta flex items-center">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span> 4.8
+            </span>
+<a class="text-accent-teal font-label-sm text-caption hover:underline" href="#">View Folio →</a>
+</div>
+</div>
+<!-- Book 3: Labyrinths -->
+<div class="group p-space-sm rounded-xl bg-surface-porcelain shadow-[0_4px_12px_rgba(38,54,51,0.06)] hover:shadow-[0_10px_24px_rgba(38,54,51,0.12)] transition-all flex flex-col justify-between">
+<div class="space-y-space-xs">
+<div class="relative w-full aspect-[2/3] rounded-lg overflow-hidden shadow-md mb-2">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Book jacket for Labyrinths Selected Stories and Other Writings by Jorge Luis Borges displaying clean modernist typographic layout with a silver spiral maze motif on ivory stock." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBmKxQ3rYjpWQjzBl3Wktf-gOZEJcZYAP9UNCVcLAvz4xAzQgnac52pXrn48naajEZgGttydLSxUya6HjwNTwKS8U5wihzgzCcXx3IdsFTNyvBO6X2wlaDU23bMLMjny09O2AMaSOADIZqMwJhbEtty_kQigC4RfXHjSDyjtMHThhHu-ya6Bf_a4zV2p23ea41i_Y3x_bNaTAebB8qo13sk4HXny36G5CyozErLvbY"/>
+<span class="absolute top-2 right-2 px-1.5 py-0.5 rounded bg-surface-glass backdrop-blur-sm text-caption text-primary font-bold">1962</span>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-surface-inset text-secondary font-caption text-caption inline-block">Anthology</span>
+<h4 class="font-headline-sm text-label-md text-text-primary font-bold truncate group-hover:text-accent-teal transition-colors">Labyrinths</h4>
+<p class="font-body-sm text-caption text-text-secondary">Jorge Luis Borges</p>
+</div>
+<div class="pt-2 flex items-center justify-between text-caption">
+<span class="text-accent-terracotta flex items-center">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span> 4.9
+            </span>
+<a class="text-accent-teal font-label-sm text-caption hover:underline" href="#">View Folio →</a>
+</div>
+</div>
+<!-- Book 4: The Book of Disquiet -->
+<div class="group p-space-sm rounded-xl bg-surface-porcelain shadow-[0_4px_12px_rgba(38,54,51,0.06)] hover:shadow-[0_10px_24px_rgba(38,54,51,0.12)] transition-all flex flex-col justify-between">
+<div class="space-y-space-xs">
+<div class="relative w-full aspect-[2/3] rounded-lg overflow-hidden shadow-md mb-2">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Moody contemplative book cover for The Book of Disquiet by Fernando Pessoa with soft rainy window light over Lisbon rooftops and warm terracotta wash." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBEuiHh9VHyhyqvvDg45bYUzWoOEOGv9PxSorZT6P6uJs3oSWHYpP3NzXTtpUx3RpU0h7GjWC4YWil3mVfI2QSKc2esybl_gpB7kzeeMjZWowusvVcvWPWwWkgfoqt1QKVd3GrzFUXnMkr16om4PrBfQPMQiVZego4z_ZZSPGwXF9qnNRUyIf4ZgCY_bLIkSqTU9vNWCmdIz9m7_l2zY4U4TKYb7reB8IFQ8-_31Xk"/>
+<span class="absolute top-2 right-2 px-1.5 py-0.5 rounded bg-surface-glass backdrop-blur-sm text-caption text-primary font-bold">1982</span>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-surface-inset text-secondary font-caption text-caption inline-block">Heteronyms</span>
+<h4 class="font-headline-sm text-label-md text-text-primary font-bold truncate group-hover:text-accent-teal transition-colors">The Book of Disquiet</h4>
+<p class="font-body-sm text-caption text-text-secondary">Fernando Pessoa</p>
+</div>
+<div class="pt-2 flex items-center justify-between text-caption">
+<span class="text-accent-terracotta flex items-center">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span> 4.6
+            </span>
+<a class="text-accent-teal font-label-sm text-caption hover:underline" href="#">View Folio →</a>
+</div>
+</div>
+<!-- Book 5: The Invention of Morel -->
+<div class="group p-space-sm rounded-xl bg-surface-porcelain shadow-[0_4px_12px_rgba(38,54,51,0.06)] hover:shadow-[0_10px_24px_rgba(38,54,51,0.12)] transition-all flex flex-col justify-between">
+<div class="space-y-space-xs">
+<div class="relative w-full aspect-[2/3] rounded-lg overflow-hidden shadow-md mb-2">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Surrealist deserted island illustration for The Invention of Morel by Adolfo Bioy Casares showing holographic tides and an art deco tide pool mansion in teal and sand tones." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDqFFEJsUUzVzMyJdEPTDrEIiGQmCi_hYBrKkjQtDi5u-z95X8FdSvT91B13gdgS5dEI0a_wUq0REEYOBh4awnZviwWMJZLU_x-OTINZ9VDpATtvtE5EBrfibqgSHZJd3dNUofc39WeziFIGWqPqTHesGEPqFUgfJYxNBe6NHenDt6nAAN_1O3mHspQKGH7trx4dyo230PghDui3ijhS-y8hdnziK7YGf_6i_EkfvE"/>
+<span class="absolute top-2 right-2 px-1.5 py-0.5 rounded bg-surface-glass backdrop-blur-sm text-caption text-primary font-bold">1940</span>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-surface-inset text-secondary font-caption text-caption inline-block">Holographic Trap</span>
+<h4 class="font-headline-sm text-label-md text-text-primary font-bold truncate group-hover:text-accent-teal transition-colors">The Invention of Morel</h4>
+<p class="font-body-sm text-caption text-text-secondary">Adolfo Bioy Casares</p>
+</div>
+<div class="pt-2 flex items-center justify-between text-caption">
+<span class="text-accent-terracotta flex items-center">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span> 4.7
+            </span>
+<a class="text-accent-teal font-label-sm text-caption hover:underline" href="#">View Folio →</a>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 5: Archival Colophon / Closing Invitation -->
+<section class="mt-space-lg p-space-lg rounded-3xl bg-surface-inset shadow-[inset_2px_2px_5px_rgba(38,54,51,0.06),inset_-2px_-2px_5px_rgba(255,255,255,0.7)] flex flex-col md:flex-row items-center justify-between gap-space-md">
+<div class="flex items-center gap-space-md">
+<div class="w-14 h-14 rounded-full bg-surface-porcelain text-accent-teal flex items-center justify-center shadow-md shrink-0">
+<span class="material-symbols-outlined text-[28px]">local_library</span>
+</div>
+<div>
+<h3 class="font-headline-sm text-headline-sm text-primary">The Speculative Salon: Fortnightly Gathering</h3>
+<p class="font-body-sm text-body-sm text-text-secondary">Patrons meet digitally to dissect Borges's <em>The Library of Babel</em> on Thursday evening.</p>
+</div>
+</div>
+<a class="px-space-lg py-2.5 rounded-full bg-primary text-surface-porcelain font-label-md text-label-md hover:bg-accent-teal transition-colors shadow-sm shrink-0" href="#">
+        Enter Reading Salon Discussion
+      </a>
+</section>
+</div>
+</div>
+<!-- Inline JavaScript for Client-Side Micro-Interactions -->
+<script>
+  function switchTab(tabName) {
+    const tabs = ['cycles', 'themes', 'pathways'];
+    tabs.forEach(t => {
+      const content = document.getElementById(`tab-${t}-content`);
+      const btn = document.getElementById(`tab-${t}-btn`);
+      if (t === tabName) {
+        content.classList.remove('hidden');
+        btn.classList.add('bg-accent-teal', 'text-surface-porcelain', 'shadow-md');
+        btn.classList.remove('text-text-secondary');
+      } else {
+        content.classList.add('hidden');
+        btn.classList.remove('bg-accent-teal', 'text-surface-porcelain', 'shadow-md');
+        btn.classList.add('text-text-secondary');
+      }
+    });
+  }
+
+  function toggleShelfState(btn) {
+    const textSpan = document.getElementById('shelf-text');
+    const icon = btn.querySelector('.material-symbols-outlined');
+    if (textSpan.innerText.includes('Add')) {
+      textSpan.innerText = 'Preserved in Scriptorium';
+      icon.innerText = 'bookmark_added';
+      btn.classList.remove('bg-accent-teal');
+      btn.classList.add('bg-secondary');
+    } else {
+      textSpan.innerText = 'Add to Reading Shelf';
+      icon.innerText = 'bookmark_add';
+      btn.classList.remove('bg-secondary');
+      btn.classList.add('bg-accent-teal');
+    }
+  }
+
+  function submitAnnotation() {
+    const textarea = document.querySelector('textarea');
+    if (textarea.value.trim().length > 0) {
+      alert('Your marginalia entry has been transcribed to the Akashic Sanctuary ledger.');
+      textarea.value = '';
+    } else {
+      alert('Please inscribe a thought before sending to the reading room.');
+    }
+  }
+</script></main><footer class="w-full bg-bg-page mt-auto"><div class="max-w-[1360px] mx-auto px-margin-mobile md:px-margin pt-space-xl pb-space-lg"><div class="grid grid-cols-1 md:grid-cols-12 gap-gutter mb-space-xl"><div class="md:col-span-5 flex flex-col justify-between pr-0 md:pr-space-lg"><div class="space-y-space-sm"><span class="font-headline-md text-headline-md text-primary tracking-tight block">Akashic Library</span><p class="font-body-base text-body-base text-text-secondary max-w-sm">An open digital sanctuary for literature, philosophy, and contemplative reading in the quiet web.</p></div><div class="mt-space-md"><span class="font-label-sm text-label-sm text-text-secondary block mb-space-xs uppercase">Curated Discovery Brief</span><form class="flex items-center max-w-md"><input class="w-full px-space-md py-2.5 rounded-l-full bg-surface-inset text-text-primary placeholder:text-text-secondary font-body-sm text-body-sm shadow-[inset_2px_2px_5px_rgba(38,54,51,0.08),inset_-2px_-2px_5px_rgba(255,255,255,0.7)] focus:outline-none focus:bg-surface-porcelain" placeholder="Enter your correspondence..." type="email"/><button class="px-space-md py-2.5 rounded-r-full bg-accent-teal text-surface-porcelain font-label-md text-label-md hover:bg-primary transition-colors flex items-center justify-center" type="submit"><span class="material-symbols-outlined text-[18px]">arrow_forward</span></button></form></div></div><div class="md:col-span-3 space-y-space-sm"><span class="font-headline-sm text-headline-sm text-text-primary block">Sanctuary</span><ul class="space-y-space-xs"><li class="font-body-sm text-body-sm"><a class="text-text-secondary hover:text-accent-teal transition-colors" data-path="discover" href="#">Archival Collections</a></li><li class="font-body-sm text-body-sm"><a class="text-text-secondary hover:text-accent-teal transition-colors" data-path="genres" href="#">Philosophical Folios</a></li><li class="font-body-sm text-body-sm"><a class="text-text-secondary hover:text-accent-teal transition-colors" data-path="community" href="#">Reading Salons</a></li><li class="font-body-sm text-body-sm"><a class="text-text-secondary hover:text-accent-teal transition-colors" data-path="my-library" href="#">Personal Scriptorium</a></li></ul></div><div class="md:col-span-4 space-y-space-sm"><span class="font-headline-sm text-headline-sm text-text-primary block">Provenance</span><ul class="space-y-space-xs"><li class="font-body-sm text-body-sm"><a class="text-text-secondary hover:text-accent-teal transition-colors" data-path="about" href="#">The Open Sanctuary Charter</a></li><li class="font-body-sm text-body-sm"><a class="text-text-secondary hover:text-accent-teal transition-colors" href="#">Quiet Reading Manifesto</a></li><li class="font-body-sm text-body-sm"><a class="text-text-secondary hover:text-accent-teal transition-colors" href="#">Typography &amp; Press Notes</a></li><li class="font-body-sm text-body-sm"><a class="text-text-secondary hover:text-accent-teal transition-colors" href="#">Scholarly Inquiries</a></li></ul></div></div><div class="pt-space-md flex flex-col sm:flex-row items-center justify-between gap-space-sm text-text-secondary"><p class="font-caption text-caption">© 2026 Akashic Library. An open digital sanctuary for literature and ideas.</p><div class="flex items-center gap-space-md"><a class="font-caption text-caption hover:text-text-primary transition-colors" href="#">Preservation</a><a class="font-caption text-caption hover:text-text-primary transition-colors" href="#">Patron Privacy</a><a class="font-caption text-caption hover:text-text-primary transition-colors" href="#">Colophon</a></div></div></div></footer></body></html>
