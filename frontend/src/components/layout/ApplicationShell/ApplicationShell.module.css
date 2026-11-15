@@ -1,0 +1,41 @@
+.shell {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-background);
+  color: var(--color-text-primary);
+  position: relative;
+}
+
+/* ── Skip to Main Content Link (Accessibility) ── */
+.skipLink {
+  position: absolute;
+  top: -100px;
+  left: var(--space-4);
+  z-index: var(--z-modal);
+  background-color: var(--color-action-primary);
+  color: var(--color-action-primary-text);
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-sm);
+  font-size: var(--font-small);
+  font-weight: var(--font-weight-medium);
+  text-decoration: none;
+  box-shadow: var(--shadow-elevated);
+  transition: top var(--duration-fast) var(--ease-standard);
+}
+
+.skipLink:focus {
+  top: var(--space-4);
+  outline: 2px solid var(--color-border-focus);
+  outline-offset: 2px;
+}
+
+/* ── Main Landmark ── */
+.main {
+  flex: 1 0 auto;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  outline: none;
+}
+
