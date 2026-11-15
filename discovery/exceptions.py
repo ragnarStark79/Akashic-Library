@@ -48,3 +48,20 @@ class ReviewPermissionError(DiscoveryError):
 
 class DuplicateReviewError(DiscoveryError):
     """Raised when a user tries to create a second active review for the same book."""
+
+
+class ReplyNotFoundError(DiscoveryError):
+    """Raised when a review reply cannot be found by its ID."""
+
+
+class ReplyPermissionError(DiscoveryError):
+    """Raised when a user attempts to delete a reply they do not own."""
+
+
+class AnnotationNotFoundError(DiscoveryError):
+    """Raised when an annotation cannot be found by its ID."""
+
+
+class AnnotationPermissionError(DiscoveryError):
+    """Raised when a user attempts to modify or delete an annotation they do not own."""
+

@@ -34,14 +34,43 @@ class GoogleBooksProvider(BookProvider):
 
     name = "google_books"
 
-    def search(self, query: str, *, page: int = 1) -> list[NormalizedBook]:
+    def search(
+        self,
+        query: str = "",
+        *,
+        title: str = "",
+        author: str = "",
+        isbn: str = "",
+        subject: str = "",
+        publisher: str = "",
+        language: str = "",
+        page: int = 1,
+    ) -> list[NormalizedBook]:
         """Search Google Books.
 
         page is 1-indexed; internally translated to startIndex.
         """
         start_index = (page - 1) * PAGE_SIZE
+        q_parts = []
+        if query and query.strip():
+            q_parts.append(query.strip())
+        if title and title.strip():
+            q_parts.append(f"intitle:{title.strip()}")
+        if author and author.strip():
+            q_parts.append(f"inauthor:{author.strip()}")
+        if isbn and isbn.strip():
+            clean_isbn = isbn.replace("-", "").strip()
+            q_parts.append(f"isbn:{clean_isbn}")
+        if subject and subject.strip():
+            q_parts.append(f"subject:{subject.strip()}")
+        if publisher and publisher.strip():
+            q_parts.append(f"inpublisher:{publisher.strip()}")
+        q = " ".join(q_parts)
+        if not q:
+            return []
+
         params: dict[str, Any] = {
-            "q": query,
+            "q": q,
             "maxResults": PAGE_SIZE,
             "startIndex": start_index,
             "printType": "books",
@@ -52,6 +81,8 @@ class GoogleBooksProvider(BookProvider):
                 "industryIdentifiers,imageLinks))"
             ),
         }
+        if language and language.strip():
+            params["langRestrict"] = language.strip().lower()
         api_key = os.getenv("GOOGLE_BOOKS_API_KEY", "")
         if api_key:
             params["key"] = api_key
