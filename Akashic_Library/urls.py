@@ -9,20 +9,12 @@ including the relevant app URLconfs.
 from django.contrib import admin
 from django.urls import include, path
 
-from .views import health_check
+from .views import health_check, readiness_check
 
 # ─── API v1 routes ────────────────────────────────────────────────────────────
-#
-# Future domain namespaces (illustrative, not yet active):
-#   path("api/library/",         include("library.urls")),
-#   path("api/discussions/",     include("community.urls")),
-#   path("api/store/",           include("bookstore.urls")),
-#   path("api/cart/",            include("cart.urls")),
-#   path("api/orders/",          include("orders.urls")),
-#   path("api/recommendations/", include("recommendations.urls")),
-
 api_urlpatterns = [
     path("health/", health_check, name="api-health"),
+    path("health/ready/", readiness_check, name="api-health-ready"),
 ]
 
 urlpatterns = [
