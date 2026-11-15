@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+
+<html class="h-full" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_blank" name="shell-type"/><title>Akashic Library — Authentication</title><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Lora:ital,wght@0,500;0,600;1,400;1,500&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{"colors":{"accent-sage":"#A8BDAE","on-tertiary-container":"#f8b89b","inverse-surface":"#233330","surface-bright":"#ebfdf8","secondary-fixed":"#d2e8d8","outline-variant":"#bfc8c7","text-secondary":"#827E75","secondary-fixed-dim":"#b6ccbc","tertiary":"#5b311c","outline":"#6f7978","surface-glass":"rgba(252, 250, 245, 0.82)","surface-porcelain":"#FCFAF5","on-primary-container":"#93d2cc","primary-fixed":"#afeee9","glass-border":"rgba(234, 227, 216, 0.65)","secondary-container":"#d2e8d8","accent-terracotta":"#C58B70","surface-container-lowest":"#ffffff","bg-page":"#F5F1E9","on-secondary-fixed":"#0d1f15","surface-tint":"#276864","tertiary-fixed":"#ffdbcc","on-primary-fixed-variant":"#02504c","on-tertiary-fixed-variant":"#683b26","accent-teal":"#185C58","on-error":"#ffffff","on-tertiary":"#ffffff","primary-container":"#185c58","on-error-container":"#93000a","surface-inset":"#EAE3D8","inverse-on-surface":"#e2f5f0","on-primary":"#ffffff","surface-container":"#dff2ed","on-surface-variant":"#3f4947","primary":"#004440","on-secondary-fixed-variant":"#384b3f","surface-variant":"#d4e6e2","inverse-primary":"#93d2cc","on-surface":"#0e1e1c","surface-container-low":"#e5f8f3","on-secondary":"#ffffff","on-tertiary-fixed":"#331202","tertiary-container":"#764730","on-primary-fixed":"#00201e","text-primary":"#263633","on-background":"#0e1e1c","tertiary-fixed-dim":"#f8b89b","error-container":"#ffdad6","surface-container-high":"#daece7","error":"#ba1a1a","surface-dim":"#ccded9","surface-container-highest":"#d4e6e2","surface":"#ebfdf8","primary-fixed-dim":"#93d2cc","background":"#ebfdf8","secondary":"#506356","on-secondary-container":"#55695c"},"borderRadius":{"DEFAULT":"0.25rem","lg":"0.5rem","xl":"0.75rem","full":"9999px"},"spacing":{"space-md":"1rem","space-sm":"0.5rem","space-lg":"1.5rem","margin-mobile":"1.25rem","space-xs":"0.25rem","gutter":"1.5rem","space-xl":"2.5rem","gutter-mobile":"1rem","margin":"3rem"},"fontFamily":{"body-base":["Inter"],"body-lead":["Inter"],"body-sm":["Inter"],"display-mobile":["Lora"],"label-sm":["Inter"],"headline-lg":["Lora"],"headline-md":["Lora"],"headline-lg-mobile":["Lora"],"label-md":["Inter"],"headline-sm":["Lora"],"display":["Lora"],"caption":["Inter"]},"fontSize":{"body-base":["15px",{"lineHeight":"24px","fontWeight":"400"}],"body-lead":["18px",{"lineHeight":"28px","fontWeight":"400"}],"body-sm":["13px",{"lineHeight":"20px","fontWeight":"400"}],"display-mobile":["34px",{"lineHeight":"42px","letterSpacing":"-0.01em","fontWeight":"500"}],"label-sm":["12px",{"lineHeight":"16px","letterSpacing":"0.04em","fontWeight":"600"}],"headline-lg":["36px",{"lineHeight":"44px","letterSpacing":"-0.015em","fontWeight":"500"}],"headline-md":["26px",{"lineHeight":"34px","fontWeight":"500"}],"headline-lg-mobile":["28px",{"lineHeight":"36px","letterSpacing":"-0.01em","fontWeight":"500"}],"label-md":["14px",{"lineHeight":"20px","letterSpacing":"0.01em","fontWeight":"500"}],"headline-sm":["20px",{"lineHeight":"28px","fontWeight":"600"}],"display":["48px",{"lineHeight":"56px","letterSpacing":"-0.02em","fontWeight":"500"}],"caption":["11px",{"lineHeight":"16px","letterSpacing":"0.02em","fontWeight":"500"}]}}}};</script></head><body class="bg-bg-page font-body-base text-body-base text-text-primary min-h-screen flex items-center justify-center p-margin-mobile md:p-margin antialiased selection:bg-accent-sage/30 selection:text-text-primary"><main class="w-full max-w-[1360px] flex items-center justify-center"><div class="flex flex-col w-full">
+<div class="w-full max-w-4xl mx-auto py-6 md:py-10">
+<!-- Atmospheric Navigation & Return Bar -->
+<header class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-8">
+<a class="inline-flex items-center gap-2 text-text-primary hover:text-accent-teal transition-colors group" href="#">
+<span class="material-symbols-outlined text-accent-terracotta group-hover:-translate-x-0.5 transition-transform" style="font-size: 20px;">west</span>
+<span class="font-label-md text-label-md tracking-wide">Return to Public Discovery</span>
+</a>
+<div class="flex items-center gap-2 bg-surface-porcelain/80 px-3 py-1.5 rounded-full shadow-sm text-text-secondary">
+<span class="material-symbols-outlined text-accent-teal" style="font-size: 16px;">verified_user</span>
+<span class="font-caption text-caption uppercase tracking-wider text-text-primary">Archival Seal • Ledger Session 894-K</span>
+</div>
+</header>
+<!-- Contextual Preservation Notice (Editorial Pullout) -->
+<section aria-label="Preservation Banner" class="mb-8 rounded-xl p-4 sm:p-5 bg-surface-porcelain shadow-sm relative overflow-hidden">
+<div class="absolute top-0 left-0 w-1.5 h-full bg-accent-sage"></div>
+<div class="flex items-start gap-3.5 pl-2">
+<div class="p-2 rounded-full bg-surface-inset text-accent-teal shrink-0 mt-0.5">
+<span class="material-symbols-outlined" style="font-size: 20px; font-variation-settings: 'FILL' 1;">auto_stories</span>
+</div>
+<div class="space-y-0.5">
+<p class="font-caption text-caption text-accent-terracotta font-semibold uppercase tracking-wider">Preserving Your Journey</p>
+<p class="font-body-base text-body-base text-text-primary">
+            Signing in will immediately return your desk to <em class="font-headline-sm text-headline-sm font-normal">Ficciones</em> by Jorge Luis Borges <span class="text-text-secondary">(Folio #01, Shelf Gamma-7)</span> with saved marginalia intact.
+          </p>
+</div>
+</div>
+</section>
+<!-- Headline and Entry Thesis -->
+<div class="text-center mb-8 space-y-2">
+<div class="inline-flex items-center gap-2 text-text-secondary mb-1">
+<span class="w-6 h-[1px] bg-accent-sage"></span>
+<span class="font-caption text-caption uppercase tracking-widest text-text-secondary">Patron Portal &amp; Archival Registry</span>
+<span class="w-6 h-[1px] bg-accent-sage"></span>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-text-primary">
+        Enter the Quiet Quarters of Akashic Library
+      </h1>
+<p class="font-body-lead text-body-lead text-text-secondary max-w-xl mx-auto">
+        A sanctuary dedicated to unhurried reading, private marginalia, and sovereign human curation.
+      </p>
+</div>
+<!-- Architectural Neumorphic Authentication Card -->
+<main class="w-full bg-surface-porcelain rounded-2xl shadow-xl overflow-hidden relative">
+<!-- Interactive Tab Selector Bar -->
+<nav aria-label="Authentication Options" class="grid grid-cols-3 bg-surface-inset/60 p-1.5 sm:p-2 gap-1.5">
+<button aria-controls="form-signin" aria-selected="true" class="tab-btn py-3 px-2 sm:px-4 rounded-xl font-label-md text-label-md text-center transition-all duration-200 flex items-center justify-center gap-2 bg-surface-porcelain text-accent-teal shadow-sm font-semibold" id="tab-btn-signin" onclick="switchTab('signin')" type="button">
+<span class="material-symbols-outlined" style="font-size: 18px;">key</span>
+<span class="truncate">Patron Access</span>
+</button>
+<button aria-controls="form-register" aria-selected="false" class="tab-btn py-3 px-2 sm:px-4 rounded-xl font-label-md text-label-md text-center transition-all duration-200 flex items-center justify-center gap-2 text-text-secondary hover:text-text-primary" id="tab-btn-register" onclick="switchTab('register')" type="button">
+<span class="material-symbols-outlined" style="font-size: 18px;">draw</span>
+<span class="truncate">Inscribe Ledger</span>
+</button>
+<button aria-controls="form-recover" aria-selected="false" class="tab-btn py-3 px-2 sm:px-4 rounded-xl font-label-md text-label-md text-center transition-all duration-200 flex items-center justify-center gap-2 text-text-secondary hover:text-text-primary" id="tab-btn-recover" onclick="switchTab('recover')" type="button">
+<span class="material-symbols-outlined" style="font-size: 18px;">history_edu</span>
+<span class="truncate">Recover Folio</span>
+</button>
+</nav>
+<div class="p-6 sm:p-10">
+<!-- ============================================== -->
+<!-- FORM 1: SIGN IN (PATRON ACCESS)                -->
+<!-- ============================================== -->
+<section aria-labelledby="tab-btn-signin" class="space-y-6 block" id="form-signin">
+<!-- Demonstrative Alert: Invalid Credentials Toggle Banner -->
+<aside class="rounded-xl p-4 bg-tertiary-fixed/30 flex items-start gap-3" id="signin-alert-banner">
+<span class="material-symbols-outlined text-accent-terracotta shrink-0 mt-0.5" style="font-size: 20px;">info</span>
+<div class="text-left flex-1">
+<p class="font-label-sm text-label-sm text-tertiary font-bold">Archival Registry Notice</p>
+<p class="font-body-sm text-body-sm text-text-primary mt-0.5">
+                The custodial desk requires your registered patron email or cryptographic archival identifier.
+              </p>
+</div>
+<button class="text-text-secondary hover:text-text-primary" onclick="dismissBanner('signin-alert-banner')" type="button">
+<span class="material-symbols-outlined" style="font-size: 18px;">close</span>
+</button>
+</aside>
+<form class="space-y-5" onsubmit="handleSignIn(event)">
+<!-- Email / Patron ID -->
+<div class="space-y-1.5 text-left">
+<label class="block font-label-md text-label-md text-text-primary" for="signin-id">
+                Patron Identifier or Email
+              </label>
+<div class="relative rounded-xl bg-surface-inset shadow-inner focus-within:bg-surface-porcelain focus-within:ring-2 focus-within:ring-accent-teal transition-all">
+<span class="absolute left-3.5 top-1/2 -translate-y-1/2 material-symbols-outlined text-text-secondary" style="font-size: 20px;">mail</span>
+<input class="w-full bg-transparent pl-11 pr-4 py-3 text-text-primary font-body-base text-body-base placeholder:text-text-secondary focus:outline-none" id="signin-id" name="identifier" placeholder="e.g. elena.solanas@akashic.org or @solanas" required="" type="text" value="elena.solanas@akashic.org"/>
+</div>
+</div>
+<!-- Archival Passphrase -->
+<div class="space-y-1.5 text-left">
+<div class="flex justify-between items-center">
+<label class="block font-label-md text-label-md text-text-primary" for="signin-passphrase">
+                  Master Archival Passphrase
+                </label>
+<button class="font-label-sm text-label-sm text-accent-terracotta hover:underline" onclick="switchTab('recover')" type="button">
+                  Forgot your archival key?
+                </button>
+</div>
+<div class="relative rounded-xl bg-surface-inset shadow-inner focus-within:bg-surface-porcelain focus-within:ring-2 focus-within:ring-accent-teal transition-all">
+<span class="absolute left-3.5 top-1/2 -translate-y-1/2 material-symbols-outlined text-text-secondary" style="font-size: 20px;">lock</span>
+<input class="w-full bg-transparent pl-11 pr-12 py-3 text-text-primary font-body-base text-body-base placeholder:text-text-secondary focus:outline-none" id="signin-passphrase" name="passphrase" placeholder="Enter secret archival keyphrase" required="" type="password" value="Borges-Labyrinth-1944!"/>
+<button aria-label="Toggle passphrase visibility" class="absolute right-3.5 top-1/2 -translate-y-1/2 text-text-secondary hover:text-text-primary p-1 focus:outline-none" onclick="togglePasswordVisibility('signin-passphrase', this)" type="button">
+<span class="material-symbols-outlined" style="font-size: 20px;">visibility</span>
+</button>
+</div>
+</div>
+<!-- Ledger Session & Remember Option -->
+<div class="flex items-center justify-between pt-1">
+<label class="flex items-center gap-2.5 cursor-pointer">
+<input checked="" class="w-4 h-4 rounded text-accent-teal focus:ring-0 accent-accent-teal cursor-pointer" type="checkbox"/>
+<span class="font-body-sm text-body-sm text-text-secondary">Keep sanctuary ledger open on this terminal</span>
+</label>
+<span class="font-caption text-caption text-accent-sage uppercase tracking-wider hidden sm:inline">Encrypted Vault</span>
+</div>
+<!-- Interactive Demo: Toggle Error State Preview Button -->
+<div class="pt-2">
+<button class="w-full py-3.5 px-6 rounded-full bg-accent-teal text-surface-porcelain font-label-md text-label-md tracking-wide shadow-md hover:shadow-lg hover:brightness-105 active:scale-[0.99] transition-all flex items-center justify-center gap-2" type="submit">
+<span>Authenticate &amp; Enter Sanctuary</span>
+<span class="material-symbols-outlined" style="font-size: 18px;">arrow_forward</span>
+</button>
+</div>
+<div class="flex items-center justify-center gap-4 pt-1">
+<button class="font-caption text-caption text-text-secondary hover:text-accent-terracotta underline" onclick="simulateAuthError()" type="button">
+                Simulate credential mismatch
+              </button>
+<span class="text-text-secondary">•</span>
+<button class="font-caption text-caption text-text-secondary hover:text-accent-teal underline" onclick="simulateSuccessSignIn()" type="button">
+                Simulate successful entry
+              </button>
+</div>
+</form>
+<!-- Demonstrated Error Treatment Banner (Initially Hidden) -->
+<div class="hidden rounded-xl p-4 bg-tertiary-container/10 border-l-4 border-accent-terracotta space-y-1 animate-fade-in text-left" id="signin-error-box">
+<div class="flex items-center gap-2 text-tertiary">
+<span class="material-symbols-outlined" style="font-size: 18px;">warning</span>
+<span class="font-label-sm text-label-sm font-semibold">Authentication Unsuccessful</span>
+</div>
+<p class="font-body-sm text-body-sm text-text-primary pl-6">
+              The archival registry could not authenticate this combination. Please re-verify your patron identifier or master passphrase.
+            </p>
+</div>
+<!-- Demonstrated Success Treatment Banner (Initially Hidden) -->
+<div class="hidden rounded-xl p-4 bg-secondary-fixed/50 border-l-4 border-accent-teal space-y-1 text-left" id="signin-success-box">
+<div class="flex items-center gap-2 text-accent-teal">
+<span class="material-symbols-outlined" style="font-size: 18px;">check_circle</span>
+<span class="font-label-sm text-label-sm font-semibold">Desk Restored &amp; Verified</span>
+</div>
+<p class="font-body-sm text-body-sm text-text-primary pl-6">
+              Welcome back, Patron Solanas. Loading your personal stack and active folio...
+            </p>
+</div>
+</section>
+<!-- ============================================== -->
+<!-- FORM 2: CREATE ACCOUNT (PATRON REGISTER)       -->
+<!-- ============================================== -->
+<section aria-labelledby="tab-btn-register" class="space-y-6 hidden" id="form-register">
+<div class="text-left space-y-1 pb-2">
+<h2 class="font-headline-sm text-headline-sm text-text-primary">Inscribe Your Name in the Great Ledger</h2>
+<p class="font-body-sm text-body-sm text-text-secondary">
+              Acquire lifelong patron privileges, sovereign reading lists, and physical lending rights across our archival network.
+            </p>
+</div>
+<form class="space-y-4" onsubmit="handleRegistration(event)">
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+<!-- Full Name -->
+<div class="space-y-1.5 text-left">
+<label class="block font-label-md text-label-md text-text-primary" for="reg-name">Literary Moniker / Full Name</label>
+<div class="rounded-xl bg-surface-inset shadow-inner focus-within:bg-surface-porcelain focus-within:ring-2 focus-within:ring-accent-teal transition-all">
+<input class="w-full bg-transparent px-4 py-3 text-text-primary font-body-base text-body-base placeholder:text-text-secondary focus:outline-none" id="reg-name" name="fullname" placeholder="Elena Solanas" required="" type="text"/>
+</div>
+</div>
+<!-- Patron Handle -->
+<div class="space-y-1.5 text-left">
+<label class="block font-label-md text-label-md text-text-primary" for="reg-handle">Custody Handle</label>
+<div class="flex items-center rounded-xl bg-surface-inset shadow-inner focus-within:bg-surface-porcelain focus-within:ring-2 focus-within:ring-accent-teal transition-all px-3">
+<span class="text-text-secondary font-label-md">@</span>
+<input class="w-full bg-transparent px-2 py-3 text-text-primary font-body-base text-body-base placeholder:text-text-secondary focus:outline-none" id="reg-handle" name="handle" placeholder="solanas_folio" required="" type="text"/>
+</div>
+</div>
+</div>
+<!-- Email Address -->
+<div class="space-y-1.5 text-left">
+<label class="block font-label-md text-label-md text-text-primary" for="reg-email">Correspondence Address (Email)</label>
+<div class="relative rounded-xl bg-surface-inset shadow-inner focus-within:bg-surface-porcelain focus-within:ring-2 focus-within:ring-accent-teal transition-all">
+<span class="absolute left-3.5 top-1/2 -translate-y-1/2 material-symbols-outlined text-text-secondary" style="font-size: 20px;">mark_email_read</span>
+<input class="w-full bg-transparent pl-11 pr-4 py-3 text-text-primary font-body-base text-body-base placeholder:text-text-secondary focus:outline-none" id="reg-email" name="email" placeholder="e.solanas@bibliotheque.org" required="" type="email"/>
+</div>
+</div>
+<!-- Password Fields -->
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+<div class="space-y-1.5 text-left">
+<label class="block font-label-md text-label-md text-text-primary" for="reg-pass">Create Master Passphrase</label>
+<div class="relative rounded-xl bg-surface-inset shadow-inner focus-within:bg-surface-porcelain focus-within:ring-2 focus-within:ring-accent-teal transition-all">
+<input class="w-full bg-transparent pl-4 pr-10 py-3 text-text-primary font-body-base text-body-base placeholder:text-text-secondary focus:outline-none" id="reg-pass" name="passphrase" oninput="evaluatePassStrength(this.value)" placeholder="Minimum 12 characters" required="" type="password"/>
+<button class="absolute right-3 top-1/2 -translate-y-1/2 text-text-secondary hover:text-text-primary p-1 focus:outline-none" onclick="togglePasswordVisibility('reg-pass', this)" type="button">
+<span class="material-symbols-outlined" style="font-size: 18px;">visibility</span>
+</button>
+</div>
+</div>
+<div class="space-y-1.5 text-left">
+<label class="block font-label-md text-label-md text-text-primary" for="reg-confirm-pass">Confirm Passphrase</label>
+<div class="relative rounded-xl bg-surface-inset shadow-inner focus-within:bg-surface-porcelain focus-within:ring-2 focus-within:ring-accent-teal transition-all">
+<input class="w-full bg-transparent pl-4 pr-10 py-3 text-text-primary font-body-base text-body-base placeholder:text-text-secondary focus:outline-none" id="reg-confirm-pass" name="confirm_passphrase" placeholder="Repeat passphrase" required="" type="password"/>
+<button class="absolute right-3 top-1/2 -translate-y-1/2 text-text-secondary hover:text-text-primary p-1 focus:outline-none" onclick="togglePasswordVisibility('reg-confirm-pass', this)" type="button">
+<span class="material-symbols-outlined" style="font-size: 18px;">visibility</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Dynamic Passphrase Strength Meter -->
+<div class="space-y-1.5 text-left pt-1">
+<div class="flex justify-between items-center font-caption text-caption">
+<span class="text-text-secondary">Key Robustness:</span>
+<span class="font-semibold text-accent-teal" id="strength-label">Archival-Grade</span>
+</div>
+<div class="grid grid-cols-4 gap-2">
+<div class="h-1.5 rounded-full bg-accent-teal transition-colors" id="bar-1"></div>
+<div class="h-1.5 rounded-full bg-accent-teal transition-colors" id="bar-2"></div>
+<div class="h-1.5 rounded-full bg-accent-teal transition-colors" id="bar-3"></div>
+<div class="h-1.5 rounded-full bg-accent-sage transition-colors" id="bar-4"></div>
+</div>
+</div>
+<!-- Patron Vow Checkbox -->
+<div class="p-4 rounded-xl bg-surface-inset/50 text-left space-y-2 mt-4">
+<label class="flex items-start gap-3 cursor-pointer">
+<input class="mt-1 w-4 h-4 rounded text-accent-teal focus:ring-0 accent-accent-teal cursor-pointer" required="" type="checkbox"/>
+<span class="font-body-sm text-body-sm text-text-primary">
+                  I agree to honor the custodial guidelines and preservation tenets of the Akashic Society, upholding intellectual stewardship and privacy for all fellows.
+                </span>
+</label>
+</div>
+<!-- Register CTA -->
+<div class="pt-2">
+<button class="w-full py-3.5 px-6 rounded-full bg-accent-teal text-surface-porcelain font-label-md text-label-md tracking-wide shadow-md hover:shadow-lg hover:brightness-105 active:scale-[0.99] transition-all flex items-center justify-center gap-2" type="submit">
+<span>Inscribe Patron Ledger &amp; Open Sanctuary</span>
+<span class="material-symbols-outlined" style="font-size: 18px;">auto_stories</span>
+</button>
+</div>
+</form>
+<!-- Register Success State Container -->
+<div class="hidden rounded-xl p-5 bg-secondary-fixed/50 text-left space-y-2" id="register-success-box">
+<div class="flex items-center gap-2 text-accent-teal">
+<span class="material-symbols-outlined" style="font-size: 22px;">bookmark_added</span>
+<h3 class="font-headline-sm text-headline-sm">Patron Folio Inscribed</h3>
+</div>
+<p class="font-body-base text-body-base text-text-primary">
+              Your patron credentials have been entered into the Akashic Ledger. An authentication dispatch has been routed to your correspondence inbox.
+            </p>
+</div>
+</section>
+<!-- ============================================== -->
+<!-- FORM 3: PASSWORD RECOVERY (FOLIO ACCESS)       -->
+<!-- ============================================== -->
+<section aria-labelledby="tab-btn-recover" class="space-y-6 hidden" id="form-recover">
+<div class="text-left space-y-1.5">
+<h2 class="font-headline-sm text-headline-sm text-text-primary">Recover Sanctuary Access</h2>
+<p class="font-body-base text-body-base text-text-secondary">
+              Provide your registered patron email or ledger number. We will transmit an archival restoration token to resume your quiet reading without disruption.
+            </p>
+</div>
+<form class="space-y-5 text-left" id="recover-form-element" onsubmit="handleRecovery(event)">
+<div class="space-y-1.5">
+<label class="block font-label-md text-label-md text-text-primary" for="recover-email">
+                Patron Email or Ledger ID
+              </label>
+<div class="relative rounded-xl bg-surface-inset shadow-inner focus-within:bg-surface-porcelain focus-within:ring-2 focus-within:ring-accent-teal transition-all">
+<span class="absolute left-3.5 top-1/2 -translate-y-1/2 material-symbols-outlined text-text-secondary" style="font-size: 20px;">history</span>
+<input class="w-full bg-transparent pl-11 pr-4 py-3 text-text-primary font-body-base text-body-base placeholder:text-text-secondary focus:outline-none" id="recover-email" name="recovery_target" placeholder="e.g. borges.fellow@akashic.org" required="" type="text"/>
+</div>
+</div>
+<div class="pt-2">
+<button class="w-full py-3.5 px-6 rounded-full bg-accent-teal text-surface-porcelain font-label-md text-label-md tracking-wide shadow-md hover:shadow-lg hover:brightness-105 active:scale-[0.99] transition-all flex items-center justify-center gap-2" type="submit">
+<span>Transmit Recovery Key</span>
+<span class="material-symbols-outlined" style="font-size: 18px;">send</span>
+</button>
+</div>
+</form>
+<!-- Recovery Parchment Dispatched Confirmation Card -->
+<div class="hidden rounded-xl p-5 bg-surface-inset border-l-4 border-accent-sage text-left space-y-3" id="recovery-confirmation">
+<div class="flex items-center gap-2 text-accent-teal">
+<span class="material-symbols-outlined" style="font-size: 24px;">mark_as_unread</span>
+<h3 class="font-headline-sm text-headline-sm">Recovery Parchment Dispatched</h3>
+</div>
+<p class="font-body-base text-body-base text-text-primary leading-relaxed">
+              Check your correspondence ledger for instructions to renew your archival key. The token remains valid for 48 hours within the quiet network.
+            </p>
+<div class="pt-2 flex items-center gap-3">
+<button class="font-label-md text-label-md text-accent-teal hover:underline flex items-center gap-1" onclick="switchTab('signin')" type="button">
+<span>Proceed to Sign In</span>
+<span class="material-symbols-outlined" style="font-size: 16px;">arrow_forward</span>
+</button>
+</div>
+</div>
+</section>
+</div>
+<!-- Card Subtle Base Ribbon -->
+<footer class="bg-surface-inset/40 px-6 sm:px-10 py-3.5 flex flex-wrap items-center justify-between text-caption font-caption text-text-secondary">
+<span class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-accent-sage" style="font-size: 16px;">lock</span>
+          256-Bit Cryptographic Ledger
+        </span>
+<span class="hidden sm:inline">Akashic Society • Non-commercial Guild</span>
+</footer>
+</main>
+<!-- Supporting Archival Pillars & Security Colophon -->
+<section aria-label="Archival Custody Assurances" class="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- Pillar 1 -->
+<article class="p-5 rounded-2xl bg-surface-porcelain shadow-sm text-left space-y-2 relative overflow-hidden">
+<div class="w-8 h-8 rounded-full bg-surface-inset flex items-center justify-center text-accent-teal mb-3">
+<span class="material-symbols-outlined" style="font-size: 18px;">fingerprint</span>
+</div>
+<h2 class="font-headline-sm text-headline-sm text-text-primary text-base">End-to-End Custody</h2>
+<p class="font-body-sm text-body-sm text-text-secondary leading-relaxed">
+          Your marginalia, private reflections, and reading desk remain sovereign and locally encrypted. We possess no backdoor to your notebooks.
+        </p>
+</article>
+<!-- Pillar 2 -->
+<article class="p-5 rounded-2xl bg-surface-porcelain shadow-sm text-left space-y-2 relative overflow-hidden">
+<div class="w-8 h-8 rounded-full bg-surface-inset flex items-center justify-center text-accent-teal mb-3">
+<span class="material-symbols-outlined" style="font-size: 18px;">visibility_off</span>
+</div>
+<h2 class="font-headline-sm text-headline-sm text-text-primary text-base">Zero Commercialization</h2>
+<p class="font-body-sm text-body-sm text-text-secondary leading-relaxed">
+          No advertising telemetry, ad tracking, or behavioral profiling inside private reading quarters. Pure intellectual focus.
+        </p>
+</article>
+<!-- Pillar 3 -->
+<article class="p-5 rounded-2xl bg-surface-porcelain shadow-sm text-left space-y-2 relative overflow-hidden">
+<div class="w-8 h-8 rounded-full bg-surface-inset flex items-center justify-center text-accent-teal mb-3">
+<span class="material-symbols-outlined" style="font-size: 18px;">all_inclusive</span>
+</div>
+<h2 class="font-headline-sm text-headline-sm text-text-primary text-base">Perpetual Folio Rights</h2>
+<p class="font-body-sm text-body-sm text-text-secondary leading-relaxed">
+          Works and folios added to your sanctuary ledger remain permanently bound to your patron key, independent of licensing renegotiations.
+        </p>
+</article>
+</section>
+<!-- Final Colophon Footer Links -->
+<footer class="mt-10 text-center space-y-2 text-text-secondary font-caption text-caption pb-6">
+<div class="flex items-center justify-center gap-6">
+<a class="hover:text-text-primary transition-colors underline decoration-accent-sage" href="#">Archival Custody Terms</a>
+<span>•</span>
+<a class="hover:text-text-primary transition-colors underline decoration-accent-sage" href="#">Society Colophon</a>
+<span>•</span>
+<a class="hover:text-text-primary transition-colors underline decoration-accent-sage" href="#">Decentralized Reading Network</a>
+</div>
+<p class="text-text-secondary/70">
+        Akashic Archival Foundation © MMXXIV. Dedicated to the public preservation of world letters.
+      </p>
+</footer>
+</div>
+</div>
+<script>
+  function switchTab(tabId) {
+    const tabs = ['signin', 'register', 'recover'];
+    
+    tabs.forEach(id => {
+      const btn = document.getElementById('tab-btn-' + id);
+      const form = document.getElementById('form-' + id);
+      
+      if (id === tabId) {
+        // Active Button styling
+        btn.classList.add('bg-surface-porcelain', 'text-accent-teal', 'shadow-sm', 'font-semibold');
+        btn.classList.remove('text-text-secondary');
+        btn.setAttribute('aria-selected', 'true');
+        // Show active Form
+        form.classList.remove('hidden');
+        form.classList.add('block');
+      } else {
+        // Inactive Button styling
+        btn.classList.remove('bg-surface-porcelain', 'text-accent-teal', 'shadow-sm', 'font-semibold');
+        btn.classList.add('text-text-secondary');
+        btn.setAttribute('aria-selected', 'false');
+        // Hide inactive Form
+        form.classList.remove('block');
+        form.classList.add('hidden');
+      }
+    });
+  }
+
+  function togglePasswordVisibility(inputId, btn) {
+    const input = document.getElementById(inputId);
+    const icon = btn.querySelector('.material-symbols-outlined');
+    if (input.type === 'password') {
+      input.type = 'text';
+      icon.textContent = 'visibility_off';
+    } else {
+      input.type = 'password';
+      icon.textContent = 'visibility';
+    }
+  }
+
+  function dismissBanner(bannerId) {
+    const el = document.getElementById(bannerId);
+    if (el) el.style.display = 'none';
+  }
+
+  function simulateAuthError() {
+    const errorBox = document.getElementById('signin-error-box');
+    const successBox = document.getElementById('signin-success-box');
+    successBox.classList.add('hidden');
+    errorBox.classList.remove('hidden');
+  }
+
+  function simulateSuccessSignIn() {
+    const errorBox = document.getElementById('signin-error-box');
+    const successBox = document.getElementById('signin-success-box');
+    errorBox.classList.add('hidden');
+    successBox.classList.remove('hidden');
+  }
+
+  function handleSignIn(e) {
+    e.preventDefault();
+    simulateSuccessSignIn();
+  }
+
+  function handleRegistration(e) {
+    e.preventDefault();
+    document.getElementById('register-success-box').classList.remove('hidden');
+  }
+
+  function handleRecovery(e) {
+    e.preventDefault();
+    document.getElementById('recovery-confirmation').classList.remove('hidden');
+    document.getElementById('recover-form-element').classList.add('hidden');
+  }
+
+  function evaluatePassStrength(val) {
+    const label = document.getElementById('strength-label');
+    const b1 = document.getElementById('bar-1');
+    const b2 = document.getElementById('bar-2');
+    const b3 = document.getElementById('bar-3');
+    const b4 = document.getElementById('bar-4');
+    
+    // Reset all
+    [b1, b2, b3, b4].forEach(b => {
+      b.className = 'h-1.5 rounded-full bg-surface-inset transition-colors';
+    });
+
+    if (val.length === 0) {
+      label.textContent = 'Awaiting input';
+      label.className = 'font-semibold text-text-secondary';
+      return;
+    }
+
+    if (val.length < 6) {
+      label.textContent = 'Delicate';
+      label.className = 'font-semibold text-accent-terracotta';
+      b1.className = 'h-1.5 rounded-full bg-accent-terracotta transition-colors';
+    } else if (val.length < 10) {
+      label.textContent = 'Moderate';
+      label.className = 'font-semibold text-accent-terracotta';
+      b1.className = 'h-1.5 rounded-full bg-accent-terracotta transition-colors';
+      b2.className = 'h-1.5 rounded-full bg-accent-terracotta transition-colors';
+    } else if (val.length < 14) {
+      label.textContent = 'Solid';
+      label.className = 'font-semibold text-accent-teal';
+      b1.className = 'h-1.5 rounded-full bg-accent-teal transition-colors';
+      b2.className = 'h-1.5 rounded-full bg-accent-teal transition-colors';
+      b3.className = 'h-1.5 rounded-full bg-accent-teal transition-colors';
+    } else {
+      label.textContent = 'Archival-Grade';
+      label.className = 'font-semibold text-accent-teal';
+      b1.className = 'h-1.5 rounded-full bg-accent-teal transition-colors';
+      b2.className = 'h-1.5 rounded-full bg-accent-teal transition-colors';
+      b3.className = 'h-1.5 rounded-full bg-accent-teal transition-colors';
+      b4.className = 'h-1.5 rounded-full bg-accent-sage transition-colors';
+    }
+  }
+</script></main></body></html>
