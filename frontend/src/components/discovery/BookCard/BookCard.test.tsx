@@ -79,4 +79,16 @@ describe('BookCard Component', () => {
     render(<BookCard book={mockBook} layout="horizontal" />);
     expect(screen.getByText('Details')).toBeInTheDocument();
   });
+
+  it('applies imageFit="contain" class to cover image', () => {
+    render(<BookCard book={mockBook} imageFit="contain" />);
+    const img = screen.getByRole('img', { name: /Cover jacket for Ficciones/i });
+    expect(img.className).toMatch(/coverImageContain/);
+  });
+
+  it('forwards custom className to article element', () => {
+    render(<BookCard book={mockBook} className="custom-carousel-card" />);
+    const card = screen.getByRole('article');
+    expect(card.className).toContain('custom-carousel-card');
+  });
 });

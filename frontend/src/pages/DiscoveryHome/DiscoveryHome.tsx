@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import {
   Search,
   ArrowRight,
@@ -12,6 +12,8 @@ import {
   CheckCircle,
   Sparkles,
   Lock,
+  ChevronLeft,
+  ChevronRight,
 } from 'lucide-react';
 import { Container, Button } from '../../components/ui';
 import { BookCard } from '../../components/discovery';
@@ -61,6 +63,23 @@ export const DiscoveryHomePage: React.FC<DiscoveryHomeProps> = ({
   const [loadingRecommendations, setLoadingRecommendations] = useState(false);
   const [recommendationsError, setRecommendationsError] = useState<string | null>(null);
 
+  // Recommendations shelf scroll ref and handler
+  const recommendationsShelfRef = useRef<HTMLDivElement>(null);
+
+  const scrollRecommendations = (direction: 'left' | 'right') => {
+    if (!recommendationsShelfRef.current) return;
+    const container = recommendationsShelfRef.current;
+    const scrollAmount = Math.max(container.clientWidth * 0.75, 200);
+    const prefersReducedMotion =
+      typeof window !== 'undefined' &&
+      typeof window.matchMedia === 'function' &&
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    container.scrollBy({
+      left: direction === 'left' ? -scrollAmount : scrollAmount,
+      behavior: prefersReducedMotion ? 'auto' : 'smooth',
+    });
+  };
+
   useEffect(() => {
     let isMounted = true;
     fetchFeaturedBooks().then((books) => {
@@ -85,7 +104,7 @@ export const DiscoveryHomePage: React.FC<DiscoveryHomeProps> = ({
     setLoadingRecommendations(true);
     setRecommendationsError(null);
 
-    fetchPersonalizedRecommendations({ pageSize: 4 })
+    fetchPersonalizedRecommendations({ pageSize: 10 })
       .then((res) => {
         if (isMounted) {
           const normalized = (res.results || []).map((item) =>
@@ -380,23 +399,50 @@ export const DiscoveryHomePage: React.FC<DiscoveryHomeProps> = ({
                   : 'Sovereign recommendations cultivated from reading shelf activity, annotations, and favorites.'}
               </p>
             </div>
+
+            {isAuthenticated && recommendations.length > 3 && (
+              <div className={styles.carouselNavButtons}>
+                <button
+                  type="button"
+                  className={styles.carouselButton}
+                  onClick={() => scrollRecommendations('left')}
+                  aria-label="Scroll recommendations left"
+                >
+                  <ChevronLeft size={18} />
+                </button>
+                <button
+                  type="button"
+                  className={styles.carouselButton}
+                  onClick={() => scrollRecommendations('right')}
+                  aria-label="Scroll recommendations right"
+                >
+                  <ChevronRight size={18} />
+                </button>
+              </div>
+            )}
           </div>
 
           {isAuthenticated ? (
             /* Authenticated patron recommendations state */
             loadingRecommendations ? (
-              <div className={styles.recommendationsGrid}>
+              <div
+                className={styles.recommendationsShelf}
+                role="region"
+                aria-label="Curated recommendations loading"
+              >
                 {Array.from({ length: 4 }).map((_, i) => (
-                  <div
-                    key={i}
-                    className={styles.spotlightSkeleton}
-                    style={{
-                      height: '380px',
-                      borderRadius: 'var(--radius-xl)',
-                      backgroundColor: 'var(--color-surface-inset)',
-                      animation: 'pulse 1.5s infinite ease-in-out',
-                    }}
-                  />
+                  <div key={i} className={styles.carouselItemWrapper}>
+                    <div
+                      className={styles.spotlightSkeleton}
+                      style={{
+                        width: '100%',
+                        height: '380px',
+                        borderRadius: 'var(--radius-xl)',
+                        backgroundColor: 'var(--color-surface-inset)',
+                        animation: 'pulse 1.5s infinite ease-in-out',
+                      }}
+                    />
+                  </div>
                 ))}
               </div>
             ) : recommendationsError ? (
@@ -408,7 +454,7 @@ export const DiscoveryHomePage: React.FC<DiscoveryHomeProps> = ({
                   onClick={() => {
                     setLoadingRecommendations(true);
                     setRecommendationsError(null);
-                    fetchPersonalizedRecommendations({ pageSize: 4 })
+                    fetchPersonalizedRecommendations({ pageSize: 10 })
                       .then((res) => {
                         const normalized = (res.results || []).map((item) =>
                           normalizeRecommendationBook(item)
@@ -428,16 +474,31 @@ export const DiscoveryHomePage: React.FC<DiscoveryHomeProps> = ({
                 </button>
               </div>
             ) : recommendations.length > 0 ? (
-              <div className={styles.recommendationsGrid}>
+              <div
+                ref={recommendationsShelfRef}
+                className={styles.recommendationsShelf}
+                tabIndex={0}
+                role="region"
+                aria-label="Curated recommendations carousel track"
+              >
                 {recommendations.map((book) => (
-                  <div key={book.id} className={styles.recommendationCardWrapper}>
-                    {book.recommendation_reason && (
-                      <div className={styles.reasonBadge}>
-                        <Sparkles size={11} />
-                        <span>{book.recommendation_reason}</span>
-                      </div>
-                    )}
-                    <BookCard book={book} onSelect={onBookSelect} />
+                  <div key={book.id} className={styles.carouselItemWrapper}>
+                    <div className={styles.reasonBadgeSlot}>
+                      {book.recommendation_reason ? (
+                        <div className={styles.reasonBadge} title={book.recommendation_reason}>
+                          <Sparkles size={11} aria-hidden="true" />
+                          <span>{book.recommendation_reason}</span>
+                        </div>
+                      ) : (
+                        <div className={styles.reasonBadgePlaceholder} aria-hidden="true" />
+                      )}
+                    </div>
+                    <BookCard
+                      book={book}
+                      className={styles.carouselCard}
+                      imageFit="contain"
+                      onSelect={onBookSelect}
+                    />
                   </div>
                 ))}
               </div>

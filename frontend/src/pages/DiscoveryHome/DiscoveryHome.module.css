@@ -409,6 +409,7 @@
   background-color: var(--color-bg-page);
   position: relative;
   border-top: 1px solid var(--color-border-subtle);
+  overflow: hidden;
 }
 
 .recommendationsHeader {
@@ -420,28 +421,125 @@
   gap: var(--space-4);
 }
 
+.carouselNavButtons {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.carouselButton {
+  width: 38px;
+  height: 38px;
+  border-radius: var(--radius-pill);
+  background-color: var(--color-surface-inset);
+  color: var(--color-text-primary);
+  border: 1px solid rgba(226, 218, 205, 0.7);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  touch-action: manipulation;
+}
+
+.carouselButton:hover {
+  background-color: var(--color-surface);
+  color: var(--color-action-primary);
+}
+
+/* ── Horizontal Shelf / Carousel Track ── */
+.recommendationsShelf,
 .recommendationsGrid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: var(--space-6);
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  scroll-snap-type: x mandatory;
+  gap: var(--space-4);
+  padding: var(--space-2) var(--space-1) var(--space-4);
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  touch-action: manipulation;
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-border-subtle) transparent;
 }
 
-@media (max-width: 1024px) {
+.recommendationsShelf::-webkit-scrollbar,
+.recommendationsGrid::-webkit-scrollbar {
+  height: 6px;
+}
+
+.recommendationsShelf::-webkit-scrollbar-thumb,
+.recommendationsGrid::-webkit-scrollbar-thumb {
+  background-color: var(--color-border-subtle);
+  border-radius: var(--radius-pill);
+}
+
+.recommendationsShelf::-webkit-scrollbar-track,
+.recommendationsGrid::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  .recommendationsShelf,
   .recommendationsGrid {
-    grid-template-columns: repeat(2, 1fr);
+    scroll-behavior: auto;
   }
 }
 
-@media (max-width: 640px) {
-  .recommendationsGrid {
-    grid-template-columns: 1fr;
-  }
-}
-
-.recommendationCardWrapper {
+.carouselItemWrapper,
+.recommendationCardWrapper,
+.recommendationsShelf>*,
+.recommendationsGrid>* {
+  flex: 0 0 250px;
+  width: 250px;
+  max-width: 250px;
+  min-width: 250px;
+  scroll-snap-align: start;
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
   gap: var(--space-2);
+}
+
+.carouselCard {
+  width: 100%;
+  height: 100%;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+.carouselCard>div:last-child {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.recommendationsShelf img,
+.recommendationsGrid img,
+.carouselCard img {
+  object-fit: contain;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.reasonBadgeSlot {
+  height: 26px;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  min-width: 0;
+}
+
+.reasonBadgePlaceholder {
+  height: 24px;
 }
 
 .reasonBadge {
@@ -457,6 +555,74 @@
   letter-spacing: 0.03em;
   border: 1px solid rgba(24, 92, 88, 0.2);
   align-self: flex-start;
+  max-width: 100%;
+  box-sizing: border-box;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  flex-shrink: 0;
+}
+
+.reasonBadge span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Tablet (1024px / 960px) */
+@media (max-width: 1024px) {
+
+  .carouselItemWrapper,
+  .recommendationCardWrapper,
+  .recommendationsShelf>*,
+  .recommendationsGrid>* {
+    flex: 0 0 220px;
+    width: 220px;
+    max-width: 220px;
+    min-width: 220px;
+  }
+}
+
+/* Tablet (768px) */
+@media (max-width: 768px) {
+
+  .carouselItemWrapper,
+  .recommendationCardWrapper,
+  .recommendationsShelf>*,
+  .recommendationsGrid>* {
+    flex: 0 0 200px;
+    width: 200px;
+    max-width: 200px;
+    min-width: 200px;
+  }
+}
+
+/* Mobile (480px / 440px / 390px) */
+@media (max-width: 480px) {
+
+  .carouselItemWrapper,
+  .recommendationCardWrapper,
+  .recommendationsShelf>*,
+  .recommendationsGrid>* {
+    flex: 0 0 185px;
+    width: 185px;
+    max-width: 185px;
+    min-width: 185px;
+  }
+}
+
+/* Small Mobile (360px) */
+@media (max-width: 360px) {
+
+  .carouselItemWrapper,
+  .recommendationCardWrapper,
+  .recommendationsShelf>*,
+  .recommendationsGrid>* {
+    flex: 0 0 165px;
+    width: 165px;
+    max-width: 165px;
+    min-width: 165px;
+  }
 }
 
 /* Guest State Invitation Card */
@@ -536,4 +702,3 @@
   font-style: italic;
   margin-top: var(--space-2);
 }
-
