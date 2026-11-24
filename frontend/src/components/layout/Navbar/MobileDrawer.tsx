@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react';
-import { X, BookOpen, Search, LogIn, LogOut, ChevronRight, User as UserIcon, Settings, Library, Shield } from 'lucide-react';
+import { X, BookOpen, Search, LogIn, LogOut, ChevronRight, User as UserIcon, Settings, Library, Shield, Sparkles } from 'lucide-react';
 import { Button, IconButton } from '@/components/ui';
 import type { NavItem } from '@/types/navigation';
 import type { User } from '@/types/auth';
@@ -162,6 +162,24 @@ export function MobileDrawer({
                 </li>
               );
             })}
+            <li className={styles.drawerItem}>
+              <a
+                href="/?view=store"
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleLinkClick('store', '/?view=store');
+                }}
+                className={styles.drawerLink}
+                style={{ color: 'var(--color-action-primary)', fontWeight: 700 }}
+                data-testid="mobile-drawer-store-link"
+              >
+                <span style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                  <Sparkles size={16} />
+                  <span>Akashic Store</span>
+                </span>
+                <ChevronRight size={16} aria-hidden="true" />
+              </a>
+            </li>
           </ul>
         </nav>
 

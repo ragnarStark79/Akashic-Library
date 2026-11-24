@@ -136,6 +136,40 @@
   flex-shrink: 0;
 }
 
+/* ── Store Portal Button (Capsule) ── */
+.storePortalButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  background: linear-gradient(135deg, rgba(255, 225, 105, 0.45), rgba(255, 225, 105, 0.15));
+  border: 1px solid rgba(24, 92, 88, 0.25);
+  border-radius: var(--radius-pill);
+  color: var(--color-action-primary);
+  font-family: var(--font-family-body);
+  font-size: var(--font-small);
+  font-weight: 700;
+  cursor: pointer;
+  transition: all var(--duration-fast) var(--ease-standard);
+  box-shadow: 0 1px 3px rgba(38, 54, 51, 0.05);
+}
+
+.storePortalButton:hover {
+  background: var(--raw-warm-stone);
+  border-color: var(--color-action-primary);
+  transform: translateY(-1px);
+  box-shadow: 0 3px 8px rgba(38, 54, 51, 0.1);
+}
+
+.storePortalButton:focus-visible {
+  outline: 2px solid var(--color-border-focus);
+  outline-offset: 2px;
+}
+
+.storeSparkleIcon {
+  color: var(--raw-muted-terracotta);
+}
+
 /* ── Search Capsule on Desktop ── */
 .searchCapsule {
   display: inline-flex;
