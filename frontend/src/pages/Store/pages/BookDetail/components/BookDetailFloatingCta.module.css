@@ -1,0 +1,321 @@
+.scrollingCta {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  justify-content: flex-end;
+  align-items: flex-end;
+  padding-bottom: 2rem;
+  padding-right: 2rem;
+  display: flex;
+  z-index: 90;
+  transition: transform 0.4s cubic-bezier(0.32, 0.72, 0, 1), opacity 0.3s ease;
+}
+
+.scrollingCtaHidden {
+  transform: translateY(12rem);
+  opacity: 0;
+  pointer-events: none;
+}
+
+@media (max-width: 479px) {
+  .scrollingCta {
+    padding-bottom: 1.25rem;
+    padding-right: 1.25rem;
+    padding-left: 1.25rem;
+    justify-content: center;
+  }
+}
+
+.ctaWrap {
+  background-color: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  pointer-events: auto;
+  border-radius: 1.25rem;
+  padding: 0.75rem 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  box-shadow:
+    0 1.25rem 3rem rgba(0, 0, 0, 0.18),
+    0 0.5rem 1rem rgba(0, 0, 0, 0.08),
+    0 0 1px rgba(0, 0, 0, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+}
+
+@media (max-width: 479px) {
+  .ctaWrap {
+    width: 100%;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.625rem 1rem;
+  }
+}
+
+/* ── Price Block ── */
+.priceBlock {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.15rem;
+  user-select: none;
+}
+
+.priceRow {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.currentPrice {
+  font-family: var(--store-font-display, 'Degular', system-ui, sans-serif);
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: #111827;
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+
+.originalPrice {
+  font-family: var(--store-font-body, 'Degular', system-ui, sans-serif);
+  font-size: 1rem;
+  font-weight: 600;
+  color: #9CA3AF;
+  text-decoration: line-through;
+  line-height: 1;
+}
+
+.discountBadge {
+  background-color: #FF007A;
+  color: #FFFFFF;
+  font-family: var(--store-font-body, 'Degular', system-ui, sans-serif);
+  font-size: 0.75rem;
+  font-weight: 800;
+  padding: 0.15rem 0.45rem;
+  border-radius: 9999px;
+  line-height: 1;
+}
+
+.stockNotice {
+  font-family: var(--store-font-body, 'Degular', system-ui, sans-serif);
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #059669;
+}
+
+.stockNoticeOut {
+  color: #DC2626;
+}
+
+/* ── Add to Box Button with Bunny Ears ── */
+.addToBoxButton {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.85rem 1.65rem;
+  border-radius: 9999px;
+  background-color: var(--store-accent-pink, #FF007A);
+  color: #FFFFFF;
+  border: none;
+  cursor: pointer;
+  font-family: var(--store-font-body, 'Degular', system-ui, sans-serif);
+  font-size: 1.125rem;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  box-shadow: 0 4px 16px rgba(255, 0, 122, 0.35);
+  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), background-color 0.2s ease, box-shadow 0.2s ease;
+  user-select: none;
+}
+
+.addToBoxButton:hover:not(:disabled) {
+  transform: translateY(-2px) scale(1.02);
+  background-color: #FA006B;
+  box-shadow: 0 8px 24px rgba(255, 0, 122, 0.45);
+}
+
+.addToBoxButton:active:not(:disabled) {
+  transform: scale(0.98);
+}
+
+.addToBoxButton:disabled {
+  background-color: #9CA3AF;
+  box-shadow: none;
+  cursor: not-allowed;
+  opacity: 0.8;
+}
+
+/* ── Bunny Ears Emerging from Top ── */
+.earsWrap {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%) translateY(-98%);
+  display: flex;
+  gap: 4px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.earLeft {
+  width: 14px;
+  height: 20px;
+  fill: #FF007A;
+  transform-origin: bottom right;
+  animation: earTwitchLeft 5.2s 0.6s infinite ease-in-out;
+}
+
+.earRight {
+  width: 14px;
+  height: 20px;
+  fill: #FF007A;
+  transform-origin: bottom left;
+  animation: earTwitchRight 5.2s 0.1s infinite ease-in-out;
+}
+
+.addToBoxButton:disabled .earLeft,
+.addToBoxButton:disabled .earRight {
+  fill: #9CA3AF;
+  animation: none;
+}
+
+/* ── Transformed Quantity Stepper Pill with Bunny Ears ── */
+.quantityStepper {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.85rem;
+  padding: 0.45rem 0.75rem;
+  border-radius: 9999px;
+  background-color: var(--store-accent-pink, #FF007A);
+  color: #FFFFFF;
+  box-shadow: 0 4px 16px rgba(255, 0, 122, 0.35);
+  user-select: none;
+  min-width: 155px;
+  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s ease;
+}
+
+.stepperBtn {
+  width: 36px;
+  height: 36px;
+  border-radius: 9999px;
+  background-color: #FFFFFF;
+  color: #FF007A;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 900;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+  transition: transform 0.15s cubic-bezier(0.34, 1.56, 0.64, 1), background-color 0.15s ease, color 0.15s ease;
+}
+
+.stepperBtn:hover:not(:disabled) {
+  transform: scale(1.1);
+  background-color: #FFF0F5;
+}
+
+.stepperBtn:active:not(:disabled) {
+  transform: scale(0.92);
+}
+
+.stepperBtn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.stepperValue {
+  font-family: var(--store-font-display, 'Degular', system-ui, sans-serif);
+  font-size: 1.35rem;
+  font-weight: 900;
+  color: #FFFFFF;
+  min-width: 28px;
+  text-align: center;
+  line-height: 1;
+}
+
+@keyframes earTwitchLeft {
+  0%, 88%, 100% {
+    transform: rotate(0deg) scale(1);
+  }
+  90% {
+    transform: rotate(-16deg) scale(1.08);
+  }
+  92% {
+    transform: rotate(8deg) scale(0.94);
+  }
+  94% {
+    transform: rotate(-10deg) scale(1.02);
+  }
+  96% {
+    transform: rotate(0deg) scale(1);
+  }
+}
+
+@keyframes earTwitchRight {
+  0%, 86%, 100% {
+    transform: rotate(0deg) scale(1);
+  }
+  88% {
+    transform: rotate(18deg) scale(1.08);
+  }
+  91% {
+    transform: rotate(-8deg) scale(0.94);
+  }
+  93% {
+    transform: rotate(10deg) scale(1.02);
+  }
+  95% {
+    transform: rotate(0deg) scale(1);
+  }
+}
+
+.buttonIconWrap {
+  width: 26px;
+  height: 26px;
+  border-radius: 9999px;
+  background-color: rgba(255, 255, 255, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease;
+}
+
+.addToBoxButton:hover:not(:disabled) .buttonIconWrap {
+  transform: translateX(2px);
+}
+
+/* ── Toast Notification ── */
+.toast {
+  position: absolute;
+  bottom: calc(100% + 12px);
+  right: 0;
+  background-color: #111827;
+  color: #FFFFFF;
+  padding: 0.75rem 1.25rem;
+  border-radius: 1rem;
+  font-family: var(--store-font-body, 'Degular', system-ui, sans-serif);
+  font-size: 0.95rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  animation: toastSlideUp 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  pointer-events: auto;
+  white-space: nowrap;
+}
+
+@keyframes toastSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}

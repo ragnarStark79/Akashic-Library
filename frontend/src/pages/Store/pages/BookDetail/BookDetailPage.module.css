@@ -1,0 +1,156 @@
+.pageWrapper {
+  width: 100%;
+  min-height: 100vh;
+  background-color: #FFFFFF;
+  position: relative;
+  overflow-x: hidden;
+}
+
+.contentSection {
+  width: 100%;
+  position: relative;
+  z-index: 5;
+  background-color: #FFFFFF;
+  padding: 3rem 0 5rem 0;
+}
+
+.contentContainer {
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* ── Back Navigation Link / Pill ── */
+.topNav {
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 1.5rem 2rem 0.5rem 2rem;
+  display: flex;
+  align-items: center;
+}
+
+.backButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 9999px;
+  background-color: rgba(0, 0, 0, 0.05);
+  color: #374151;
+  font-family: var(--store-font-body, 'Degular', system-ui, sans-serif);
+  font-size: 0.875rem;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.backButton:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+  transform: translateX(-2px);
+}
+
+/* ── Loading Skeleton ── */
+.skeletonWrapper {
+  width: 100%;
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 8rem 2rem 4rem 2rem;
+  background-color: #FAF7F2;
+}
+
+.skeletonHero {
+  width: 100%;
+  max-width: 700px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 4rem;
+}
+
+.skeletonLine {
+  height: 20px;
+  border-radius: 9999px;
+  background: linear-gradient(90deg, #E5E7EB 25%, #F3F4F6 50%, #E5E7EB 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+.skeletonTitle {
+  width: 80%;
+  height: 60px;
+}
+
+.skeletonCover {
+  width: 320px;
+  height: 480px;
+  border-radius: 1rem;
+  background: linear-gradient(90deg, #E5E7EB 25%, #F3F4F6 50%, #E5E7EB 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.08);
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+/* ── Error / Not Found View ── */
+.errorWrapper {
+  width: 100%;
+  min-height: 70vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 4rem 2rem;
+}
+
+.errorTitle {
+  font-family: var(--store-font-display, 'Degular', system-ui, sans-serif);
+  font-size: 2.5rem;
+  font-weight: 900;
+  color: #111827;
+  margin-bottom: 1rem;
+}
+
+.errorSubtitle {
+  font-family: var(--store-font-body, 'Degular', system-ui, sans-serif);
+  font-size: 1.15rem;
+  color: #6B7280;
+  max-width: 480px;
+  margin-bottom: 2rem;
+}
+
+.errorAction {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.75rem;
+  border-radius: 9999px;
+  background-color: #111827;
+  color: #FFFFFF;
+  font-family: var(--store-font-body, 'Degular', system-ui, sans-serif);
+  font-size: 1rem;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.errorAction:hover {
+  transform: translateY(-2px);
+  background-color: #1F2937;
+}
