@@ -10,11 +10,20 @@ lerna-debug.log*
 node_modules
 dist
 dist-ssr
+coverage/
+.vite/
 *.local
+
+# Ignored folder & local visual-testing captures
+site-clone/
+screenshots/
+scripts/capture_*.mjs
 
 # Environment variables
 .env
+.env.*
 !.env.example
+!.env.sample
 
 # Editor directories and files
 .vscode/*
@@ -27,3 +36,6 @@ dist-ssr
 *.sln
 *.sw?
 
+# TypeScript build info & test artifacts
+*.tsbuildinfo
+test-results/

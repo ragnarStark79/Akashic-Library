@@ -13,7 +13,8 @@ export default defineConfig({
   },
   server: {
     port: 3000,
-    host: '127.0.0.1',
+    host: '0.0.0.0',
+    allowedHosts: true,
     proxy: {
       '/api': {
         target: 'http://127.0.0.1:8000',
@@ -26,13 +27,24 @@ export default defineConfig({
   },
   preview: {
     port: 4173,
-    host: '127.0.0.1',
+    host: '0.0.0.0',
+    allowedHosts: true,
     proxy: {
       '/api': {
         target: 'http://127.0.0.1:8000',
         changeOrigin: true,
         headers: {
           Origin: 'http://127.0.0.1:8000',
+        },
+      },
+    },
+  },
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          three: ['three'],
+          gsap: ['gsap'],
         },
       },
     },

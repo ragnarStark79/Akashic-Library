@@ -29,8 +29,15 @@ SECRET_KEY = os.environ["DJANGO_SECRET_KEY"]
 DEBUG = os.getenv("DJANGO_DEBUG", "False").strip().lower() in ("true", "1", "yes")
 
 # Parse ALLOWED_HOSTS from a comma-separated env variable.
-_raw_hosts = os.getenv("DJANGO_ALLOWED_HOSTS", "localhost,127.0.0.1")
+_raw_hosts = os.getenv("DJANGO_ALLOWED_HOSTS", "localhost,127.0.0.1,.ngrok-free.dev,.ngrok-free.app,.ngrok.io")
 ALLOWED_HOSTS = [h.strip() for h in _raw_hosts.split(",") if h.strip()]
+
+# Trusted origins for CSRF protection when accessed through ngrok tunnels or local dev
+_raw_csrf = os.getenv(
+    "DJANGO_CSRF_TRUSTED_ORIGINS",
+    "http://localhost:3000,http://127.0.0.1:3000,https://*.ngrok-free.dev,https://*.ngrok-free.app,https://*.ngrok.io",
+)
+CSRF_TRUSTED_ORIGINS = [o.strip() for o in _raw_csrf.split(",") if o.strip()]
 
 
 # ─── Application definition ───────────────────────────────────────────────────
@@ -191,6 +198,8 @@ REST_FRAMEWORK = {
     ),
     "DEFAULT_PARSER_CLASSES": [
         "rest_framework.parsers.JSONParser",
+        "rest_framework.parsers.FormParser",
+        "rest_framework.parsers.MultiPartParser",
     ],
     # Session-based authentication integrates cleanly with Django's built-in
     # auth system and is the right choice for a React SPA that sends cookies
