@@ -13,7 +13,7 @@
   [![MongoDB](https://img.shields.io/badge/MongoDB-6.0+-47A248.svg?logo=mongodb&logoColor=white)](#)
   [![React](https://img.shields.io/badge/React-19.x%20%7C%20TypeScript-61DAFB.svg?logo=react&logoColor=white)](#)
   [![Vite](https://img.shields.io/badge/Vite-6.x-646CFF.svg?logo=vite&logoColor=white)](#)
-  [![Tests](https://img.shields.io/badge/Tests-584%20Passing%20(341%20Backend%20+%20243%20Frontend)-brightgreen.svg)](#)
+  [![Tests](https://img.shields.io/badge/Tests-871%20Passing%20(499%20Backend%20+%20372%20Frontend)-brightgreen.svg)](#)
 
 </div>
 
@@ -21,16 +21,16 @@
 
 ## 🚧 Project Status
 
-**Akashic Library Part I (Book Discovery, Reading Sanctuary & Community) is feature-complete, hardened, and verified.** 
-Currently, **Part I is fully tested and ready for production**, with both the Django backend and React frontend integrated. **Part II (Akashic Store)** is the upcoming development milestone.
+**Akashic Library Part I (Book Discovery, Reading Sanctuary & Community) is complete, and Part II (Akashic Store — Stages 1A through 6.1) is implemented, tested, and verified.** 
+Currently, both **Part I (Discovery & Community)** and **Part II (Akashic Storefront, Multi-Store Cart, Checkout, Admin/Manager Portals & Gifting)** are fully integrated across the Django REST backend and React/TypeScript frontend. **Stage 7 (Discovery Homepage Hero Redesign)** is the upcoming milestone.
 
 | Component | Status | Description |
 | :--- | :---: | :--- |
-| **Backend & API** | ✅ **Complete** | Django REST Framework API, Database models, Authentication, Core Services. |
+| **Backend & API** | ✅ **Complete** | Django REST Framework API, Database models, Authentication, Multi-Store Commerce & Core Services. |
 | **Frontend (Part I)** | ✅ **Complete** | React 19 + TypeScript + Vite SPA: Discovery, Personal Sanctuary, Reading Room, Reviews, Community Hub, Moderator Console. |
-| **Test Coverage** | ✅ **Passing** | **584/584 automated tests passing** (341 backend + 243 frontend unit tests verified). |
+| **Commerce Storefront (Part II)** | ✅ **Complete (Stages 1A–6.1)** | Atmospheric 3D hero showcase, All Books catalogue, customizable Book Detail Pages, Admin & Store Manager portals, multi-store Shopping Bag, checkout, simulated QR demo payment, and Gifting page. |
+| **Test Coverage** | ✅ **Passing** | **871/871 automated tests passing** (499 backend + 372 frontend unit tests across 52 suites verified). |
 | **Integrations** | ✅ **Complete** | External book data providers (Google Books / Open Library) normalized and integrated. |
-| **Commerce Storefront (Part II)** | ⏳ **Planned** | Separate immersive bookstore experience with 3D hero showcase, shopping cart, checkout, and inventory lifecycle. |
 
 ---
 
@@ -70,7 +70,7 @@ Traditional book platforms often fracture the reading experience. You might disc
 - Advanced administrative capabilities
 - Role-based moderation and management
 
-*(Note: Part I includes complete full-stack implementations with dedicated React UI for Discovery, Identity, Personal Library, Reading Room, Community, and Content Moderation. The physical bookstore storefront and checkout UI will be implemented in Part II — Akashic Store.)*
+*(Note: Both Part I — Discovery, Identity, Personal Library, Reading Room, Community, and Content Moderation — and Part II — Akashic Storefront, All Books catalogue, customizable BDP CMS, role-based Admin & Store Manager portals, multi-store cart/checkout/QR demo payment, and Gifting UI through Stage 6.1 — are implemented in full-stack React + Django.)*
 
 ---
 
@@ -81,7 +81,7 @@ The system employs a **polyglot persistence architecture**, separating relationa
 ```mermaid
 flowchart TD
     User["User"]
-    React["React Frontend (Part I Complete)"]
+    React["React Frontend (Part I & Part II Store)"]
     DRF["Django REST Framework"]
     Auth["Accounts / Auth"]
     Discovery["Discovery & Recommendations"]
@@ -207,10 +207,12 @@ Akashic_Library/
 └── manage.py             # Django CLI
 ```
 
-### Frontend Structure (Part I Implemented)
+### Frontend Structure (Part I & Part II Implemented)
 ```text
 frontend/
 ├── public/
+│   ├── covers/           # Curated store edition cover artwork
+│   └── gifting/          # Gifting storefront visual assets
 ├── src/
 │   ├── assets/           # Static design assets, fonts, icons
 │   ├── components/       # Design system tokens, layout, discovery, community, UI primitives
@@ -231,8 +233,9 @@ frontend/
 │   │   ├── Moderation/   # Moderator console & audit queue
 │   │   ├── PersonalLibrary/# Personal shelves, favorites, reading progress
 │   │   ├── ReadingRoom/  # Contemplative reader & persistent marginalia
-│   │   └── SearchResults/
-│   ├── services/         # Centralized API clients (auth, discovery, library, reviews, moderation)
+│   │   ├── SearchResults/
+│   │   └── Store/        # Akashic Store (Hero, All Books, BDP, Cart, Checkout, Payment, Gifting, Admin & Manager Portals)
+│   ├── services/         # Centralized API clients (auth, discovery, library, reviews, moderation, store)
 │   ├── test/             # Vitest test setup and mock handlers
 │   ├── types/            # Domain TypeScript interfaces
 │   ├── utils/            # Formatters, navigation, security helpers
@@ -257,9 +260,12 @@ The backend currently exposes the following key API foundations.
 | `POST` | `/api/auth/logout/` | Destroy user session | ✅ |
 | `GET` | `/api/books/` | Search across external providers | ❌ |
 | `GET` | `/api/books/<id>/` | Get normalized book details | ❌ |
-| `GET` | `/api/store/` | List store products | ❌ |
+| `GET` | `/api/store/products/` | List store products | ❌ |
+| `GET` | `/api/store/manager/overview/` | Store Manager portal metrics | ✅ |
+| `GET` | `/api/store/admin/overview/` | Central Admin operations & oversight | ✅ |
 | `GET` | `/api/cart/` | View current shopping cart | ✅ |
 | `POST` | `/api/orders/checkout/` | Process cart into an order | ✅ |
+| `POST` | `/api/orders/<id>/confirm-payment/` | Confirm simulated QR demo payment | ✅ |
 | `GET` | `/api/community/` | List community discussions | ❌ |
 | `GET` | `/api/recommendations/`| List personalized book suggestions | ✅ |
 
@@ -285,11 +291,11 @@ Key technical implementations include:
 The platform maintains strict test coverage, verifying domain logic, API contracts, database interactions, and frontend component states.
 
 **Current Verified Status:**
-- **Backend Test Suite:** **341 / 341 tests passing** ✅
-- **Frontend Test Suite:** **243 / 243 tests passing** (29 test suites) ✅
-- **Total Automated Tests:** **584 / 584 passing** ✅
+- **Backend Test Suite:** **499 / 499 tests passing** ✅
+- **Frontend Test Suite:** **372 / 372 tests passing** (52 test suites) ✅
+- **Total Automated Tests:** **871 / 871 passing** ✅
 - `0 issues` reported by Django check.
-- `0 errors, 0 warnings` reported by ESLint and TypeScript compilation.
+- `0 errors, 0 warnings` reported by TypeScript compilation (`tsc -b && vite build`).
 - `No changes detected` by migrations check.
 
 ```bash
@@ -349,9 +355,11 @@ npm run dev
 ```
 The React development server will start at `http://localhost:3000/` (automatically proxying `/api` requests to Django at `http://127.0.0.1:8000/`).
 
+*(Tip: You can also start both Django and Vite concurrently with a single command using `./dev.sh`, `python run.py`, or `npm run dev`.)*
+
 To verify frontend quality gates:
 ```bash
-npm run test       # Run Vitest test suite (243 tests)
+npm run test       # Run Vitest test suite (372 tests)
 npm run build      # TypeScript typecheck and Vite production build
 npm run lint       # ESLint static analysis
 ```
@@ -412,17 +420,21 @@ Part II extends this design system into a separate, atmospheric digital bookstor
 - [x] **Phase 6G:** Production readiness, deployment health probes & release packaging
 - [x] **Automated Test Coverage:** 584 automated tests passing (341 backend + 243 frontend)
 
-### ⏳ Planned (Part II — Akashic Store)
-- [ ] **Stage 0:** Store commerce architecture & API audit
-- [ ] **Stage 1:** Separate Store design system & visual identity
-- [ ] **Stage 2:** Store Portal entry sequence & 3D cinematic transition
-- [ ] **Stage 3:** Store Home with 3D hero showcase & premium collections
-- [ ] **Stage 4:** Store Catalog, search, filters & categories
-- [ ] **Stage 5:** Product details (edition, format, condition, price, stock)
-- [ ] **Stage 6:** Shopping cart & session persistence
-- [ ] **Stage 7:** Checkout & secure transaction processing
-- [ ] **Stage 8:** Order confirmation, order history & tracking
-- [ ] **Stage 9:** Store operations & inventory management console
+### ✅ Completed (Part II — Akashic Store, Stages 1A–6.1)
+- [x] **Stage 1A:** Store commerce architecture, portal transition overlay & application shell
+- [x] **Stage 1B (1B.1–1B.2):** Storefront 3D Three.js hero showcase, floating header & `Our Top Books` carousel
+- [x] **Stage 1C (1C.1–1C.2):** Editorial `How It Works` stacking section & `Choose From` interactive category covers
+- [x] **Stage 1D (1D.1–1D.2):** `Why Akashic` section, animation stabilization & Choose From hover restoration
+- [x] **Stage 1E:** `Common Questions` FAQ accordion & redesigned Store Footer
+- [x] **Stage 2:** `All Books` catalogue, genre carousels, customizable `BookCard` & Store Manager CRUD portal
+- [x] **Stage 3:** Customizable Book Detail Pages (BDP), `StoreProductDetail` CMS, proof cards, excerpt & Book notes
+- [x] **Stage 4 & 4.6:** Role-based Auth (`USER` / `STORE_MANAGER` / `ADMIN`), strict portal separation, manager approvals & `init_admin`
+- [x] **Stage 5:** Multi-store Shopping Bag, offer selection, inventory sync, checkout, simulated QR payment & invoices
+- [x] **Stage 6:** BDP title color customization, WCAG AA card contrast improvements, avatar-only triggers & complete `Gifting` page
+- [x] **Stage 6.1:** BDP editorial persistence (`sample_excerpt` / `content_warnings`), demo data audit command & UUID routing stabilization
+
+### ⏳ Upcoming
+- [ ] **Stage 7:** Discovery Homepage Hero Redesign & post-Part II refinements
 
 ---
 
