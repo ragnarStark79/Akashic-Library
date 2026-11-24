@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
-import { BookOpen, Search, Menu, ChevronDown, Library, LogOut, Settings, Shield } from 'lucide-react';
+import { BookOpen, Search, Menu, ChevronDown, Library, LogOut, Settings, Shield, Sparkles } from 'lucide-react';
 import { Button, IconButton } from '@/components/ui';
 import type { NavbarProps } from '@/types/navigation';
 import { DEFAULT_NAV_ITEMS } from './navConfig';
@@ -113,6 +113,18 @@ export function Navbar({
             <kbd className={styles.searchCapsuleKbd} aria-hidden="true">⌘K</kbd>
           </button>
 
+          {/* Store Portal Capsule Trigger */}
+          <button
+            type="button"
+            className={styles.storePortalButton}
+            onClick={() => handleLinkClick('store', '/?view=store')}
+            aria-label="Enter Akashic Store"
+            data-testid="navbar-store-portal-btn"
+          >
+            <Sparkles size={14} className={styles.storeSparkleIcon} aria-hidden="true" />
+            <span>Store</span>
+          </button>
+
           {user ? (
             <div className={styles.userMenuWrapper} ref={dropdownRef}>
               <button
@@ -127,7 +139,6 @@ export function Navbar({
                 <span className={styles.avatarInitials} aria-hidden="true">
                   {initials}
                 </span>
-                <span className={styles.userName}>{displayName}</span>
                 <ChevronDown
                   size={14}
                   className={`${styles.userChevron} ${isDropdownOpen ? styles.chevronOpen : ''}`}
@@ -176,6 +187,16 @@ export function Navbar({
                       <span>Moderation Console</span>
                     </button>
                   )}
+                  <button
+                    type="button"
+                    role="menuitem"
+                    className={styles.dropdownItem}
+                    onClick={() => handleLinkClick('store', '/?view=store')}
+                    data-testid="navbar-store-link"
+                  >
+                    <Sparkles size={16} aria-hidden="true" />
+                    <span>Akashic Store</span>
+                  </button>
                   <div className={styles.dropdownDivider} role="separator" />
                   <button
                     type="button"
