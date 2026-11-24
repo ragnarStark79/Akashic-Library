@@ -1,0 +1,366 @@
+.pageWrapper {
+  width: 100%;
+  min-height: 85vh;
+  background-color: #FAFAFA;
+  padding: 3rem 1.5rem 6rem;
+  font-family: var(--store-font-body, 'Degular', system-ui, -apple-system, sans-serif);
+}
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* ── Top Success Banner ── */
+.successBanner {
+  background: #FFFFFF;
+  border-radius: 1.5rem;
+  border: 1px solid #E5E7EB;
+  padding: 2.5rem 2rem;
+  text-align: center;
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+}
+
+.successIconWrap {
+  width: 64px;
+  height: 64px;
+  border-radius: 9999px;
+  background: #D1FAE5;
+  color: #059669;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1.25rem;
+}
+
+.successTitle {
+  font-size: 2.25rem;
+  font-weight: 900;
+  color: #111827;
+  letter-spacing: -0.03em;
+  margin: 0 0 0.5rem;
+}
+
+.successSubtitle {
+  font-size: 1rem;
+  color: #4B5563;
+  margin: 0 0 1.5rem;
+  line-height: 1.5;
+}
+
+.metadataGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+  background: #F9FAFB;
+  border-radius: 1rem;
+  padding: 1.25rem;
+  margin-bottom: 1.5rem;
+  border: 1px solid #F3F4F6;
+}
+
+.metaItem {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.metaLabel {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #6B7280;
+  letter-spacing: 0.05em;
+}
+
+.metaValue {
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: #111827;
+}
+
+.bannerActions {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.printBtn {
+  background: #111827;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 9999px;
+  padding: 0.75rem 1.75rem;
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: background 0.15s ease;
+}
+
+.printBtn:hover {
+  background: #374151;
+}
+
+.continueBtn {
+  background: #FF007A;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 9999px;
+  padding: 0.75rem 1.75rem;
+  font-size: 0.95rem;
+  font-weight: 800;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: background 0.15s ease;
+}
+
+.continueBtn:hover {
+  background: #E6006E;
+}
+
+/* ── Printable Invoice Bill Card ── */
+.invoiceCard {
+  background: #FFFFFF;
+  border-radius: 1.25rem;
+  border: 1px solid #E5E7EB;
+  padding: 2.5rem;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+}
+
+.invoiceHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding-bottom: 1.75rem;
+  border-bottom: 2px solid #111827;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.invoiceBrand {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.brandName {
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: #111827;
+  letter-spacing: -0.02em;
+}
+
+.brandTagline {
+  font-size: 0.85rem;
+  color: #6B7280;
+}
+
+.invoiceMeta {
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.invoiceTitle {
+  font-size: 1.25rem;
+  font-weight: 900;
+  color: #111827;
+}
+
+.paidBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  background: #D1FAE5;
+  color: #065F46;
+  font-size: 0.75rem;
+  font-weight: 800;
+  padding: 0.25rem 0.65rem;
+  border-radius: 9999px;
+  width: fit-content;
+  margin-left: auto;
+}
+
+.partiesGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid #E5E7EB;
+}
+
+.partyCol {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  font-size: 0.9rem;
+  color: #4B5563;
+}
+
+.partyHeading {
+  font-size: 0.8rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: #111827;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.25rem;
+}
+
+.partyName {
+  font-weight: 700;
+  color: #111827;
+}
+
+/* ── Store Group Packages on Invoice ── */
+.packagesContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.storeGroupBill {
+  border: 1px solid #E5E7EB;
+  border-radius: 0.75rem;
+  overflow: hidden;
+}
+
+.storeGroupBillHeader {
+  background: #F9FAFB;
+  padding: 0.75rem 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #E5E7EB;
+  font-weight: 800;
+  font-size: 0.9rem;
+  color: #111827;
+}
+
+.itemsTable {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+}
+
+.itemsTable th {
+  text-align: left;
+  padding: 0.75rem 1rem;
+  background: #FFFFFF;
+  color: #6B7280;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-bottom: 1px solid #E5E7EB;
+}
+
+.itemsTable td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid #F3F4F6;
+  color: #374151;
+}
+
+.itemsTable tr:last-child td {
+  border-bottom: none;
+}
+
+.numCol {
+  text-align: right;
+}
+
+/* ── Invoice Financial Totals ── */
+.totalsSection {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 2rem;
+}
+
+.totalsBox {
+  width: 320px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.totalLine {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.9rem;
+  color: #4B5563;
+}
+
+.totalLineGrand {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.25rem;
+  font-weight: 900;
+  color: #111827;
+  padding-top: 0.75rem;
+  border-top: 2px solid #111827;
+}
+
+.legalNotice {
+  border-top: 1px solid #E5E7EB;
+  padding-top: 1.25rem;
+  font-size: 0.775rem;
+  color: #9CA3AF;
+  line-height: 1.5;
+  text-align: center;
+}
+
+/* ── Print Stylesheet ── */
+@media print {
+  body {
+    background: #FFFFFF !important;
+  }
+
+  .pageWrapper {
+    padding: 0 !important;
+    background: #FFFFFF !important;
+  }
+
+  .successBanner,
+  .bannerActions {
+    display: none !important;
+  }
+
+  .invoiceCard {
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .partiesGrid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .invoiceHeader {
+    flex-direction: column;
+  }
+
+  .invoiceMeta {
+    text-align: left;
+  }
+
+  .paidBadge {
+    margin-left: 0;
+  }
+
+  .totalsBox {
+    width: 100%;
+  }
+}
