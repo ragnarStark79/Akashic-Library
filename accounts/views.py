@@ -66,6 +66,8 @@ def register(request):
         username=serializer.validated_data["username"],
         email=serializer.validated_data["email"],
         password=serializer.validated_data["password"],
+        role=serializer.validated_data.get("role", "USER"),
+        business_name=serializer.validated_data.get("business_name", ""),
     )
 
     return Response(

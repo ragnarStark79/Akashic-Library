@@ -27,8 +27,7 @@ from .models import User
 class RegistrationSerializer(serializers.Serializer):
     """Validates POST /api/auth/register/ request bodies.
 
-    The ``role`` field is intentionally absent — it is always set to USER
-    by the service layer regardless of any client input.
+    Allows electing USER or STORE_MANAGER role. ADMIN is strictly prohibited.
     """
 
     username = serializers.CharField(
@@ -42,6 +41,18 @@ class RegistrationSerializer(serializers.Serializer):
         min_length=8,
         style={"input_type": "password"},
     )
+    role = serializers.CharField(required=False, default="USER")
+    business_name = serializers.CharField(
+        max_length=200,
+        required=False,
+        allow_blank=True,
+        default="",
+    )
+
+    def validate_role(self, value):
+        if value == "STORE_MANAGER":
+            return "STORE_MANAGER"
+        return "USER"
 
     def validate_username(self, value):
         """Ensure username is not already taken (case-insensitive check)."""
@@ -110,6 +121,8 @@ class UserSerializer(serializers.ModelSerializer):
             "username",
             "email",
             "role",
+            "manager_status",
+            "business_name",
             "display_name",
             "bio",
             "created_at",

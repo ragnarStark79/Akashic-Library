@@ -18,6 +18,8 @@ import {
   ShieldAlert,
   ShieldCheck,
   User as UserIcon,
+  Sparkles,
+  Clock,
 } from 'lucide-react';
 import { useAuth } from '@/context/AuthContext';
 import { requestPasswordReset, confirmPasswordReset } from '@/services/authService';
@@ -61,6 +63,9 @@ export const AuthPage: React.FC<AuthPageProps> = ({
   const [signInError, setSignInError] = useState<string | null>(null);
 
   // Registration Form State
+  const [regRole, setRegRole] = useState<'USER' | 'STORE_MANAGER'>('USER');
+  const [regBusinessName, setRegBusinessName] = useState('');
+  const [managerApplicationSubmitted, setManagerApplicationSubmitted] = useState(false);
   const [regUsername, setRegUsername] = useState('');
   const [regEmail, setRegEmail] = useState('');
   const [regPassword, setRegPassword] = useState('');
@@ -174,20 +179,35 @@ export const AuthPage: React.FC<AuthPageProps> = ({
     setRegLoading(true);
 
     try {
-      await register({
+      const regPayload: any = {
         username: regUsername.trim(),
         email: regEmail.trim(),
         password: regPassword,
-      });
+      };
+      if (regRole && regRole !== 'USER') {
+        regPayload.role = regRole;
+      }
+      if (regBusinessName.trim()) {
+        regPayload.business_name = regBusinessName.trim();
+      }
 
-      setRegSuccessMessage(
-        `Patron record for ${regUsername.trim()} has been inscribed in the Great Ledger. You may now enter your passphrase to access your sanctuary.`
-      );
-      // Pre-fill sign-in username for patron convenience
-      setSignInIdentifier(regUsername.trim());
-      setSignInPassword('');
-      // Switch to sign-in tab after short acknowledgment
-      setActiveTab('signin');
+      await register(regPayload);
+
+      if (regRole === 'STORE_MANAGER') {
+        setManagerApplicationSubmitted(true);
+        setRegSuccessMessage(
+          `Your Store Manager application for "${regUsername.trim()}" has been recorded in PENDING status. An Akashic Administrator will review your curator credentials before product authoring and stock tools are unlocked.`
+        );
+      } else {
+        setRegSuccessMessage(
+          `Patron record for ${regUsername.trim()} has been inscribed in the Great Ledger. You may now enter your passphrase to access your sanctuary.`
+        );
+        // Pre-fill sign-in username for patron convenience
+        setSignInIdentifier(regUsername.trim());
+        setSignInPassword('');
+        // Switch to sign-in tab after short acknowledgment
+        setActiveTab('signin');
+      }
     } catch (err: unknown) {
       const msg = err instanceof Error ? err.message : 'Registration failed.';
       setRegError(msg);
@@ -524,7 +544,139 @@ export const AuthPage: React.FC<AuthPageProps> = ({
                   </div>
                 )}
 
-                <form onSubmit={handleRegisterSubmit}>
+                {managerApplicationSubmitted ? (
+                  <div style={{ textAlign: 'center', padding: '2rem 1rem' }}>
+                    <div
+                      style={{
+                        width: 64,
+                        height: 64,
+                        borderRadius: '50%',
+                        backgroundColor: '#FEF3C7',
+                        color: '#D97706',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        margin: '0 auto 1.5rem auto',
+                      }}
+                    >
+                      <Clock size={36} />
+                    </div>
+                    <h2 style={{ fontSize: '1.5rem', fontWeight: 800, color: '#111827', marginBottom: '0.75rem' }}>
+                      Curator Application Under Review
+                    </h2>
+                    <p style={{ color: '#4B5563', lineHeight: 1.6, maxWidth: '440px', margin: '0 auto 1.5rem auto' }}>
+                      Your account <strong>{regUsername}</strong> has been registered with Store Manager privileges in{' '}
+                      <strong>PENDING</strong> status. An Akashic Administrator will review your publisher/curator
+                      credentials before product management is activated.
+                    </p>
+                    <div style={{ display: 'flex', gap: '0.75rem', justifyContent: 'center' }}>
+                      <button
+                        type="button"
+                        className={styles.submitButton}
+                        onClick={() => {
+                          setManagerApplicationSubmitted(false);
+                          setSignInIdentifier(regUsername);
+                          setActiveTab('signin');
+                        }}
+                      >
+                        <span>Proceed to Sign In</span>
+                        <ArrowRight size={16} />
+                      </button>
+                    </div>
+                  </div>
+                ) : (
+                  <form onSubmit={handleRegisterSubmit}>
+                    {/* Account Type Selector */}
+                    <div className={styles.formGroup}>
+                      <label className={styles.label}>Account Purpose & Role</label>
+                      <div
+                        style={{
+                          display: 'grid',
+                          gridTemplateColumns: '1fr 1fr',
+                          gap: '0.75rem',
+                          marginTop: '0.35rem',
+                        }}
+                      >
+                        <button
+                          type="button"
+                          onClick={() => setRegRole('USER')}
+                          style={{
+                            padding: '0.85rem 0.75rem',
+                            borderRadius: '0.75rem',
+                            border: `2px solid ${regRole === 'USER' ? '#FF007A' : 'rgba(0,0,0,0.1)'}`,
+                            backgroundColor: regRole === 'USER' ? 'rgba(255,0,122,0.06)' : '#FFFFFF',
+                            cursor: 'pointer',
+                            textAlign: 'left',
+                            transition: 'all 0.2s ease',
+                          }}
+                          data-testid="role-select-user"
+                        >
+                          <div
+                            style={{
+                              fontWeight: 800,
+                              fontSize: '0.9rem',
+                              color: regRole === 'USER' ? '#FF007A' : '#111827',
+                            }}
+                          >
+                            📖 Patron / Reader
+                          </div>
+                          <div style={{ fontSize: '0.75rem', color: '#6B7280', marginTop: '0.2rem' }}>
+                            Instant store & library access
+                          </div>
+                        </button>
+
+                        <button
+                          type="button"
+                          onClick={() => setRegRole('STORE_MANAGER')}
+                          style={{
+                            padding: '0.85rem 0.75rem',
+                            borderRadius: '0.75rem',
+                            border: `2px solid ${regRole === 'STORE_MANAGER' ? '#FF007A' : 'rgba(0,0,0,0.1)'}`,
+                            backgroundColor: regRole === 'STORE_MANAGER' ? 'rgba(255,0,122,0.06)' : '#FFFFFF',
+                            cursor: 'pointer',
+                            textAlign: 'left',
+                            transition: 'all 0.2s ease',
+                          }}
+                          data-testid="role-select-manager"
+                        >
+                          <div
+                            style={{
+                              fontWeight: 800,
+                              fontSize: '0.9rem',
+                              color: regRole === 'STORE_MANAGER' ? '#FF007A' : '#111827',
+                            }}
+                          >
+                            🏪 Store Manager
+                          </div>
+                          <div style={{ fontSize: '0.75rem', color: '#6B7280', marginTop: '0.2rem' }}>
+                            Curate & sell (Admin approved)
+                          </div>
+                        </button>
+                      </div>
+                    </div>
+
+                    {regRole === 'STORE_MANAGER' && (
+                      <div className={styles.formGroup}>
+                        <label className={styles.label} htmlFor="reg-business-name">
+                          Curator / Store Name (Optional)
+                        </label>
+                        <div className={styles.inputWrapper}>
+                          <span className={styles.inputIcon}>
+                            <Sparkles size={18} />
+                          </span>
+                          <input
+                            id="reg-business-name"
+                            type="text"
+                            className={styles.input}
+                            placeholder="e.g. Antiquarian Folios & Editions"
+                            value={regBusinessName}
+                            onChange={(e) => setRegBusinessName(e.target.value)}
+                            disabled={regLoading}
+                            data-testid="reg-business-name"
+                          />
+                        </div>
+                      </div>
+                    )}
                   {/* Patron Handle / Username */}
                   <div className={styles.formGroup}>
                     <label className={styles.label} htmlFor="reg-username">
@@ -683,6 +835,7 @@ export const AuthPage: React.FC<AuthPageProps> = ({
                     )}
                   </button>
                 </form>
+                )}
               </section>
             )}
 

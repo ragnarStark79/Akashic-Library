@@ -4,6 +4,7 @@
  */
 
 export type UserRole = 'USER' | 'MODERATOR' | 'STORE_MANAGER' | 'ADMIN';
+export type ManagerStatus = 'PENDING' | 'APPROVED' | 'REJECTED' | 'SUSPENDED';
 
 export interface User {
   id: string;
@@ -12,6 +13,8 @@ export interface User {
   role: UserRole | string;
   display_name: string;
   bio: string;
+  manager_status?: ManagerStatus;
+  business_name?: string;
   created_at: string;
   updated_at: string;
 }
@@ -25,6 +28,8 @@ export interface RegisterCredentials {
   username: string;
   email: string;
   password: string;
+  role?: 'USER' | 'STORE_MANAGER';
+  business_name?: string;
 }
 
 export interface UpdateProfileData {

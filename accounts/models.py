@@ -36,6 +36,15 @@ class UserRole(models.TextChoices):
     ADMIN = "ADMIN", "Admin"
 
 
+class ManagerStatus(models.TextChoices):
+    """Lifecycle / verification status for Store Managers."""
+
+    PENDING = "PENDING", "Pending"
+    APPROVED = "APPROVED", "Approved"
+    REJECTED = "REJECTED", "Rejected"
+    SUSPENDED = "SUSPENDED", "Suspended"
+
+
 # ─── User manager ─────────────────────────────────────────────────────────────
 
 
@@ -127,6 +136,31 @@ class User(AbstractBaseUser, PermissionsMixin):
         default=UserRole.USER,
         help_text="Application-level role. Assign elevated roles through the admin interface only.",
     )
+    manager_status = models.CharField(
+        max_length=20,
+        choices=ManagerStatus.choices,
+        default=ManagerStatus.APPROVED,
+        help_text="Approval status for STORE_MANAGER role. Defaults to APPROVED for users/admins.",
+    )
+    business_name = models.CharField(
+        max_length=200,
+        blank=True,
+        default="",
+        help_text="Store or publisher name for Store Managers.",
+    )
+    approved_by = models.ForeignKey(
+        "self",
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name="approved_managers",
+        help_text="Admin who approved or rejected this Store Manager.",
+    )
+    approved_at = models.DateTimeField(
+        null=True,
+        blank=True,
+        help_text="Timestamp when manager status was last decided.",
+    )
 
     # ── Django auth flags ─────────────────────────────────────────────────────
     is_active = models.BooleanField(
@@ -185,3 +219,10 @@ class User(AbstractBaseUser, PermissionsMixin):
     def is_store_manager(self):
         """True if the user has STORE_MANAGER or ADMIN privileges."""
         return self.role in (UserRole.STORE_MANAGER, UserRole.ADMIN)
+
+    @property
+    def is_approved_store_manager(self):
+        """True if the user is an admin or an approved store manager."""
+        if self.role == UserRole.ADMIN or self.is_superuser:
+            return True
+        return self.role == UserRole.STORE_MANAGER and self.manager_status == ManagerStatus.APPROVED

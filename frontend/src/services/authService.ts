@@ -46,6 +46,10 @@ export function getAuthHeaders(): HeadersInit {
   if (csrf) {
     headers['X-CSRFToken'] = csrf;
   }
+  const token = typeof window !== 'undefined' ? localStorage.getItem('access_token') : null;
+  if (token) {
+    headers['Authorization'] = `Bearer ${token}`;
+  }
   return headers;
 }
 
@@ -94,6 +98,13 @@ export async function loginUser(credentials: LoginCredentials): Promise<AuthResp
       (Array.isArray(data.password) ? data.password[0] : null) ||
       'Invalid username or password.';
     throw new Error(errorMsg);
+  }
+
+  if (data.tokens?.access && typeof window !== 'undefined') {
+    localStorage.setItem('access_token', data.tokens.access);
+    if (data.tokens.refresh) {
+      localStorage.setItem('refresh_token', data.tokens.refresh);
+    }
   }
 
   return data as AuthResponse;
@@ -166,6 +177,12 @@ export async function logoutUser(): Promise<void> {
     });
   } catch {
     // Graceful no-op on network failure
+  } finally {
+    if (typeof window !== 'undefined') {
+      localStorage.removeItem('access_token');
+      localStorage.removeItem('refresh_token');
+      localStorage.removeItem('akashic_user');
+    }
   }
 }
 
@@ -201,9 +218,7 @@ export async function getCurrentUser(): Promise<User | null> {
   try {
     const res = await fetch(`${BASE_URL}/auth/me/`, {
       method: 'GET',
-      headers: {
-        Accept: 'application/json',
-      },
+      headers: getAuthHeaders(),
       credentials: 'include',
     });
 

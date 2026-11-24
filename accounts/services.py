@@ -18,7 +18,7 @@ from django.utils.encoding import force_bytes
 from django.utils.http import urlsafe_base64_encode
 from rest_framework.exceptions import ValidationError
 
-from .models import User, UserRole
+from .models import User, UserRole, ManagerStatus
 
 
 class AccountService:
@@ -27,13 +27,18 @@ class AccountService:
     # ── Registration ──────────────────────────────────────────────────────────
 
     @staticmethod
-    def register_user(*, username: str, email: str, password: str) -> User:
-        """Create a new user account with the default USER role.
+    def register_user(
+        *,
+        username: str,
+        email: str,
+        password: str,
+        role: str = "USER",
+        business_name: str = "",
+    ) -> User:
+        """Create a new user account with role selection (USER or STORE_MANAGER).
 
-        The role is NEVER accepted as a parameter — it is always USER.
-        Password hashing is delegated entirely to Django's UserManager /
-        AbstractBaseUser.set_password(), which uses Django's configured
-        PASSWORD_HASHERS (PBKDF2 by default).
+        Store Managers are created in PENDING status, requiring Administrator approval.
+        ADMIN role cannot be requested through registration.
 
         Raises
         ------
@@ -42,12 +47,19 @@ class AccountService:
             (field validation errors from serializers are raised before this).
         """
         try:
+            target_role = UserRole.STORE_MANAGER if role == UserRole.STORE_MANAGER else UserRole.USER
+            mgr_status = ManagerStatus.PENDING if target_role == UserRole.STORE_MANAGER else ManagerStatus.APPROVED
+
             user = User.objects.create_user(
                 username=username,
                 email=email,
                 password=password,
-                # role is intentionally not passed → defaults to UserRole.USER
+                role=target_role,
             )
+            if target_role == UserRole.STORE_MANAGER:
+                user.manager_status = mgr_status
+                user.business_name = business_name.strip()
+                user.save(update_fields=["manager_status", "business_name"])
         except Exception as exc:
             raise ValidationError(
                 {"detail": f"Account creation failed: {exc}"}
