@@ -1,0 +1,210 @@
+/* ── Reference .filter styling ── */
+.filterSection {
+  margin-top: -2.5rem;
+  margin-bottom: 3.5rem;
+  position: relative;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  padding: 0 1rem;
+  box-sizing: border-box;
+}
+
+@media (min-width: 992px) {
+  .filterSection {
+    margin-top: -3.25rem;
+    margin-bottom: 5rem;
+  }
+}
+
+.filterOuter {
+  position: relative;
+  display: flex;
+  align-items: center;
+  max-width: 78.625em;
+  width: 100%;
+}
+
+.filterInner {
+  background-color: #ffffff;
+  border-radius: 2.5em;
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: visible;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE/Edge */
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+  scroll-behavior: smooth;
+  padding: 0.5em 0.75em;
+  box-sizing: border-box;
+}
+
+.filterInner::-webkit-scrollbar {
+  display: none; /* Chrome, Safari */
+}
+
+.filterList {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: max-content;
+}
+
+.filterItem {
+  flex: none;
+  padding: 0.25em 0.15em;
+  overflow: visible;
+}
+
+/* ── Chip tag button matching .tag from 54934.css ── */
+.tagButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5em;
+  height: 3em;
+  padding: 0 1.1em;
+  border-radius: 2em;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  user-select: none;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.2s ease,
+              scale 0.15s cubic-bezier(0.34, 1.57, 0.64, 1);
+  box-sizing: border-box;
+  overflow: visible;
+}
+
+.tagButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.tagButton:active {
+  transform: scale(0.97);
+}
+
+.tagIcon {
+  font-size: 1.25em;
+  line-height: 1;
+}
+
+.tagText {
+  font-family: var(--store-font-body, 'Degular', sans-serif);
+  font-size: 1.15em;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+  line-height: 1;
+}
+
+/* ── Active Rabbit Ears on Tag (.tag.is--active::before / after) ── */
+.isActive {
+  transform: translateY(0.25em) !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.tagButton::before,
+.tagButton::after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  background-color: inherit;
+  pointer-events: none;
+  z-index: 1;
+  -webkit-mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-position: center bottom;
+  mask-size: contain;
+  mask-repeat: no-repeat;
+  mask-position: center bottom;
+}
+
+/* Left ear */
+.tagButton::before {
+  width: 1.2em;
+  height: 1.2em;
+  left: 0.75em;
+  translate: 0 -95%;
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 44 45'%3E%3Cpath fill='black' d='M1.335.198c.671-.316 1.5-.254 2.186.187C27.678 16.847 39.839 36.953 44 45h-6.048c-2.382-1.604-6.964-3.674-15.652-4.814C2.999 37.666-.665 14.174.09 2.04.152 1.28.589.515 1.335.198Z'/%3E%3C/svg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 44 45'%3E%3Cpath fill='black' d='M1.335.198c.671-.316 1.5-.254 2.186.187C27.678 16.847 39.839 36.953 44 45h-6.048c-2.382-1.604-6.964-3.674-15.652-4.814C2.999 37.666-.665 14.174.09 2.04.152 1.28.589.515 1.335.198Z'/%3E%3C/svg%3E");
+  transform-origin: bottom right;
+  transform: rotate(-36deg) scale(0);
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.isActive::before {
+  transform: rotate(0deg) scale(0.85);
+  transition: transform 0.35s 0.1s cubic-bezier(0.34, 1.57, 0.64, 1);
+}
+
+/* Right ear */
+.tagButton::after {
+  width: 0.9em;
+  height: 2em;
+  left: 1.85em;
+  translate: 0 -95%;
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 29 80'%3E%3Cpath fill='black' d='M19.388.879c.667-.771 1.647-1.018 2.559-.807.912.21 1.682.956 1.926 1.861C34.595 38.09 25.79 69.237 21.823 80h-4.188c-.17-4.22-2.739-13.318-10.975-22.064-8.493-9.099-8.88-21.913-1.063-37.23C11.221 9.603 19.091 1.266 19.388.879Z'/%3E%3C/svg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 29 80'%3E%3Cpath fill='black' d='M19.388.879c.667-.771 1.647-1.018 2.559-.807.912.21 1.682.956 1.926 1.861C34.595 38.09 25.79 69.237 21.823 80h-4.188c-.17-4.22-2.739-13.318-10.975-22.064-8.493-9.099-8.88-21.913-1.063-37.23C11.221 9.603 19.091 1.266 19.388.879Z'/%3E%3C/svg%3E");
+  transform-origin: bottom center;
+  transform: rotate(-80deg) scale(0);
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.isActive::after {
+  transform: rotate(0deg) scale(0.85);
+  transition: transform 0.35s 0.05s cubic-bezier(0.34, 1.57, 0.64, 1);
+}
+
+/* ── Arrow controls on desktop ── */
+.navArrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 50%;
+  background: #111827;
+  color: #ffffff;
+  border: none;
+  cursor: pointer;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transition: background-color 0.2s ease, transform 0.15s ease;
+  z-index: 3;
+}
+
+@media (min-width: 1200px) {
+  .navArrow {
+    display: flex;
+  }
+}
+
+.navArrow:hover {
+  background: #000000;
+  transform: translateY(-50%) scale(1.08);
+}
+
+.navArrow:active {
+  transform: translateY(-50%) scale(0.95);
+}
+
+.navArrowPrev {
+  left: -1.25rem;
+}
+
+.navArrowNext {
+  right: -1.25rem;
+}
+
+.navArrowDisabled {
+  opacity: 0.3;
+  pointer-events: none;
+}

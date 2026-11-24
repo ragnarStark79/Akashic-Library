@@ -1,0 +1,435 @@
+.drawerOverlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(17, 24, 39, 0.6);
+  backdrop-filter: blur(4px);
+  z-index: 1000;
+  display: flex;
+  justify-content: flex-end;
+  animation: fadeIn 0.2s ease;
+}
+
+.drawerContainer {
+  width: 100%;
+  max-width: 68rem;
+  height: 100%;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  box-shadow: -8px 0 32px rgba(0, 0, 0, 0.2);
+  animation: slideIn 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  overflow: hidden;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideIn {
+  from { transform: translateX(100%); }
+  to { transform: translateX(0); }
+}
+
+/* Header */
+.drawerHeader {
+  padding: 1.5rem 2rem;
+  border-bottom: 1px solid #e5e7eb;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #f9fafb;
+}
+
+.drawerTitle {
+  font-family: var(--store-font-champ, 'Champ', sans-serif);
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: #111827;
+  margin: 0;
+}
+
+.closeButton {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: #6b7280;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.15s ease, background-color 0.15s ease;
+}
+
+.closeButton:hover {
+  color: #111827;
+  background-color: #e5e7eb;
+}
+
+/* Body splits into form and live card preview */
+.drawerBody {
+  flex: 1;
+  display: flex;
+  overflow: hidden;
+}
+
+@media (max-width: 900px) {
+  .drawerBody {
+    flex-direction: column-reverse;
+    overflow-y: auto;
+  }
+}
+
+.formColumn {
+  flex: 1;
+  padding: 2rem;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.previewColumn {
+  width: 25rem;
+  background-color: #f3f4f6;
+  border-left: 1px solid #e5e7eb;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-y: auto;
+}
+
+@media (max-width: 900px) {
+  .previewColumn {
+    width: 100%;
+    border-left: none;
+    border-bottom: 1px solid #e5e7eb;
+  }
+}
+
+.previewHeader {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.previewTitle {
+  font-family: var(--store-font-champ, 'Champ', sans-serif);
+  font-size: 1.25rem;
+  color: #374151;
+  margin: 0 0 0.25rem;
+}
+
+.previewSubtitle {
+  font-size: 0.85rem;
+  color: #6b7280;
+  margin: 0;
+}
+
+/* Tabs */
+.methodTabs {
+  display: flex;
+  gap: 0.5rem;
+  border-bottom: 2px solid #e5e7eb;
+  margin-bottom: 1rem;
+}
+
+.tabButton {
+  padding: 0.75rem 1.5rem;
+  font-family: var(--store-font-body, 'Degular', sans-serif);
+  font-size: 1rem;
+  font-weight: 700;
+  color: #6b7280;
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -2px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.tabButton.activeTab {
+  color: #ff008f;
+  border-bottom-color: #ff008f;
+}
+
+/* Field Groups */
+.fieldGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.fieldLabel {
+  font-family: var(--store-font-body, 'Degular', sans-serif);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #374151;
+}
+
+.fieldInput,
+.fieldTextarea,
+.fieldSelect {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1px solid #d1d5db;
+  border-radius: 0.5rem;
+  font-family: var(--store-font-body, 'Degular', sans-serif);
+  font-size: 1rem;
+  color: #111827;
+  background-color: #ffffff;
+  box-sizing: border-box;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.fieldInput:focus,
+.fieldTextarea:focus,
+.fieldSelect:focus {
+  border-color: #ff008f;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(255, 0, 143, 0.15);
+}
+
+.fieldTextarea {
+  min-height: 5.5rem;
+  resize: vertical;
+}
+
+.rowFields {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+  gap: 1rem;
+}
+
+/* Rich Text formatting toolbar */
+.toolbar {
+  display: flex;
+  gap: 0.35rem;
+  margin-bottom: 0.25rem;
+}
+
+.toolbarButton {
+  background: #f3f4f6;
+  border: 1px solid #d1d5db;
+  border-radius: 0.35rem;
+  padding: 0.25rem 0.5rem;
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+  color: #374151;
+}
+
+.toolbarButton:hover {
+  background: #e5e7eb;
+}
+
+/* Color Swatches */
+.colorPickerSection {
+  background-color: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.75rem;
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.swatchesRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.colorSwatch {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  border: 2px solid #ffffff;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+  transition: transform 0.15s ease;
+}
+
+.colorSwatch:hover {
+  transform: scale(1.15);
+}
+
+.colorSwatchActive {
+  outline: 2px solid #ff008f;
+  outline-offset: 2px;
+}
+
+/* Badge colors row */
+.genreBadgeConfig {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 0.75rem;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.5rem;
+}
+
+/* Footer */
+.drawerFooter {
+  padding: 1.25rem 2rem;
+  border-top: 1px solid #e5e7eb;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 1rem;
+  background-color: #f9fafb;
+}
+
+.cancelButton {
+  padding: 0.75rem 1.5rem;
+  border: 1px solid #d1d5db;
+  border-radius: 9999px;
+  background: #ffffff;
+  color: #374151;
+  font-family: var(--store-font-body, 'Degular', sans-serif);
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.submitButton {
+  padding: 0.75rem 2rem;
+  border: none;
+  border-radius: 9999px;
+  background: #ff008f;
+  color: #ffffff;
+  font-family: var(--store-font-body, 'Degular', sans-serif);
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.15s ease;
+  box-shadow: 0 4px 14px rgba(255, 0, 143, 0.3);
+}
+
+.submitButton:hover {
+  background: #e0007e;
+  transform: scale(1.02);
+}
+
+.submitButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.errorMessage {
+  color: #dc2626;
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+/* Step navigation tabs */
+.stepNav {
+  display: flex;
+  gap: 0.5rem;
+  background-color: #f3f4f6;
+  padding: 0.25rem;
+  border-radius: 9999px;
+  border: 1px solid #e5e7eb;
+}
+
+.stepNavBtn {
+  padding: 0.45rem 1rem;
+  border-radius: 9999px;
+  border: none;
+  background: transparent;
+  font-family: var(--store-font-body, 'Degular', sans-serif);
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: #4b5563;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.stepNavBtnActive {
+  background: #ffffff;
+  color: #111827;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+.stepBadge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.25rem;
+  height: 1.25rem;
+  border-radius: 9999px;
+  background: #e5e7eb;
+  color: #374151;
+  font-size: 0.75rem;
+  font-weight: 800;
+}
+
+.stepNavBtnActive .stepBadge {
+  background: #111827;
+  color: #ffffff;
+}
+
+/* Preview mode switcher */
+.previewModeSwitch {
+  display: flex;
+  gap: 0.25rem;
+  background: #e5e7eb;
+  padding: 0.2rem;
+  border-radius: 9999px;
+  margin-bottom: 1rem;
+}
+
+.previewModeBtn {
+  flex: 1;
+  padding: 0.35rem 0.75rem;
+  border-radius: 9999px;
+  border: none;
+  background: transparent;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #6b7280;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.previewModeBtnActive {
+  background: #ffffff;
+  color: #111827;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.miniBdpPreview {
+  width: 100%;
+  height: 540px;
+  border: 1px solid #e5e7eb;
+  border-radius: 1rem;
+  overflow-y: auto;
+  background: #ffffff;
+  padding: 1rem;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.04);
+}
+
+.tagRow {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.cardSlot {
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.75rem;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
