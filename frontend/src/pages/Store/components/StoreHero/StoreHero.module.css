@@ -1,0 +1,386 @@
+.hero {
+  position: relative;
+  width: 100%;
+  min-height: 122vh;
+  background-color: var(--store-bg-yellow, #FFE169);
+  color: var(--store-text, #1C2826);
+  clip-path: inset(0% round 0 0 10em 10em);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.heroContainer {
+  position: relative;
+  z-index: 3;
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 130px 2.5rem 4rem;
+  box-sizing: border-box;
+}
+
+.heroInner {
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  align-items: center;
+  gap: 2.5rem;
+  position: relative;
+}
+
+/* Editorial Content Column */
+.heroContent {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.5rem;
+  max-width: 680px;
+  position: relative;
+  z-index: 5;
+  margin-top: -1.75rem;
+}
+
+.heroHeader {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.heroTitle {
+  font-family: 'Champ', Georgia, serif;
+  font-size: clamp(3.2rem, 5.5vw, 6.2rem);
+  font-weight: 800;
+  line-height: 0.92;
+  letter-spacing: -0.035em;
+  color: var(--store-text, #1C2826);
+  margin: 0;
+  max-width: 720px;
+}
+
+.titleLine {
+  display: block;
+  white-space: nowrap;
+}
+
+.splitWord {
+  display: inline-block;
+  will-change: transform, opacity;
+  transform-origin: top left;
+  margin-right: 0.28em;
+}
+
+.splitWord:last-child {
+  margin-right: 0;
+}
+
+.heroParagraph {
+  font-family: 'Degular', -apple-system, sans-serif;
+  font-size: 1.125rem;
+  line-height: 1.5;
+  color: rgba(28, 40, 38, 0.88);
+  margin: 0;
+  max-width: 360px;
+  will-change: transform, opacity;
+}
+
+/* CTAs & Actions */
+.heroActions {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+  will-change: transform, opacity;
+}
+
+/* Authentic Aardvark button-alt implementation */
+.primaryCta {
+  letter-spacing: -0.03em;
+  color: var(--store-text, #1C2826);
+  user-select: none;
+  height: 3.25rem;
+  background-color: transparent;
+  outline-style: none;
+  padding: 0;
+  font-family: 'Degular', -apple-system, sans-serif;
+  font-weight: 700;
+  line-height: 1.5;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  position: relative;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.35s var(--store-ease-osmo, cubic-bezier(0.625, 0.05, 0, 1));
+  will-change: transform;
+}
+
+.primaryCta:hover {
+  transform: translateY(-2px) scale(1.02);
+}
+
+.primaryCta:active {
+  transform: translateY(0) scale(0.98);
+}
+
+.buttonAltTextWrap {
+  pointer-events: none;
+  flex-shrink: 0;
+  display: grid;
+  height: 100%;
+}
+
+.buttonAltBg {
+  background-color: #F9A220;
+  border-radius: 999px;
+  grid-area: 1/1;
+  width: 100%;
+  height: 100%;
+  transition: background-color 0.2s ease, box-shadow 0.3s ease;
+  box-shadow: 0 8px 20px rgba(249, 162, 32, 0.3);
+}
+
+.primaryCta:hover .buttonAltBg {
+  background-color: #f99703;
+  box-shadow: 0 12px 28px rgba(249, 162, 32, 0.42);
+}
+
+.buttonAltText {
+  grid-area: 1/1;
+  display: flex;
+  align-items: center;
+  padding-left: 1.85rem;
+  padding-right: 1.85rem;
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--store-text, #1C2826);
+  position: relative;
+  z-index: 1;
+}
+
+.buttonAltIconWrap {
+  aspect-ratio: 1;
+  pointer-events: none;
+  width: 3.25rem;
+  height: 3.25rem;
+  margin-left: -0.0625rem;
+  display: grid;
+  flex-shrink: 0;
+}
+
+.buttonAltIconOuter {
+  z-index: 1;
+  grid-area: 1/1;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  color: var(--store-text, #1C2826);
+  transition: transform 0.3s var(--store-ease-osmo, cubic-bezier(0.625, 0.05, 0, 1));
+}
+
+.primaryCta:hover .buttonAltIconOuter {
+  transform: translateX(3px) scale(1.05);
+}
+
+.buttonAltIcon {
+  flex: none;
+  width: 0.95rem;
+  height: 0.85rem;
+}
+
+.secondaryCta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  height: 3.25rem;
+  padding: 0 1.85rem;
+  background-color: rgba(250, 242, 242, 0.85);
+  backdrop-filter: blur(8px);
+  color: var(--store-text, #1C2826);
+  font-family: 'Degular', -apple-system, sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 999px;
+  text-decoration: none;
+  border: 1.5px solid rgba(28, 40, 38, 0.18);
+  cursor: pointer;
+  transition: transform 0.3s ease, background-color 0.2s ease, border-color 0.2s ease;
+  box-sizing: border-box;
+}
+
+.secondaryCta:hover {
+  transform: translateY(-2px);
+  background-color: #FAF7F2;
+  border-color: rgba(28, 40, 38, 0.35);
+}
+
+/* Handwritten Script Accent Text */
+.scriptAccent {
+  font-family: 'Hello Organichand', cursive;
+  font-size: clamp(1.15rem, 3.8vw, 1.85rem);
+  color: #3B308F;
+  line-height: 1.15;
+  transform: rotate(-3deg);
+  margin-top: 0.25rem;
+  user-select: none;
+  opacity: 0.95;
+}
+
+.scriptWord {
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.splitChar {
+  display: inline-block;
+  will-change: transform, opacity;
+}
+
+/* Visual Column */
+.heroVisualCol {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 520px;
+  pointer-events: none;
+}
+
+/* Rotating Stamp Badge / Circular Logo Seal */
+.rotatingStampBadge {
+  position: absolute;
+  bottom: 2.5rem;
+  right: 2.5rem;
+  width: 72px;
+  height: 72px;
+  background-color: #ffffff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.12);
+  z-index: 6;
+  user-select: none;
+  pointer-events: auto;
+  cursor: pointer;
+  transition: transform 0.35s var(--store-ease-osmo, cubic-bezier(0.625, 0.05, 0, 1)),
+    box-shadow 0.3s ease;
+}
+
+.rotatingStampBadge:hover {
+  transform: scale(1.1) rotate(15deg);
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.18);
+}
+
+.rotatingStampImg {
+  width: 44px;
+  height: 44px;
+  animation: spinStamp 24s linear infinite;
+}
+
+@keyframes spinStamp {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Responsive Breakpoints */
+@media (max-width: 1200px) {
+  .heroInner {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    text-align: center;
+  }
+
+  .heroContent {
+    align-items: center;
+    max-width: 100%;
+    margin: 0 auto;
+  }
+
+  .heroTitle {
+    max-width: 100%;
+  }
+
+  .heroParagraph {
+    max-width: 42ch;
+  }
+
+  .heroActions {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 1200px) and (min-width: 992px) {
+
+  /* iPad Pro 13 / tablet landscape range: tighten top padding */
+  .heroContainer {
+    padding: 120px 2rem 3rem;
+  }
+}
+
+@media (max-width: 991px) {
+  .hero {
+    clip-path: inset(0% round 0 0 2.5em 2.5em);
+    min-height: auto;
+    padding-top: 5rem;
+    padding-bottom: 4rem;
+  }
+
+  .heroContainer {
+    padding: 5rem 1.5rem 2rem;
+  }
+
+  .rotatingStampBadge {
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 58px;
+    height: 58px;
+  }
+
+  .rotatingStampImg {
+    width: 34px;
+    height: 34px;
+  }
+}
+
+@media (max-width: 640px) {
+  .titleLine {
+    white-space: normal;
+  }
+
+  .heroTitle {
+    font-size: clamp(2.2rem, 8.5vw, 3.2rem);
+  }
+
+  .heroParagraph {
+    font-size: 1rem;
+  }
+
+  .primaryCta {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .buttonAltTextWrap {
+    flex-grow: 1;
+  }
+
+  .secondaryCta {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rotatingStampImg {
+    animation: none;
+  }
+}

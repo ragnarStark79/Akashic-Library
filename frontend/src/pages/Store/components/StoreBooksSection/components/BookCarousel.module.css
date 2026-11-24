@@ -1,0 +1,37 @@
+.carouselWrapper {
+  position: relative;
+  width: 100%;
+  overflow: visible;
+}
+
+.carouselRail {
+  display: flex;
+  align-items: center;
+  overflow-x: auto;
+  overflow-y: visible;
+  scroll-behavior: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  padding: 7.5rem 3.5rem 4rem;
+  margin: 0;
+  list-style: none;
+  cursor: grab;
+  user-select: none;
+  touch-action: pan-y;
+}
+
+.carouselRail::-webkit-scrollbar {
+  display: none;
+}
+
+.carouselRail:active {
+  cursor: grabbing;
+}
+
+@media (max-width: 991px) {
+  .carouselRail {
+    padding: 5.5rem 1.25rem 3rem;
+    scroll-snap-type: x mandatory;
+  }
+}

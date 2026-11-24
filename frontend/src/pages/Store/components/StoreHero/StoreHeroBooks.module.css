@@ -1,0 +1,91 @@
+.booksContainer {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 2;
+  overflow: hidden;
+}
+
+.webglCanvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: auto;
+  cursor: grab;
+}
+
+.webglCanvas:active {
+  cursor: grabbing;
+}
+
+/* Fallback CSS 3D Presentation for mobile / non-webgl */
+.fallbackContainer {
+  position: absolute;
+  top: 50%;
+  right: 5%;
+  transform: translateY(-40%);
+  width: 380px;
+  max-width: 90vw;
+  height: 480px;
+  perspective: 1200px;
+  pointer-events: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.fallbackBook {
+  position: absolute;
+  width: 180px;
+  height: 260px;
+  border-radius: 4px 10px 10px 4px;
+  box-shadow: -8px 12px 24px rgba(28, 40, 38, 0.25),
+    0 2px 4px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.4s var(--store-ease-osmo, cubic-bezier(0.625, 0.05, 0, 1));
+}
+
+.fallbackBook img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.fallbackBook1 {
+  transform: rotate(-8deg) translate(-30px, 10px);
+  z-index: 2;
+}
+
+.fallbackBook2 {
+  transform: rotate(14deg) translate(50px, -20px);
+  z-index: 1;
+}
+
+.fallbackBook3 {
+  transform: rotate(2deg) translate(10px, 60px);
+  z-index: 3;
+}
+
+@media (max-width: 991px) {
+  .fallbackContainer {
+    position: relative;
+    top: auto;
+    right: auto;
+    transform: none;
+    width: 100%;
+    height: 320px;
+    margin: 2rem auto 0;
+  }
+
+  .fallbackBook {
+    width: 140px;
+    height: 200px;
+  }
+}

@@ -1,0 +1,121 @@
+.earsWrapper {
+  position: absolute;
+  bottom: calc(100% - 1px);
+  left: 50%;
+  transform: translateX(-50%);
+  margin-left: 1.6rem;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  pointer-events: none;
+  z-index: 10;
+  overflow: visible;
+}
+
+.leftEar {
+  width: 3.85rem;
+  height: 4rem;
+  margin-right: -1.45rem;
+  transform-origin: bottom right;
+  translate: 0 2px 0;
+  transform: rotate(-36deg) scale(0);
+  transition: transform 0.25s cubic-bezier(0.32, 0.72, 0, 1);
+  color: inherit;
+  flex: none;
+}
+
+.rightEar {
+  width: 2.55rem;
+  height: 7.15rem;
+  transform-origin: bottom center;
+  translate: 0 2px 0;
+  transform: rotate(-80deg) scale(0);
+  transition: transform 0.25s cubic-bezier(0.32, 0.72, 0, 1);
+  color: inherit;
+  flex: none;
+}
+
+/* Triggered on card hover */
+:global(.isCardHovered) .leftEar,
+:global([class*="cardArticle"]:hover) .leftEar {
+  transform: rotate(0deg) scale(1);
+  transition: transform 0.45s 0.15s cubic-bezier(0.34, 1.57, 0.64, 1);
+  animation: earTwitchLeft 3.2s 0.6s infinite;
+}
+
+:global(.isCardHovered) .rightEar,
+:global([class*="cardArticle"]:hover) .rightEar {
+  transform: rotate(0deg) scale(1);
+  transition: transform 0.45s 0.1s cubic-bezier(0.34, 1.57, 0.64, 1);
+  animation: earTwitchRight 3.2s 0.6s infinite;
+}
+
+@keyframes earTwitchLeft {
+  0%, 20%, 100% {
+    rotate: 0deg;
+  }
+  24% {
+    rotate: -2deg;
+  }
+  28% {
+    rotate: 1deg;
+  }
+  32% {
+    rotate: -0.75deg;
+  }
+  36% {
+    rotate: 0deg;
+  }
+  68% {
+    rotate: -1deg;
+  }
+  72% {
+    rotate: 0.5deg;
+  }
+  76% {
+    rotate: 0deg;
+  }
+}
+
+@keyframes earTwitchRight {
+  0%, 18%, 100% {
+    rotate: 0deg;
+  }
+  22% {
+    rotate: 8deg;
+  }
+  26% {
+    rotate: -4deg;
+  }
+  30% {
+    rotate: 2.5deg;
+  }
+  34% {
+    rotate: -1deg;
+  }
+  38% {
+    rotate: 0deg;
+  }
+  66% {
+    rotate: 5deg;
+  }
+  70% {
+    rotate: -2deg;
+  }
+  74% {
+    rotate: 1deg;
+  }
+  78% {
+    rotate: 0deg;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .leftEar,
+  .rightEar,
+  :global(.isCardHovered) .leftEar,
+  :global(.isCardHovered) .rightEar {
+    animation: none;
+    transition: none;
+  }
+}
