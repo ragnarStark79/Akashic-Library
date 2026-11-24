@@ -1,0 +1,639 @@
+/* Store Footer Redesign — Stage 1E Visual Fidelity */
+
+.footer {
+  position: relative;
+  background-color: var(--store-color-violet, #3B308F);
+  color: #FFFFFF;
+  margin-top: -3rem;
+  padding-top: 3rem;
+  overflow: clip;
+  box-sizing: border-box;
+}
+
+/* Scalloped / Curved Top Wave */
+.footerCurve {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3.5rem;
+  color: var(--store-color-violet, #3B308F);
+  display: block;
+  z-index: 2;
+  transform: translateY(-98%);
+}
+
+.footerContainer {
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 4.5rem 3.5rem 3.5rem;
+  position: relative;
+  z-index: 3;
+  box-sizing: border-box;
+}
+
+/* ── 3-Column Desktop Layout ── */
+.footerTop {
+  display: grid;
+  grid-template-columns: 1.15fr 0.9fr 1.15fr;
+  align-items: center;
+  gap: 2.5rem;
+  position: relative;
+  min-height: 480px;
+}
+
+/* ── Left Column: Brand & Nav Links ── */
+.leftCol {
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+  z-index: 5;
+  position: relative;
+}
+
+.brandHeader {
+  display: flex;
+  flex-direction: column;
+  gap: 0.875rem;
+}
+
+.brandLogo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.brandLogoIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--store-color-yellow, #FFE169);
+}
+
+.brandTitle {
+  font-family: var(--store-font-champ, 'Champ-ExtraBold-w', 'Degular', sans-serif);
+  font-size: 2rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: #FFFFFF;
+  line-height: 1;
+}
+
+.brandBio {
+  font-family: var(--store-font-body, 'Degular', sans-serif);
+  font-size: 1.0625rem;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.84);
+  max-width: 38ch;
+  margin: 0;
+}
+
+/* "Open to everyone" Badge / Statement */
+.openBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  align-self: flex-start;
+  padding: 0.4rem 1.15rem;
+  border-radius: 9999px;
+  background-color: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  color: var(--store-color-yellow, #FFE169);
+  font-family: var(--store-font-body, 'Degular', sans-serif);
+  font-weight: 700;
+  font-size: 0.9375rem;
+  letter-spacing: -0.01em;
+  user-select: none;
+}
+
+.openBadgeDot {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background-color: var(--store-color-yellow, #FFE169);
+  display: inline-block;
+  box-shadow: 0 0 8px var(--store-color-yellow, #FFE169);
+}
+
+/* Primary Sanctuary Return Button */
+.sanctuaryReturnBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.75rem 1.35rem;
+  border-radius: 9999px;
+  background-color: var(--store-color-magenta, #FF008C);
+  color: #FFFFFF;
+  border: none;
+  font-family: var(--store-font-body, 'Degular', sans-serif);
+  font-weight: 700;
+  font-size: 0.95rem;
+  cursor: pointer;
+  align-self: flex-start;
+  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s ease;
+  box-shadow: 0 8px 20px rgba(255, 0, 140, 0.28);
+}
+
+.sanctuaryReturnBtn:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 12px 28px rgba(255, 0, 140, 0.38);
+}
+
+.sanctuaryReturnBtn:focus-visible {
+  outline: 2px solid #FFFFFF;
+  outline-offset: 3px;
+}
+
+/* Nav Groups (Store & Sanctuary Links) */
+.navGroups {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-top: 0.5rem;
+}
+
+.navGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.navGroupTitle {
+  font-family: var(--store-font-champ, 'Champ-ExtraBold-w', 'Degular', sans-serif);
+  font-size: 1.125rem;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  color: #FFFFFF;
+  margin-bottom: 0.25rem;
+}
+
+.navLink {
+  background: transparent;
+  border: none;
+  padding: 0;
+  text-align: left;
+  font-family: var(--store-font-body, 'Degular', sans-serif);
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.75);
+  cursor: pointer;
+  transition: color 0.18s ease, transform 0.18s ease;
+  width: fit-content;
+}
+
+.navLink:hover {
+  color: #FFFFFF;
+  transform: translateX(3px);
+}
+
+.navLink:focus-visible {
+  outline: 2px solid var(--store-color-yellow, #FFE169);
+  outline-offset: 2px;
+  color: #FFFFFF;
+}
+
+/* ── Central Column: Large Floating Physical Book Visual ── */
+.centerCol {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  pointer-events: none;
+  z-index: 2;
+  height: 100%;
+}
+
+.bookMockWrap {
+  position: relative;
+  width: 280px;
+  height: 420px;
+  transform: rotate(-21deg);
+  transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+  filter: drop-shadow(0 32px 56px rgba(0, 0, 0, 0.45));
+}
+
+.bookCoverImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 0.75rem 1.125rem 1.125rem 0.75rem;
+  box-shadow:
+    inset 4px 0 10px rgba(0, 0, 0, 0.45),
+    inset -2px 0 6px rgba(255, 255, 255, 0.2),
+    0 16px 36px rgba(0, 0, 0, 0.35);
+  display: block;
+}
+
+/* Book physical spine overlay */
+.bookSpineHighlight {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 1.25rem;
+  background: linear-gradient(90deg,
+      rgba(255, 255, 255, 0.25) 0%,
+      rgba(0, 0, 0, 0.15) 30%,
+      rgba(255, 255, 255, 0.1) 70%,
+      rgba(0, 0, 0, 0.3) 100%);
+  border-radius: 0.75rem 0 0 0.75rem;
+  pointer-events: none;
+}
+
+/* ── Right Column: Join Our Mailing List ── */
+.rightCol {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  z-index: 5;
+  position: relative;
+  background-color: rgba(255, 255, 255, 0.05);
+  padding: 2.25rem 2.5rem;
+  border-radius: 2rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(8px);
+}
+
+.newsletterTitle {
+  font-family: var(--store-font-champ, 'Champ-ExtraBold-w', 'Degular', sans-serif);
+  font-size: 2.15rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: #FFFFFF;
+  line-height: 1.1;
+  margin: 0;
+}
+
+.newsletterDesc {
+  font-family: var(--store-font-body, 'Degular', sans-serif);
+  font-size: 1rem;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.82);
+  margin: 0;
+}
+
+.newsletterForm {
+  display: flex;
+  flex-direction: column;
+  gap: 0.875rem;
+  margin-top: 0.5rem;
+}
+
+.inputGroup {
+  display: flex;
+  gap: 0.65rem;
+  align-items: stretch;
+}
+
+.newsletterInput {
+  flex: 1;
+  height: 3.25rem;
+  padding: 0 1.25rem;
+  border-radius: 9999px;
+  background-color: #FFFFFF;
+  border: 2px solid transparent;
+  color: #000000;
+  font-family: var(--store-font-body, 'Degular', sans-serif);
+  font-size: 1rem;
+  font-weight: 500;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  box-sizing: border-box;
+}
+
+.newsletterInput::placeholder {
+  color: rgba(0, 0, 0, 0.45);
+}
+
+.newsletterInput:focus-visible {
+  border-color: var(--store-color-magenta, #FF008C);
+  box-shadow: 0 0 0 3px rgba(255, 0, 140, 0.25);
+}
+
+/* Dual Capsule Subscribe Button */
+.buttonAlt {
+  display: inline-flex;
+  align-items: center;
+  height: 3.25rem;
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
+  background: transparent;
+  padding: 0;
+  user-select: none;
+  font-family: var(--store-font-body, 'Degular', sans-serif);
+  font-weight: 700;
+  position: relative;
+  letter-spacing: -0.03em;
+  flex: none;
+}
+
+.buttonAltTextWrap {
+  display: grid;
+  height: 100%;
+  align-items: center;
+  transform-origin: center left;
+  position: relative;
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.buttonAltBg {
+  grid-area: 1 / 1;
+  width: 100%;
+  height: 100%;
+  border-radius: 9999px;
+  background-color: var(--store-color-magenta, #FF008C);
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.buttonAltTextOuter {
+  grid-area: 1 / 1;
+  position: relative;
+  z-index: 1;
+  padding: 0 1.25rem 0 1.5rem;
+  display: flex;
+  align-items: center;
+}
+
+.buttonAltText {
+  color: #FFFFFF;
+  font-size: 1.0625rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.buttonAltIconWrap {
+  display: grid;
+  height: 100%;
+  aspect-ratio: 1 / 1;
+  align-items: center;
+  justify-items: center;
+  margin-left: 0.35rem;
+  transform-origin: center right;
+  position: relative;
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.buttonAltIconOuter {
+  grid-area: 1 / 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 1;
+}
+
+.buttonAltIcon {
+  width: 0.875rem;
+  height: 0.8125rem;
+  fill: #FFFFFF;
+  transition: transform 0.25s cubic-bezier(0.32, 0.72, 0, 1);
+}
+
+.buttonAlt:hover .buttonAltBg,
+.buttonAlt:focus-visible .buttonAltBg {
+  transform: scale(1.047, 1.081);
+}
+
+.buttonAlt:hover .buttonAltTextWrap,
+.buttonAlt:focus-visible .buttonAltTextWrap {
+  transform: rotate(4deg) translate3d(0.25rem, 0.125rem, 0);
+}
+
+.buttonAlt:hover .buttonAltIconWrap,
+.buttonAlt:focus-visible .buttonAltIconWrap {
+  transform: rotate(-18deg) translate3d(-0.25rem, 0.125rem, 0);
+}
+
+.buttonAlt:active {
+  transform: scale(0.96);
+}
+
+.buttonAlt:focus-visible {
+  outline: 2px solid #FFFFFF;
+  outline-offset: 3px;
+}
+
+.errorMessage {
+  font-family: var(--store-font-body, 'Degular', sans-serif);
+  font-size: 0.875rem;
+  color: #FFB3D9;
+  font-weight: 500;
+  margin: 0;
+}
+
+.successMessage {
+  padding: 1.125rem 1.35rem;
+  border-radius: 1rem;
+  background-color: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: #FFFFFF;
+  font-family: var(--store-font-body, 'Degular', sans-serif);
+  font-size: 1.0625rem;
+  line-height: 1.4;
+  font-weight: 600;
+}
+
+/* ── Bottom Legal Strip ── */
+.footerBottom {
+  background-color: #000000;
+  color: #FFFFFF;
+  padding: 1.25rem 3.5rem;
+  position: relative;
+  z-index: 5;
+}
+
+.bottomInner {
+  max-width: 1440px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+}
+
+.bottomLegal {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.copyrightText {
+  font-family: var(--store-font-body, 'Degular', sans-serif);
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.65);
+}
+
+.legalLinks {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.legalLink {
+  color: rgba(255, 255, 255, 0.65);
+  text-decoration: none;
+  font-family: var(--store-font-body, 'Degular', sans-serif);
+  font-size: 0.875rem;
+  transition: color 0.18s ease;
+}
+
+.legalLink:hover {
+  color: #FFFFFF;
+}
+
+.legalLink:focus-visible {
+  outline: 2px solid var(--store-color-yellow, #FFE169);
+  outline-offset: 2px;
+}
+
+.backToTopBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: transparent;
+  border: none;
+  color: rgba(255, 255, 255, 0.75);
+  font-family: var(--store-font-body, 'Degular', sans-serif);
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0.35rem 0.65rem;
+  border-radius: 0.5rem;
+  transition: color 0.18s ease, transform 0.18s ease;
+}
+
+.backToTopBtn:hover {
+  color: #FFFFFF;
+  transform: translateY(-2px);
+}
+
+.backToTopBtn:focus-visible {
+  outline: 2px solid var(--store-color-yellow, #FFE169);
+  outline-offset: 2px;
+}
+
+/* ── Responsive Tablet & Mobile Media Queries ── */
+@media (max-width: 1200px) {
+  .footerContainer {
+    padding: 4rem 2rem 3rem;
+  }
+
+  .footerTop {
+    grid-template-columns: 1fr;
+    gap: 3.5rem;
+    align-items: center;
+  }
+
+  .leftCol {
+    align-items: center;
+    text-align: center;
+  }
+
+  .brandBio {
+    text-align: center;
+    margin: 0 auto;
+  }
+
+  .openBadge,
+  .sanctuaryReturnBtn {
+    align-self: center;
+  }
+
+  .navGroups {
+    justify-content: center;
+    text-align: left;
+    max-width: 480px;
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  .centerCol {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin: 0 auto;
+    min-height: 280px;
+    overflow: visible;
+  }
+
+  .bookMockWrap {
+    width: 220px;
+    height: 330px;
+    transform: rotate(-16deg);
+    margin: 0 auto;
+  }
+
+  .rightCol {
+    width: 100%;
+    max-width: 540px;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 991px) {
+  .footerContainer {
+    padding: 3.5rem 1.5rem 2.5rem;
+  }
+
+  .footerTop {
+    gap: 3rem;
+  }
+
+  .footerBottom {
+    padding: 1.25rem 1.5rem;
+  }
+
+  .bottomInner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .bottomLegal {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .inputGroup {
+    flex-direction: column;
+  }
+
+  .buttonAlt {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .buttonAltTextWrap {
+    flex: 1;
+  }
+
+  .rightCol {
+    padding: 1.75rem 1.25rem;
+  }
+
+  .brandTitle {
+    font-size: 1.75rem;
+  }
+
+  .newsletterTitle {
+    font-size: 1.85rem;
+  }
+
+  .centerCol {
+    min-height: 220px;
+  }
+
+  .bookMockWrap {
+    width: 160px;
+    height: 240px;
+    transform: rotate(-12deg);
+  }
+}

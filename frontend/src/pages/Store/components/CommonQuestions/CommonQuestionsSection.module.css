@@ -1,0 +1,248 @@
+/* Common Questions Section Styles — Stage 1E Visual Fidelity */
+
+.faqSection {
+  position: relative;
+  background-color: #FFFFFF;
+  padding: 8rem 1.5rem 9rem;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.faqContainer {
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+.faqInner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+/* ── Section Header ── */
+.faqHeader {
+  text-align: center;
+  margin-bottom: 3.5rem;
+}
+
+.faqTitle {
+  font-family: var(--store-font-champ, 'Champ-ExtraBold-w', 'Degular', sans-serif);
+  font-size: 4.875rem; /* 78px */
+  font-weight: 800;
+  line-height: 0.8;
+  letter-spacing: -0.01em;
+  color: #000000;
+  margin: 0;
+}
+
+/* ── Content / Accordion Area ── */
+.faqContent {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3rem;
+}
+
+/* ── Show All FAQ CTA (Dual Capsule) ── */
+.faqCta {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+}
+
+.buttonAlt {
+  display: inline-flex;
+  align-items: center;
+  height: 3.25rem; /* ~52px */
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
+  background: transparent;
+  padding: 0;
+  user-select: none;
+  font-family: var(--store-font-body, 'Degular', sans-serif);
+  font-weight: 700;
+  position: relative;
+  letter-spacing: -0.03em;
+}
+
+.buttonAltTextWrap {
+  display: grid;
+  height: 100%;
+  align-items: center;
+  transform-origin: center left;
+  position: relative;
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.buttonAltBg {
+  grid-area: 1 / 1;
+  width: 100%;
+  height: 100%;
+  border-radius: 9999px;
+  background-color: var(--store-color-magenta, #FF008C);
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.buttonAltTextOuter {
+  grid-area: 1 / 1;
+  position: relative;
+  z-index: 1;
+  padding: 0 1.5rem 0 1.75rem;
+  display: flex;
+  align-items: center;
+}
+
+.buttonAltText {
+  color: #FFFFFF;
+  font-size: 1.1875rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.buttonAltIconWrap {
+  display: grid;
+  height: 100%;
+  aspect-ratio: 1 / 1;
+  align-items: center;
+  justify-items: center;
+  margin-left: 0.35rem;
+  transform-origin: center right;
+  position: relative;
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.buttonAltIconOuter {
+  grid-area: 1 / 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 1;
+}
+
+.buttonAltIcon {
+  width: 0.95rem;
+  height: 0.875rem;
+  fill: #FFFFFF;
+  transition: transform 0.25s cubic-bezier(0.32, 0.72, 0, 1);
+}
+
+.buttonAlt:hover .buttonAltBg,
+.buttonAlt:focus-visible .buttonAltBg {
+  transform: scale(1.047, 1.081);
+}
+
+.buttonAlt:hover .buttonAltTextWrap,
+.buttonAlt:focus-visible .buttonAltTextWrap {
+  transform: rotate(4deg) translate3d(0.25rem, 0.125rem, 0);
+}
+
+.buttonAlt:hover .buttonAltIconWrap,
+.buttonAlt:focus-visible .buttonAltIconWrap {
+  transform: rotate(-18deg) translate3d(-0.25rem, 0.125rem, 0);
+}
+
+.buttonAlt:active {
+  transform: scale(0.96);
+}
+
+.buttonAlt:focus-visible {
+  outline: 2px solid var(--store-color-magenta, #FF008C);
+  outline-offset: 4px;
+}
+
+/* ── Lower Right Logo Easter Egg ── */
+.faqLogoEasterEgg {
+  position: absolute;
+  bottom: 2rem;
+  right: 3.5rem;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 4rem;
+  height: 4rem;
+  user-select: none;
+  filter: drop-shadow(0 4px 14px rgba(0, 0, 0, 0.08));
+}
+
+.faqLogoImg {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* ── Organic Cyan Background SVGs ── */
+.faqBg {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  opacity: 0.55;
+  color: var(--store-color-soft-blue, #D4F8F8);
+  pointer-events: none;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  overflow: hidden;
+}
+
+.faqBgSvg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.isDesktop {
+  display: block;
+}
+
+.isMobile {
+  display: none;
+}
+
+/* ── Responsive Adaptations ── */
+@media (max-width: 991px) {
+  .faqSection {
+    padding: 5.5rem 1.25rem 6.5rem;
+  }
+
+  .faqTitle {
+    font-size: 3.5rem;
+  }
+
+  .faqLogoEasterEgg {
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 3.25rem;
+    height: 3.25rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .faqSection {
+    padding: 4rem 1rem 5rem;
+  }
+
+  .faqTitle {
+    font-size: 2.75rem;
+    line-height: 0.9;
+  }
+
+  .isDesktop {
+    display: none;
+  }
+
+  .isMobile {
+    display: block;
+  }
+
+  .faqLogoEasterEgg {
+    display: none; /* Hide seal on compact mobile to save viewport area */
+  }
+}
