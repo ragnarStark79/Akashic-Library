@@ -50,7 +50,17 @@ const AccountSettingsPage = lazy(() =>
 const ModerationConsolePage = lazy(() =>
   import('@/pages/Moderation/ModerationConsolePage').then((m) => ({ default: m.ModerationConsolePage }))
 );
+const StoreApp = lazy(() =>
+  import('@/pages/Store').then((m) => ({ default: m.StoreApp }))
+);
 
+import {
+  StoreTransitionOverlay,
+  useStoreTransition,
+  isStoreView,
+  StoreLoadingFallback,
+  type StoreViewMode,
+} from '@/pages/Store';
 
 type ViewMode =
   | 'discover'
@@ -66,7 +76,18 @@ type ViewMode =
   | 'community'
   | 'community-thread'
   | 'moderation'
-  | 'about';
+  | 'about'
+  | 'store'
+  | 'store-allbooks'
+  | 'store-manager'
+  | 'store-admin'
+  | 'store-book-detail'
+  | 'store-gifting'
+  | 'store-merch'
+  | 'store-checkout'
+  | 'store-payment'
+  | 'store-order-success'
+  | 'store-faq';
 
 function AppContent() {
   const { user, isAuthenticated, logout, intendedDestination, setIntendedDestination } = useAuth();
@@ -95,7 +116,13 @@ function AppContent() {
   const syncFromUrl = useCallback(() => {
     if (typeof window === 'undefined') return;
     const params = new URLSearchParams(window.location.search);
-    const urlView = (params.get('view') as ViewMode) || 'discover';
+    let urlView = (params.get('view') as ViewMode);
+    if (!urlView && (window.location.pathname === '/store' || window.location.pathname.startsWith('/store/'))) {
+      urlView = 'store';
+    }
+    if (!urlView) {
+      urlView = 'discover';
+    }
 
     setView(urlView);
 
@@ -124,6 +151,8 @@ function AppContent() {
       } else {
         setSelectedBookId(params.get('id')!);
       }
+    } else if (urlView === 'store-book-detail' || urlView === 'book-detail') {
+      setSelectedBookId('');
     }
 
     if (params.get('discussion_id')) {
@@ -163,6 +192,21 @@ function AppContent() {
       const params = new URLSearchParams();
       params.set('view', newView);
 
+      if (isStoreView(newView)) {
+        if (newView === 'store-book-detail') {
+          const targetId =
+            newBookId !== undefined
+              ? newBookId
+              : selectedBookId || new URLSearchParams(window.location.search).get('id') || '';
+          if (targetId) {
+            params.set('id', targetId);
+          }
+        }
+        const newUrl = `${window.location.pathname}?${params.toString()}`;
+        window.history.pushState(null, '', newUrl);
+        return;
+      }
+
       if (newView === 'search' && newFilters) {
         if (newFilters.q) params.set('q', newFilters.q);
         if (newFilters.title) params.set('title', newFilters.title);
@@ -201,9 +245,33 @@ function AppContent() {
     []
   );
 
+  // ── Portal Transition between Part I Sanctuary and Part II Store ──
+  const {
+    stage: portalStage,
+    targetExperience,
+    triggerPortalToStore,
+    triggerPortalToLibrary,
+  } = useStoreTransition({
+    onTransitionToStore: (targetStoreView) => {
+      setView(targetStoreView);
+      updateUrl(targetStoreView);
+      window.scrollTo({ top: 0, behavior: 'instant' });
+    },
+    onTransitionToLibrary: (targetLibraryView = 'discover') => {
+      setView(targetLibraryView as ViewMode);
+      updateUrl(targetLibraryView as ViewMode);
+      window.scrollTo({ top: 0, behavior: 'instant' });
+    },
+  });
+
   // Navigation handlers
   const handleNavigate = useCallback(
     (id: string) => {
+      if (id === 'store' || isStoreView(id)) {
+        triggerPortalToStore(id as StoreViewMode);
+        return;
+      }
+
       if (id === 'recommendations') {
         if (view !== 'discover') {
           setView('discover');
@@ -258,7 +326,19 @@ function AppContent() {
       }
       window.scrollTo({ top: 0, behavior: 'smooth' });
     },
-    [view, isAuthenticated, setIntendedDestination, updateUrl]
+    [view, isAuthenticated, setIntendedDestination, updateUrl, triggerPortalToStore]
+  );
+
+  const handleNavigateStore = useCallback(
+    (newStoreView: StoreViewMode, productId?: string) => {
+      if (productId !== undefined) {
+        setSelectedBookId(productId);
+      }
+      setView(newStoreView);
+      updateUrl(newStoreView, undefined, undefined, productId);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    },
+    [updateUrl]
   );
 
   const handleSignInClick = useCallback(() => {
@@ -281,12 +361,18 @@ function AppContent() {
       setIntendedDestination(null);
       setView(dest);
       updateUrl(dest, undefined, intendedDestination.genreId, intendedDestination.bookId);
+    } else if (user?.role === 'ADMIN') {
+      setView('store-admin');
+      updateUrl('store-admin');
+    } else if (user?.role === 'STORE_MANAGER') {
+      setView('store-manager');
+      updateUrl('store-manager');
     } else {
-      setView('library');
-      updateUrl('library');
+      setView('store');
+      updateUrl('store');
     }
     window.scrollTo({ top: 0, behavior: 'smooth' });
-  }, [intendedDestination, setIntendedDestination, updateUrl]);
+  }, [intendedDestination, setIntendedDestination, updateUrl, user]);
 
   // Global Meta+K / Ctrl+K keyboard shortcut listener for Catalog Search
   useEffect(() => {
@@ -428,15 +514,39 @@ function AppContent() {
   // Centralized active route resolution for the capsule navbar
   const activeNavId = resolveActiveNavigation(view);
 
+  const isStore = isStoreView(view);
+
   return (
-    <ApplicationShell
-      activeNavId={activeNavId}
-      onNavigate={handleNavigate}
-      onSearchClick={handleSearchClick}
-      onSignInClick={handleSignInClick}
-      onSignOutClick={handleSignOutClick}
-      user={user}
-    >
+    <>
+      {/* ── Fullscreen Portal Transition between Sanctuary & Store ── */}
+      <StoreTransitionOverlay
+        stage={portalStage}
+        targetExperience={targetExperience}
+      />
+
+      {isStore ? (
+        <ChunkErrorBoundary onNavigateHome={() => handleNavigate('discover')}>
+          <Suspense fallback={<StoreLoadingFallback />}>
+            <StoreApp
+              currentView={view as StoreViewMode}
+              currentProductId={selectedBookId}
+              onNavigateStore={handleNavigateStore}
+              onExitPortalToLibrary={() => triggerPortalToLibrary('discover')}
+              onSignInClick={handleSignInClick}
+              onSignOutClick={handleSignOutClick}
+              user={user}
+            />
+          </Suspense>
+        </ChunkErrorBoundary>
+      ) : (
+        <ApplicationShell
+          activeNavId={activeNavId}
+          onNavigate={handleNavigate}
+          onSearchClick={handleSearchClick}
+          onSignInClick={handleSignInClick}
+          onSignOutClick={handleSignOutClick}
+          user={user}
+        >
       {/* ── Screen View Routing with Suspense and Recoverable Error Boundary ── */}
       <ChunkErrorBoundary onNavigateHome={() => handleNavigate('discover')}>
         <Suspense fallback={<RouteLoadingFallback />}>
@@ -617,6 +727,8 @@ function AppContent() {
         onSearchSubmit={handleHomepageSearchSubmit}
       />
     </ApplicationShell>
+    )}
+  </>
   );
 }
 
