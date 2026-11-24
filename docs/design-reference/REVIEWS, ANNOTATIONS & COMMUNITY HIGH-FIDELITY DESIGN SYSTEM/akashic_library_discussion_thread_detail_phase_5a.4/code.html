@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_standard" name="shell-type"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Lora:ital,wght@0,400;0,500;0,600;1,400&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={"darkMode":"class","theme":{"extend":{"colors":{"text-secondary":"#827E75","surface-container-lowest":"#ffffff","on-primary-fixed-variant":"#02504c","on-secondary-fixed-variant":"#384b3f","accent-sage":"#A8BDAE","surface-variant":"#d4e6e2","primary-container":"#185c58","error-container":"#ffdad6","on-surface-variant":"#3f4947","outline-variant":"#bfc8c7","secondary":"#506356","on-primary":"#ffffff","surface":"#ebfdf8","text-primary":"#263633","outline":"#6f7978","primary-fixed-dim":"#93d2cc","surface-glass":"rgba(252, 250, 245, 0.82)","surface-tint":"#276864","inverse-primary":"#93d2cc","on-secondary-container":"#55695c","accent-terracotta":"#C58B70","inverse-on-surface":"#e2f5f0","on-tertiary-fixed-variant":"#683b26","on-primary-fixed":"#00201e","surface-dim":"#ccded9","surface-container-high":"#daece7","on-secondary-fixed":"#0d1f15","inverse-surface":"#233330","background":"#ebfdf8","on-surface":"#0e1e1c","tertiary":"#5b311c","surface-container-low":"#e5f8f3","error":"#ba1a1a","bg-page":"#F5F1E9","glass-border":"rgba(234, 227, 216, 0.65)","secondary-fixed":"#d2e8d8","secondary-container":"#d2e8d8","on-tertiary-fixed":"#331202","on-background":"#0e1e1c","surface-container-highest":"#d4e6e2","on-error":"#ffffff","on-error-container":"#93000a","surface-container":"#dff2ed","surface-bright":"#ebfdf8","secondary-fixed-dim":"#b6ccbc","accent-teal":"#185C58","on-tertiary-container":"#f8b89b","on-secondary":"#ffffff","tertiary-fixed-dim":"#f8b89b","on-tertiary":"#ffffff","on-primary-container":"#93d2cc","primary-fixed":"#afeee9","surface-inset":"#EAE3D8","tertiary-fixed":"#ffdbcc","primary":"#004440","tertiary-container":"#764730","surface-porcelain":"#FCFAF5"},"borderRadius":{"DEFAULT":"0.25rem","lg":"0.5rem","xl":"0.75rem","full":"9999px"},"spacing":{"space-md":"1rem","margin":"3rem","space-sm":"0.5rem","gutter":"1.5rem","margin-mobile":"1.25rem","space-xs":"0.25rem","space-xl":"2.5rem","space-lg":"1.5rem","gutter-mobile":"1rem"},"fontFamily":{"display":["Lora"],"caption":["Inter"],"body-lead":["Inter"],"label-md":["Inter"],"headline-lg":["Lora"],"body-sm":["Inter"],"headline-sm":["Lora"],"body-base":["Inter"],"label-sm":["Inter"],"headline-lg-mobile":["Lora"],"headline-md":["Lora"],"display-mobile":["Lora"]},"fontSize":{"display":["48px",{"lineHeight":"56px","letterSpacing":"-0.02em","fontWeight":"500"}],"caption":["11px",{"lineHeight":"16px","letterSpacing":"0.02em","fontWeight":"500"}],"body-lead":["18px",{"lineHeight":"28px","fontWeight":"400"}],"label-md":["14px",{"lineHeight":"20px","letterSpacing":"0.01em","fontWeight":"500"}],"headline-lg":["36px",{"lineHeight":"44px","letterSpacing":"-0.015em","fontWeight":"500"}],"body-sm":["13px",{"lineHeight":"20px","fontWeight":"400"}],"headline-sm":["20px",{"lineHeight":"28px","fontWeight":"600"}],"body-base":["15px",{"lineHeight":"24px","fontWeight":"400"}],"label-sm":["12px",{"lineHeight":"16px","letterSpacing":"0.04em","fontWeight":"600"}],"headline-lg-mobile":["28px",{"lineHeight":"36px","letterSpacing":"-0.01em","fontWeight":"500"}],"headline-md":["26px",{"lineHeight":"34px","fontWeight":"500"}],"display-mobile":["34px",{"lineHeight":"42px","letterSpacing":"-0.01em","fontWeight":"500"}]}}}};</script></head><body class="bg-bg-page font-body-base text-text-primary antialiased selection:bg-accent-sage/30 selection:text-primary"><header class="fixed top-0 left-0 right-0 z-50 pointer-events-none pt-4"><div class="h-20 max-w-[1360px] mx-auto px-margin flex items-center justify-between pointer-events-auto"><div class="w-full flex items-center justify-between px-6 py-2.5 bg-surface-glass backdrop-blur-md rounded-full shadow-[0_4px_16px_rgba(38,54,51,0.06),0_1px_3px_rgba(38,54,51,0.04)]"><a class="flex items-center gap-3 group" data-path="discover" href="#"><span class="w-8 h-8 rounded-full bg-accent-teal flex items-center justify-center text-surface-porcelain shadow-[inset_1px_1px_2px_rgba(255,255,255,0.25)]"><span class="material-symbols-outlined text-[18px]">menu_book</span></span><div class="flex flex-col"><span class="font-headline-sm text-headline-sm text-accent-teal font-display tracking-tight leading-none group-hover:text-primary transition-colors">Akashic Library</span><span class="font-caption text-caption text-text-secondary tracking-widest uppercase mt-0.5">Custodial Archives</span></div></a><nav class="hidden lg:flex items-center gap-1.5 p-1 rounded-full bg-surface-inset/40" data-active-classes="bg-accent-teal text-surface-porcelain font-label-md text-label-md rounded-full shadow-[0_2px_8px_rgba(24,92,88,0.2)]"><a class="px-4 py-1.5 rounded-full font-label-md text-label-md text-text-secondary hover:text-text-primary hover:bg-surface-porcelain/60 transition-all" data-path="discover" href="#">Discover</a><a class="px-4 py-1.5 rounded-full font-label-md text-label-md text-text-secondary hover:text-text-primary hover:bg-surface-porcelain/60 transition-all" data-path="genres" href="#">Genres</a><a class="px-4 py-1.5 rounded-full font-label-md text-label-md text-text-secondary hover:text-text-primary hover:bg-surface-porcelain/60 transition-all" data-path="community" href="#">Community</a><a class="px-4 py-1.5 rounded-full font-label-md text-label-md text-text-secondary hover:text-text-primary hover:bg-surface-porcelain/60 transition-all" data-path="my-library" href="#">My Library</a><a class="px-4 py-1.5 rounded-full font-label-md text-label-md text-text-secondary hover:text-text-primary hover:bg-surface-porcelain/60 transition-all" data-path="about" href="#">About</a></nav><div class="flex items-center gap-3.5"><button class="flex items-center gap-2 pl-3 pr-3.5 py-1.5 rounded-full bg-surface-inset/60 text-text-secondary hover:text-text-primary hover:bg-surface-inset transition-all shadow-[inset_1px_1px_3px_rgba(38,54,51,0.06),inset_-1px_-1px_3px_rgba(255,255,255,0.7)]" type="button"><span class="material-symbols-outlined text-[17px] text-accent-teal">search</span><span class="font-body-sm text-body-sm hidden sm:inline text-text-secondary">Search folios...</span><kbd class="hidden md:inline font-caption text-caption px-1.5 py-0.5 rounded bg-surface-porcelain/80 text-text-secondary">⌘K</kbd></button><div class="h-5 w-[1px] bg-glass-border hidden sm:block"></div><a class="flex items-center gap-2 pl-1 pr-2.5 py-1 rounded-full hover:bg-surface-porcelain/70 transition-all group" data-path="my-library" href="#" title="Elena Solanas (Patron)"><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div><div class="hidden xl:flex flex-col text-left"><span class="font-label-sm text-label-sm text-text-primary group-hover:text-accent-teal leading-tight">Elena Solanas</span><span class="font-caption text-caption text-text-secondary leading-tight">Patron Fellow</span></div></a></div></div></div></header><main class="w-full max-w-[1360px] mx-auto px-margin pt-20 bg-bg-page"><div class="flex flex-col w-full pb-20">
+<!-- Interactive State Simulation Bar (Top Sticky Archival Utility) -->
+<aside aria-label="Archival State Controller" class="w-full mb-8 rounded-full bg-surface-glass backdrop-blur-md px-5 py-2.5 shadow-[0_4px_16px_rgba(38,54,51,0.06),0_1px_3px_rgba(38,54,51,0.04)] flex flex-wrap items-center justify-between gap-3">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-accent-teal animate-pulse"></span>
+<span class="font-caption text-caption text-text-secondary uppercase tracking-widest">Archival State Simulation:</span>
+<div class="flex items-center gap-1 bg-surface-inset/60 p-1 rounded-full" id="state-pill-selector">
+<button class="state-pill px-3 py-1 rounded-full font-label-sm text-label-sm bg-accent-teal text-surface-porcelain shadow-[0_2px_6px_rgba(24,92,88,0.25)] transition-all" id="btn-state-active" onclick="switchThreadState('active')" type="button">Active Inscriptions (4)</button>
+<button class="state-pill px-3 py-1 rounded-full font-label-sm text-label-sm text-text-secondary hover:text-text-primary hover:bg-surface-porcelain/60 transition-all" id="btn-state-zero" onclick="switchThreadState('zero')" type="button">Zero Inscriptions</button>
+<button class="state-pill px-3 py-1 rounded-full font-label-sm text-label-sm text-text-secondary hover:text-text-primary hover:bg-surface-porcelain/60 transition-all" id="btn-state-sealing" onclick="switchThreadState('sealing')" type="button">Sealing In-Flight</button>
+<button class="state-pill px-3 py-1 rounded-full font-label-sm text-label-sm text-text-secondary hover:text-text-primary hover:bg-surface-porcelain/60 transition-all" id="btn-state-auth" onclick="switchThreadState('auth')" type="button">Guest Intercept</button>
+<button class="state-pill px-3 py-1 rounded-full font-label-sm text-label-sm text-text-secondary hover:text-text-primary hover:bg-surface-porcelain/60 transition-all" id="btn-state-validation" onclick="switchThreadState('validation')" type="button">Scholarly Deficit</button>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<span class="font-caption text-caption text-text-secondary flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[15px] text-accent-terracotta">history_edu</span>
+        Ledger Node #892-BOR • Non-commercial Custodial Registry
+      </span>
+<span class="px-2 py-0.5 rounded bg-surface-inset text-primary font-caption text-caption font-semibold">Active Ledger</span>
+</div>
+</aside>
+<!-- Breadcrumb & Anchored Folio Banner -->
+<nav aria-label="Archival Breadcrumb" class="w-full flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
+<div class="flex flex-col gap-1.5">
+<div class="flex items-center gap-2 text-text-secondary font-caption text-caption">
+<a class="hover:text-accent-teal transition-colors" href="#">Akashic Agora</a>
+<span>/</span>
+<a class="hover:text-accent-teal transition-colors" href="#">Dialogues &amp; Literary Inquiry</a>
+<span>/</span>
+<a class="hover:text-accent-teal transition-colors" href="#">Philosophical Theses</a>
+<span>/</span>
+<span class="text-text-primary font-medium">Folio Dialogue #DIA-892</span>
+</div>
+<a class="flex items-center gap-1.5 font-label-md text-label-md text-accent-teal hover:text-primary transition-colors group" href="#">
+<span class="material-symbols-outlined text-[18px] group-hover:-translate-x-0.5 transition-transform">arrow_back</span>
+<span>Return to Community Agora</span>
+</a>
+</div>
+<!-- Anchored Folio Capsule Card -->
+<aside aria-label="Folio Reference" class="flex items-center gap-3 p-2 pr-4 rounded-full bg-surface-porcelain shadow-[0_4px_12px_rgba(38,54,51,0.06),0_1px_3px_rgba(38,54,51,0.04)]">
+<div class="w-9 h-12 rounded bg-surface-inset overflow-hidden flex-shrink-0 relative shadow-sm">
+<div class="w-full h-full bg-cover bg-center" data-alt="Cover of Ficciones by Jorge Luis Borges, featuring an intricate geometric maze with metaphysical typography in vintage sepia and deep teal tones on tactile linen." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAtmZEmP9X4suzw64oUPovrfI8ufaYNCqiPMNoGJCCJccax2S_sGOOtI3eeG1-coNq3X55ycXpkOEjTZeu3Ulj9tZve4sEhRna-Za5LQhN_EeTCi-WROD-KNpXifCVtjh3UNQ-gd4YqHWDmD2ARJIqg1LgkiaFhShSyP2oZ_gluC-FT1a12rAlxzp9L1mevxTkP6Hwy_HpGJMXas0Y9gGSjp4Vw3ZgZEMrO5rmGvr8')"></div>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-1.5">
+<span class="font-caption text-caption text-accent-terracotta font-semibold uppercase tracking-wider">Anchored Folio</span>
+<span class="w-1 h-1 rounded-full bg-text-secondary/40"></span>
+<span class="font-caption text-caption text-text-secondary">Folio #01</span>
+</div>
+<a class="font-headline-sm text-[15px] font-display text-text-primary hover:text-accent-teal transition-colors leading-snug" href="#">Ficciones <span class="font-caption text-caption font-normal text-text-secondary">by J. L. Borges (1944)</span></a>
+</div>
+<span class="material-symbols-outlined text-[18px] text-text-secondary ml-1">chevron_right</span>
+</aside>
+</nav>
+<!-- Two-Column Editorial Layout (70% Discourse / 30% Archival Sidebar) -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+<!-- MAIN COLUMN: Master Discussion Card + Discourse Tree + Composer -->
+<div class="lg:col-span-8 flex flex-col gap-8 min-w-0">
+<!-- MASTER THESIS CARD -->
+<article class="w-full bg-surface-porcelain rounded-2xl p-8 lg:p-10 shadow-[0_4px_12px_rgba(38,54,51,0.08),0_1px_3px_rgba(38,54,51,0.05)] relative overflow-hidden">
+<!-- Archival Ribbon Indicator -->
+<div class="absolute top-0 right-10 w-12 h-3 bg-accent-teal/20 rounded-b"></div>
+<!-- Meta Header -->
+<header class="flex flex-wrap items-center justify-between gap-3 mb-6">
+<div class="flex flex-wrap items-center gap-2">
+<span class="px-3 py-1 rounded-full bg-secondary-container/60 text-on-secondary-container font-label-sm text-label-sm font-semibold">Philosophical Theses</span>
+<span class="px-3 py-1 rounded-full bg-surface-inset text-text-secondary font-label-sm text-label-sm flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[15px] text-accent-teal">auto_stories</span>
+              Borges Wing • Shelf Gamma-7
+            </span>
+</div>
+<div class="flex items-center gap-3 text-text-secondary font-caption text-caption">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">schedule</span>
+              Inscribed 3 days ago (14 Oct 2024)
+            </span>
+<span>•</span>
+<span class="flex items-center gap-1 text-accent-terracotta">
+<span class="material-symbols-outlined text-[14px]">timelapse</span>
+              ~4 min contemplative read
+            </span>
+</div>
+</header>
+<!-- Thesis Headline -->
+<h1 class="font-headline-lg text-headline-lg font-display text-text-primary tracking-tight mb-6 leading-tight">
+          Does the labyrinth in Borges represent spatial geometry or temporal branching?
+        </h1>
+<!-- Contributing Author Dossier -->
+<div class="flex items-center justify-between pb-6 mb-8 bg-surface-inset/30 p-4 rounded-xl">
+<div class="flex items-center gap-3.5">
+<div class="w-12 h-12 rounded-full bg-primary flex items-center justify-center text-on-primary font-headline-sm text-headline-sm font-display shadow-inner">
+              MA
+            </div>
+<div class="flex flex-col">
+<div class="flex items-center gap-2">
+<span class="font-label-md text-label-md font-semibold text-text-primary">Marcus Aureliano</span>
+<span class="px-2 py-0.5 rounded-full bg-accent-sage/30 text-accent-teal font-caption text-caption font-medium">Patron #402 • Verified Custodian</span>
+</div>
+<span class="font-caption text-caption text-text-secondary">Archive of Speculative Thought • Senior Collegiate Fellow</span>
+</div>
+</div>
+<div class="hidden sm:flex items-center gap-2 text-text-secondary font-caption text-caption">
+<span class="material-symbols-outlined text-[16px] text-accent-teal">verified</span>
+            Custodial Inscription Seal #A-8921
+          </div>
+</div>
+<!-- Book Passage Inset Citation Well -->
+<div class="w-full p-6 rounded-xl bg-surface-inset/60 shadow-[inset_2px_2px_5px_rgba(38,54,51,0.08),inset_-2px_-2px_5px_rgba(255,255,255,0.7)] mb-8">
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-accent-terracotta text-[24px] flex-shrink-0">format_quote</span>
+<div class="flex flex-col gap-2">
+<p class="font-headline-sm text-[17px] font-display italic text-text-primary leading-relaxed">
+                «In all fictional works, each time a man is confronted with several alternatives, he chooses one and eliminates the others; in the fiction of Ts'ui Pên, he chooses — simultaneously — all of them. He creates, in this way, diverse futures, diverse times which themselves also proliferate and fork.»
+              </p>
+<div class="flex items-center justify-between pt-1">
+<span class="font-caption text-caption text-accent-teal font-semibold tracking-wide uppercase">
+                  Ficciones • "The Garden of Forking Paths", p. 114
+                </span>
+<a class="font-caption text-caption text-accent-terracotta hover:underline underline-offset-4 flex items-center gap-1" href="#">
+                  Examine Folio Marginalia <span class="material-symbols-outlined text-[13px]">north_east</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+<!-- Master Thesis Prose Body -->
+<div class="font-body-base text-body-base text-text-primary space-y-5 leading-loose">
+<p>
+            When Ts'ui Pên retired from his governorship to draft a boundless labyrinth and author a manuscript that appeared incomprehensible, his contemporaries presumed these were two disparate architectural undertakings. It is Stephen Albert who delivers the seminal revelation: the labyrinth and the book are an identical artifact. Yet, when contemporary readers re-examine Borges’ geometric depictions—the infinite concentric corridors, the solitary Chinese pavilion, the garden paths that continually bifurcate—we are confronted by an unresolved ontological paradox.
+          </p>
+<p>
+            Is this maze a tangible, topological labyrinth that collapses Euclidean distances through sheer recursive complexity, or is geometry merely a sensory metaphor Borges employs to articulate non-linear duration? If Ts’ui Pên does not eliminate alternatives but simultaneously inhabits their permutations, the maze cannot occupy three-dimensional space without invoking a quantum superposition of realities. Space in Borges is invariably static, dusty, and bounded by plaster walls, while time is the fluid, corrosive substance that shatters character identity.
+          </p>
+<p>
+            I propose that the garden is not a physical enclosure situated within the suburbs of Hai Feng, but an asynchronous temporal tapestry. Every junction we mistake for an intersection of gravel is actually an epistemic crisis: an instant where two observers converse as allies in one branch and execute one another in another. Does the text support this complete dematerialization of space, or did Borges intentionally construct the labyrinth as an impossible synthesis where space and time become indistinguishable?
+          </p>
+</div>
+<!-- Thesis Action Footer & Sovereign Informational Ledger -->
+<div class="mt-10 pt-6 flex flex-wrap items-center justify-between gap-4 bg-surface-porcelain">
+<div class="flex items-center gap-6">
+<span class="font-caption text-caption text-text-secondary flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[17px] text-accent-teal">psychology</span>
+<strong class="text-text-primary font-semibold">14</strong> Contemplative Inquiries
+            </span>
+<span class="font-caption text-caption text-text-secondary flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[17px] text-accent-terracotta">bookmark_border</span>
+<strong class="text-text-primary font-semibold">32</strong> Patrons Reading
+            </span>
+</div>
+<div class="flex items-center gap-3">
+<button class="flex items-center gap-1.5 px-4 py-2 rounded-full bg-surface-inset/60 text-text-primary hover:bg-surface-inset text-label-sm font-label-sm transition-all shadow-[inset_1px_1px_2px_rgba(38,54,51,0.04)]" type="button">
+<span class="material-symbols-outlined text-[16px] text-accent-teal">content_copy</span>
+<span>Cite Passage</span>
+</button>
+<button class="flex items-center gap-1.5 px-4 py-2 rounded-full bg-surface-inset/60 text-text-primary hover:bg-surface-inset text-label-sm font-label-sm transition-all shadow-[inset_1px_1px_2px_rgba(38,54,51,0.04)]" type="button">
+<span class="material-symbols-outlined text-[16px] text-accent-teal">share</span>
+<span>Transcribe Link</span>
+</button>
+<a class="flex items-center gap-1.5 px-5 py-2 rounded-full bg-primary-container text-surface-porcelain hover:bg-primary text-label-sm font-label-sm transition-all shadow-[0_2px_8px_rgba(24,92,88,0.25)]" href="#reply-composer-anchor">
+<span class="material-symbols-outlined text-[16px]">draw</span>
+<span>Contemplate &amp; Inscribe</span>
+</a>
+</div>
+</div>
+</article>
+<!-- DISCUSSION THREAD / REPLIES SECTION -->
+<section aria-label="Contemplations &amp; Resonances" class="w-full flex flex-col gap-6">
+<!-- Section Header Bar -->
+<div class="flex items-center justify-between px-2">
+<div class="flex items-center gap-3">
+<h2 class="font-headline-sm text-headline-sm font-display text-text-primary" id="replies-count-heading">
+              Contemplations &amp; Resonances
+            </h2>
+<span class="px-2.5 py-0.5 rounded-full bg-surface-inset text-accent-teal font-label-sm text-label-sm font-medium" id="replies-badge">
+              4 Inscribed Responses
+            </span>
+</div>
+<div class="flex items-center gap-2">
+<span class="font-caption text-caption text-text-secondary hidden sm:inline">Arrangement:</span>
+<button class="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-surface-porcelain text-text-primary font-label-sm text-label-sm shadow-[0_2px_6px_rgba(38,54,51,0.05)] hover:bg-surface-inset/50 transition-all" type="button">
+<span>Chronological Folio Order</span>
+<span class="material-symbols-outlined text-[16px] text-text-secondary">arrow_drop_down</span>
+</button>
+</div>
+</div>
+<!-- REPLIES CONTAINER -->
+<div class="flex flex-col gap-6" id="thread-replies-stream">
+<!-- REPLY 1: Clara Beauchamp (Primary Response) -->
+<article class="w-full bg-surface-porcelain rounded-2xl p-7 shadow-[0_4px_12px_rgba(38,54,51,0.06),0_1px_3px_rgba(38,54,51,0.04)] relative">
+<header class="flex items-center justify-between mb-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center text-primary font-headline-sm text-[16px] font-display font-medium">
+                  CB
+                </div>
+<div class="flex flex-col">
+<div class="flex items-center gap-2">
+<span class="font-label-md text-label-md font-semibold text-text-primary">Clara Beauchamp</span>
+<span class="px-2 py-0.5 rounded-full bg-surface-inset text-text-secondary font-caption text-caption">Scholar of Speculative Thought</span>
+</div>
+<span class="font-caption text-caption text-text-secondary">Inscribed 2 days ago • Patristic Inscription #892-R1</span>
+</div>
+</div>
+<span class="font-caption text-caption text-text-secondary font-mono">Folio Ref: §IV.12</span>
+</header>
+<div class="font-body-base text-body-base text-text-primary leading-relaxed space-y-3 pl-13">
+<p>
+                Marcus raises the quintessential inquiry. However, I would caution against divesting the labyrinth of its physical geometry entirely. Borges had an intense preoccupation with Henri Bergson's concept of <em>durée</em> (duration) versus spatialized time.
+              </p>
+<p>
+                In Chapter 4 of the manuscript drafts, Ts'ui Pên writes of a maze in which "all men would lose their way." That loss of bearing is profoundly tactile—it requires the physical fatigue of turning left at every crossroads. If the labyrinth were purely metaphysical time, the dramatic tension of Captain Richard Madden hunting Yu Tsun through the English countryside would lose its horrifying rhythmic pulse. The labyrinth functions precisely because the physical landscape mirrors the ontological branching.
+              </p>
+</div>
+<!-- Reply Actions -->
+<footer class="mt-5 pt-4 flex items-center justify-between text-text-secondary">
+<div class="flex items-center gap-4">
+<button class="font-label-sm text-label-sm text-accent-teal hover:text-primary flex items-center gap-1" type="button">
+<span class="material-symbols-outlined text-[16px]">reply</span>
+<span>Respond to Clara</span>
+</button>
+<button class="font-label-sm text-label-sm text-text-secondary hover:text-text-primary flex items-center gap-1" type="button">
+<span class="material-symbols-outlined text-[16px]">format_quote</span>
+<span>Transcribe Inscription</span>
+</button>
+</div>
+<span class="font-caption text-caption text-text-secondary">Verified Scholar Seal #992-B</span>
+</footer>
+</article>
+<!-- REPLY 2: Julian Vance (Nested Child Response to Clara) -->
+<div class="ml-6 sm:ml-12 pl-4 sm:pl-6 relative">
+<!-- Nested connecting visual indicator -->
+<div class="w-full bg-surface-porcelain rounded-2xl p-6 shadow-[0_4px_12px_rgba(38,54,51,0.06),0_1px_3px_rgba(38,54,51,0.04)]">
+<header class="flex items-center justify-between mb-3">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-accent-sage/40 flex items-center justify-center text-primary font-label-md text-label-md font-bold">
+                    JV
+                  </div>
+<div class="flex flex-col">
+<div class="flex items-center gap-2">
+<span class="font-label-md text-label-md font-semibold text-text-primary">Julian Vance</span>
+<span class="px-2 py-0.5 rounded-full bg-surface-inset text-accent-terracotta font-caption text-caption">Resident Reader</span>
+</div>
+<span class="font-caption text-caption text-text-secondary">Inscribed 1 day ago • In direct response to Clara Beauchamp</span>
+</div>
+</div>
+<span class="font-caption text-caption text-text-secondary">Branch Node #892-R1.1</span>
+</header>
+<div class="font-body-base text-body-base text-text-primary leading-relaxed space-y-2">
+<p>
+                  Yet Clara, isn't that physical hunting sequence intentionally subverted at the pavilion? When Stephen Albert describes the Chinese labyrinth, he reminds us that it is not round or square, but coextensive with the universe itself. If a maze is infinite and coextensive with all existence, "spatial turning" ceases to have measurable mathematical coordinates. It becomes an infinite set of probabilities.
+                </p>
+</div>
+<footer class="mt-4 pt-3 flex items-center justify-between text-text-secondary">
+<button class="font-label-sm text-label-sm text-accent-teal hover:text-primary flex items-center gap-1" type="button">
+<span class="material-symbols-outlined text-[16px]">reply</span>
+<span>Respond to Julian</span>
+</button>
+<span class="font-caption text-caption text-text-secondary italic">Archival Note #892-R1.1</span>
+</footer>
+</div>
+</div>
+<!-- REPLY 3: Dr. Alistair Finch (Cartographic Primary Response with Diagram) -->
+<article class="w-full bg-surface-porcelain rounded-2xl p-7 shadow-[0_4px_12px_rgba(38,54,51,0.06),0_1px_3px_rgba(38,54,51,0.04)]">
+<header class="flex items-center justify-between mb-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-on-primary font-headline-sm text-[16px] font-display font-medium">
+                  AF
+                </div>
+<div class="flex flex-col">
+<div class="flex items-center gap-2">
+<span class="font-label-md text-label-md font-semibold text-text-primary">Dr. Alistair Finch</span>
+<span class="px-2 py-0.5 rounded-full bg-accent-sage/30 text-accent-teal font-caption text-caption font-semibold">Patron Fellow #188</span>
+</div>
+<span class="font-caption text-caption text-text-secondary">Archival Cartographer • Inscribed 18 hours ago</span>
+</div>
+</div>
+<span class="font-caption text-caption text-text-secondary font-mono">Archive Folio MS-B88</span>
+</header>
+<div class="font-body-base text-body-base text-text-primary leading-relaxed space-y-4">
+<p>
+                In the Buenos Aires archival folio (MS-B88, folio 19), Borges scribbled several margin calculations detailing what he termed <em>"la arquitectura circular del tiempo"</em>. Notice how he attempts to diagram recursive pathways that rejoin their origin without reversing trajectory:
+              </p>
+<!-- Inline Architectural Recursive Diagram Card -->
+<div class="w-full p-5 rounded-xl bg-surface-inset/50 shadow-[inset_1px_1px_3px_rgba(38,54,51,0.06)] flex flex-col md:flex-row items-center gap-6">
+<!-- Diagram Visual (SVG Recursive Network) -->
+<div class="w-48 h-32 flex-shrink-0 bg-surface-porcelain rounded-lg p-2 shadow-sm flex items-center justify-center">
+<svg class="w-full h-full text-accent-teal" fill="none" stroke="currentColor" viewbox="0 0 180 120">
+<!-- Recursive Branching Tree -->
+<circle cx="20" cy="60" fill="#185C58" r="5"></circle>
+<path d="M25 60 C 50 60, 60 30, 85 30" stroke-width="1.75"></path>
+<path d="M25 60 C 50 60, 60 90, 85 90" stroke-width="1.75"></path>
+<circle cx="85" cy="30" fill="#C58B70" r="4"></circle>
+<circle cx="85" cy="90" fill="#C58B70" r="4"></circle>
+<path d="M89 30 C 110 30, 120 15, 145 15" stroke-dasharray="2 2" stroke-width="1.5"></path>
+<path d="M89 30 C 110 30, 120 45, 145 45" stroke-width="1.5"></path>
+<path d="M89 90 C 110 90, 120 75, 145 75" stroke-width="1.5"></path>
+<path d="M89 90 C 110 90, 120 105, 145 105" stroke-dasharray="2 2" stroke-width="1.5"></path>
+<!-- Rejoining Arc indicating temporal loop -->
+<path d="M145 45 C 165 45, 165 75, 145 75" stroke="#A8BDAE" stroke-width="1.5"></path>
+<circle cx="145" cy="15" fill="#263633" r="3"></circle>
+<circle cx="145" cy="45" fill="#185C58" r="3.5"></circle>
+<circle cx="145" cy="75" fill="#185C58" r="3.5"></circle>
+<circle cx="145" cy="105" fill="#263633" r="3"></circle>
+</svg>
+</div>
+<div class="flex flex-col text-left">
+<span class="font-caption text-caption text-accent-terracotta uppercase font-semibold tracking-wider">Archival Transcription Diagram</span>
+<h3 class="font-headline-sm text-[16px] font-display text-text-primary mt-0.5">Topological Manifold of Forking Iterations</h3>
+<p class="font-caption text-caption text-text-secondary mt-1 leading-normal">
+                    Derived from Borges' marginalia on page 117. Notice how node T(3) and node T(7) intersect, demonstrating that distinct temporal lines collapse into identical coordinate spaces when the choice is recognized.
+                  </p>
+</div>
+</div>
+<p>
+                This confirms Marcus’ assertion: geometry is not an impediment to duration; it is the scaffolding required for the mortal human intellect to register eternity without madness.
+              </p>
+</div>
+<footer class="mt-5 pt-4 flex items-center justify-between text-text-secondary">
+<div class="flex items-center gap-4">
+<button class="font-label-sm text-label-sm text-accent-teal hover:text-primary flex items-center gap-1" type="button">
+<span class="material-symbols-outlined text-[16px]">reply</span>
+<span>Respond to Dr. Finch</span>
+</button>
+<button class="font-label-sm text-label-sm text-text-secondary hover:text-text-primary flex items-center gap-1" type="button">
+<span class="material-symbols-outlined text-[16px]">visibility</span>
+<span>View High-Res Manuscript Plate</span>
+</button>
+</div>
+<span class="font-caption text-caption text-text-secondary">Cartographic Ledger Registered</span>
+</footer>
+</article>
+<!-- REPLY 4: Elena Solanas (Active Session Contemplation) -->
+<article class="w-full bg-surface-porcelain rounded-2xl p-7 shadow-[0_4px_12px_rgba(38,54,51,0.06),0_1px_3px_rgba(38,54,51,0.04)]">
+<header class="flex items-center justify-between mb-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-accent-teal flex items-center justify-center text-surface-porcelain font-headline-sm text-[16px] font-display font-medium">
+                  ES
+                </div>
+<div class="flex flex-col">
+<div class="flex items-center gap-2">
+<span class="font-label-md text-label-md font-semibold text-text-primary">Elena Solanas</span>
+<span class="px-2 py-0.5 rounded-full bg-primary-container text-surface-porcelain font-caption text-caption font-semibold">Patron #892-BOR • Active Session</span>
+</div>
+<span class="font-caption text-caption text-text-secondary">Inscribed 4 hours ago • Fellow of Scriptorium VII</span>
+</div>
+</div>
+<span class="font-caption text-caption text-accent-teal font-medium flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-accent-sage animate-ping"></span>
+                Freshly Sealed
+              </span>
+</header>
+<div class="font-body-base text-body-base text-text-primary leading-relaxed space-y-3">
+<p>
+                Perhaps the reading desk itself is the final labyrinth. When we inscribe marginalia on this ledger, our remarks are preserved asynchronously. Another fellow visiting this alcove three decades from now will read my thoughts as though we sat together in the North Transept this morning.
+              </p>
+<p>
+                Borges knew that writing is the only human apparatus capable of defeating the chronological tyrant. Ts’ui Pên did not merely build a theoretical maze; he built the book you are presently contemplating.
+              </p>
+</div>
+<footer class="mt-5 pt-4 flex items-center justify-between text-text-secondary">
+<div class="flex items-center gap-4">
+<button class="font-label-sm text-label-sm text-accent-teal hover:text-primary flex items-center gap-1" type="button">
+<span class="material-symbols-outlined text-[16px]">reply</span>
+<span>Respond to Elena</span>
+</button>
+</div>
+<span class="font-caption text-caption text-text-secondary">Patron Inscription #892-R4</span>
+</footer>
+</article>
+</div>
+<!-- ZERO STATE CONTAINER (Hidden by default, triggered via simulation bar) -->
+<div class="hidden w-full bg-surface-porcelain rounded-2xl p-12 shadow-[0_4px_12px_rgba(38,54,51,0.06)] text-center flex-col items-center justify-center" id="thread-zero-state">
+<div class="w-16 h-16 rounded-full bg-surface-inset flex items-center justify-center text-accent-terracotta mb-4">
+<span class="material-symbols-outlined text-[32px]">edit_note</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm font-display text-text-primary mb-2">A Pristine Literary Inscription</h3>
+<p class="font-body-base text-body-base text-text-secondary max-w-md mb-6 leading-relaxed">
+            No scholar has yet inscribed a counter-thesis or resonance to Marcus Aureliano’s inquiry. The archival parchment awaits your contemplation.
+          </p>
+<a class="px-6 py-2.5 rounded-full bg-primary-container text-surface-porcelain font-label-md text-label-md hover:bg-primary transition-all shadow-[0_2px_8px_rgba(24,92,88,0.25)]" href="#reply-composer-anchor">
+            Inscribe the First Contemplation →
+          </a>
+</div>
+</section>
+<!-- THE CONTEMPLATION COMPOSER (Inscribe a Contemplation to this Dialogue) -->
+<section aria-label="Dialogue Composer" class="w-full bg-surface-porcelain rounded-2xl p-8 lg:p-9 shadow-[0_4px_16px_rgba(38,54,51,0.08),0_1px_4px_rgba(38,54,51,0.04)] relative" id="reply-composer-anchor">
+<!-- Composer Active Header -->
+<div class="flex items-center justify-between pb-5 mb-5">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-on-primary font-label-md text-label-md font-semibold">
+              ES
+            </div>
+<div class="flex flex-col">
+<span class="font-headline-sm text-[17px] font-display text-text-primary">Inscribe a Contemplation to this Dialogue</span>
+<span class="font-caption text-caption text-text-secondary">Elena Solanas (Patron #892-BOR) • Authenticated Scholar Desk</span>
+</div>
+</div>
+<span class="font-caption text-caption text-accent-teal flex items-center gap-1 bg-surface-inset px-2.5 py-1 rounded-full">
+<span class="material-symbols-outlined text-[14px]">shield</span>
+            Sovereign Ledger Node
+          </span>
+</div>
+<!-- Scholarly Covenant Guidance Callout -->
+<div class="p-3.5 rounded-xl bg-surface-inset/60 mb-5 flex items-start gap-2.5 text-text-secondary text-caption font-caption">
+<span class="material-symbols-outlined text-[17px] text-accent-terracotta flex-shrink-0 mt-0.5">info</span>
+<span class="leading-relaxed">
+            The Agora invites contemplative, substantive inquiries. Please anchor your thesis to specific folio citations, historical context, or literary philosophy. Short dismissals or ephemeral comments are redirected to the informal foyer.
+          </span>
+</div>
+<!-- Submission Deficit Banner (Visible in Validation State) -->
+<div class="hidden mb-4 p-4 rounded-xl bg-error-container text-on-error-container flex items-start gap-3" id="validation-warning-banner">
+<span class="material-symbols-outlined text-[20px] text-error flex-shrink-0">warning</span>
+<div class="flex flex-col text-left">
+<span class="font-label-sm text-label-sm font-semibold">Contemplative Depth Threshold Unmet (Scholarly Deficit)</span>
+<span class="font-caption text-caption leading-relaxed mt-0.5">Your inscription is currently 42 characters. Akashic Dialogues require a minimum of 80 substantive characters with contextual depth before sealing into the immutable archival ledger.</span>
+</div>
+</div>
+<!-- Textarea Input Well -->
+<div class="relative w-full mb-4">
+<textarea class="w-full p-4 rounded-xl bg-surface-inset/50 font-body-base text-body-base text-text-primary placeholder:text-text-secondary/70 focus:bg-surface-porcelain focus:outline-none focus:ring-2 focus:ring-accent-teal transition-all resize-y shadow-[inset_2px_2px_5px_rgba(38,54,51,0.08),inset_-2px_-2px_5px_rgba(255,255,255,0.7)]" id="composer-textarea" placeholder="Inscribe your contemplation, critique, or textual counter-thesis to Marcus Aureliano and the assembled fellows..." rows="6">In reading Borges alongside his early essays on Berkeley’s idealism, one notices that the maze can only bifurcate if an active perceiving mind maintains the divergent branches. Without the patron's eye, both paths collapse into absolute void.</textarea>
+</div>
+<!-- Dynamic Sealing In-Flight Overlay State -->
+<div class="hidden mb-4 p-5 rounded-xl bg-surface-inset/70 flex flex-col items-center justify-center text-center shadow-inner" id="composer-sealing-overlay">
+<div class="flex items-center gap-3 mb-2">
+<svg class="animate-spin h-5 w-5 text-accent-teal" fill="none" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+<path class="opacity-75" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" fill="currentColor"></path>
+</svg>
+<span class="font-label-md text-label-md font-semibold text-text-primary">Generating Cryptographic Archival Seal...</span>
+</div>
+<p class="font-caption text-caption text-text-secondary font-mono">
+            Hashing Inscription: SHA-256 (0x79f2c84b12a8...) • Binding to Ledger Node #892-BOR
+          </p>
+</div>
+<!-- Composer Action Bar -->
+<div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pt-2">
+<div class="flex flex-col gap-1">
+<span class="font-caption text-caption text-text-secondary flex items-center gap-1.5" id="character-counter">
+<span class="w-1.5 h-1.5 rounded-full bg-accent-sage"></span>
+<strong>186 characters</strong> • Contemplative Depth Achieved
+            </span>
+<span class="font-caption text-[10px] text-text-secondary/70">
+              Markdown formatting &amp; Folio citations supported (§, «», [p. xx])
+            </span>
+</div>
+<div class="flex items-center gap-3 w-full sm:w-auto justify-end">
+<button class="px-4 py-2 rounded-full bg-surface-inset/60 text-text-secondary hover:text-text-primary font-label-md text-label-md transition-all shadow-[inset_1px_1px_2px_rgba(38,54,51,0.04)]" type="button">
+              Save Draft to Desk
+            </button>
+<button class="flex items-center gap-2 px-6 py-2 rounded-full bg-primary-container text-surface-porcelain hover:bg-primary font-label-md text-label-md transition-all shadow-[0_4px_12px_rgba(24,92,88,0.25)]" id="btn-inscribe-action" onclick="simulateSealingProcess()" type="button">
+<span>Inscribe Response to Ledger</span>
+<span class="material-symbols-outlined text-[17px]">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Guest Authentication Intercept Modal/Card (State 4) -->
+<div class="hidden absolute inset-0 bg-surface-glass backdrop-blur-md rounded-2xl p-8 flex-col items-center justify-center text-center z-10" id="composer-auth-intercept">
+<div class="w-14 h-14 rounded-full bg-surface-inset flex items-center justify-center text-accent-teal mb-3 shadow-inner">
+<span class="material-symbols-outlined text-[28px]">lock</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm font-display text-text-primary mb-2">Authenticated Patron Ledger Required</h3>
+<p class="font-body-base text-body-base text-text-secondary max-w-md mb-6 leading-relaxed">
+            The Akashic Agora is open for public reading in perpetuity. However, transcribing marginalia and inscribing permanent dialectics requires an authenticated Patron Fellow seal.
+          </p>
+<div class="flex items-center gap-3">
+<button class="px-6 py-2.5 rounded-full bg-accent-teal text-surface-porcelain font-label-md text-label-md hover:bg-primary transition-all shadow-[0_4px_12px_rgba(24,92,88,0.25)]" type="button">
+              Authenticate via Scholar Seal
+            </button>
+<button class="px-4 py-2.5 rounded-full bg-surface-inset/70 text-text-primary font-label-md text-label-md hover:bg-surface-inset transition-all" onclick="switchThreadState('active')" type="button">
+              Continue Reading as Guest
+            </button>
+</div>
+</div>
+</section>
+</div>
+<!-- RIGHT COLUMN: Archival Contextual Sidebar (30%) -->
+<aside aria-label="Contextual Archival Dossier" class="lg:col-span-4 flex flex-col gap-6 w-full">
+<!-- 1. ANCHORED FOLIO SHOWCASE CARD -->
+<section aria-label="Folio Dossier" class="w-full bg-surface-porcelain rounded-2xl p-6 shadow-[0_4px_12px_rgba(38,54,51,0.06),0_1px_3px_rgba(38,54,51,0.04)]">
+<header class="flex items-center justify-between pb-4 mb-4">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-accent-terracotta text-[18px]">menu_book</span>
+<span class="font-caption text-caption uppercase tracking-wider text-text-secondary font-semibold">Anchored Volume</span>
+</div>
+<span class="px-2 py-0.5 rounded bg-surface-inset text-accent-teal font-caption text-caption font-semibold">Primary Text</span>
+</header>
+<div class="flex items-start gap-4 mb-4">
+<!-- Physical Book Jacket Representation (Strict 2:3 bound aspect ratio) -->
+<div class="w-24 h-36 rounded-md bg-surface-inset shadow-md flex-shrink-0 overflow-hidden relative">
+<div class="w-full h-full bg-cover bg-center" data-alt="Cover of Ficciones by Jorge Luis Borges, featuring an intricate geometric maze with metaphysical typography in vintage sepia and deep teal tones on tactile linen." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAXKOMLTelNDoAd0stHo7Wnk2xAl9R0oprCK4ZxHjEuWaDdUtpQUTzcO_RJ6DSGvb8psvUBeVMC53YaxUKlFXXitRU0WkzSQil5oB7KY5FDzA14D_nUnYYAmLxAa_riySBu3srOIMzgx381dxJ4QRCqDwbG-WtS5dw2mDqD3ohPtv2akWouLi2Q4R8WcUmWYawG3bKmlvI5ZT8S-67dCF4fEBcpflq01uYfbAHOPS0')"></div>
+</div>
+<div class="flex flex-col">
+<span class="font-caption text-caption text-accent-terracotta font-medium">Borges Wing • Gamma-7</span>
+<h3 class="font-headline-sm text-[18px] font-display text-text-primary mt-0.5 leading-snug">Ficciones</h3>
+<span class="font-body-sm text-body-sm text-text-secondary mt-0.5">Jorge Luis Borges</span>
+<span class="font-caption text-caption text-text-secondary mt-1">First Edition 1944 • Editorial Sur</span>
+<div class="flex items-center gap-1 text-accent-terracotta text-[12px] mt-2 font-medium">
+<span>★ 4.8</span>
+<span class="text-text-secondary">(318 public marginalia)</span>
+</div>
+</div>
+</div>
+<p class="font-caption text-caption text-text-secondary leading-relaxed bg-surface-inset/40 p-3 rounded-xl mb-4">
+<strong>Curatorial Provenance:</strong> Restored in 1982 by Master Binder V. Alvarez. Includes author's hand-corrected typographic errata in the prologue to Part II (Artificios).
+        </p>
+<!-- Quick Deep Links -->
+<nav aria-label="Volume Quick Links" class="space-y-2">
+<a class="w-full flex items-center justify-between p-2.5 rounded-xl bg-surface-inset/40 hover:bg-surface-inset text-label-sm font-label-sm text-text-primary transition-all" href="#">
+<span class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px] text-accent-teal">visibility</span>
+              View Complete Folio Overview
+            </span>
+<span class="material-symbols-outlined text-[15px] text-text-secondary">arrow_forward</span>
+</a>
+<a class="w-full flex items-center justify-between p-2.5 rounded-xl bg-surface-inset/40 hover:bg-surface-inset text-label-sm font-label-sm text-text-primary transition-all" href="#">
+<span class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px] text-accent-terracotta">menu_book</span>
+              Open Book Reading Desk (Marginalia)
+            </span>
+<span class="material-symbols-outlined text-[15px] text-text-secondary">arrow_forward</span>
+</a>
+</nav>
+</section>
+<!-- 2. ARCHIVAL DISCOURSE COVENANT -->
+<section aria-label="Rules of Contemplation" class="w-full bg-surface-porcelain rounded-2xl p-6 shadow-[0_4px_12px_rgba(38,54,51,0.06),0_1px_3px_rgba(38,54,51,0.04)]">
+<header class="flex items-center gap-2 pb-3 mb-3">
+<span class="material-symbols-outlined text-accent-teal text-[20px]">gavel</span>
+<h3 class="font-headline-sm text-[16px] font-display text-text-primary">The Archival Discourse Covenant</h3>
+</header>
+<div class="space-y-3.5 text-body-sm text-body-sm text-text-secondary">
+<div class="flex items-start gap-2.5">
+<span class="w-5 h-5 rounded-full bg-accent-sage/30 text-accent-teal flex items-center justify-center font-caption text-caption font-bold flex-shrink-0 mt-0.5">1</span>
+<p class="leading-relaxed">
+<strong class="text-text-primary">Substantive Dialectic:</strong> Casual reactions, emojis, or ephemeral snark are automatically purged. Contributions must articulate an argument or textual counterpoint.
+            </p>
+</div>
+<div class="flex items-start gap-2.5">
+<span class="w-5 h-5 rounded-full bg-accent-sage/30 text-accent-teal flex items-center justify-center font-caption text-caption font-bold flex-shrink-0 mt-0.5">2</span>
+<p class="leading-relaxed">
+<strong class="text-text-primary">Folio Anchoring:</strong> Ground observations in specific editions, page numbers, or philosophical traditions to facilitate collective marginalia.
+            </p>
+</div>
+<div class="flex items-start gap-2.5">
+<span class="w-5 h-5 rounded-full bg-accent-sage/30 text-accent-teal flex items-center justify-center font-caption text-caption font-bold flex-shrink-0 mt-0.5">3</span>
+<p class="leading-relaxed">
+<strong class="text-text-primary">Sovereign Permanence:</strong> Once inscribed and sealed, contemplations form part of the permanent archival ledger under the Open Scholar Covenant of 1884.
+            </p>
+</div>
+</div>
+</section>
+<!-- 3. RELATED DIALOGUES IN PHILOSOPHICAL THESES -->
+<section aria-label="Parallel Inquiries" class="w-full bg-surface-porcelain rounded-2xl p-6 shadow-[0_4px_12px_rgba(38,54,51,0.06),0_1px_3px_rgba(38,54,51,0.04)]">
+<header class="flex items-center justify-between pb-3 mb-3">
+<h3 class="font-headline-sm text-[16px] font-display text-text-primary">Parallel Inquiries</h3>
+<span class="font-caption text-caption text-text-secondary">Borges Wing</span>
+</header>
+<div class="space-y-3">
+<a class="block p-3 rounded-xl hover:bg-surface-inset/40 transition-colors group" href="#">
+<h4 class="font-headline-sm text-[14px] font-display text-text-primary group-hover:text-accent-teal transition-colors leading-snug">
+              The Aleph: Can absolute infinity be localized within a single physical point?
+            </h4>
+<div class="flex items-center gap-3 mt-1.5 text-text-secondary font-caption text-caption">
+<span>Initiated by Dr. Finch</span>
+<span>•</span>
+<span class="text-accent-terracotta">8 Inscribed Responses</span>
+</div>
+</a>
+<a class="block p-3 rounded-xl hover:bg-surface-inset/40 transition-colors group" href="#">
+<h4 class="font-headline-sm text-[14px] font-display text-text-primary group-hover:text-accent-teal transition-colors leading-snug">
+              Pierre Menard and the ontological reality of identical re-authorship
+            </h4>
+<div class="flex items-center gap-3 mt-1.5 text-text-secondary font-caption text-caption">
+<span>Initiated by Clara B.</span>
+<span>•</span>
+<span class="text-accent-terracotta">19 Inscribed Responses</span>
+</div>
+</a>
+<a class="block p-3 rounded-xl hover:bg-surface-inset/40 transition-colors group" href="#">
+<h4 class="font-headline-sm text-[14px] font-display text-text-primary group-hover:text-accent-teal transition-colors leading-snug">
+              The Library of Babel as an information-theoretic model for genetic sequencing
+            </h4>
+<div class="flex items-center gap-3 mt-1.5 text-text-secondary font-caption text-caption">
+<span>Initiated by S. Raman</span>
+<span>•</span>
+<span class="text-accent-terracotta">12 Inscribed Responses</span>
+</div>
+</a>
+</div>
+</section>
+<!-- 4. DISCOURSE COLOPHON & HASH LEDGER -->
+<footer class="p-4 rounded-xl bg-surface-inset/50 shadow-[inset_1px_1px_3px_rgba(38,54,51,0.06)] text-text-secondary font-caption text-caption space-y-1.5">
+<div class="flex items-center justify-between text-text-primary font-semibold">
+<span>Archival Ledger Record</span>
+<span class="font-mono text-accent-teal">#77f9..2b8a</span>
+</div>
+<p>Preserved across Node 1042-VAC • Typeset in Lora and Inter types under the Curatorial Archival Accord.</p>
+<div class="flex items-center gap-2 pt-1 text-accent-terracotta">
+<span class="w-1.5 h-1.5 rounded-full bg-accent-sage"></span>
+<span>Climatic Storage: 18.5°C • Non-commercial Public Registry</span>
+</div>
+</footer>
+</aside>
+</div>
+<!-- ARCHIVAL STATE MATRIX BLUEPRINT (Dedicated Documentation Blueprint at Bottom) -->
+<section aria-label="System Architecture &amp; State Resilience Blueprint" class="w-full mt-16 pt-10">
+<div class="flex flex-col mb-6">
+<div class="flex items-center gap-2 text-accent-terracotta font-caption text-caption uppercase tracking-wider font-semibold">
+<span class="material-symbols-outlined text-[16px]">account_tree</span>
+<span>System Architecture &amp; Exception Resilience</span>
+</div>
+<h2 class="font-headline-lg text-headline-lg font-display text-text-primary mt-1">
+        Archival State Resilience Blueprint
+      </h2>
+<p class="font-body-base text-body-base text-text-secondary max-w-2xl mt-1">
+        Discrete UI specifications governing thread lifecycle transitions, cryptographic sealing mechanisms, and scholarly governance without digital gamification.
+      </p>
+</div>
+<!-- 4 Blueprint Cards Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+<!-- Blueprint 1: Pristine Discussion -->
+<div class="p-6 rounded-2xl bg-surface-porcelain shadow-[0_4px_12px_rgba(38,54,51,0.06),0_1px_3px_rgba(38,54,51,0.04)] flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between mb-3">
+<span class="w-8 h-8 rounded-full bg-surface-inset flex items-center justify-center font-caption text-caption font-bold text-accent-teal">01</span>
+<span class="px-2 py-0.5 rounded bg-surface-inset font-caption text-caption text-text-secondary">Thread Lifecycle</span>
+</div>
+<h3 class="font-headline-sm text-[17px] font-display text-text-primary mb-2">Pristine State (0 Inscriptions)</h3>
+<p class="font-body-sm text-body-sm text-text-secondary leading-relaxed">
+            Eliminates traditional social media "empty space" embarrassment. Replaces cold emptiness with an inviting archival parchment invoking the responsibility of inaugurating the thesis.
+          </p>
+</div>
+<div class="mt-4 pt-3 flex items-center gap-1.5 font-caption text-caption text-accent-teal">
+<span class="material-symbols-outlined text-[15px]">verified</span>
+<span>Open Scholarly Invitation</span>
+</div>
+</div>
+<!-- Blueprint 2: Guest Authentication Intercept -->
+<div class="p-6 rounded-2xl bg-surface-porcelain shadow-[0_4px_12px_rgba(38,54,51,0.06),0_1px_3px_rgba(38,54,51,0.04)] flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between mb-3">
+<span class="w-8 h-8 rounded-full bg-surface-inset flex items-center justify-center font-caption text-caption font-bold text-accent-teal">02</span>
+<span class="px-2 py-0.5 rounded bg-surface-inset font-caption text-caption text-text-secondary">Security &amp; Gate</span>
+</div>
+<h3 class="font-headline-sm text-[17px] font-display text-text-primary mb-2">Guest Ledger Intercept</h3>
+<p class="font-body-sm text-body-sm text-text-secondary leading-relaxed">
+            Maintains universal public reading freedom without paywalls. Transmutation from spectator to contributor gracefully requests an authenticated cryptographic patron token.
+          </p>
+</div>
+<div class="mt-4 pt-3 flex items-center gap-1.5 font-caption text-caption text-accent-terracotta">
+<span class="material-symbols-outlined text-[15px]">lock_open</span>
+<span>Zero-Barrier Reading Permitted</span>
+</div>
+</div>
+<!-- Blueprint 3: Sealing In-Flight -->
+<div class="p-6 rounded-2xl bg-surface-porcelain shadow-[0_4px_12px_rgba(38,54,51,0.06),0_1px_3px_rgba(38,54,51,0.04)] flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between mb-3">
+<span class="w-8 h-8 rounded-full bg-surface-inset flex items-center justify-center font-caption text-caption font-bold text-accent-teal">03</span>
+<span class="px-2 py-0.5 rounded bg-surface-inset font-caption text-caption text-text-secondary">Distributed Sync</span>
+</div>
+<h3 class="font-headline-sm text-[17px] font-display text-text-primary mb-2">Sealing In-Flight Hashing</h3>
+<p class="font-body-sm text-body-sm text-text-secondary leading-relaxed">
+            Non-blocking tactile state showing real-time ledger inscription. Communicates permanence and weight, reminding users their thought is permanently bound to the volume's marginalia.
+          </p>
+</div>
+<div class="mt-4 pt-3 flex items-center gap-1.5 font-caption text-caption text-accent-teal">
+<span class="material-symbols-outlined text-[15px]">sync</span>
+<span>SHA-256 Ledger Provenance</span>
+</div>
+</div>
+<!-- Blueprint 4: Discourse Validation Alert -->
+<div class="p-6 rounded-2xl bg-surface-porcelain shadow-[0_4px_12px_rgba(38,54,51,0.06),0_1px_3px_rgba(38,54,51,0.04)] flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between mb-3">
+<span class="w-8 h-8 rounded-full bg-surface-inset flex items-center justify-center font-caption text-caption font-bold text-accent-teal">04</span>
+<span class="px-2 py-0.5 rounded bg-surface-inset font-caption text-caption text-text-secondary">Quality Guardrail</span>
+</div>
+<h3 class="font-headline-sm text-[17px] font-display text-text-primary mb-2">Scholarly Depth Deficit</h3>
+<p class="font-body-sm text-body-sm text-text-secondary leading-relaxed">
+            Replaces punitive error alerts with respectful curatorial coaching. Guides readers toward substantive analysis if a contribution fails to meet the 80-character contemplative bar.
+          </p>
+</div>
+<div class="mt-4 pt-3 flex items-center gap-1.5 font-caption text-caption text-accent-terracotta">
+<span class="material-symbols-outlined text-[15px]">verified_user</span>
+<span>Anti-Ephemeral Filtration</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Interactive Simulation Script -->
+<script>
+    function switchThreadState(state) {
+      // Pill styles reset
+      const pills = document.querySelectorAll('.state-pill');
+      pills.forEach(p => {
+        p.classList.remove('bg-accent-teal', 'text-surface-porcelain', 'shadow-[0_2px_6px_rgba(24,92,88,0.25)]');
+        p.classList.add('text-text-secondary');
+      });
+
+      const activeBtn = document.getElementById('btn-state-' + state);
+      if (activeBtn) {
+        activeBtn.classList.remove('text-text-secondary');
+        activeBtn.classList.add('bg-accent-teal', 'text-surface-porcelain', 'shadow-[0_2px_6px_rgba(24,92,88,0.25)]');
+      }
+
+      // Elements
+      const stream = document.getElementById('thread-replies-stream');
+      const zeroState = document.getElementById('thread-zero-state');
+      const countHeading = document.getElementById('replies-count-heading');
+      const countBadge = document.getElementById('replies-badge');
+      const authIntercept = document.getElementById('composer-auth-intercept');
+      const sealingOverlay = document.getElementById('composer-sealing-overlay');
+      const validationWarning = document.getElementById('validation-warning-banner');
+      const composerTextarea = document.getElementById('composer-textarea');
+      const counterText = document.getElementById('character-counter');
+
+      // Reset components
+      authIntercept.classList.add('hidden');
+      authIntercept.classList.remove('flex');
+      sealingOverlay.classList.add('hidden');
+      validationWarning.classList.add('hidden');
+
+      if (state === 'active') {
+        stream.classList.remove('hidden');
+        zeroState.classList.add('hidden');
+        countHeading.textContent = "Contemplations & Resonances";
+        countBadge.textContent = "4 Inscribed Responses";
+        composerTextarea.value = "In reading Borges alongside his early essays on Berkeley’s idealism, one notices that the maze can only bifurcate if an active perceiving mind maintains the divergent branches. Without the patron's eye, both paths collapse into absolute void.";
+        counterText.innerHTML = '<span class="w-1.5 h-1.5 rounded-full bg-accent-sage"></span><strong>186 characters</strong> • Contemplative Depth Achieved';
+      } else if (state === 'zero') {
+        stream.classList.add('hidden');
+        zeroState.classList.remove('hidden');
+        zeroState.classList.add('flex');
+        countHeading.textContent = "Contemplations & Resonances";
+        countBadge.textContent = "0 Inscriptions • Awaiting Scholar";
+      } else if (state === 'sealing') {
+        stream.classList.remove('hidden');
+        zeroState.classList.add('hidden');
+        sealingOverlay.classList.remove('hidden');
+      } else if (state === 'auth') {
+        authIntercept.classList.remove('hidden');
+        authIntercept.classList.add('flex');
+      } else if (state === 'validation') {
+        stream.classList.remove('hidden');
+        zeroState.classList.add('hidden');
+        validationWarning.classList.remove('hidden');
+        composerTextarea.value = "I agree, this is a very interesting thesis.";
+        counterText.innerHTML = '<span class="w-1.5 h-1.5 rounded-full bg-error"></span><strong class="text-error">42 characters</strong> • Scholarly Deficit (Minimum 80 required)';
+      }
+    }
+
+    function simulateSealingProcess() {
+      const overlay = document.getElementById('composer-sealing-overlay');
+      const btn = document.getElementById('btn-inscribe-action');
+      overlay.classList.remove('hidden');
+      btn.disabled = true;
+      btn.classList.add('opacity-50', 'pointer-events-none');
+
+      setTimeout(() => {
+        overlay.innerHTML = `
+          <div class="flex items-center gap-2 text-accent-teal font-label-md text-label-md font-semibold mb-1">
+            <span class="material-symbols-outlined text-[20px]">check_circle</span>
+            <span>Inscription Bound to Permanent Folio Ledger #892-R5</span>
+          </div>
+          <span class="font-caption text-caption text-text-secondary">Refreshing Scriptorium Quadrangle view...</span>
+        `;
+        setTimeout(() => {
+          overlay.classList.add('hidden');
+          btn.disabled = false;
+          btn.classList.remove('opacity-50', 'pointer-events-none');
+          switchThreadState('active');
+        }, 1800);
+      }, 1600);
+    }
+  </script>
+</div></main><footer class="w-full bg-surface-porcelain/90 mt-24 shadow-[0_-2px_12px_rgba(38,54,51,0.02)]"><div class="max-w-[1360px] mx-auto px-margin py-16"><div class="grid grid-cols-1 md:grid-cols-3 gap-12 mb-16"><div class="flex flex-col"><h3 class="font-headline-sm text-headline-sm font-display text-accent-teal mb-4 flex items-center gap-2"><span class="material-symbols-outlined text-[20px] text-accent-terracotta">meeting_room</span>The Reading Rooms</h3><p class="font-body-sm text-body-sm text-text-secondary mb-5 max-w-sm">Dedicated silent sanctuaries, scholar alcoves, and archival consultation chambers spread across four historic quadrangles.</p><ul class="space-y-2.5"><li class="font-body-sm text-body-sm"><a class="text-text-primary hover:text-accent-teal underline decoration-accent-terracotta/60 underline-offset-4 transition-colors" href="#">North Transept Sanctuary</a></li><li class="font-body-sm text-body-sm"><a class="text-text-primary hover:text-accent-teal underline decoration-accent-terracotta/60 underline-offset-4 transition-colors" href="#">Rare Manuscripts Rotunda</a></li><li class="font-body-sm text-body-sm"><a class="text-text-primary hover:text-accent-teal underline decoration-accent-terracotta/60 underline-offset-4 transition-colors" href="#">Papyrology &amp; Folio Desk</a></li><li class="font-body-sm text-body-sm"><a class="text-text-primary hover:text-accent-teal underline decoration-accent-terracotta/60 underline-offset-4 transition-colors" href="#">Fellows' Private Study Suites</a></li></ul></div><div class="flex flex-col"><h3 class="font-headline-sm text-headline-sm font-display text-accent-teal mb-4 flex items-center gap-2"><span class="material-symbols-outlined text-[20px] text-accent-terracotta">auto_stories</span>Collections &amp; Folios</h3><p class="font-body-sm text-body-sm text-text-secondary mb-5 max-w-sm">Carefully preserved codices, restored architectural treatises, and living anthologies maintained in regulated climatic vaults.</p><ul class="space-y-2.5"><li class="font-body-sm text-body-sm"><a class="text-text-primary hover:text-accent-teal underline decoration-accent-terracotta/60 underline-offset-4 transition-colors" href="#">The Alexandrian Reconstructions</a></li><li class="font-body-sm text-body-sm"><a class="text-text-primary hover:text-accent-teal underline decoration-accent-terracotta/60 underline-offset-4 transition-colors" href="#">Renaissance Cartography Vault</a></li><li class="font-body-sm text-body-sm"><a class="text-text-primary hover:text-accent-teal underline decoration-accent-terracotta/60 underline-offset-4 transition-colors" href="#">Humanist Correspondence 1520–1680</a></li><li class="font-body-sm text-body-sm"><a class="text-text-primary hover:text-accent-teal underline decoration-accent-terracotta/60 underline-offset-4 transition-colors" href="#">Speculative Natural Philosophy</a></li></ul></div><div class="flex flex-col"><h3 class="font-headline-sm text-headline-sm font-display text-accent-teal mb-4 flex items-center gap-2"><span class="material-symbols-outlined text-[20px] text-accent-terracotta">history_edu</span>Colophon &amp; Custody</h3><p class="font-body-sm text-body-sm text-text-secondary mb-5 max-w-sm">Set in Lora and Inter types. Crafted on warm porcelain surfaces with soft tactile depth and non-destructive archival indexing.</p><div class="p-4 rounded-xl bg-surface-inset/50 shadow-[inset_1px_1px_3px_rgba(38,54,51,0.06)]"><p class="font-caption text-caption text-text-secondary mb-2">CUSTODIAL OFFICE: SCRIPTORIUM VII</p><p class="font-body-sm text-body-sm text-text-primary mb-3">Perpetual access granted under Royal Charter &amp; Open Scholar Covenant 1884.</p><div class="flex items-center gap-2 text-accent-terracotta font-caption text-caption"><span class="w-2 h-2 rounded-full bg-accent-sage"></span>Climatic control: 18.5°C • RH 48%</div></div></div></div><div class="flex flex-col md:flex-row items-center justify-between pt-8 border-t border-surface-inset gap-4 text-text-secondary"><div class="flex items-center gap-2"><span class="font-headline-sm text-headline-sm font-display text-accent-teal">Akashic Library</span><span class="font-caption text-caption text-text-secondary">• Non-commercial Archival Repository</span></div><p class="font-caption text-caption text-text-secondary">© 2024 The Curators &amp; Wardens of the Akashic Library. All cataloged folios preserved in perpetuity.</p></div></div></footer></body></html>

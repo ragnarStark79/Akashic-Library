@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_standard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Lora:ital,wght@0,500;0,600;1,400;1,500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"secondary-container":"#d2e8d8","on-tertiary-fixed":"#331202","surface-container":"#dff2ed","background":"#ebfdf8","inverse-primary":"#93d2cc","on-primary-container":"#93d2cc","primary-fixed-dim":"#93d2cc","outline":"#6f7978","on-secondary-fixed":"#0d1f15","accent-teal":"#185C58","primary-container":"#185c58","on-secondary-fixed-variant":"#384b3f","secondary":"#506356","primary-fixed":"#afeee9","tertiary-fixed-dim":"#f8b89b","surface-glass":"rgba(252, 250, 245, 0.82)","surface-tint":"#276864","secondary-fixed":"#d2e8d8","on-surface":"#0e1e1c","on-secondary-container":"#55695c","surface-container-lowest":"#ffffff","surface-container-high":"#daece7","glass-border":"rgba(234, 227, 216, 0.65)","surface-container-low":"#e5f8f3","on-primary":"#ffffff","surface-inset":"#EAE3D8","tertiary-container":"#764730","on-tertiary-fixed-variant":"#683b26","tertiary-fixed":"#ffdbcc","inverse-on-surface":"#e2f5f0","error":"#ba1a1a","text-primary":"#263633","surface-porcelain":"#FCFAF5","on-secondary":"#ffffff","bg-page":"#F5F1E9","surface-variant":"#d4e6e2","primary":"#004440","error-container":"#ffdad6","on-primary-fixed-variant":"#02504c","surface":"#ebfdf8","on-background":"#0e1e1c","on-error-container":"#93000a","secondary-fixed-dim":"#b6ccbc","surface-bright":"#ebfdf8","accent-terracotta":"#C58B70","on-tertiary":"#ffffff","on-surface-variant":"#3f4947","tertiary":"#5b311c","on-primary-fixed":"#00201e","on-error":"#ffffff","text-secondary":"#827E75","inverse-surface":"#233330","outline-variant":"#bfc8c7","surface-container-highest":"#d4e6e2","accent-sage":"#A8BDAE","on-tertiary-container":"#f8b89b","surface-dim":"#ccded9"},borderRadius:{"DEFAULT":"0.25rem","lg":"0.5rem","xl":"0.75rem","full":"9999px"},spacing:{"space-md":"1rem","space-sm":"0.5rem","margin":"3rem","margin-mobile":"1.25rem","gutter":"1.5rem","gutter-mobile":"1rem","space-xs":"0.25rem","space-lg":"1.5rem","space-xl":"2.5rem"},fontFamily:{"headline-lg":["Lora"],"display":["Lora"],"body-sm":["Inter"],"body-base":["Inter"],"caption":["Inter"],"display-mobile":["Lora"],"label-sm":["Inter"],"headline-md":["Lora"],"headline-lg-mobile":["Lora"],"headline-sm":["Lora"],"body-lead":["Inter"],"label-md":["Inter"]},fontSize:{"headline-lg":["36px",{"lineHeight":"44px","letterSpacing":"-0.015em","fontWeight":"500"}],"display":["48px",{"lineHeight":"56px","letterSpacing":"-0.02em","fontWeight":"500"}],"body-sm":["13px",{"lineHeight":"20px","fontWeight":"400"}],"body-base":["15px",{"lineHeight":"24px","fontWeight":"400"}],"caption":["11px",{"lineHeight":"16px","letterSpacing":"0.02em","fontWeight":"500"}],"display-mobile":["34px",{"lineHeight":"42px","letterSpacing":"-0.01em","fontWeight":"500"}],"label-sm":["12px",{"lineHeight":"16px","letterSpacing":"0.04em","fontWeight":"600"}],"headline-md":["26px",{"lineHeight":"34px","fontWeight":"500"}],"headline-lg-mobile":["28px",{"lineHeight":"36px","letterSpacing":"-0.01em","fontWeight":"500"}],"headline-sm":["20px",{"lineHeight":"28px","fontWeight":"600"}],"body-lead":["18px",{"lineHeight":"28px","fontWeight":"400"}],"label-md":["14px",{"lineHeight":"20px","letterSpacing":"0.01em","fontWeight":"500"}]}}}}</script></head><body class="bg-surface font-body-base text-on-surface antialiased"><header class="fixed top-0 w-full z-50 pointer-events-none"><div class="h-20 max-w-[1360px] mx-auto px-margin-mobile lg:px-margin flex items-center justify-between pointer-events-auto"><a class="flex items-center gap-space-sm group" data-path="discover" href="#"><span class="material-symbols-outlined text-primary text-[28px]">auto_stories</span><span class="font-headline-sm text-headline-sm text-primary tracking-tight">Akashic</span></a><nav class="hidden lg:flex items-center gap-space-xs bg-surface-glass backdrop-blur-xl px-space-md py-space-xs rounded-full shadow-[0_4px_12px_rgba(38,54,51,0.06),0_1px_3px_rgba(38,54,51,0.04)]" data-active-classes="bg-primary-container text-on-primary font-label-md text-label-md rounded-full px-space-md py-space-xs shadow-sm"><a class="px-space-md py-space-xs rounded-full font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-colors" data-path="discover" href="#">Discover</a><a class="px-space-md py-space-xs rounded-full font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-colors" data-path="genres" href="#">Genres</a><a class="px-space-md py-space-xs rounded-full font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-colors" data-path="community" href="#">Community</a><a class="px-space-md py-space-xs rounded-full font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-colors" data-path="my-library" href="#">My Library</a><a class="px-space-md py-space-xs rounded-full font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-colors" data-path="about" href="#">About</a></nav><div class="flex items-center gap-space-sm"><div class="hidden sm:flex items-center bg-surface-inset rounded-full px-space-md py-space-xs shadow-[inset_2px_2px_5px_rgba(38,54,51,0.08),inset_-2px_-2px_5px_rgba(255,255,255,0.7)]"><span class="material-symbols-outlined text-text-secondary text-[20px] mr-space-xs">search</span><input class="bg-transparent font-body-sm text-body-sm text-on-surface placeholder:text-text-secondary focus:outline-none w-36 lg:w-48" placeholder="Search titles, authors..." type="text"/></div><button class="sm:hidden flex items-center justify-center w-9 h-9 rounded-full bg-surface-glass backdrop-blur-md text-on-surface-variant" type="button"><span class="material-symbols-outlined text-[20px]">search</span></button><div class="flex items-center gap-space-xs bg-surface-glass backdrop-blur-xl pl-space-xs pr-space-sm py-space-xs rounded-full shadow-[0_4px_12px_rgba(38,54,51,0.06),0_1px_3px_rgba(38,54,51,0.04)]"><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div><span class="font-label-sm text-label-sm text-on-surface px-space-xs hidden md:inline">Patron ES</span></div></div></div></header><main class="w-full pt-20 bg-surface min-h-screen"><div class="max-w-[1360px] mx-auto px-margin-mobile lg:px-margin py-space-lg"><div class="flex flex-col w-full text-on-surface">
+<!-- ========================================================================= -->
+<!-- 1. BREADCRUMBS & COMPACT BOOK ANCHOR (Contextual Header)                -->
+<!-- ========================================================================= -->
+<section class="w-full mb-space-lg">
+<!-- Breadcrumbs -->
+<nav aria-label="Breadcrumb" class="flex items-center gap-space-xs text-caption font-caption text-text-secondary mb-space-sm">
+<a class="hover:text-primary transition-colors flex items-center gap-1" href="#">
+<span class="material-symbols-outlined text-[14px]">arrow_back</span>
+        Return to Public Discovery
+      </a>
+<span class="text-outline-variant">/</span>
+<span class="hover:text-primary transition-colors cursor-pointer">Speculative Philosophy</span>
+<span class="text-outline-variant">/</span>
+<span class="text-primary font-medium">Ficciones (Folio #01)</span>
+</nav>
+<!-- Compact Book Details Anchor Bar -->
+<div class="bg-surface-porcelain rounded-xl p-space-md shadow-[0_4px_14px_rgba(38,54,51,0.06),0_1px_3px_rgba(38,54,51,0.04)] flex flex-col md:flex-row items-start md:items-center justify-between gap-space-md">
+<div class="flex items-center gap-space-md">
+<!-- Folio Miniature Jacket Placeholder -->
+<div class="w-14 h-20 rounded-lg overflow-hidden shrink-0 shadow-[0_2px_8px_rgba(38,54,51,0.12)] bg-surface-container-high flex items-center justify-center relative">
+<img class="w-full h-full object-cover" data-alt="Cover of Ficciones by Jorge Luis Borges, minimal geometric maze motif, deep ink teal and terracotta textures, vintage archival cloth binding with gold embossed typography, soft studio lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBknhhfR6zyudooOaD5l4KnLu3JIe7qhvLNXnaMdfKTPZ4gxApjI00PbInEBmd5xHCV9DVbeM0zQMKCbNhsG6oxnrzHwj7nfVvwdJM7zTSnBRzBu8h5rn92Anqr1QQ3azF007oy1Bf2gM2Y2EsCpHc-WJAXpmKp7vWm6EMnDntCB6XGkyPcz25fXKgPCN5173Za8XVTtxe0Q4Yh5fmLUKEVs5Wc8pcUUKAi9x3tLEI"/>
+<div class="absolute inset-0 bg-primary/10 mix-blend-multiply pointer-events-none"></div>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-space-xs flex-wrap mb-1">
+<span class="font-headline-sm text-headline-sm text-primary">Ficciones</span>
+<span class="font-caption text-caption text-text-secondary">— Jorge Luis Borges (1944)</span>
+</div>
+<div class="flex items-center gap-space-sm flex-wrap font-caption text-caption text-text-secondary">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[15px] text-accent-teal">shelves</span>
+              Shelf Gamma-7 • Borges Wing
+            </span>
+<span class="text-outline-variant">•</span>
+<span class="text-secondary font-medium">Archival Codex Edition</span>
+<span class="text-outline-variant">•</span>
+<span>Acc. ID: #BOR-1944-AR</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-space-sm self-stretch md:self-auto justify-between md:justify-end">
+<span class="inline-flex items-center gap-1.5 px-space-md py-1 rounded-full bg-secondary-container text-on-secondary-fixed text-label-sm font-label-sm shadow-[0_1px_2px_rgba(38,54,51,0.05)]">
+<span class="material-symbols-outlined text-[15px] text-accent-teal">rate_review</span>
+          Currently Viewing Reader Reviews
+        </span>
+<a class="inline-flex items-center gap-1 text-label-sm font-label-sm text-accent-teal hover:underline decoration-accent-terracotta underline-offset-4" href="#">
+<span>Overview Codex</span>
+<span class="material-symbols-outlined text-[16px]">north_east</span>
+</a>
+</div>
+</div>
+</section>
+<!-- ========================================================================= -->
+<!-- 2. STATE SIMULATION & INTERACTIVE PREVIEW CONTROLLER (Archival Switcher) -->
+<!-- ========================================================================= -->
+<section class="w-full mb-space-xl">
+<div class="bg-surface-inset rounded-xl p-space-md shadow-[inset_2px_2px_5px_rgba(38,54,51,0.08),inset_-2px_-2px_5px_rgba(255,255,255,0.8)]">
+<div class="flex flex-col lg:flex-row lg:items-center justify-between gap-space-sm pb-space-xs">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-accent-teal text-[20px]">tune</span>
+<span class="font-label-md text-label-md text-text-primary tracking-wide">Archival Mode Controller (Phase 5A.1 Prototype)</span>
+<span class="font-caption text-caption text-text-secondary px-2 py-0.5 rounded-full bg-surface-porcelain">Interactive Simulator</span>
+</div>
+<p class="font-caption text-caption text-text-secondary">
+          Toggle preview modes to verify validation states, pending accessions, and unauthenticated gates:
+        </p>
+</div>
+<!-- State Pills -->
+<div class="flex flex-wrap items-center gap-space-xs mt-space-xs" id="state-controller">
+<button class="state-btn px-space-md py-1.5 rounded-full text-label-sm font-label-sm transition-all bg-primary-container text-on-primary shadow-sm" data-mode="standard" type="button">
+          1. Standard Reviews &amp; Composer (Active)
+        </button>
+<button class="state-btn px-space-md py-1.5 rounded-full text-label-sm font-label-sm transition-all bg-surface-porcelain text-text-primary hover:bg-white shadow-[0_1px_3px_rgba(38,54,51,0.05)]" data-mode="composer-busy" type="button">
+          2. Composer In-Progress / Submitting
+        </button>
+<button class="state-btn px-space-md py-1.5 rounded-full text-label-sm font-label-sm transition-all bg-surface-porcelain text-text-primary hover:bg-white shadow-[0_1px_3px_rgba(38,54,51,0.05)]" data-mode="moderation" type="button">
+          3. Moderation Notice (Pending)
+        </button>
+<button class="state-btn px-space-md py-1.5 rounded-full text-label-sm font-label-sm transition-all bg-surface-porcelain text-text-primary hover:bg-white shadow-[0_1px_3px_rgba(38,54,51,0.05)]" data-mode="error" type="button">
+          4. Submission Error State
+        </button>
+<button class="state-btn px-space-md py-1.5 rounded-full text-label-sm font-label-sm transition-all bg-surface-porcelain text-text-primary hover:bg-white shadow-[0_1px_3px_rgba(38,54,51,0.05)]" data-mode="empty" type="button">
+          5. Empty State (No Inscriptions)
+        </button>
+<button class="state-btn px-space-md py-1.5 rounded-full text-label-sm font-label-sm transition-all bg-surface-porcelain text-text-primary hover:bg-white shadow-[0_1px_3px_rgba(38,54,51,0.05)]" data-mode="unauthenticated" type="button">
+          6. Unauthenticated (Sign In Required)
+        </button>
+</div>
+</div>
+</section>
+<!-- ========================================================================= -->
+<!-- 3. REVIEW SECTION HEADER & RATING SYNTHESIS                             -->
+<!-- ========================================================================= -->
+<section class="w-full mb-space-xl" id="synthesis-section">
+<!-- Editorial Title Group -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-space-sm mb-space-lg">
+<div class="max-w-2xl">
+<div class="flex items-center gap-2 mb-space-xs">
+<span class="material-symbols-outlined text-accent-terracotta text-[18px]">history_edu</span>
+<span class="font-caption text-caption uppercase tracking-wider text-accent-terracotta font-medium">Critical Marginalia • Borges Collection</span>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-primary tracking-tight">Reader Contemplations &amp; Critical Folios</h1>
+<p class="font-body-base text-body-base text-on-surface-variant mt-1">
+          Thoughtful marginalia, essays, and reader appraisals preserved in the Akashic catalog.
+        </p>
+</div>
+<div class="flex items-center gap-space-xs shrink-0">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface-container-high text-on-secondary-fixed text-caption font-caption">
+<span class="w-2 h-2 rounded-full bg-accent-teal"></span>
+          Demonstration Data • Public Approved Reviews Only
+        </span>
+</div>
+</div>
+<!-- Rating Synthesis Card -->
+<div class="bg-surface-porcelain rounded-xl p-space-lg shadow-[0_4px_14px_rgba(38,54,51,0.06),0_1px_3px_rgba(38,54,51,0.04)] grid grid-cols-1 lg:grid-cols-12 gap-space-lg items-center">
+<!-- Big Score Column -->
+<div class="lg:col-span-3 flex flex-col items-center lg:items-start text-center lg:text-left justify-center lg:border-r-0">
+<div class="flex items-baseline gap-1">
+<span class="font-headline-lg text-[56px] leading-[60px] font-semibold text-primary">4.8</span>
+<span class="font-headline-sm text-headline-sm text-text-secondary">/ 5</span>
+</div>
+<!-- 5 Star Glyphs -->
+<div aria-label="Rated 4.8 out of 5 stars" class="flex items-center gap-1 my-space-xs text-accent-teal">
+<span class="material-symbols-outlined text-[24px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[24px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[24px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[24px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[24px]" style="font-variation-settings: 'FILL' 1;">star_half</span>
+</div>
+<p class="font-body-sm text-body-sm text-text-secondary mt-1">Based on 38 curated reader inscriptions</p>
+<span class="mt-2 inline-flex items-center gap-1 font-caption text-caption text-accent-terracotta">
+<span class="material-symbols-outlined text-[15px]">verified</span>
+          100% Scholarly Verified
+        </span>
+</div>
+<!-- Rating Breakdown Bars -->
+<div class="lg:col-span-5 flex flex-col gap-2">
+<!-- 5 Star -->
+<div class="flex items-center gap-3 text-caption font-caption text-text-secondary">
+<span class="w-12 text-right">5 Stars</span>
+<div class="flex-1 h-3 rounded-full bg-surface-inset shadow-[inset_1px_1px_3px_rgba(38,54,51,0.1)] overflow-hidden">
+<div class="h-full bg-primary rounded-full transition-all duration-700" style="width: 82%;"></div>
+</div>
+<span class="w-9 text-right font-medium text-text-primary">82%</span>
+</div>
+<!-- 4 Star -->
+<div class="flex items-center gap-3 text-caption font-caption text-text-secondary">
+<span class="w-12 text-right">4 Stars</span>
+<div class="flex-1 h-3 rounded-full bg-surface-inset shadow-[inset_1px_1px_3px_rgba(38,54,51,0.1)] overflow-hidden">
+<div class="h-full bg-accent-teal rounded-full transition-all duration-700" style="width: 12%;"></div>
+</div>
+<span class="w-9 text-right font-medium text-text-primary">12%</span>
+</div>
+<!-- 3 Star -->
+<div class="flex items-center gap-3 text-caption font-caption text-text-secondary">
+<span class="w-12 text-right">3 Stars</span>
+<div class="flex-1 h-3 rounded-full bg-surface-inset shadow-[inset_1px_1px_3px_rgba(38,54,51,0.1)] overflow-hidden">
+<div class="h-full bg-accent-sage rounded-full transition-all duration-700" style="width: 4%;"></div>
+</div>
+<span class="w-9 text-right font-medium text-text-primary">4%</span>
+</div>
+<!-- 2 Star -->
+<div class="flex items-center gap-3 text-caption font-caption text-text-secondary">
+<span class="w-12 text-right">2 Stars</span>
+<div class="flex-1 h-3 rounded-full bg-surface-inset shadow-[inset_1px_1px_3px_rgba(38,54,51,0.1)] overflow-hidden">
+<div class="h-full bg-accent-terracotta rounded-full transition-all duration-700" style="width: 2%;"></div>
+</div>
+<span class="w-9 text-right font-medium text-text-primary">2%</span>
+</div>
+<!-- 1 Star -->
+<div class="flex items-center gap-3 text-caption font-caption text-text-secondary">
+<span class="w-12 text-right">1 Star</span>
+<div class="flex-1 h-3 rounded-full bg-surface-inset shadow-[inset_1px_1px_3px_rgba(38,54,51,0.1)] overflow-hidden">
+<div class="h-full bg-outline-variant rounded-full transition-all duration-700" style="width: 0%;"></div>
+</div>
+<span class="w-9 text-right font-medium text-text-primary">0%</span>
+</div>
+</div>
+<!-- Editorial Consensus & Fast CTA -->
+<div class="lg:col-span-4 flex flex-col justify-between h-full bg-surface-container-low rounded-xl p-space-md">
+<div>
+<div class="flex items-center gap-1.5 font-label-sm text-label-sm text-primary mb-space-xs uppercase tracking-wider">
+<span class="material-symbols-outlined text-[16px] text-accent-terracotta">format_quote</span>
+            Curatorial Synthesis
+          </div>
+<p class="font-body-sm text-body-sm text-on-surface-variant italic leading-relaxed">
+            “Readers praise Borges’ intricate labyrinthine metaphysics, infinite library allegories, and rigorous intellectual depth.”
+          </p>
+</div>
+<div class="mt-space-md pt-space-xs flex items-center justify-between gap-space-sm">
+<a class="w-full inline-flex items-center justify-center gap-2 px-space-lg py-2.5 rounded-full bg-primary hover:bg-primary-container text-on-primary font-label-md text-label-md shadow-[0_4px_12px_rgba(38,54,51,0.12)] transition-all hover:scale-[1.01] active:scale-[0.99]" href="#composer-panel">
+<span class="material-symbols-outlined text-[18px]">edit_note</span>
+            Inscribe Your Review
+          </a>
+</div>
+</div>
+</div>
+</section>
+<!-- ========================================================================= -->
+<!-- 4. WRITE A REVIEW EXPERIENCE (The Folio Composer)                         -->
+<!-- ========================================================================= -->
+<section class="w-full mb-space-xl" id="composer-section">
+<div class="bg-surface-porcelain rounded-xl p-space-lg lg:p-space-xl shadow-[0_4px_14px_rgba(38,54,51,0.06),0_1px_3px_rgba(38,54,51,0.04)] relative overflow-hidden" id="composer-panel">
+<!-- Submitting Loading Overlay (Demonstrated via controller) -->
+<div class="hidden absolute inset-0 bg-surface-glass backdrop-blur-md z-20 flex-col items-center justify-center gap-space-md p-space-xl text-center" id="composer-loading-overlay">
+<div class="w-12 h-12 rounded-full border-4 border-surface-inset border-t-primary animate-spin"></div>
+<div class="max-w-md">
+<span class="font-headline-sm text-headline-sm text-primary block">Sealing Your Contemplation...</span>
+<p class="font-body-sm text-body-sm text-text-secondary mt-1">
+            Applying custodial wax seal and registering digital marginalia into Borges Wing accession staging queue.
+          </p>
+</div>
+</div>
+<!-- Header & Patron Signature -->
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-space-sm pb-space-md border-b-0 mb-space-md">
+<div>
+<span class="font-caption text-caption text-accent-terracotta uppercase tracking-wider font-semibold">Folio Ledger • Reader Expression</span>
+<h2 class="font-headline-md text-headline-md text-primary mt-0.5">Inscribe a Contemplation on Ficciones</h2>
+</div>
+<!-- Patron Identity Indicator -->
+<div class="flex items-center gap-space-sm bg-surface-container-low px-space-md py-1.5 rounded-full shadow-[0_1px_3px_rgba(38,54,51,0.04)] self-start md:self-auto">
+<div class="w-7 h-7 rounded-full bg-primary text-on-primary flex items-center justify-center font-label-sm text-label-sm">
+            ES
+          </div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-text-primary leading-tight flex items-center gap-1">
+              Elena Solanas
+              <span class="material-symbols-outlined text-[14px] text-accent-teal" title="Verified Inscribed Patron">verified</span>
+</span>
+<span class="font-caption text-caption text-text-secondary text-[10px]">Patron #892-BOR • Resident Reader</span>
+</div>
+</div>
+</div>
+<!-- Composer Form -->
+<form class="flex flex-col gap-space-md" id="review-composer-form" onsubmit="event.preventDefault();">
+<!-- Error Banner Container (Shown in Error State) -->
+<div class="hidden p-space-md rounded-xl bg-error-container text-on-error-container shadow-[0_2px_8px_rgba(186,26,26,0.1)]" id="composer-error-banner">
+<div class="flex items-start gap-space-sm">
+<span class="material-symbols-outlined text-[20px] text-error">error</span>
+<div class="flex-1">
+<span class="font-label-md text-label-md font-semibold block">Archival Dispatch Notice (Field Incomplete)</span>
+<p class="font-body-sm text-body-sm mt-0.5">
+                Please provide both a Thesis Headline and your textual contemplation (minimum 80 characters). Scholarly rigor requires thoughtful formulation before accession.
+              </p>
+</div>
+<button class="text-on-error-container/70 hover:text-on-error-container" onclick="document.getElementById('composer-error-banner').classList.add('hidden')" type="button">
+<span class="material-symbols-outlined text-[18px]">close</span>
+</button>
+</div>
+</div>
+<!-- 1. Interactive Star Rating Selector -->
+<div class="flex flex-col gap-1.5">
+<label class="font-label-md text-label-md text-text-primary font-medium flex items-center gap-2">
+<span>Overall Appraisal</span>
+<span class="text-accent-terracotta">*</span>
+</label>
+<div class="flex flex-col sm:flex-row sm:items-center gap-space-md">
+<div aria-label="Select rating" class="flex items-center gap-1 bg-surface-inset p-1.5 rounded-full shadow-[inset_2px_2px_4px_rgba(38,54,51,0.08),inset_-2px_-2px_4px_rgba(255,255,255,0.7)]" id="star-picker" role="radiogroup">
+<button aria-label="1 star" class="star-btn w-9 h-9 rounded-full flex items-center justify-center text-text-secondary hover:text-primary transition-all" data-rating="1" type="button">
+<span class="material-symbols-outlined text-[22px]" style="font-variation-settings: 'FILL' 1;">star</span>
+</button>
+<button aria-label="2 stars" class="star-btn w-9 h-9 rounded-full flex items-center justify-center text-text-secondary hover:text-primary transition-all" data-rating="2" type="button">
+<span class="material-symbols-outlined text-[22px]" style="font-variation-settings: 'FILL' 1;">star</span>
+</button>
+<button aria-label="3 stars" class="star-btn w-9 h-9 rounded-full flex items-center justify-center text-text-secondary hover:text-primary transition-all" data-rating="3" type="button">
+<span class="material-symbols-outlined text-[22px]" style="font-variation-settings: 'FILL' 1;">star</span>
+</button>
+<button aria-label="4 stars" class="star-btn w-9 h-9 rounded-full flex items-center justify-center text-text-secondary hover:text-primary transition-all" data-rating="4" type="button">
+<span class="material-symbols-outlined text-[22px]" style="font-variation-settings: 'FILL' 1;">star</span>
+</button>
+<button aria-label="5 stars" class="star-btn w-9 h-9 rounded-full flex items-center justify-center text-accent-teal transition-all" data-rating="5" type="button">
+<span class="material-symbols-outlined text-[22px]" style="font-variation-settings: 'FILL' 1;">star</span>
+</button>
+</div>
+<span class="font-body-sm text-body-sm text-primary font-medium italic" id="star-rating-label">
+              5 — Foundational Masterpiece
+            </span>
+</div>
+</div>
+<!-- 2. Review Headline / Thesis Input -->
+<div class="flex flex-col gap-1.5">
+<div class="flex items-center justify-between">
+<label class="font-label-md text-label-md text-text-primary font-medium flex items-center gap-1" for="review-headline">
+<span>Review Thesis • Core Epigram</span>
+<span class="text-accent-terracotta">*</span>
+</label>
+<span class="font-caption text-caption text-text-secondary">E.g., “An infinite architecture of mirrors and labyrinths”</span>
+</div>
+<div class="bg-surface-inset rounded-xl p-0.5 shadow-[inset_2px_2px_5px_rgba(38,54,51,0.08),inset_-2px_-2px_5px_rgba(255,255,255,0.8)] transition-all focus-within:ring-2 focus-within:ring-accent-teal/50">
+<input class="w-full bg-transparent px-space-md py-space-sm font-body-base text-body-base text-on-surface placeholder:text-text-secondary focus:outline-none" id="review-headline" placeholder="Inscribe your review thesis..." type="text" value="An infinite architecture of mirrors, paradoxes, and labyrinths"/>
+</div>
+</div>
+<!-- 3. Contemplation Textarea -->
+<div class="flex flex-col gap-1.5">
+<div class="flex items-center justify-between">
+<label class="font-label-md text-label-md text-text-primary font-medium flex items-center gap-1" for="review-body">
+<span>Reader Contemplation (Review Body)</span>
+<span class="text-accent-terracotta">*</span>
+</label>
+<span class="font-caption text-caption text-text-secondary">Markdown &amp; marginalia supported</span>
+</div>
+<div class="bg-surface-inset rounded-xl p-0.5 shadow-[inset_2px_2px_5px_rgba(38,54,51,0.08),inset_-2px_-2px_5px_rgba(255,255,255,0.8)] transition-all focus-within:ring-2 focus-within:ring-accent-teal/50">
+<textarea class="w-full bg-transparent p-space-md font-body-base text-body-base text-on-surface placeholder:text-text-secondary focus:outline-none leading-relaxed" id="review-body" placeholder="Share your critical reflections, textual observations, or thematic interpretations. Avoid spoilers without warning..." rows="5">Borges dismantles the conventional boundaries of narrative fiction. In “The Library of Babel” and “The Garden of Forking Paths”, time and space cease to be linear corridors and instead reveal themselves as fractal cathedrals. Reading this folio reshaped my concept of the relationship between reader, cataloger, and eternity.</textarea>
+</div>
+<div class="flex items-center justify-between text-caption font-caption text-text-secondary px-1">
+<span>Minimum 120 characters for scholarly accession (Currently: 352 characters)</span>
+<span class="text-accent-teal">Scholarly Depth: Exemplary</span>
+</div>
+</div>
+<!-- 4. Literary Tag Badges -->
+<div class="flex flex-col gap-2">
+<label class="font-label-md text-label-md text-text-primary font-medium">Folio Descriptors • Thematic Tags</label>
+<div class="flex flex-wrap items-center gap-space-xs">
+<button class="tag-pill px-space-md py-1 rounded-full text-label-sm font-label-sm bg-primary text-on-primary shadow-sm flex items-center gap-1" type="button">
+<span class="material-symbols-outlined text-[14px]">check</span>
+              Philosophical
+            </button>
+<button class="tag-pill px-space-md py-1 rounded-full text-label-sm font-label-sm bg-primary text-on-primary shadow-sm flex items-center gap-1" type="button">
+<span class="material-symbols-outlined text-[14px]">check</span>
+              Labyrinthine
+            </button>
+<button class="tag-pill px-space-md py-1 rounded-full text-label-sm font-label-sm bg-primary text-on-primary shadow-sm flex items-center gap-1" type="button">
+<span class="material-symbols-outlined text-[14px]">check</span>
+              Metaphysical
+            </button>
+<button class="tag-pill px-space-md py-1 rounded-full text-label-sm font-label-sm bg-surface-container-high text-on-surface-variant hover:bg-secondary-container transition-colors" type="button">
+              + Recommended for Scholars
+            </button>
+<button class="tag-pill px-space-md py-1 rounded-full text-label-sm font-label-sm bg-surface-container-high text-on-surface-variant hover:bg-secondary-container transition-colors" type="button">
+              + Short Story Form
+            </button>
+<button class="tag-pill px-space-md py-1 rounded-full text-label-sm font-label-sm bg-surface-container-high text-on-surface-variant hover:bg-secondary-container transition-colors" type="button">
+              + Latin American Boom
+            </button>
+</div>
+</div>
+<!-- 5. Archival Moderation Notice -->
+<div class="bg-surface-container-low rounded-xl p-space-md flex items-start gap-space-sm">
+<span class="material-symbols-outlined text-accent-terracotta text-[20px] shrink-0 mt-0.5">policy</span>
+<div class="text-caption font-caption text-on-surface-variant leading-relaxed">
+<strong class="text-primary font-semibold">Archival Notice:</strong> In accordance with Akashic Library standards, all reader reviews undergo scholarly custodial verification before public accession to preserve reading room dignity and guard against non-literary spam.
+          </div>
+</div>
+<!-- 6. Form Actions -->
+<div class="flex flex-col sm:flex-row items-center justify-between gap-space-sm pt-space-xs">
+<div class="flex items-center gap-space-xs text-caption font-caption text-text-secondary self-start sm:self-auto">
+<span class="material-symbols-outlined text-[16px] text-accent-teal">format_image_left</span>
+<span>Your patron record remains in good standing</span>
+</div>
+<div class="flex items-center gap-space-sm w-full sm:w-auto justify-end">
+<button class="px-space-md py-2 rounded-full font-label-md text-label-md text-text-primary bg-surface-inset hover:bg-surface-container-high transition-colors" type="button">
+              Save Draft to Desk
+            </button>
+<button class="px-space-lg py-2.5 rounded-full font-label-md text-label-md text-on-primary bg-primary hover:bg-primary-container shadow-[0_4px_12px_rgba(38,54,51,0.12)] transition-all hover:scale-[1.01] active:scale-[0.99] flex items-center gap-2" id="submit-review-btn" type="submit">
+<span class="material-symbols-outlined text-[18px]">verified</span>
+              Submit Contemplation for Archival Review
+            </button>
+</div>
+</div>
+</form>
+</div>
+</section>
+<!-- ========================================================================= -->
+<!-- 5. APPROVED REVIEW CARDS (Curated Reader Inscriptions)                    -->
+<!-- ========================================================================= -->
+<section class="w-full mb-space-xl" id="approved-reviews-section">
+<!-- Filter & Sort Sub-bar -->
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-sm mb-space-md">
+<div class="flex items-center gap-space-xs">
+<span class="font-headline-sm text-headline-sm text-primary">Cataloged Inscriptions</span>
+<span class="font-caption text-caption px-2 py-0.5 rounded-full bg-secondary-container text-on-secondary-fixed font-medium">38 Total</span>
+</div>
+<div class="flex items-center gap-space-sm text-body-sm font-body-sm">
+<span class="text-text-secondary text-caption font-caption">Order by:</span>
+<div class="bg-surface-inset px-3 py-1 rounded-full text-label-sm font-label-sm text-text-primary shadow-[inset_1px_1px_3px_rgba(38,54,51,0.06)] flex items-center gap-1 cursor-pointer">
+<span>Most Resonant Citations</span>
+<span class="material-symbols-outlined text-[16px]">expand_more</span>
+</div>
+</div>
+</div>
+<!-- Review Cards Stack -->
+<div class="flex flex-col gap-space-lg">
+<!-- REVIEW CARD 1 -->
+<article class="bg-surface-porcelain rounded-xl p-space-lg shadow-[0_4px_14px_rgba(38,54,51,0.06),0_1px_3px_rgba(38,54,51,0.04)] transition-all hover:shadow-[0_10px_24px_rgba(38,54,51,0.09),0_3px_8px_rgba(38,54,51,0.04)]">
+<!-- Reviewer Header -->
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-xs pb-space-sm border-b-0 mb-space-xs">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-full bg-primary text-on-primary flex items-center justify-center font-label-md text-label-md font-semibold">
+              MA
+            </div>
+<div>
+<div class="flex items-center gap-1.5 flex-wrap">
+<span class="font-label-md text-label-md text-text-primary font-bold">Marcus Aureliano</span>
+<span class="px-2 py-0.2 rounded-full bg-secondary-container text-on-secondary-fixed font-caption text-[11px] font-semibold">Verified Custodian</span>
+</div>
+<span class="font-caption text-caption text-text-secondary block">Patron since 2018 • Inscribed on 14 October 2024</span>
+</div>
+</div>
+<!-- Star Badge -->
+<div class="flex items-center gap-1 text-accent-teal self-start sm:self-auto">
+<div aria-label="5 out of 5 stars" class="flex items-center">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<span class="font-label-sm text-label-sm font-semibold ml-1">5.0</span>
+</div>
+</div>
+<!-- Review Content -->
+<div class="mt-space-xs">
+<h3 class="font-headline-sm text-headline-sm text-primary mb-space-xs">
+            The architecture of eternity disguised as short prose
+          </h3>
+<p class="font-body-base text-body-base text-on-surface-variant leading-relaxed">
+            Reading Ficciones is less like consuming literature and more like discovering an ancient, forgotten calculus for reality. “The Library of Babel” remains the most haunting distillation of human curiosity and existential dread ever committed to parchment. Essential reading for anyone interested in spatial poetics.
+          </p>
+</div>
+<!-- Badges & Patron Actions Footer -->
+<div class="mt-space-md pt-space-sm flex flex-col sm:flex-row sm:items-center justify-between gap-space-sm text-caption font-caption text-text-secondary">
+<div class="flex items-center gap-space-xs flex-wrap">
+<span class="px-2.5 py-0.5 rounded-full bg-surface-container-high text-on-surface-variant font-label-sm text-[12px]">Labyrinthine</span>
+<span class="px-2.5 py-0.5 rounded-full bg-surface-container-high text-on-surface-variant font-label-sm text-[12px]">Library of Babel</span>
+<span class="px-2.5 py-0.5 rounded-full bg-surface-container-high text-on-surface-variant font-label-sm text-[12px]">Spatial Poetics</span>
+</div>
+<div class="flex items-center gap-space-md">
+<button class="citation-btn flex items-center gap-1.5 text-accent-teal hover:text-primary transition-colors cursor-pointer" onclick="toggleCitation(this)" type="button">
+<span class="material-symbols-outlined text-[16px]">bookmark_heart</span>
+<span class="citation-count font-medium">24 patrons found this reflection resonant</span>
+</button>
+<span class="text-outline-variant">•</span>
+<button class="hover:text-text-primary transition-colors" type="button">Share Citation</button>
+<span class="text-outline-variant">•</span>
+<button class="hover:text-error transition-colors" type="button">Report</button>
+</div>
+</div>
+</article>
+<!-- REVIEW CARD 2 -->
+<article class="bg-surface-porcelain rounded-xl p-space-lg shadow-[0_4px_14px_rgba(38,54,51,0.06),0_1px_3px_rgba(38,54,51,0.04)] transition-all hover:shadow-[0_10px_24px_rgba(38,54,51,0.09),0_3px_8px_rgba(38,54,51,0.04)]">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-xs pb-space-sm border-b-0 mb-space-xs">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-full bg-accent-teal text-on-primary flex items-center justify-center font-label-md text-label-md font-semibold">
+              CB
+            </div>
+<div>
+<div class="flex items-center gap-1.5 flex-wrap">
+<span class="font-label-md text-label-md text-text-primary font-bold">Clara Beauchamp</span>
+<span class="px-2 py-0.2 rounded-full bg-surface-container text-primary font-caption text-[11px] font-semibold">Scholar of Speculative Thought</span>
+</div>
+<span class="font-caption text-caption text-text-secondary block">Patron since 2021 • Inscribed on 28 September 2024</span>
+</div>
+</div>
+<div class="flex items-center gap-1 text-accent-teal self-start sm:self-auto">
+<div aria-label="5 out of 5 stars" class="flex items-center">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<span class="font-label-sm text-label-sm font-semibold ml-1">5.0</span>
+</div>
+</div>
+<div class="mt-space-xs">
+<h3 class="font-headline-sm text-headline-sm text-primary mb-space-xs">
+            A masterclass in compression and philosophical rigor
+          </h3>
+<p class="font-body-base text-body-base text-on-surface-variant leading-relaxed">
+            Every paragraph contains enough conceptual density to sustain an entire trilogy. Borges does not waste a single syllable. “The Garden of Forking Paths” in particular anticipates quantum mechanics and multiversal branching with astonishing prescience.
+          </p>
+</div>
+<div class="mt-space-md pt-space-sm flex flex-col sm:flex-row sm:items-center justify-between gap-space-sm text-caption font-caption text-text-secondary">
+<div class="flex items-center gap-space-xs flex-wrap">
+<span class="px-2.5 py-0.5 rounded-full bg-surface-container-high text-on-surface-variant font-label-sm text-[12px]">Prescience</span>
+<span class="px-2.5 py-0.5 rounded-full bg-surface-container-high text-on-surface-variant font-label-sm text-[12px]">Quantum Allegory</span>
+</div>
+<div class="flex items-center gap-space-md">
+<button class="citation-btn flex items-center gap-1.5 text-accent-teal hover:text-primary transition-colors cursor-pointer" onclick="toggleCitation(this)" type="button">
+<span class="material-symbols-outlined text-[16px]">bookmark_heart</span>
+<span class="citation-count font-medium">19 patrons found this reflection resonant</span>
+</button>
+<span class="text-outline-variant">•</span>
+<button class="hover:text-text-primary transition-colors" type="button">Share Citation</button>
+<span class="text-outline-variant">•</span>
+<button class="hover:text-error transition-colors" type="button">Report</button>
+</div>
+</div>
+</article>
+<!-- REVIEW CARD 3 -->
+<article class="bg-surface-porcelain rounded-xl p-space-lg shadow-[0_4px_14px_rgba(38,54,51,0.06),0_1px_3px_rgba(38,54,51,0.04)] transition-all hover:shadow-[0_10px_24px_rgba(38,54,51,0.09),0_3px_8px_rgba(38,54,51,0.04)]">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-xs pb-space-sm border-b-0 mb-space-xs">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-full bg-secondary text-on-primary flex items-center justify-center font-label-md text-label-md font-semibold">
+              JV
+            </div>
+<div>
+<div class="flex items-center gap-1.5 flex-wrap">
+<span class="font-label-md text-label-md text-text-primary font-bold">Julian Vance</span>
+<span class="px-2 py-0.2 rounded-full bg-surface-inset text-text-secondary font-caption text-[11px] font-medium">Inscribed Reader</span>
+</div>
+<span class="font-caption text-caption text-text-secondary block">Patron since 2023 • Inscribed on 12 August 2024</span>
+</div>
+</div>
+<div class="flex items-center gap-1 text-accent-teal self-start sm:self-auto">
+<div aria-label="4 out of 5 stars" class="flex items-center">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[18px] text-outline-variant">star</span>
+</div>
+<span class="font-label-sm text-label-sm font-semibold ml-1">4.0</span>
+</div>
+</div>
+<div class="mt-space-xs">
+<h3 class="font-headline-sm text-headline-sm text-primary mb-space-xs">
+            Dazzling intellect, though intentionally austere
+          </h3>
+<p class="font-body-base text-body-base text-on-surface-variant leading-relaxed">
+            While Borges operates at the absolute peak of conceptual ingenuity, the prose maintains a deliberately formal distance. It is a work to be admired with an analytical lens rather than emotional immersion. Still, an indispensable cornerstone of world literature.
+          </p>
+</div>
+<div class="mt-space-md pt-space-sm flex flex-col sm:flex-row sm:items-center justify-between gap-space-sm text-caption font-caption text-text-secondary">
+<div class="flex items-center gap-space-xs flex-wrap">
+<span class="px-2.5 py-0.5 rounded-full bg-surface-container-high text-on-surface-variant font-label-sm text-[12px]">Analytical</span>
+<span class="px-2.5 py-0.5 rounded-full bg-surface-container-high text-on-surface-variant font-label-sm text-[12px]">Formalism</span>
+</div>
+<div class="flex items-center gap-space-md">
+<button class="citation-btn flex items-center gap-1.5 text-accent-teal hover:text-primary transition-colors cursor-pointer" onclick="toggleCitation(this)" type="button">
+<span class="material-symbols-outlined text-[16px]">bookmark_heart</span>
+<span class="citation-count font-medium">11 patrons found this reflection resonant</span>
+</button>
+<span class="text-outline-variant">•</span>
+<button class="hover:text-text-primary transition-colors" type="button">Share Citation</button>
+<span class="text-outline-variant">•</span>
+<button class="hover:text-error transition-colors" type="button">Report</button>
+</div>
+</div>
+</article>
+</div>
+</section>
+<!-- ========================================================================= -->
+<!-- 6. REUSABLE FEEDBACK & STATE PANELS (Showcase Grid)                      -->
+<!-- ========================================================================= -->
+<section class="w-full mb-space-xl" id="state-showcase-section">
+<div class="mb-space-md">
+<div class="flex items-center gap-2 mb-1">
+<span class="material-symbols-outlined text-accent-terracotta text-[18px]">view_quilt</span>
+<span class="font-caption text-caption uppercase tracking-wider text-accent-terracotta font-medium">Archival UX Matrix • Secondary States</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-primary">Library Moderation &amp; Authentication States</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+        Architectural states for review submission lifecycle, permission barriers, and zero-data scenarios.
+      </p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-lg">
+<!-- Panel A: Submission Awaiting Moderation -->
+<div class="bg-surface-porcelain rounded-xl p-space-lg shadow-[0_4px_14px_rgba(38,54,51,0.06),0_1px_3px_rgba(38,54,51,0.04)] flex flex-col justify-between border-l-4 border-l-accent-terracotta" id="state-panel-moderation">
+<div>
+<div class="flex items-center justify-between mb-space-sm">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-tertiary-fixed text-on-tertiary-fixed font-caption text-caption font-semibold">
+<span class="material-symbols-outlined text-[14px]">hourglass_top</span>
+              Pending Custodial Accession
+            </span>
+<span class="font-caption text-caption text-text-secondary">Status: En Route to Codex</span>
+</div>
+<h4 class="font-headline-sm text-headline-sm text-primary mb-space-xs">Contemplation Submitted &amp; Sealed</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+            Your review for <strong class="text-primary">Ficciones</strong> has been sealed and dispatched to the Curatorial Guild. Upon verification, it will be accessioned into the public folio.
+          </p>
+</div>
+<div class="mt-space-md pt-space-sm flex items-center justify-between font-caption text-caption text-text-secondary border-t-0 bg-surface-container-low p-space-sm rounded-lg">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[15px] text-accent-teal">schedule</span>
+            Est. Review: ~12 Archival Hours
+          </span>
+<span class="text-accent-terracotta font-medium">Dispatch ID: #REV-892-BOR</span>
+</div>
+</div>
+<!-- Panel B: Authentication Required State -->
+<div class="bg-surface-porcelain rounded-xl p-space-lg shadow-[0_4px_14px_rgba(38,54,51,0.06),0_1px_3px_rgba(38,54,51,0.04)] flex flex-col justify-between" id="state-panel-unauth">
+<div>
+<div class="flex items-center justify-between mb-space-sm">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface-inset text-text-primary font-caption text-caption font-semibold">
+<span class="material-symbols-outlined text-[14px]">lock</span>
+              Patron Ledger Required
+            </span>
+<span class="font-caption text-caption text-text-secondary">Security Protocol Gamma</span>
+</div>
+<h4 class="font-headline-sm text-headline-sm text-primary mb-space-xs">Sign In to Inscribe Contemplations</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+            Personal marginalia and public contemplations require an inscribed patron ledger. Authenticate or create your patron account to leave a review.
+          </p>
+</div>
+<div class="mt-space-md pt-space-xs flex items-center gap-space-sm">
+<button class="px-space-md py-2 rounded-full font-label-sm text-label-sm bg-primary text-on-primary hover:bg-primary-container transition-all flex items-center gap-1.5 shadow-sm" type="button">
+<span class="material-symbols-outlined text-[16px]">key</span>
+            Authenticate &amp; Inscribe
+          </button>
+<button class="px-space-md py-2 rounded-full font-label-sm text-label-sm text-text-primary bg-surface-inset hover:bg-surface-container-high transition-colors" type="button">
+            Request Reading Card
+          </button>
+</div>
+</div>
+<!-- Panel C: Empty State (No Approved Reviews Yet) -->
+<div class="bg-surface-porcelain rounded-xl p-space-lg shadow-[0_4px_14px_rgba(38,54,51,0.06),0_1px_3px_rgba(38,54,51,0.04)] flex flex-col justify-between" id="state-panel-empty">
+<div class="flex items-start gap-space-md">
+<div class="w-12 h-12 rounded-full bg-secondary-container text-on-secondary-fixed flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[24px]">history_edu</span>
+</div>
+<div>
+<span class="inline-flex items-center gap-1 font-caption text-caption text-accent-terracotta uppercase tracking-wider font-semibold mb-1">
+              Virgin Folio Page
+            </span>
+<h4 class="font-headline-sm text-headline-sm text-primary mb-space-xs">The First Inscription Awaits</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+              No reader reviews have yet been accessioned for this folio. Be the first patron to share your critical contemplation and enrich the Borges collection.
+            </p>
+</div>
+</div>
+<div class="mt-space-md pt-space-xs flex items-center gap-space-sm pl-16">
+<a class="px-space-md py-2 rounded-full font-label-sm text-label-sm bg-primary text-on-primary hover:bg-primary-container transition-all inline-flex items-center gap-1.5 shadow-sm" href="#composer-panel">
+<span class="material-symbols-outlined text-[16px]">edit</span>
+            Be the First to Inscribe
+          </a>
+</div>
+</div>
+<!-- Panel D: Submission Failure / Field Validation -->
+<div class="bg-surface-porcelain rounded-xl p-space-lg shadow-[0_4px_14px_rgba(38,54,51,0.06),0_1px_3px_rgba(38,54,51,0.04)] flex flex-col justify-between border-l-4 border-l-error" id="state-panel-error">
+<div>
+<div class="flex items-center justify-between mb-space-sm">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-error-container text-on-error-container font-caption text-caption font-semibold">
+<span class="material-symbols-outlined text-[14px]">warning</span>
+              Validation • Seal Interrupted
+            </span>
+<span class="font-caption text-caption text-error font-medium">ERR_422_SCHOLARLY_DEFICIT</span>
+</div>
+<h4 class="font-headline-sm text-headline-sm text-primary mb-space-xs">Submission Integrity Check Failed</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+            Your draft lacks a defined Review Thesis and the commentary length falls short of minimum analytical thresholds. Please expand your textual rationale before resubmitting.
+          </p>
+</div>
+<div class="mt-space-md pt-space-xs flex items-center gap-space-sm">
+<button class="px-space-md py-2 rounded-full font-label-sm text-label-sm bg-surface-inset hover:bg-surface-container-high text-on-surface transition-colors flex items-center gap-1" onclick="focusComposer()" type="button">
+<span class="material-symbols-outlined text-[16px]">edit_note</span>
+            Return to Folio Composer
+          </button>
+</div>
+</div>
+</div>
+</section>
+<!-- ========================================================================= -->
+<!-- 7. COLOPHON REFERENCE & PHASE 5A.1 FOOTNOTE                              -->
+<!-- ========================================================================= -->
+<section class="w-full pt-space-md border-t-0 text-center">
+<div class="flex flex-col items-center justify-center gap-1 font-caption text-caption text-text-secondary">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-accent-teal"></span>
+<span class="font-semibold text-text-primary">Akashic Library Book Reviews • Phase 5A.1 Design Reference</span>
+<span class="text-outline-variant">•</span>
+<span>Zero E-Commerce or Checkout UI</span>
+</div>
+<p class="text-[11px] text-text-secondary">
+        Soft Editorial Neumorphism System • Lora Serifs with Inter Operational Typography • Designed for Deep Reading Rooms
+      </p>
+</div>
+</section>
+</div>
+<script>
+  // Interactive Simulation Controller
+  (function initReviewsExperience() {
+    const buttons = document.querySelectorAll('#state-controller .state-btn');
+    const loadingOverlay = document.getElementById('composer-loading-overlay');
+    const errorBanner = document.getElementById('composer-error-banner');
+    const composerSection = document.getElementById('composer-section');
+    const reviewsSection = document.getElementById('approved-reviews-section');
+    const synthesisSection = document.getElementById('synthesis-section');
+    
+    // Star Picker Interaction
+    const starButtons = document.querySelectorAll('#star-picker .star-btn');
+    const starLabel = document.getElementById('star-rating-label');
+    const ratingLabels = {
+      1: "1 — Poor Scholarly Rigor",
+      2: "2 — Modest Value with Reservations",
+      3: "3 — Competent Commentary",
+      4: "4 — Exceptional Intellectual Density",
+      5: "5 — Foundational Masterpiece"
+    };
+
+    starButtons.forEach(btn => {
+      btn.addEventListener('click', function() {
+        const rating = parseInt(this.getAttribute('data-rating'), 10);
+        starButtons.forEach(b => {
+          const bRating = parseInt(b.getAttribute('data-rating'), 10);
+          if (bRating <= rating) {
+            b.classList.add('text-accent-teal');
+            b.classList.remove('text-text-secondary');
+          } else {
+            b.classList.remove('text-accent-teal');
+            b.classList.add('text-text-secondary');
+          }
+        });
+        starLabel.textContent = ratingLabels[rating] || (rating + " Stars");
+      });
+    });
+
+    // Tag pills toggle
+    document.querySelectorAll('.tag-pill').forEach(pill => {
+      pill.addEventListener('click', function() {
+        if (this.textContent.trim().startsWith('+')) {
+          const text = this.textContent.replace('+', '').trim();
+          this.className = "tag-pill px-space-md py-1 rounded-full text-label-sm font-label-sm bg-primary text-on-primary shadow-sm flex items-center gap-1";
+          this.innerHTML = '<span class="material-symbols-outlined text-[14px]">check</span> ' + text;
+        } else if (this.innerHTML.includes('check')) {
+          const text = this.textContent.replace('check', '').trim();
+          this.className = "tag-pill px-space-md py-1 rounded-full text-label-sm font-label-sm bg-surface-container-high text-on-surface-variant hover:bg-secondary-container transition-colors";
+          this.textContent = '+ ' + text;
+        }
+      });
+    });
+
+    // Switch State Controller
+    buttons.forEach(btn => {
+      btn.addEventListener('click', function() {
+        const mode = this.getAttribute('data-mode');
+        
+        // Reset button states
+        buttons.forEach(b => {
+          b.className = "state-btn px-space-md py-1.5 rounded-full text-label-sm font-label-sm transition-all bg-surface-porcelain text-text-primary hover:bg-white shadow-[0_1px_3px_rgba(38,54,51,0.05)]";
+        });
+        this.className = "state-btn px-space-md py-1.5 rounded-full text-label-sm font-label-sm transition-all bg-primary-container text-on-primary shadow-sm";
+
+        // Reset visibility
+        loadingOverlay.classList.add('hidden');
+        loadingOverlay.classList.remove('flex');
+        errorBanner.classList.add('hidden');
+        composerSection.style.display = 'block';
+        reviewsSection.style.display = 'block';
+        synthesisSection.style.display = 'block';
+
+        if (mode === 'standard') {
+          // Standard full state
+        } else if (mode === 'composer-busy') {
+          loadingOverlay.classList.remove('hidden');
+          loadingOverlay.classList.add('flex');
+          composerSection.scrollIntoView({ behavior: 'smooth' });
+        } else if (mode === 'moderation') {
+          document.getElementById('state-panel-moderation').scrollIntoView({ behavior: 'smooth' });
+          document.getElementById('state-panel-moderation').classList.add('ring-2', 'ring-accent-terracotta');
+          setTimeout(() => {
+            document.getElementById('state-panel-moderation').classList.remove('ring-2', 'ring-accent-terracotta');
+          }, 2000);
+        } else if (mode === 'error') {
+          errorBanner.classList.remove('hidden');
+          composerSection.scrollIntoView({ behavior: 'smooth' });
+        } else if (mode === 'empty') {
+          reviewsSection.style.display = 'none';
+          document.getElementById('state-panel-empty').scrollIntoView({ behavior: 'smooth' });
+          document.getElementById('state-panel-empty').classList.add('ring-2', 'ring-primary');
+          setTimeout(() => {
+            document.getElementById('state-panel-empty').classList.remove('ring-2', 'ring-primary');
+          }, 2000);
+        } else if (mode === 'unauthenticated') {
+          document.getElementById('state-panel-unauth').scrollIntoView({ behavior: 'smooth' });
+          document.getElementById('state-panel-unauth').classList.add('ring-2', 'ring-accent-teal');
+          setTimeout(() => {
+            document.getElementById('state-panel-unauth').classList.remove('ring-2', 'ring-accent-teal');
+          }, 2000);
+        }
+      });
+    });
+
+    // Form submit simulation
+    const form = document.getElementById('review-composer-form');
+    form.addEventListener('submit', function() {
+      loadingOverlay.classList.remove('hidden');
+      loadingOverlay.classList.add('flex');
+      setTimeout(() => {
+        loadingOverlay.classList.add('hidden');
+        loadingOverlay.classList.remove('flex');
+        document.getElementById('state-panel-moderation').scrollIntoView({ behavior: 'smooth' });
+      }, 1500);
+    });
+
+  })();
+
+  // Citation resonant counter toggle
+  function toggleCitation(btn) {
+    const countSpan = btn.querySelector('.citation-count');
+    const current = parseInt(countSpan.textContent, 10);
+    if (!btn.getAttribute('data-resonated')) {
+      btn.setAttribute('data-resonated', 'true');
+      btn.classList.add('font-semibold');
+      countSpan.textContent = (current + 1) + ' patrons found this reflection resonant';
+    } else {
+      btn.removeAttribute('data-resonated');
+      btn.classList.remove('font-semibold');
+      countSpan.textContent = (current - 1) + ' patrons found this reflection resonant';
+    }
+  }
+
+  function focusComposer() {
+    const el = document.getElementById('review-headline');
+    if (el) {
+      el.focus();
+      el.scrollIntoView({ behavior: 'smooth' });
+    }
+  }
+</script></div></main><footer class="w-full bg-surface-container-low shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="max-w-[1360px] mx-auto px-margin-mobile lg:px-margin py-space-xl"><div class="grid grid-cols-1 md:grid-cols-3 gap-gutter mb-space-xl"><div class="flex flex-col gap-space-sm"><span class="font-headline-sm text-headline-sm text-primary">Akashic Library</span><p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">A curated refuge for contemplative reading, speculative archival exploration, and deep literary scholarship. Safeguarding physical memory through digital reverence.</p><div class="flex items-center gap-space-sm mt-space-xs"><span class="font-caption text-caption text-text-secondary">Colophon Edition 4.2</span><span class="text-outline-variant">•</span><span class="font-caption text-caption text-text-secondary">Borges Wing</span></div></div><div class="flex flex-col gap-space-sm"><span class="font-label-md text-label-md text-primary tracking-wide uppercase">Collections &amp; Folios</span><ul class="flex flex-col gap-space-xs font-body-sm text-body-sm text-on-surface-variant"><li class="hover:text-on-surface transition-colors cursor-pointer">Philosophical Fables &amp; Labyrinths</li><li class="hover:text-on-surface transition-colors cursor-pointer">Universal History of Infamy</li><li class="hover:text-on-surface transition-colors cursor-pointer">Archival Argentine Fiction</li><li class="hover:text-on-surface transition-colors cursor-pointer">The Aleph Critical Codex</li><li class="hover:text-on-surface transition-colors cursor-pointer">Annotated First Printings</li></ul></div><div class="flex flex-col gap-space-sm"><span class="font-label-md text-label-md text-primary tracking-wide uppercase">Library Colophon</span><div class="bg-surface-porcelain p-space-md rounded-xl shadow-[0_4px_12px_rgba(38,54,51,0.06),0_1px_3px_rgba(38,54,51,0.04)]"><p class="font-body-sm text-body-sm text-on-surface-variant italic mb-space-xs">"I have always imagined that Paradise will be a kind of library."</p><span class="font-caption text-caption text-accent-terracotta">— Jorge Luis Borges, San Martín, 1955</span><div class="mt-space-md pt-space-xs flex items-center justify-between font-caption text-caption text-text-secondary"><span class="flex items-center gap-space-xs"><span class="material-symbols-outlined text-[16px] text-accent-teal">menu_book</span> Open Shelf Protocol</span><span>Typeface: Lora &amp; Inter</span></div></div></div></div><div class="pt-space-md flex flex-col md:flex-row items-center justify-between gap-space-sm font-caption text-caption text-text-secondary"><span>© Akashic Literary Holdings. Built for reflective bibliophiles.</span><div class="flex items-center gap-space-md"><span class="hover:text-on-surface cursor-pointer transition-colors">Patron Privacy Charter</span><span class="hover:text-on-surface cursor-pointer transition-colors">Archival Preservation Code</span><span class="hover:text-on-surface cursor-pointer transition-colors">Librarian Access</span></div></div></div></footer></body></html>

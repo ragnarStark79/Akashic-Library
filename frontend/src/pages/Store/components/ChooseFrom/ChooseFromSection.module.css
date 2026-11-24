@@ -1,0 +1,638 @@
+/* Choose From / Category Showcase — Stage 1C.1 Visual Fidelity Correction */
+
+.genreSection {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  background-color: var(--store-color-bright-pink, #FD48F2);
+  border-radius: 7.5rem;
+  margin: 0;
+  clip-path: inset(0 round 7.5rem);
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.genreContainer {
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  position: relative;
+  overflow-x: clip;
+}
+
+.genreInner {
+  padding-bottom: 7.5rem;
+}
+
+/* ── Section Header ── */
+.genreHeader {
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  padding-top: 7.5rem;
+  display: flex;
+  position: relative;
+}
+
+.genreTitle {
+  font-family: var(--store-font-champ, 'Degular', sans-serif);
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: #000000;
+  margin: 0;
+}
+
+.genreTextWrap {
+  opacity: 0.85;
+}
+
+.genreTextOuter {
+  position: absolute;
+  top: 8.86rem;
+  left: 7.4rem;
+  transform: rotate(-11deg);
+}
+
+.genreText {
+  font-family: var(--store-font-handwritten, 'Hello Organichand Webfont', cursive);
+  color: var(--store-color-violet, #3B308F);
+  text-align: center;
+  max-width: 14ch;
+  font-size: 1.5rem;
+  /* 24px matching 2em at 12px reference */
+  line-height: 1.0;
+  letter-spacing: -0.02em;
+  margin: 0;
+  user-select: none;
+}
+
+/* ── Categories List Wrap ── */
+.genreListWrap {
+  position: relative;
+  margin-top: 2rem;
+}
+
+.genreList {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* Category row height (6rem = 96px) matching authentic reference */
+.genreListItem {
+  height: 6rem;
+  width: 100%;
+  max-width: 1400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  position: relative;
+  text-decoration: none;
+  box-sizing: border-box;
+  padding: 0;
+  white-space: nowrap;
+}
+
+/* Pointer events none on the visual wrapper isolates accordion transforms from hit detection */
+.genreLink {
+  pointer-events: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  position: relative;
+  color: #000000;
+  white-space: nowrap;
+  /* Desktop reference mandatory one-line rendering */
+  user-select: none;
+  transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.genreLinkDefault {
+  font-family: var(--store-font-champ, 'Degular', sans-serif);
+  font-size: 6rem;
+  /* 96px at 1440px desktop */
+  font-weight: 800;
+  line-height: 0.8;
+  letter-spacing: -0.01em;
+  color: #000000;
+  will-change: transform, filter, opacity;
+  transition:
+    opacity 0.15s 0.05s ease,
+    transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
+    filter 0.25s 0.05s ease;
+}
+
+.genreLinkHover {
+  font-family: var(--store-font-handwritten, 'Hello Organichand Webfont', cursive);
+  font-size: 7.5rem;
+  /* 120px at 1440px desktop */
+  font-weight: 400;
+  line-height: 0.8;
+  letter-spacing: -0.01em;
+  position: absolute;
+  margin-top: 2%;
+  color: #000000;
+  opacity: 0;
+  transform: scale(0.75, 1.25);
+  filter: blur(0.0625rem);
+  will-change: transform, filter, opacity;
+  transition:
+    opacity 0.15s 0.05s ease,
+    transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
+    filter 0.25s 0.05s ease;
+}
+
+/* Active / Hover transformation on item */
+.genreListItem:hover .genreLinkDefault,
+.genreListItem:focus-visible .genreLinkDefault {
+  filter: blur(0.0625rem);
+  opacity: 0;
+  transform: scale(0.75, 1.25);
+  transition:
+    opacity 0.15s 0.05s ease,
+    transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
+    filter 0.25s ease;
+}
+
+.genreListItem:hover .genreLinkHover,
+.genreListItem:focus-visible .genreLinkHover {
+  opacity: 1;
+  transform: scale(1, 1);
+  filter: blur(0);
+  transition:
+    opacity 0.15s 0.05s ease,
+    transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
+    filter 0.25s ease;
+}
+
+/* Accordion dynamic neighbor displacement */
+.genreListItem:hover+.genreListItem .genreLink {
+  transform: translateY(1.5rem);
+}
+
+.genreListItem:hover+.genreListItem+.genreListItem .genreLink {
+  transform: translateY(0.5rem);
+}
+
+.genreListItem:has(+ .genreListItem:hover) .genreLink {
+  transform: translateY(-1.5rem);
+}
+
+.genreListItem:has(+ .genreListItem + .genreListItem:hover) .genreLink {
+  transform: translateY(-0.5rem);
+}
+
+.genreListItem:focus {
+  outline: none;
+}
+
+/* ── Floating Book Holders ── */
+.genreHolding {
+  pointer-events: none;
+  width: 100%;
+  height: 6rem;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: calc(var(--start-index, 0) * 6rem);
+  z-index: 10;
+}
+
+.genreScope {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform: translateY(calc(var(--active-index, 0) * 6rem));
+  transition: transform var(--translate-speed, 0.2s) cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.genreHolder {
+  aspect-ratio: 272 / 419;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+}
+
+/* Organic Asymmetric Four Corner Floating Placements */
+.genreHolder:nth-of-type(1) {
+  /* Top Left: fanned slightly further out and elevated */
+  width: 13.25rem;
+  z-index: 3;
+  transform: translate(calc(-162% - (var(--start-width, 220) * 0.5px)), -108%);
+}
+
+.genreHolder:nth-of-type(2) {
+  /* Top Right: closer in and elevated */
+  width: 12.5rem;
+  z-index: 2;
+  transform: translate(calc(48% + (var(--start-width, 220) * 0.5px)), -96%);
+}
+
+.genreHolder:nth-of-type(3) {
+  /* Bottom Left: closer in and overlapping bottom corner */
+  width: 12.75rem;
+  z-index: 4;
+  transform: translate(calc(-142% - (var(--start-width, 220) * 0.5px)), 46%);
+}
+
+.genreHolder:nth-of-type(4) {
+  /* Bottom Right: fanned outward */
+  width: 13.5rem;
+  z-index: 1;
+  transform: translate(calc(58% + (var(--start-width, 220) * 0.5px)), 52%);
+}
+
+.genreBox {
+  isolation: isolate;
+  display: grid;
+  width: 100%;
+  height: 100%;
+  transform:
+    translate(calc(var(--x, 0) * 1%), calc(var(--y, 0) * 1%)) rotate(calc(var(--r, 0) * 1deg)) translate(calc(var(--px, 0) * var(--prx, 0%)), calc(var(--py, 0) * var(--pry, 0%)));
+  transition: transform 0.65s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transform-origin: center center;
+  will-change: transform;
+}
+
+.genreHolder:nth-of-type(1) .genreBox {
+  --prx: 15%;
+  --pry: 10%;
+}
+
+.genreHolder:nth-of-type(2) .genreBox {
+  --prx: -15%;
+  --pry: -10%;
+}
+
+.genreHolder:nth-of-type(3) .genreBox {
+  --prx: 10%;
+  --pry: 12.5%;
+}
+
+.genreHolder:nth-of-type(4) .genreBox {
+  --prx: -10%;
+  --pry: -12.5%;
+}
+
+.genreCard {
+  width: 100%;
+  height: 100%;
+  transform-origin: center center;
+  opacity: 0;
+  transform: scale(0);
+  will-change: transform, opacity;
+}
+
+.genreImg {
+  display: block;
+  object-fit: cover;
+  border-radius: 0.875rem;
+  width: 100%;
+  height: 100%;
+  opacity: 1;
+  box-shadow: 0 0 0 0.25rem #FFFFFF, 0 16px 36px rgba(0, 0, 0, 0.22);
+  user-select: none;
+  pointer-events: none;
+}
+
+/* ── Easter Egg Popup Button ── */
+.genreEasterEgg {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 2rem;
+  position: relative;
+}
+
+.popUpWrap {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.popUpButton {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3.75rem;
+  height: 3.75rem;
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.popUpButton:hover {
+  transform: scale(1.1) rotate(6deg);
+}
+
+.popUpButtonSvg {
+  width: 100%;
+  height: 100%;
+  color: #000000;
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.08));
+}
+
+.popUpOverlay {
+  position: absolute;
+  bottom: calc(100% + 1.25rem);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 30;
+  filter: drop-shadow(0 16px 40px rgba(0, 0, 0, 0.16));
+  animation: popUpBounce 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+@keyframes popUpBounce {
+  from {
+    opacity: 0;
+    transform: translateY(14px) scale(0.9);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.popUpEars {
+  display: flex;
+  justify-content: space-between;
+  width: 5rem;
+  margin-bottom: -0.5rem;
+  position: relative;
+  z-index: 2;
+}
+
+.popUpLeftEar {
+  width: 2.75rem;
+  height: 2.8rem;
+  color: #FFFFFF;
+}
+
+.popUpRightEar {
+  width: 1.8rem;
+  height: 5rem;
+  color: #FFFFFF;
+  margin-top: -2.2rem;
+}
+
+.popUpCard {
+  background-color: #FFFFFF;
+  border-radius: 1.75rem;
+  padding: 1.5rem 2.25rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  position: relative;
+  white-space: nowrap;
+}
+
+.popUpCardTitle {
+  font-family: var(--store-font-champ, 'Degular', sans-serif);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #000000;
+  margin: 0;
+}
+
+.popUpAction {
+  display: flex;
+}
+
+.buttonAlt {
+  display: inline-flex;
+  align-items: center;
+  height: 2.45rem;
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
+  background: transparent;
+  padding: 0;
+  user-select: none;
+  font-family: var(--store-font-body, 'Degular', sans-serif);
+  font-weight: 700;
+  position: relative;
+}
+
+.buttonAltTextWrap {
+  display: grid;
+  height: 100%;
+  align-items: center;
+  transform-origin: center left;
+  transition: transform 0.25s cubic-bezier(0.32, 0.72, 0, 1);
+}
+
+.buttonAltIconWrap {
+  display: grid;
+  width: 2.45rem;
+  height: 2.45rem;
+  margin-left: -0.1rem;
+  transform-origin: center right;
+  transition: transform 0.25s cubic-bezier(0.32, 0.72, 0, 1);
+}
+
+.buttonAltBg {
+  grid-area: 1 / 1;
+  width: 100%;
+  height: 100%;
+  background-color: var(--store-color-bright-pink, #FD48F2);
+  border-radius: 9999px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
+  transition: transform 0.2s cubic-bezier(0.59, 1, 0.88, 1.01);
+}
+
+.buttonAltTextOuter {
+  grid-area: 1 / 1;
+  display: flex;
+  align-items: center;
+  padding: 0 1.15rem 0 1.25rem;
+  color: #000000;
+  font-size: 0.8125rem;
+  letter-spacing: -0.01em;
+  z-index: 1;
+  white-space: nowrap;
+}
+
+.buttonAltText {
+  display: inline-block;
+}
+
+.buttonAltIconOuter {
+  grid-area: 1 / 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #000000;
+  z-index: 1;
+}
+
+.buttonAltIcon {
+  width: 0.875rem;
+  height: 0.8125rem;
+  transition: transform 0.25s cubic-bezier(0.32, 0.72, 0, 1);
+}
+
+.buttonAlt:hover .buttonAltBg {
+  transform: scale(1.05);
+}
+
+.buttonAlt:hover .buttonAltIcon {
+  transform: translateX(2px);
+}
+
+/* ── Responsive Adaptations ── */
+@media screen and (max-width: 1200px) {
+  .genreLinkDefault {
+    font-size: 4.5rem;
+  }
+
+  .genreLinkHover {
+    font-size: 5.5rem;
+  }
+
+  .genreListItem {
+    height: 4.25rem;
+  }
+
+  .genreHolding {
+    height: 4.25rem;
+    top: calc(var(--start-index, 0) * 4.25rem);
+  }
+
+  .genreScope {
+    transform: translateY(calc(var(--active-index, 0) * 4.25rem));
+  }
+
+  .genreHolder {
+    width: 10.5rem;
+  }
+}
+
+@media screen and (max-width: 991px) {
+  .genreSection {
+    border-radius: 2.5rem;
+    margin: 0;
+    width: 100%;
+    clip-path: inset(0 round 2.5rem);
+  }
+
+  .genreInner {
+    padding-bottom: 3.5rem;
+  }
+
+  .genreHeader {
+    padding-top: 3.5rem;
+  }
+
+  .genreTitle,
+  .genreTextWrap {
+    display: none;
+  }
+
+  .genreListItem {
+    height: 3.25rem;
+  }
+
+  .genreLinkDefault {
+    font-size: 2.625rem;
+  }
+
+  .genreLinkHover {
+    font-size: 3.375rem;
+  }
+
+  .genreHolding {
+    height: 3.25rem;
+    top: calc(var(--start-index, 0) * 3.25rem);
+  }
+
+  .genreScope {
+    transform: translateY(calc(var(--active-index, 0) * 3.25rem));
+  }
+
+  .genreHolder {
+    width: 6.375rem;
+  }
+
+  .genreHolder:nth-of-type(1) {
+    transform: translate(calc(-75% - (var(--start-width, 160) * 0.5px)), -125%);
+  }
+
+  .genreHolder:nth-of-type(2) {
+    transform: translate(calc(-25% + (var(--start-width, 160) * 0.5px)), 25%);
+  }
+
+  /* On tablet / mobile, bottom holders 3 & 4 are hidden per authentic reference */
+  .genreHolder:nth-of-type(3),
+  .genreHolder:nth-of-type(4) {
+    display: none;
+  }
+
+  .genreImg {
+    border-radius: 0.35rem;
+    box-shadow: 0 0 0 0.125rem #FFFFFF, 0 8px 20px rgba(0, 0, 0, 0.18);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .genreListItem.hasWordBreak .genreLink {
+    white-space: normal;
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .genreListItem {
+    height: 2.5rem;
+  }
+
+  .genreLinkDefault {
+    font-size: 1.875rem;
+  }
+
+  .genreLinkHover {
+    font-size: 2.625rem;
+  }
+
+  .genreHolding {
+    height: 2.5rem;
+    top: calc(var(--start-index, 0) * 2.5rem);
+  }
+
+  .genreScope {
+    transform: translateY(calc(var(--active-index, 0) * 2.5rem));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  .genreLinkDefault,
+  .genreLinkHover,
+  .genreLink,
+  .genreScope,
+  .genreBox,
+  .genreImg,
+  .popUpOverlay,
+  .buttonAltBg,
+  .buttonAltIcon {
+    transition: none !important;
+    animation: none !important;
+    transform: none !important;
+  }
+}

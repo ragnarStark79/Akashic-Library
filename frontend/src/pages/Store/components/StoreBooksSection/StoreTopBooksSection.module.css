@@ -1,0 +1,121 @@
+.booksSection {
+  background-color: var(--store-bg, #FFFFFF);
+  color: var(--store-text, #1C2826);
+  position: relative;
+  width: 100%;
+  overflow-x: clip;
+  box-sizing: border-box;
+}
+
+.booksContainer {
+  position: relative;
+  width: 100%;
+  max-width: 1560px;
+  margin: 0 auto;
+  padding: 6rem 0 7rem;
+  box-sizing: border-box;
+}
+
+.booksHeader {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0 2rem;
+  margin-bottom: 2rem;
+}
+
+.handwrittenWrap {
+  position: absolute;
+  top: 0;
+  left: 4.5rem;
+  transform: rotate(-10deg);
+  opacity: 0.9;
+  user-select: none;
+  pointer-events: none;
+}
+
+.handwrittenText {
+  font-family: var(--store-font-handwritten, 'Hello Organichand Webfont', cursive);
+  font-size: clamp(1.25rem, 2.8vw, 1.85rem);
+  color: #3B308F;
+  line-height: 1.15;
+  margin: 0;
+  max-width: 13ch;
+  text-align: left;
+}
+
+.booksContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+  max-width: 780px;
+  margin: 0 auto;
+}
+
+.booksTitle {
+  font-family: var(--store-font-champ, 'Champ', sans-serif);
+  font-size: clamp(2.5rem, 6vw, 4.25rem);
+  font-weight: 800;
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+  color: var(--store-text, #1C2826);
+  margin: 0;
+  max-width: 18ch;
+}
+
+.booksParagraph {
+  font-family: var(--store-font-body, 'Degular', sans-serif);
+  font-size: clamp(1.1rem, 2vw, 1.35rem);
+  font-weight: 600;
+  line-height: 1.35;
+  letter-spacing: -0.02em;
+  color: var(--store-text, #1C2826);
+  margin: 0;
+  max-width: 38ch;
+}
+
+.controlsWrap {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  padding: 0 3.5rem 0.5rem;
+  box-sizing: border-box;
+}
+
+@media (max-width: 991px) {
+  .booksContainer {
+    padding: 5rem 0 6rem;
+  }
+
+  .booksHeader {
+    padding: 0 1.5rem;
+  }
+
+  .handwrittenWrap {
+    position: static;
+    transform: rotate(-6deg);
+    margin-bottom: 1.5rem;
+    align-self: flex-start;
+  }
+
+  .handwrittenText {
+    text-align: left;
+    max-width: 20ch;
+  }
+
+  .booksTitle {
+    font-size: clamp(2.2rem, 7vw, 3.2rem);
+  }
+
+  .booksParagraph {
+    font-size: 1.05rem;
+  }
+
+  .controlsWrap {
+    padding: 0 1.5rem 1rem;
+  }
+}

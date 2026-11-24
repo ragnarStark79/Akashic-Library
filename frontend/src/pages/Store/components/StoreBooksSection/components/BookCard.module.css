@@ -1,0 +1,198 @@
+.cardListItem {
+  flex: none;
+  width: 19.5rem;
+  padding: 0 1.25rem;
+  box-sizing: border-box;
+  user-select: none;
+  list-style: none;
+  overflow: visible;
+}
+
+.cardArticle {
+  position: relative;
+  will-change: transform;
+  transition: transform 0.35s cubic-bezier(0.34, 1.57, 0.64, 1);
+  overflow: visible;
+}
+
+.cardInner {
+  position: relative;
+  display: grid;
+  transition: transform 0.35s cubic-bezier(0.34, 1.57, 0.64, 1),
+              rotate 0.35s 0.1s cubic-bezier(0.34, 1.57, 0.64, 1);
+  overflow: visible;
+}
+
+/* Background surface container */
+.cardBg {
+  grid-area: 1 / 1;
+  width: 100%;
+  height: 100%;
+  border-radius: 1.75rem;
+  z-index: 0;
+  display: flex;
+  position: relative;
+  align-items: flex-end;
+  justify-content: center;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  overflow: visible;
+}
+
+/* Bottom extension that expands downward on hover */
+.cardBgBottom {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 3.25rem;
+  border-bottom-left-radius: 1.75rem;
+  border-bottom-right-radius: 1.75rem;
+  background-color: inherit;
+  z-index: 0;
+  transform: translateY(0);
+  transition: transform 0.35s 0.08s cubic-bezier(0.34, 1.57, 0.64, 1);
+}
+
+/* Foreground container holding book cover and text */
+.cardContainer {
+  grid-area: 1 / 1;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  width: 100%;
+  padding: 0.85rem 0.85rem 1.35rem;
+  box-sizing: border-box;
+}
+
+.coverWrap {
+  width: 100%;
+  aspect-ratio: 320 / 493;
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.16);
+  background-color: rgba(0, 0, 0, 0.08);
+}
+
+.coverImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.cardContent {
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 0.65rem;
+}
+
+.cardText {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  padding: 0 0.15rem;
+}
+
+.cardTitle {
+  font-family: var(--store-font-champ, 'Champ', sans-serif);
+  font-size: 1.35rem;
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+
+.cardParagraph {
+  font-family: var(--store-font-body, 'Degular', sans-serif);
+  font-size: 0.825rem;
+  font-weight: 500;
+  line-height: 1.35;
+  letter-spacing: -0.01em;
+  margin: 0;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  overflow: hidden;
+  opacity: 0.92;
+}
+
+/* Genre tags list */
+.genreList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.genreTag {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.22rem 0.55rem;
+  border-radius: 9999px;
+  font-family: var(--store-font-body, 'Degular', sans-serif);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  line-height: 1;
+  user-select: none;
+}
+
+/* Hover Dynamics */
+.cardArticle:hover .cardInner,
+.cardArticle:global(.isCardHovered) .cardInner {
+  transform: rotate(calc(var(--book-slider-item-rotate, 0deg) * 1.3)) scale(1.02);
+}
+
+.cardArticle:hover .cardBgBottom,
+.cardArticle:global(.isCardHovered) .cardBgBottom {
+  transform: translateY(1.25rem);
+}
+
+.cardArticle:hover .coverImg,
+.cardArticle:global(.isCardHovered) .coverImg {
+  transform: scale(1.02);
+}
+
+/* Interactive link overlay */
+.cardLink {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.cardLink::after {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  height: 4em;
+  z-index: 4;
+}
+
+@media (max-width: 991px) {
+  .cardListItem {
+    width: 16.5rem;
+    padding: 0 0.75rem;
+  }
+
+  .cardArticle:hover .cardInner {
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cardArticle,
+  .cardInner,
+  .cardBgBottom,
+  .coverImg {
+    transition: none;
+  }
+}

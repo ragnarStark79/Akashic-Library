@@ -29,8 +29,15 @@ SECRET_KEY = os.environ["DJANGO_SECRET_KEY"]
 DEBUG = os.getenv("DJANGO_DEBUG", "False").strip().lower() in ("true", "1", "yes")
 
 # Parse ALLOWED_HOSTS from a comma-separated env variable.
-_raw_hosts = os.getenv("DJANGO_ALLOWED_HOSTS", "localhost,127.0.0.1")
+_raw_hosts = os.getenv("DJANGO_ALLOWED_HOSTS", "localhost,127.0.0.1,.ngrok-free.dev,.ngrok-free.app,.ngrok.io")
 ALLOWED_HOSTS = [h.strip() for h in _raw_hosts.split(",") if h.strip()]
+
+# Trusted origins for CSRF protection when accessed through ngrok tunnels or local dev
+_raw_csrf = os.getenv(
+    "DJANGO_CSRF_TRUSTED_ORIGINS",
+    "http://localhost:3000,http://127.0.0.1:3000,https://*.ngrok-free.dev,https://*.ngrok-free.app,https://*.ngrok.io",
+)
+CSRF_TRUSTED_ORIGINS = [o.strip() for o in _raw_csrf.split(",") if o.strip()]
 
 
 # ─── Application definition ───────────────────────────────────────────────────
@@ -191,6 +198,8 @@ REST_FRAMEWORK = {
     ),
     "DEFAULT_PARSER_CLASSES": [
         "rest_framework.parsers.JSONParser",
+        "rest_framework.parsers.FormParser",
+        "rest_framework.parsers.MultiPartParser",
     ],
     # Session-based authentication integrates cleanly with Django's built-in
     # auth system and is the right choice for a React SPA that sends cookies
@@ -216,3 +225,16 @@ CORS_ALLOWED_ORIGINS = [o.strip() for o in _raw_cors.split(",") if o.strip()]
 # Allow credentials (session cookies) from explicitly listed React origins.
 # Required for session-based authentication across the React/Django boundary.
 CORS_ALLOW_CREDENTIALS = True
+
+
+# ─── Email configuration ──────────────────────────────────────────────────────
+# Safe development default: console backend when DEBUG=True, or smtp when in production.
+EMAIL_BACKEND = os.getenv(
+    "DJANGO_EMAIL_BACKEND",
+    "django.core.mail.backends.console.EmailBackend" if DEBUG else "django.core.mail.backends.smtp.EmailBackend",
+)
+DEFAULT_FROM_EMAIL = os.getenv("DEFAULT_FROM_EMAIL", "Akashic Library <noreply@akashiclibrary.local>")
+PASSWORD_RESET_TIMEOUT = int(os.getenv("PASSWORD_RESET_TIMEOUT", "86400"))  # 24 hours in seconds
+
+# Frontend application URL (used for password reset links)
+FRONTEND_URL = os.getenv("FRONTEND_URL", "http://localhost:3000")

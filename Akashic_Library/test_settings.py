@@ -26,3 +26,11 @@ CSRF_COOKIE_SECURE = False
 # Tests that exercise password validation explicitly will still work because
 # they hit the full validator suite through the serializer.
 AUTH_PASSWORD_VALIDATORS = []
+
+# Isolate test MongoDB collections from development and seeded data
+MONGODB_NAME = "akashic_discovery_test"
+
+# Use in-memory email backend for testing
+EMAIL_BACKEND = "django.core.mail.backends.locmem.EmailBackend"
+DEFAULT_FROM_EMAIL = "Akashic Library <noreply@akashiclibrary.local>"
+FRONTEND_URL = "http://localhost:3000"

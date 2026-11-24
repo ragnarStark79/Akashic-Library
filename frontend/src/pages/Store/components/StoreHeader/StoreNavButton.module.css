@@ -1,0 +1,140 @@
+.navButton {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--store-radius-pill, 9999px);
+  padding: 8px 18px;
+  font-family: var(--store-font-body, 'Degular', system-ui, -apple-system, sans-serif);
+  font-size: 0.925rem;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  user-select: none;
+  border: 1px solid transparent;
+  transition: transform 0.2s cubic-bezier(0.32, 0.72, 0, 1),
+              background-color 0.2s ease,
+              border-color 0.2s ease,
+              box-shadow 0.2s ease;
+  pointer-events: auto;
+  line-height: 1.2;
+}
+
+.buttonBg {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.buttonInner {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.badgePill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--store-accent-pink, #FF007A);
+  color: #FFFFFF;
+  font-size: 0.75rem;
+  font-weight: 700;
+  min-width: 1.25rem;
+  height: 1.25rem;
+  padding: 0 0.35rem;
+  border-radius: 9999px;
+  line-height: 1;
+  box-shadow: 0 2px 6px rgba(255, 0, 122, 0.4);
+  margin-left: 2px;
+}
+
+.buttonIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.buttonText {
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.splitChar {
+  display: inline-block;
+  transform-origin: 50% 50%;
+  will-change: transform;
+}
+
+/* ── Pill Variant (Default Navigation Links) ── */
+.variantPill {
+  background-color: var(--store-bg-cream, #FAF7F2);
+  color: var(--store-text, #1C2826);
+  border-color: rgba(28, 40, 38, 0.1);
+  box-shadow: 0 2px 6px rgba(28, 40, 38, 0.04);
+}
+
+.variantPill:hover {
+  background-color: #FFFFFF;
+  border-color: rgba(28, 40, 38, 0.2);
+  box-shadow: 0 4px 12px rgba(28, 40, 38, 0.08);
+  transform: translateY(-1px);
+}
+
+.variantPill.active {
+  background-color: var(--store-text, #1C2826);
+  color: #FFFFFF;
+  border-color: var(--store-text, #1C2826);
+  box-shadow: 0 4px 12px rgba(28, 40, 38, 0.16);
+}
+
+.variantPill.active .splitChar {
+  color: #FFFFFF;
+}
+
+/* ── Accent Variant (e.g. Return / Featured Action) ── */
+.variantAccent {
+  background-color: var(--store-accent-orange, #F9A220);
+  color: var(--store-text, #1C2826);
+  border-color: rgba(28, 40, 38, 0.12);
+  box-shadow: 0 2px 8px rgba(249, 162, 32, 0.25);
+}
+
+.variantAccent:hover {
+  background-color: #FAAE3D;
+  box-shadow: 0 4px 16px rgba(249, 162, 32, 0.35);
+  transform: translateY(-1px);
+}
+
+/* ── Ghost Variant ── */
+.variantGhost {
+  background-color: transparent;
+  color: var(--store-text, #1C2826);
+}
+
+.variantGhost:hover {
+  background-color: rgba(250, 247, 242, 0.6);
+}
+
+/* Focus and active interactions */
+.navButton:active {
+  transform: scale(0.97);
+}
+
+.navButton:focus-visible {
+  outline: 2px solid var(--store-accent-green, #185C58);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .navButton {
+    transition: none !important;
+  }
+  .splitChar {
+    transform: none !important;
+  }
+}

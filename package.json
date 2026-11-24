@@ -1,0 +1,13 @@
+{
+  "name": "akashic-library-backend-workspace",
+  "private": true,
+  "description": "Unified runner for Akashic Library from backend directory",
+  "scripts": {
+    "dev": "npm --prefix frontend run dev",
+    "dev:frontend": "npm --prefix frontend run dev:frontend",
+    "dev:backend": "npm --prefix frontend run dev:backend",
+    "start": "npm run dev",
+    "build": "npm --prefix frontend run build",
+    "test": "npm --prefix frontend run test"
+  }
+}

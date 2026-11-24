@@ -1,0 +1,37 @@
+/**
+ * Akashic Library Discovery Design System — Phase 0
+ * Motion Foundations: Durations, Eases, and Reduced-Motion Support.
+ */
+
+:root {
+  /* Timing Durations */
+  --duration-fast: 150ms;
+  --duration-normal: 250ms;
+  --duration-slow: 350ms;
+
+  /* Easing Curves */
+  --ease-standard: cubic-bezier(0.2, 0.0, 0.0, 1.0);
+  --ease-in: cubic-bezier(0.3, 0.0, 1.0, 1.0);
+  --ease-out: cubic-bezier(0.0, 0.0, 0.2, 1.0);
+  --ease-bounce-soft: cubic-bezier(0.34, 1.3, 0.64, 1.0);
+
+  /* Common Transition Shortcuts */
+  --transition-interactive: all var(--duration-fast) var(--ease-standard);
+  --transition-surface: background-color var(--duration-normal) var(--ease-standard),
+                        box-shadow var(--duration-normal) var(--ease-standard),
+                        border-color var(--duration-fast) var(--ease-standard),
+                        transform var(--duration-normal) var(--ease-standard);
+}
+
+/* Reduced Motion Override (WCAG 2.2.2 & 2.3.3) */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+

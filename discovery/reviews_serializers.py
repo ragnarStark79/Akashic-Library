@@ -57,6 +57,7 @@ class ReviewDetailSerializer(serializers.Serializer):
     moderation_status = serializers.CharField()
     created_at = serializers.DateTimeField()
     updated_at = serializers.DateTimeField()
+    reply_count = serializers.IntegerField(default=0)
     # Author embedded by the view layer.
     author = serializers.SerializerMethodField()
 
@@ -65,6 +66,40 @@ class ReviewDetailSerializer(serializers.Serializer):
         if author_obj is None:
             return {"id": obj.get("user_id"), "username": "[deleted]", "display_name": ""}
         return ReviewAuthorSerializer(author_obj).data
+
+
+class ReviewReplySerializer(serializers.Serializer):
+    """Full review reply response."""
+    id = serializers.CharField()
+    review_id = serializers.CharField()
+    book_id = serializers.CharField()
+    user_id = serializers.CharField()
+    body = serializers.CharField()
+    created_at = serializers.DateTimeField()
+    updated_at = serializers.DateTimeField()
+    author = serializers.SerializerMethodField()
+
+    def get_author(self, obj):
+        author_obj = obj.get("_author")
+        if author_obj is None:
+            return {"id": obj.get("user_id"), "username": "[deleted]", "display_name": ""}
+        return ReviewAuthorSerializer(author_obj).data
+
+
+class ReviewReplyCreateSerializer(serializers.Serializer):
+    """Validates POST /api/books/<book_id>/reviews/<review_id>/replies/ body."""
+    body = serializers.CharField(
+        min_length=1,
+        max_length=5000,
+        help_text="Reply text (required, max 5000 characters).",
+    )
+
+    def validate_body(self, value):
+        stripped = (value or "").strip()
+        if not stripped:
+            raise serializers.ValidationError("Reply body must not be blank.")
+        return stripped
+
 
 
 class AggregateRatingSerializer(serializers.Serializer):

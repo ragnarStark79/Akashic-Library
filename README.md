@@ -11,8 +11,9 @@
   [![DRF](https://img.shields.io/badge/DRF-3.18.1-red.svg?logo=django&logoColor=white)](#)
   [![PostgreSQL](https://img.shields.io/badge/PostgreSQL-14+-316192.svg?logo=postgresql&logoColor=white)](#)
   [![MongoDB](https://img.shields.io/badge/MongoDB-6.0+-47A248.svg?logo=mongodb&logoColor=white)](#)
-  [![React](https://img.shields.io/badge/React-(Planned)-61DAFB.svg?logo=react&logoColor=white)](#)
-  [![Tests](https://img.shields.io/badge/Tests-341%20Passing-brightgreen.svg)](#)
+  [![React](https://img.shields.io/badge/React-19.x%20%7C%20TypeScript-61DAFB.svg?logo=react&logoColor=white)](#)
+  [![Vite](https://img.shields.io/badge/Vite-6.x-646CFF.svg?logo=vite&logoColor=white)](#)
+  [![Tests](https://img.shields.io/badge/Tests-584%20Passing%20(341%20Backend%20+%20243%20Frontend)-brightgreen.svg)](#)
 
 </div>
 
@@ -20,15 +21,16 @@
 
 ## 🚧 Project Status
 
-**Akashic Library is actively under development.** 
-Currently, the **backend foundation is complete and fully tested.** The React frontend is the next major phase of development.
+**Akashic Library Part I (Book Discovery, Reading Sanctuary & Community) is feature-complete, hardened, and verified.** 
+Currently, **Part I is fully tested and ready for production**, with both the Django backend and React frontend integrated. **Part II (Akashic Store)** is the upcoming development milestone.
 
 | Component | Status | Description |
 | :--- | :---: | :--- |
 | **Backend & API** | ✅ **Complete** | Django REST Framework API, Database models, Authentication, Core Services. |
-| **Test Coverage** | ✅ **Passing** | 341/341 automated backend tests passing successfully (Verified). |
-| **Integrations** | ✅ **Complete** | External book data providers (Google Books / Open Library) integrated. |
-| **Frontend (React)** | ⏳ **Planned** | React/Vite Single Page Application integration pending. |
+| **Frontend (Part I)** | ✅ **Complete** | React 19 + TypeScript + Vite SPA: Discovery, Personal Sanctuary, Reading Room, Reviews, Community Hub, Moderator Console. |
+| **Test Coverage** | ✅ **Passing** | **584/584 automated tests passing** (341 backend + 243 frontend unit tests verified). |
+| **Integrations** | ✅ **Complete** | External book data providers (Google Books / Open Library) normalized and integrated. |
+| **Commerce Storefront (Part II)** | ⏳ **Planned** | Separate immersive bookstore experience with 3D hero showcase, shopping cart, checkout, and inventory lifecycle. |
 
 ---
 
@@ -68,7 +70,7 @@ Traditional book platforms often fracture the reading experience. You might disc
 - Advanced administrative capabilities
 - Role-based moderation and management
 
-*(Note: The above features represent the complete backend API implementation. The graphical UI for these features is planned for the upcoming frontend phase.)*
+*(Note: Part I includes complete full-stack implementations with dedicated React UI for Discovery, Identity, Personal Library, Reading Room, Community, and Content Moderation. The physical bookstore storefront and checkout UI will be implemented in Part II — Akashic Store.)*
 
 ---
 
@@ -79,7 +81,7 @@ The system employs a **polyglot persistence architecture**, separating relationa
 ```mermaid
 flowchart TD
     User["User"]
-    React["React Frontend (Planned)"]
+    React["React Frontend (Part I Complete)"]
     DRF["Django REST Framework"]
     Auth["Accounts / Auth"]
     Discovery["Discovery & Recommendations"]
@@ -136,7 +138,7 @@ To provide a seamless experience, Akashic Library normalizes data from multiple 
 
 ```mermaid
 sequenceDiagram
-    participant UI as React UI (Planned)
+    participant UI as React UI (SPA)
     participant API as Django REST API
     participant SVC as Discovery Service
     participant EXT as External Providers
@@ -159,7 +161,7 @@ sequenceDiagram
 ```mermaid
 sequenceDiagram
     participant User
-    participant React as React UI (Planned)
+    participant React as React UI (SPA)
     participant Django as Django Auth API
     
     User->>React: Enters Credentials
@@ -205,24 +207,40 @@ Akashic_Library/
 └── manage.py             # Django CLI
 ```
 
-### Intended Frontend Structure (Upcoming Phase)
+### Frontend Structure (Part I Implemented)
 ```text
 frontend/
 ├── public/
 ├── src/
-│   ├── assets/
-│   ├── components/
-│   ├── pages/
-│   ├── layouts/
-│   ├── hooks/
-│   ├── context/
-│   ├── services/       # Centralized API clients
-│   ├── routes/
-│   ├── App.jsx
-│   └── main.jsx
-├── .env.example
+│   ├── assets/           # Static design assets, fonts, icons
+│   ├── components/       # Design system tokens, layout, discovery, community, UI primitives
+│   │   ├── community/    # Content reporting modals, buttons, moderation console
+│   │   ├── discovery/    # BookCard, FilterDrawer, search components
+│   │   ├── layout/       # ApplicationShell, Navbar, Footer, Drawers, ChunkErrorBoundary
+│   │   └── ui/           # Buttons, Badges, Modals, Containers, Inputs
+│   ├── context/          # AuthContext, ToastContext
+│   ├── hooks/            # Custom responsive, auth, and state hooks
+│   ├── pages/            # Route-level views (Lazy loaded with code splitting)
+│   │   ├── AccountSettings/
+│   │   ├── Auth/
+│   │   ├── BookDetail/   # Book details, legal access options, kindred carousel
+│   │   ├── BookReviews/  # Reviews, ratings, nested replies
+│   │   ├── Community/    # Community hub, thread previews, discussion dialogue
+│   │   ├── DiscoveryHome/# Homepage, spotlight, curated recommendations shelf
+│   │   ├── Genres/
+│   │   ├── Moderation/   # Moderator console & audit queue
+│   │   ├── PersonalLibrary/# Personal shelves, favorites, reading progress
+│   │   ├── ReadingRoom/  # Contemplative reader & persistent marginalia
+│   │   └── SearchResults/
+│   ├── services/         # Centralized API clients (auth, discovery, library, reviews, moderation)
+│   ├── test/             # Vitest test setup and mock handlers
+│   ├── types/            # Domain TypeScript interfaces
+│   ├── utils/            # Formatters, navigation, security helpers
+│   ├── App.tsx
+│   └── main.tsx
 ├── package.json
-└── vite.config.js
+├── tsconfig.json
+└── vite.config.ts
 ```
 
 ---
@@ -264,17 +282,24 @@ Key technical implementations include:
 
 ## 🧪 Testing
 
-The backend maintains strict test coverage, verifying domain logic, API contracts, and database interactions.
+The platform maintains strict test coverage, verifying domain logic, API contracts, database interactions, and frontend component states.
 
 **Current Verified Status:**
-- **341 / 341 tests passing** ✅
+- **Backend Test Suite:** **341 / 341 tests passing** ✅
+- **Frontend Test Suite:** **243 / 243 tests passing** (29 test suites) ✅
+- **Total Automated Tests:** **584 / 584 passing** ✅
 - `0 issues` reported by Django check.
+- `0 errors, 0 warnings` reported by ESLint and TypeScript compilation.
 - `No changes detected` by migrations check.
 
 ```bash
+# Backend test execution
 python manage.py test --settings=Akashic_Library.test_settings
+
+# Frontend test execution
+npm --prefix frontend test -- --run
 ```
-*(Tests utilize an in-memory SQLite database and `mongomock` for rapid execution without external infrastructure dependencies.)*
+*(Backend tests utilize an in-memory SQLite database and `mongomock` for rapid execution without external infrastructure dependencies. Frontend tests run via Vitest in a jsdom environment.)*
 
 ---
 
@@ -282,10 +307,10 @@ python manage.py test --settings=Akashic_Library.test_settings
 
 ### Prerequisites
 - **Python** 3.14.x
+- **Node.js** 18+ (LTS) & **npm** 9+
 - **PostgreSQL** 14+
 - **MongoDB** 6.0+
 - **Git**
-- *(Node.js 18+ will be required for the future frontend)*
 
 ### 1. Clone & Setup Virtual Environment
 ```bash
@@ -309,11 +334,27 @@ Edit `.env` and configure your local `DJANGO_SECRET_KEY`, database credentials, 
 python manage.py migrate
 ```
 
-### 4. Run the Development Server
+### 4. Run the Backend Server
 ```bash
 python manage.py runserver
 ```
-The API will be available at `http://localhost:8000/api/`.
+The Django REST API will be available at `http://localhost:8000/api/`.
+
+### 5. Frontend Setup & Run (React / Vite)
+In a separate terminal:
+```bash
+cd frontend
+npm install
+npm run dev
+```
+The React development server will start at `http://localhost:3000/` (automatically proxying `/api` requests to Django at `http://127.0.0.1:8000/`).
+
+To verify frontend quality gates:
+```bash
+npm run test       # Run Vitest test suite (243 tests)
+npm run build      # TypeScript typecheck and Vite production build
+npm run lint       # ESLint static analysis
+```
 
 ---
 
@@ -328,45 +369,60 @@ Sensitive configuration is driven entirely by environment variables via `.env`.
 - `MONGODB_URI` / `MONGODB_NAME`
 - `CORS_ALLOWED_ORIGINS`
 
-For the future React frontend, configuration will be handled via `VITE_API_BASE_URL`.
+For the React frontend, configuration is handled via `VITE_API_BASE_URL` (defaults to `/api` proxy in dev).
 
 ---
 
-## 🎨 Design & UI Vision (Upcoming Phase)
+## 🎨 Design System & UI Vision
 
-The upcoming React SPA will be designed with the following principles:
-- **Book-Centric Visual Hierarchy**: Highlighting cover art, typography, and readability.
-- **Search-First Experience**: Frictionless discovery and exploration.
-- **Responsive Layouts**: Seamless experience across mobile, tablet, and desktop.
-- **Accessible Components**: Adhering to ARIA standards and keyboard navigability.
-- **Graceful States**: Polished loading skeletons, empty states, and error handling.
+Part I establishes the complete design system foundation (Warm Stone aesthetic, serif typography, responsive touch carousels, and accessible components):
+- **Book-Centric Visual Hierarchy**: Highlighting cover art with 2:3 aspect-ratio containment (`var(--color-surface-inset)`), typography, and readability.
+- **Search-First Experience**: Frictionless discovery and exploration with scope selectors and curated query chips.
+- **Responsive Layouts**: Seamless single-row scroll-snap carousels across mobile (360px–440px), tablet (768px–1024px), and desktop (1280px–1440px).
+- **Accessible Components**: Adhering to ARIA standards, keyboard navigability, and `prefers-reduced-motion` compliance.
+- **Graceful States**: Polished loading skeletons, empty states, and chunk error boundaries.
+
+Part II extends this design system into a separate, atmospheric digital bookstore with 3D product showcases and cinematic portal transitions.
 
 ---
 
 ## 🗺️ Development Roadmap
 
-### ✅ Completed
-- [x] Django backend foundation
-- [x] Custom accounts & session identity
-- [x] Polyglot data architecture (PostgreSQL + MongoDB)
-- [x] Discovery layer & provider integration
-- [x] Community, reviews, and moderation APIs
-- [x] Commerce, cart, and checkout APIs
-- [x] Automated backend test suite (341 tests passing)
+### ✅ Completed (Part I — Discovery, Reading & Community)
+- [x] **Backend Foundation:** Django REST Framework, custom accounts, and session identity
+- [x] **Polyglot Data Architecture:** PostgreSQL (Accounts, Orders) + MongoDB (Books, Reviews, Marginalia, Reports)
+- [x] **Phase 0:** Frontend foundation & design system tokens
+- [x] **Phase 1:** Navigation shell & application layouts
+- [x] **Phase 2A & 2B:** Book discovery, multi-provider search & Open Library integration
+- [x] **Phase 3 & 3.1:** Book details experience, data integrity & kindred folios
+- [x] **Phase 4A & 4B:** Patron authentication, personal library sanctuary & shelves
+- [x] **Phase 4B.1:** Authenticated reading shelf actions stabilization
+- [x] **Phase 5A & 5B.1:** Book reviews, 5-star ratings & reader replies
+- [x] **Phase 5B.1.1:** Review management, inline editing & deletion confirmation
+- [x] **Phase 5B.2:** Reading room, focus mode & persistent marginalia annotations
+- [x] **Phase 5B.3:** Community hub, discussion forum & navigation
+- [x] **Phase 5B.4 & 5B.4.1:** Thread detail views, nested responses & composer stabilization
+- [x] **Phase 6A:** Complete product audit & gap assessment
+- [x] **Phase 6B & 6B.1:** Patron profile, account settings, role permissions & password policy enforcement
+- [x] **Phase 6C & 6C.1:** Content reporting workflows, moderator console & audit logging
+- [x] **Phase 6D & 6D.1:** Recommendations integration, legal access options & book detail stability
+- [x] **Phase 6D.2:** Homepage recommendation card containment & responsive carousel fix
+- [x] **Phase 6E:** Route-level code splitting, MongoDB compound indexing & query optimization
+- [x] **Phase 6F:** Comprehensive end-to-end regression testing, cross-system integration & quality sign-off
+- [x] **Phase 6G:** Production readiness, deployment health probes & release packaging
+- [x] **Automated Test Coverage:** 584 automated tests passing (341 backend + 243 frontend)
 
-### ⏳ In Progress / Next
-- [ ] React/Vite frontend foundation
-- [ ] Frontend routing & layout design
-- [ ] API client/service integration
-- [ ] Authentication and User Profile UI
-- [ ] Book discovery and search UI
-
-### 📅 Planned
-- [ ] Reviews and Community UI
-- [ ] Shopping Cart and Checkout UI
-- [ ] Administrative Moderation Dashboard
-- [ ] End-to-End Testing (Cypress/Playwright)
-- [ ] Production Deployment Strategy
+### ⏳ Planned (Part II — Akashic Store)
+- [ ] **Stage 0:** Store commerce architecture & API audit
+- [ ] **Stage 1:** Separate Store design system & visual identity
+- [ ] **Stage 2:** Store Portal entry sequence & 3D cinematic transition
+- [ ] **Stage 3:** Store Home with 3D hero showcase & premium collections
+- [ ] **Stage 4:** Store Catalog, search, filters & categories
+- [ ] **Stage 5:** Product details (edition, format, condition, price, stock)
+- [ ] **Stage 6:** Shopping cart & session persistence
+- [ ] **Stage 7:** Checkout & secure transaction processing
+- [ ] **Stage 8:** Order confirmation, order history & tracking
+- [ ] **Stage 9:** Store operations & inventory management console
 
 ---
 

@@ -1,0 +1,86 @@
+/**
+ * Akashic Store (Part II) Design Tokens & Font Declarations
+ * Isolated from Part I Discovery styles.
+ */
+
+@font-face {
+  font-family: 'Champ';
+  src: url('../assets/fonts/Champ-ExtraBold.woff') format('woff');
+  font-weight: 700 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Degular';
+  src: url('../assets/fonts/Degular-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Degular';
+  src: url('../assets/fonts/degular-semibold.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Degular';
+  src: url('../assets/fonts/degular-bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Hello Organichand Webfont';
+  src: url('../assets/fonts/hello-organichand-webfont.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Scoped Store Theme — Prevents token collisions with Part I Discovery */
+.storeTheme {
+  --store-bg: #FFFFFF;
+  --store-bg-cream: #FAF7F2;
+  --store-bg-yellow: #fcd949;
+  --store-bg-bright-pink: #FF6392;
+  --store-bg-soft-pink: #FFDBFD;
+  --store-bg-soft-orange: #FFE5D9;
+  --store-color-soft-pink: #FFDBFD;
+  --store-color-bright-pink: #FD48F2;
+  --store-color-cyan: #1CE8ED;
+  --store-color-yellow: #FFD24A;
+  --store-color-periwinkle: #9982DE;
+  --store-color-violet: #3B308F;
+  --store-text: #1C2826;
+  --store-text-muted: #576562;
+  --store-text-light: #8E9694;
+  --store-text-inverse: #FFFFFF;
+  --store-border: rgba(28, 40, 38, 0.12);
+  --store-border-strong: rgba(28, 40, 38, 0.28);
+  --store-accent-green: #185C58;
+  --store-accent-green-hover: #134B48;
+  --store-footer-bg: #14211E;
+  --store-footer-text: #E5EDE9;
+  --store-radius-pill: 9999px;
+  --store-radius-card: 24px;
+  --store-radius-card-lg: 32px;
+  --store-radius-sm: 8px;
+
+  /* Typography */
+  --store-font-champ: 'Champ', 'Degular', system-ui, -apple-system, sans-serif;
+  --store-font-body: 'Degular', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --store-font-handwritten: 'Hello Organichand Webfont', 'Caveat', cursive;
+
+  /* Easing curves matching reference reverse-engineering */
+  --store-ease-osmo: cubic-bezier(0.625, 0.05, 0, 1);
+  --store-ease-energy: cubic-bezier(0.32, 0.72, 0, 1);
+  --store-ease-path: cubic-bezier(0.78, 0.18, 0.18, 1);
+  --store-ease-elastic-out: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  --store-ease-elastic-in: cubic-bezier(0.6, -0.28, 0.735, 0.045);
+}

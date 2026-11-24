@@ -1,0 +1,114 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  background-color: var(--color-surface-inset);
+  border: var(--border-thin) solid var(--color-border-subtle);
+  border-radius: var(--radius-pill);
+  box-shadow: var(--shadow-inset);
+  padding: 0 var(--space-4);
+  height: 46px;
+  transition: border-color var(--duration-fast) var(--ease-standard),
+              box-shadow var(--duration-fast) var(--ease-standard),
+              background-color var(--duration-fast) var(--ease-standard);
+  position: relative;
+}
+
+.wrapper:hover:not(.disabled) {
+  border-color: #D3C9BA;
+}
+
+.wrapper:focus-within:not(.disabled) {
+  border-color: var(--color-border-focus);
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: 2px;
+  background-color: var(--color-surface);
+}
+
+.searchIcon {
+  display: flex;
+  align-items: center;
+  color: var(--color-text-secondary);
+  margin-right: var(--space-3);
+  flex-shrink: 0;
+}
+
+.input {
+  flex: 1;
+  border: none;
+  background: transparent;
+  padding: var(--space-2) 0;
+  font-family: var(--font-family-body);
+  font-size: var(--font-body);
+  color: var(--color-text-primary);
+  outline: none;
+  min-width: 0;
+}
+
+.input::placeholder {
+  color: var(--color-text-muted);
+}
+
+/* Hide native search cancel button in Webkit */
+.input::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+}
+
+.actionSlot {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  margin-left: var(--space-2);
+  flex-shrink: 0;
+}
+
+.clearButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  color: var(--color-text-secondary);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: color var(--duration-fast) var(--ease-standard),
+              background-color var(--duration-fast) var(--ease-standard);
+}
+
+.clearButton:hover {
+  color: var(--color-text-primary);
+  background-color: rgba(38, 54, 51, 0.08);
+}
+
+.clearButton:focus-visible {
+  outline: 2px solid var(--color-border-focus);
+}
+
+.spinner {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border: 2px solid var(--color-action-primary);
+  border-right-color: transparent;
+  border-radius: 50%;
+  animation: spin 0.75s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  background-color: #E2DBD0;
+}
+
+.disabled .input {
+  cursor: not-allowed;
+}
+

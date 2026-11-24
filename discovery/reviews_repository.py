@@ -58,6 +58,8 @@ from .db import get_db
 from .exceptions import (
     DuplicateReviewError,
     MongoDBUnavailableError,
+    ReplyNotFoundError,
+    ReplyPermissionError,
     ReviewNotFoundError,
     ReviewPermissionError,
 )
@@ -67,8 +69,9 @@ logger = logging.getLogger(__name__)
 # ─── Constants ────────────────────────────────────────────────────────────────
 
 REVIEWS_COLLECTION = "reviews"
+REPLIES_COLLECTION = "review_replies"
 
-MODERATION_STATUSES = ("PENDING", "APPROVED", "REJECTED", "FLAGGED")
+MODERATION_STATUSES = ("PENDING", "APPROVED", "REJECTED", "FLAGGED", "HIDDEN")
 DEFAULT_MODERATION_STATUS = "APPROVED"
 
 DEFAULT_PAGE_SIZE = 20
@@ -86,6 +89,10 @@ _UNSET = object()
 
 def _get_col():
     return get_db()[REVIEWS_COLLECTION]
+
+
+def _get_replies_col():
+    return get_db()[REPLIES_COLLECTION]
 
 
 # ─── Index management ─────────────────────────────────────────────────────────
@@ -111,9 +118,19 @@ def ensure_review_indexes() -> None:
     # Chronological listing.
     col.create_index([("created_at", DESCENDING)], name="reviews_created_at_desc")
 
-    logger.info(
-        "Reviews: MongoDB indexes ensured for '%s' collection.", REVIEWS_COLLECTION
+    replies_col = _get_replies_col()
+    replies_col.create_index(
+        [("review_id", ASCENDING), ("created_at", ASCENDING)],
+        name="replies_review_created",
     )
+    replies_col.create_index([("book_id", ASCENDING)], name="replies_book_id")
+
+    logger.info(
+        "Reviews: MongoDB indexes ensured for '%s' and '%s' collections.",
+        REVIEWS_COLLECTION,
+        REPLIES_COLLECTION,
+    )
+
 
 
 # ─── Write operations ─────────────────────────────────────────────────────────
@@ -159,7 +176,9 @@ def create_review(
     try:
         result = col.insert_one(doc)
         inserted_doc = col.find_one({"_id": result.inserted_id})
-        return _serialize(inserted_doc)
+        serialized = _serialize(inserted_doc)
+        serialized["reply_count"] = 0
+        return serialized
     except DuplicateKeyError:
         raise DuplicateReviewError(
             "You already have a review for this book. Use PATCH to update it."
@@ -225,11 +244,13 @@ def update_review(
 
     if updated is None:
         raise ReviewPermissionError("You can only edit your own reviews.")
-    return _serialize(updated)
+    serialized = _serialize(updated)
+    serialized["reply_count"] = get_reply_count(review_id)
+    return serialized
 
 
 def delete_review(*, review_id: str, user_id: str) -> bool:
-    """Delete the authenticated user's own review.
+    """Delete the authenticated user's own review and its child replies.
 
     Returns True if deleted, False if the review did not exist.
 
@@ -253,7 +274,18 @@ def delete_review(*, review_id: str, user_id: str) -> bool:
 
     try:
         result = col.delete_one({"_id": oid, "user_id": user_id})
-        return result.deleted_count > 0
+        if result.deleted_count > 0:
+            # Cascade delete replies belonging to this review
+            try:
+                _get_replies_col().delete_many({"review_id": review_id})
+            except PyMongoError as rep_exc:
+                logger.warning(
+                    "Failed to cascade delete replies for review %s: %s",
+                    review_id,
+                    rep_exc,
+                )
+            return True
+        return False
     except PyMongoError as exc:
         logger.error("delete_review failed: %s", exc)
         raise MongoDBUnavailableError("Reviews are temporarily unavailable.") from exc
@@ -276,14 +308,20 @@ def get_review(review_id: str) -> dict[str, Any]:
     doc = col.find_one({"_id": oid})
     if doc is None:
         raise ReviewNotFoundError(f"Review not found: {review_id!r}")
-    return _serialize(doc)
+    serialized = _serialize(doc)
+    serialized["reply_count"] = get_reply_count(review_id)
+    return serialized
 
 
 def get_user_review_for_book(user_id: str, book_id: str) -> dict[str, Any] | None:
     """Return the user's review for a specific book, or None."""
     col = _get_col()
     doc = col.find_one({"user_id": user_id, "book_id": book_id})
-    return _serialize(doc) if doc else None
+    if not doc:
+        return None
+    serialized = _serialize(doc)
+    serialized["reply_count"] = get_reply_count(serialized["id"])
+    return serialized
 
 
 def list_reviews_for_book(
@@ -324,6 +362,10 @@ def list_reviews_for_book(
             .limit(page_size)
         )
         results = [_serialize(doc) for doc in cursor]
+        review_ids = [r["id"] for r in results]
+        reply_counts = get_reply_counts_for_reviews(review_ids)
+        for r in results:
+            r["reply_count"] = reply_counts.get(r["id"], 0)
     except PyMongoError as exc:
         logger.error("list_reviews_for_book failed: %s", exc)
         raise MongoDBUnavailableError("Reviews are temporarily unavailable.") from exc
@@ -334,6 +376,167 @@ def list_reviews_for_book(
         "page_size": page_size,
         "results": results,
     }
+
+
+def get_reply_count(review_id: str) -> int:
+    """Return count of replies for a review."""
+    try:
+        col = _get_col()
+        parent = col.find_one({"_id": ObjectId(review_id)})
+        if not parent or parent.get("moderation_status") in ["HIDDEN", "REJECTED"]:
+            return 0
+    except Exception:
+        pass
+    col = _get_replies_col()
+    try:
+        return col.count_documents({"review_id": review_id, "moderation_status": {"$ne": "HIDDEN"}})
+    except Exception:
+        return 0
+
+
+def get_reply_counts_for_reviews(review_ids: list[str]) -> dict[str, int]:
+    """Bulk count replies for a list of review IDs."""
+    if not review_ids:
+        return {}
+    col = _get_replies_col()
+    try:
+        pipeline = [
+            {"$match": {"review_id": {"$in": review_ids}, "moderation_status": {"$ne": "HIDDEN"}}},
+            {"$group": {"_id": "$review_id", "count": {"$sum": 1}}},
+        ]
+        return {str(row["_id"]): row["count"] for row in col.aggregate(pipeline)}
+    except Exception:
+        return {}
+
+
+# ─── Reply operations ─────────────────────────────────────────────────────────
+
+
+def create_reply(
+    *,
+    user_id: str,
+    book_id: str,
+    review_id: str,
+    body: str,
+) -> dict[str, Any]:
+    """Create a new reply to an approved review.
+
+    Raises
+    ------
+    ReviewNotFoundError     If the parent review does not exist or does not match book_id.
+    MongoDBUnavailableError On MongoDB failure.
+    """
+    reviews_col = _get_col()
+    try:
+        r_oid = ObjectId(review_id)
+    except InvalidId:
+        raise ReviewNotFoundError(f"Invalid review ID: {review_id!r}")
+
+    parent = reviews_col.find_one({"_id": r_oid})
+    if parent is None or parent.get("book_id") != book_id or parent.get("moderation_status") in ["HIDDEN", "REJECTED"]:
+        raise ReviewNotFoundError(f"Review {review_id!r} not found for book {book_id!r}.")
+
+    col = _get_replies_col()
+    now = datetime.now(UTC)
+    doc: dict[str, Any] = {
+        "review_id": review_id,
+        "book_id": book_id,
+        "user_id": user_id,
+        "body": body.strip(),
+        "created_at": now,
+        "updated_at": now,
+    }
+    try:
+        result = col.insert_one(doc)
+        inserted = col.find_one({"_id": result.inserted_id})
+    except PyMongoError as exc:
+        logger.error("create_reply failed: %s", exc)
+        raise MongoDBUnavailableError("Replies are temporarily unavailable.") from exc
+
+    return _serialize(inserted)
+
+
+def list_replies_for_review(review_id: str, book_id: str) -> list[dict[str, Any]]:
+    """Return all replies for a review, sorted chronologically."""
+    reviews_col = _get_col()
+    try:
+        r_oid = ObjectId(review_id)
+    except InvalidId:
+        raise ReviewNotFoundError(f"Invalid review ID: {review_id!r}")
+
+    parent = reviews_col.find_one({"_id": r_oid})
+    if parent is None or parent.get("book_id") != book_id or parent.get("moderation_status") in ["HIDDEN", "REJECTED"]:
+        raise ReviewNotFoundError(f"Review {review_id!r} not found for book {book_id!r}.")
+
+    col = _get_replies_col()
+    try:
+        cursor = col.find({
+            "review_id": review_id,
+            "book_id": book_id,
+            "moderation_status": {"$ne": "HIDDEN"}
+        }).sort(
+            "created_at", ASCENDING
+        )
+        return [_serialize(doc) for doc in cursor]
+    except PyMongoError as exc:
+        logger.error("list_replies_for_review failed: %s", exc)
+        raise MongoDBUnavailableError("Replies are temporarily unavailable.") from exc
+
+
+def get_reply(reply_id: str) -> dict[str, Any]:
+    """Fetch a single reply by ID."""
+    col = _get_replies_col()
+    try:
+        oid = ObjectId(reply_id)
+    except InvalidId:
+        raise ReplyNotFoundError(f"Invalid reply ID: {reply_id!r}")
+
+    doc = col.find_one({"_id": oid})
+    if doc is None:
+        raise ReplyNotFoundError(f"Reply not found: {reply_id!r}")
+    return _serialize(doc)
+
+
+def delete_reply(
+    *,
+    reply_id: str,
+    user_id: str,
+    review_id: str | None = None,
+    book_id: str | None = None,
+) -> bool:
+    """Delete the authenticated user's own reply.
+
+    Raises
+    ------
+    ReplyNotFoundError     If reply does not exist or review_id/book_id mismatch.
+    ReplyPermissionError   If reply belongs to another user.
+    MongoDBUnavailableError On MongoDB failure.
+    """
+    col = _get_replies_col()
+    try:
+        oid = ObjectId(reply_id)
+    except InvalidId:
+        raise ReplyNotFoundError(f"Invalid reply ID: {reply_id!r}")
+
+    existing = col.find_one({"_id": oid})
+    if existing is None:
+        raise ReplyNotFoundError(f"Reply not found: {reply_id!r}")
+
+    if review_id is not None and existing.get("review_id") != review_id:
+        raise ReplyNotFoundError(f"Reply does not belong to review {review_id!r}.")
+    if book_id is not None and existing.get("book_id") != book_id:
+        raise ReplyNotFoundError(f"Reply does not belong to book {book_id!r}.")
+
+    if existing.get("user_id") != user_id:
+        raise ReplyPermissionError("You can only delete your own replies.")
+
+    try:
+        result = col.delete_one({"_id": oid, "user_id": user_id})
+        return result.deleted_count > 0
+    except PyMongoError as exc:
+        logger.error("delete_reply failed: %s", exc)
+        raise MongoDBUnavailableError("Replies are temporarily unavailable.") from exc
+
 
 
 def get_aggregate_rating(book_id: str) -> dict[str, Any]:

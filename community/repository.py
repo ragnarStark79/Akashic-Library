@@ -23,6 +23,7 @@ def setup_indexes():
     db.replies.create_indexes([
         IndexModel([("discussion_id", ASCENDING), ("created_at", DESCENDING)]),
         IndexModel([("author_user_id", ASCENDING), ("created_at", DESCENDING)]),
+        IndexModel([("parent_id", ASCENDING), ("created_at", ASCENDING)]),
     ])
     
     # Reports

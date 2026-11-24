@@ -1,0 +1,290 @@
+.backdrop {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 10000;
+  background-color: rgba(20, 33, 30, 0.5);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.35s ease;
+}
+
+.backdrop.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  max-width: 440px;
+  height: 100vh;
+  z-index: 10001;
+  background-color: var(--store-bg-cream, #FAF7F2);
+  transform: translateX(100%);
+  visibility: hidden;
+  pointer-events: none;
+  transition: transform 0.4s var(--store-ease-osmo, cubic-bezier(0.625, 0.05, 0, 1)),
+              visibility 0.4s;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  box-shadow: -10px 0 30px rgba(20, 33, 30, 0.15);
+}
+
+.drawer.open {
+  transform: translateX(0);
+  visibility: visible;
+  pointer-events: auto;
+}
+
+/* Organic Background Decoration */
+.drawerBgSvg {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: auto;
+  color: var(--store-bg-yellow, #FFE169);
+  opacity: 0.25;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.drawerContent {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  padding: 24px;
+}
+
+/* Header */
+.drawerHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 32px;
+}
+
+.drawerBrand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: var(--store-text, #1C2826);
+}
+
+.drawerBrandIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  background-color: var(--store-bg-yellow, #FFE169);
+  border-radius: var(--store-radius-pill, 9999px);
+  color: var(--store-text, #1C2826);
+}
+
+.drawerBrandTitle {
+  font-family: var(--store-font-champ, 'Champ', system-ui, sans-serif);
+  font-size: 1.25rem;
+  font-weight: 800;
+}
+
+.closeButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--store-radius-pill, 9999px);
+  background-color: #FFFFFF;
+  border: 1px solid var(--store-border, rgba(28, 40, 38, 0.12));
+  color: var(--store-text, #1C2826);
+  cursor: pointer;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.closeButton:hover {
+  background-color: var(--store-border, rgba(28, 40, 38, 0.12));
+  transform: rotate(90deg);
+}
+
+/* Navigation List */
+.navSection {
+  flex: 1;
+}
+
+.navList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.navItem {
+  margin: 0;
+}
+
+.navButton {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  padding: 16px 20px;
+  border-radius: var(--store-radius-card, 24px);
+  background-color: #FFFFFF;
+  border: 1px solid var(--store-border, rgba(28, 40, 38, 0.12));
+  color: var(--store-text, #1C2826);
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.25s var(--store-ease-energy, cubic-bezier(0.32, 0.72, 0, 1));
+}
+
+.navButton:hover {
+  border-color: var(--store-text, #1C2826);
+  transform: translateX(4px);
+  box-shadow: 0 8px 20px rgba(20, 33, 30, 0.05);
+}
+
+.navButton.active {
+  background-color: var(--store-text, #1C2826);
+  color: #FFFFFF;
+  border-color: var(--store-text, #1C2826);
+}
+
+.navLabel {
+  font-family: var(--store-font-champ, 'Champ', system-ui, sans-serif);
+  font-size: 1.25rem;
+  font-weight: 800;
+}
+
+.navDescription {
+  font-family: var(--store-font-body, 'Degular', system-ui, sans-serif);
+  font-size: 0.82rem;
+  color: var(--store-text-muted, #576562);
+  margin-top: 4px;
+}
+
+.navButton.active .navDescription {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* Portal Transition Action */
+.portalSection {
+  margin: 24px 0;
+}
+
+.portalButton {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 16px 20px;
+  border-radius: var(--store-radius-pill, 9999px);
+  background-color: var(--store-bg-yellow, #FFE169);
+  color: var(--store-text, #1C2826);
+  border: 1px solid rgba(28, 40, 38, 0.2);
+  font-family: var(--store-font-champ, 'Champ', system-ui, sans-serif);
+  font-size: 1.05rem;
+  font-weight: 800;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.portalButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(255, 225, 105, 0.45);
+}
+
+.portalButtonInner {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Footer / Auth State */
+.drawerFooter {
+  padding-top: 20px;
+  border-top: 1px solid var(--store-border, rgba(28, 40, 38, 0.12));
+}
+
+.userCard {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #FFFFFF;
+  padding: 12px 16px;
+  border-radius: 16px;
+  border: 1px solid var(--store-border, rgba(28, 40, 38, 0.12));
+}
+
+.userInfo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.userInitials {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: var(--store-bg-yellow, #FFE169);
+  color: var(--store-text, #1C2826);
+  font-weight: 700;
+  font-size: 0.85rem;
+}
+
+.userNameWrap {
+  display: flex;
+  flex-direction: column;
+}
+
+.userDisplayName {
+  font-family: var(--store-font-body, 'Degular', system-ui, sans-serif);
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--store-text, #1C2826);
+}
+
+.userRole {
+  font-size: 0.75rem;
+  color: var(--store-text-muted, #576562);
+}
+
+.signOutButton {
+  padding: 8px 14px;
+  border-radius: var(--store-radius-pill, 9999px);
+  background-color: #FDF3F0;
+  color: #B94A2D;
+  border: 1px solid #E8ADA0;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.signInFullButton {
+  width: 100%;
+  padding: 14px;
+  border-radius: var(--store-radius-pill, 9999px);
+  background-color: var(--store-text, #1C2826);
+  color: #FFFFFF;
+  border: none;
+  font-family: var(--store-font-body, 'Degular', system-ui, sans-serif);
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+}

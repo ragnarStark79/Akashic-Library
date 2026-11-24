@@ -56,11 +56,13 @@ def book_list(request):
       }
     """
     query = request.query_params.get("q", "").strip()
+    title = request.query_params.get("title", "").strip()
     author = request.query_params.get("author", "").strip()
     isbn = request.query_params.get("isbn", "").strip()
     subject = request.query_params.get("subject", "").strip()
     language = request.query_params.get("language", "").strip()
     publisher = request.query_params.get("publisher", "").strip()
+    featured = request.query_params.get("featured", "").lower() in ("true", "1")
 
     # Year range filters.
     year_from: int | None = None
@@ -91,6 +93,7 @@ def book_list(request):
     try:
         result = BookSearchService.search(
             query=query,
+            title=title,
             author=author,
             isbn=isbn,
             subject=subject,
@@ -100,6 +103,7 @@ def book_list(request):
             year_to=year_to,
             page=page,
             page_size=page_size,
+            featured=featured,
         )
     except MongoDBUnavailableError:
         return Response(
@@ -131,6 +135,7 @@ def book_list(request):
     return Response(
         {
             "count": total,
+            "upstream_count": result.get("upstream_count"),
             "next": build_page_url(page + 1) if has_next else None,
             "previous": build_page_url(page - 1) if has_prev else None,
             "results": serialized,

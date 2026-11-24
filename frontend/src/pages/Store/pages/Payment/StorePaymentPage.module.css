@@ -1,0 +1,206 @@
+.pageWrapper {
+  width: 100%;
+  min-height: 85vh;
+  background-color: #FAFAFA;
+  padding: 3rem 1.5rem 6rem;
+  font-family: var(--store-font-body, 'Degular', system-ui, -apple-system, sans-serif);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.paymentCard {
+  background: #FFFFFF;
+  border-radius: 1.5rem;
+  border: 1px solid #E5E7EB;
+  max-width: 540px;
+  width: 100%;
+  padding: 2.5rem 2rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.demoPill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: #FEF3C7;
+  color: #92400E;
+  font-size: 0.775rem;
+  font-weight: 800;
+  padding: 0.35rem 0.85rem;
+  border-radius: 9999px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 1.25rem;
+}
+
+.title {
+  font-size: 1.75rem;
+  font-weight: 900;
+  color: #111827;
+  letter-spacing: -0.02em;
+  margin: 0 0 0.5rem;
+}
+
+.orderSubtitle {
+  font-size: 0.95rem;
+  color: #6B7280;
+  margin: 0 0 1.5rem;
+}
+
+.orderNumber {
+  font-weight: 700;
+  color: #111827;
+}
+
+.amountBox {
+  background: #F3F4F6;
+  border-radius: 1rem;
+  padding: 1rem;
+  margin-bottom: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.amountLabel {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  color: #6B7280;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+
+.amountValue {
+  font-size: 2.25rem;
+  font-weight: 900;
+  color: #111827;
+}
+
+/* ── QR Scanner Frame with Laser Line ── */
+.qrWrapper {
+  position: relative;
+  width: 240px;
+  height: 240px;
+  margin: 0 auto 1.5rem;
+  border-radius: 1rem;
+  padding: 1rem;
+  background: #FFFFFF;
+  border: 2px dashed #D1D5DB;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+}
+
+.qrSvg {
+  width: 100%;
+  height: 100%;
+}
+
+/* Animated laser scanning line */
+.scanLine {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, #FF007A, transparent);
+  box-shadow: 0 0 8px #FF007A;
+  animation: scanAnimation 2.2s ease-in-out infinite alternate;
+  pointer-events: none;
+}
+
+@keyframes scanAnimation {
+  0% {
+    top: 5%;
+    opacity: 0.2;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    top: 92%;
+    opacity: 0.2;
+  }
+}
+
+.qrCaption {
+  font-size: 0.825rem;
+  color: #6B7280;
+  margin: 0 0 1.75rem;
+  line-height: 1.4;
+}
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.confirmBtn {
+  width: 100%;
+  background: #FF007A;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 9999px;
+  padding: 1rem 1.5rem;
+  font-size: 1.05rem;
+  font-weight: 800;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: background 0.2s ease, transform 0.15s ease;
+  box-shadow: 0 4px 12px rgba(255, 0, 122, 0.25);
+}
+
+.confirmBtn:hover:not(:disabled) {
+  background: #E6006E;
+  transform: translateY(-1px);
+}
+
+.confirmBtn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.cancelBtn {
+  background: none;
+  border: none;
+  color: #6B7280;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0.5rem;
+  transition: color 0.15s ease;
+}
+
+.cancelBtn:hover {
+  color: #111827;
+}
+
+.errorBanner {
+  background: #FEE2E2;
+  border: 1px solid #FCA5A5;
+  color: #991B1B;
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+  margin-bottom: 1.25rem;
+  font-size: 0.85rem;
+  text-align: left;
+}
+
+@media (max-width: 480px) {
+  .paymentCard {
+    padding: 2rem 1.25rem;
+  }
+  .qrWrapper {
+    width: 200px;
+    height: 200px;
+  }
+}

@@ -1,0 +1,550 @@
+/* ==========================================================================
+   Akashic Library — Personal Sanctuary / Library (Phase 4B)
+   Matches Phase 4A Design Reference: akashic_library_personal_sanctuary_desktop
+   & akashic_library_personal_sanctuary_empty_states_new_user
+   ========================================================================== */
+
+.page {
+  min-height: calc(100vh - 120px);
+  padding: var(--space-8) var(--space-4) var(--space-16);
+  background-color: var(--color-bg-page);
+  position: relative;
+  overflow: hidden;
+}
+
+.ambientBloomTop {
+  position: absolute;
+  top: -150px;
+  right: -100px;
+  width: 600px;
+  height: 600px;
+  border-radius: var(--radius-pill);
+  background: radial-gradient(circle, rgba(168, 189, 174, 0.2) 0%, rgba(245, 241, 233, 0) 70%);
+  pointer-events: none;
+}
+
+.ambientBloomBottom {
+  position: absolute;
+  bottom: -200px;
+  left: -150px;
+  width: 700px;
+  height: 700px;
+  border-radius: var(--radius-pill);
+  background: radial-gradient(circle, rgba(24, 92, 88, 0.1) 0%, rgba(245, 241, 233, 0) 75%);
+  pointer-events: none;
+}
+
+.container {
+  width: 100%;
+  max-width: 1360px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+/* ── Sanctuary Header Banner ── */
+.sanctuaryHeader {
+  background-color: var(--color-surface);
+  border-radius: var(--radius-xl);
+  padding: var(--space-8);
+  margin-bottom: var(--space-8);
+  box-shadow: var(--shadow-raised);
+  border: 1px solid var(--color-border-subtle);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-6);
+}
+
+@media (max-width: 768px) {
+  .sanctuaryHeader {
+    padding: var(--space-6);
+  }
+}
+
+.headerMain {
+  max-width: 800px;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  color: var(--color-action-primary);
+  font-family: var(--font-family-body);
+  font-size: var(--font-label-sm);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: var(--space-2);
+}
+
+.title {
+  font-family: var(--font-family-heading);
+  font-size: 2.25rem;
+  font-weight: 500;
+  color: var(--color-text-primary);
+  margin: 0 0 var(--space-2) 0;
+  letter-spacing: -0.015em;
+}
+
+@media (max-width: 640px) {
+  .title {
+    font-size: 1.75rem;
+  }
+}
+
+.subtitle {
+  font-family: var(--font-family-body);
+  font-size: var(--font-body);
+  color: var(--color-text-secondary);
+  margin: 0;
+  line-height: var(--line-height-relaxed);
+}
+
+.headerMetaGroup {
+  display: flex;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+}
+
+.metaStatCard {
+  background-color: var(--color-surface-inset);
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-inset);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 100px;
+}
+
+.statNumber {
+  font-family: var(--font-family-heading);
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--color-action-primary);
+  line-height: 1.2;
+}
+
+.statLabel {
+  font-size: var(--font-caption);
+  color: var(--color-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+/* ── Shelf Navigation (Tabs) ── */
+.shelfTabsNav {
+  display: flex;
+  gap: var(--space-2);
+  overflow-x: auto;
+  padding-bottom: var(--space-3);
+  margin-bottom: var(--space-8);
+  border-bottom: 1px solid var(--color-border-subtle);
+  scrollbar-width: none;
+}
+
+.shelfTabsNav::-webkit-scrollbar {
+  display: none;
+}
+
+.shelfTabButton {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: 10px 20px;
+  border-radius: var(--radius-pill);
+  border: 1px solid transparent;
+  background-color: var(--color-surface);
+  color: var(--color-text-secondary);
+  font-family: var(--font-family-body);
+  font-size: var(--font-label-md);
+  font-weight: 500;
+  cursor: pointer;
+  white-space: nowrap;
+  box-shadow: var(--shadow-soft);
+  transition: all var(--motion-standard);
+}
+
+.shelfTabButton:hover {
+  color: var(--color-action-primary);
+  background-color: #fff;
+  transform: translateY(-1px);
+}
+
+.shelfTabButtonActive {
+  background-color: var(--color-action-primary);
+  color: #fff;
+  font-weight: 600;
+  box-shadow: 0 4px 12px rgba(24, 92, 88, 0.25);
+}
+
+.shelfTabButtonActive:hover {
+  background-color: var(--raw-deep-teal-hover);
+  color: #fff;
+}
+
+.tabBadge {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: var(--radius-pill);
+  font-size: 11px;
+  font-weight: 600;
+  background-color: rgba(0, 0, 0, 0.06);
+}
+
+.shelfTabButtonActive .tabBadge {
+  background-color: rgba(255, 255, 255, 0.25);
+  color: #fff;
+}
+
+/* ── Populated Library Grid ── */
+.libraryGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-6);
+}
+
+@media (max-width: 1200px) {
+  .libraryGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 860px) {
+  .libraryGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-4);
+  }
+}
+
+@media (max-width: 480px) {
+  .libraryGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ── Library Card ── */
+.bookEntryCard {
+  background-color: var(--color-surface);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border-subtle);
+  box-shadow: var(--shadow-soft);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: all var(--motion-standard);
+  position: relative;
+}
+
+.bookEntryCard:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-raised);
+}
+
+/* Card Cover Container */
+.coverWrapper {
+  aspect-ratio: 2 / 3;
+  width: 100%;
+  background-color: var(--color-surface-inset);
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.coverImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--motion-standard);
+}
+
+.bookEntryCard:hover .coverImage {
+  transform: scale(1.03);
+}
+
+.fallbackCover {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: var(--space-4);
+  text-align: center;
+  background: linear-gradient(135deg, var(--color-surface-inset) 0%, #D8CFC2 100%);
+  color: var(--color-text-primary);
+}
+
+.fallbackTitle {
+  font-family: var(--font-family-heading);
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-top: var(--space-2);
+  line-height: var(--line-height-tight);
+}
+
+.fallbackAuthor {
+  font-size: var(--font-caption);
+  color: var(--color-text-secondary);
+  margin-top: var(--space-1);
+}
+
+/* Card Body */
+.cardContent {
+  padding: var(--space-4);
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.bookTitleLink {
+  font-family: var(--font-family-heading);
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  text-decoration: none;
+  cursor: pointer;
+  line-height: var(--line-height-tight);
+  margin-bottom: var(--space-1);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.bookTitleLink:hover {
+  color: var(--color-action-primary);
+}
+
+.bookAuthors {
+  font-family: var(--font-family-body);
+  font-size: var(--font-body-sm);
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-3);
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Status Pill */
+.statusBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  padding: 4px 10px;
+  border-radius: var(--radius-pill);
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: var(--space-4);
+  align-self: flex-start;
+}
+
+.statusReading {
+  background-color: rgba(24, 92, 88, 0.12);
+  color: var(--color-action-primary);
+  border: 1px solid rgba(24, 92, 88, 0.25);
+}
+
+.statusWantToRead {
+  background-color: rgba(168, 189, 174, 0.25);
+  color: #2D4C3C;
+  border: 1px solid rgba(168, 189, 174, 0.4);
+}
+
+.statusRead {
+  background-color: rgba(197, 139, 112, 0.18);
+  color: #7A3C1E;
+  border: 1px solid rgba(197, 139, 112, 0.35);
+}
+
+.statusAbandoned {
+  background-color: rgba(100, 116, 139, 0.14);
+  color: #475569;
+  border: 1px solid rgba(100, 116, 139, 0.28);
+}
+
+/* Card Action Bar */
+.cardActions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+  margin-top: auto;
+  padding-top: var(--space-3);
+  border-top: 1px solid var(--color-border-subtle);
+}
+
+.statusSelect {
+  flex: 1;
+  padding: 6px 8px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border-subtle);
+  background-color: var(--color-surface-inset);
+  color: var(--color-text-primary);
+  font-family: var(--font-family-body);
+  font-size: 12px;
+  outline: none;
+  cursor: pointer;
+}
+
+.statusSelect:focus {
+  border-color: var(--color-action-primary);
+}
+
+.readingRoomBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 5px 10px;
+  border-radius: var(--radius-pill);
+  background-color: var(--color-surface-inset);
+  color: var(--color-action-primary);
+  border: 1px solid var(--color-border-subtle);
+  font-family: var(--font-family-body);
+  font-size: 11px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.readingRoomBtn:hover {
+  background-color: var(--color-action-primary);
+  color: #fff;
+  border-color: var(--color-action-primary);
+}
+
+.actionIconBtn {
+  background: none;
+  border: none;
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  padding: 6px;
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--motion-standard);
+}
+
+.actionIconBtn:hover {
+  color: var(--color-feedback-error);
+  background-color: var(--color-feedback-error-bg);
+}
+
+.favIconBtn {
+  background: none;
+  border: none;
+  color: var(--color-text-muted);
+  cursor: pointer;
+  padding: 6px;
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--motion-standard);
+}
+
+.favIconBtn:hover {
+  color: var(--color-accent-highlight);
+}
+
+.favActive {
+  color: var(--color-accent-highlight);
+}
+
+/* ── Empty State ── */
+.emptyStateContainer {
+  background-color: var(--color-surface);
+  border-radius: var(--radius-xl);
+  padding: var(--space-12) var(--space-6);
+  text-align: center;
+  box-shadow: var(--shadow-soft);
+  border: 1px solid var(--color-border-subtle);
+  max-width: 780px;
+  margin: var(--space-8) auto;
+}
+
+.emptyIconWrapper {
+  display: inline-flex;
+  padding: var(--space-6);
+  border-radius: var(--radius-pill);
+  background-color: rgba(24, 92, 88, 0.08);
+  color: var(--color-action-primary);
+  margin-bottom: var(--space-4);
+}
+
+.emptyTitle {
+  font-family: var(--font-family-heading);
+  font-size: 1.75rem;
+  font-weight: 500;
+  color: var(--color-text-primary);
+  margin: 0 0 var(--space-3) 0;
+}
+
+.emptyDesc {
+  font-family: var(--font-family-body);
+  font-size: var(--font-body);
+  color: var(--color-text-secondary);
+  max-width: 540px;
+  margin: 0 auto var(--space-6) auto;
+  line-height: var(--line-height-relaxed);
+}
+
+.exploreCtaBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: 12px 28px;
+  border-radius: var(--radius-pill);
+  background-color: var(--color-action-primary);
+  color: #fff;
+  border: none;
+  font-family: var(--font-family-body);
+  font-size: var(--font-body);
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(24, 92, 88, 0.2);
+  transition: all var(--motion-standard);
+}
+
+.exploreCtaBtn:hover {
+  background-color: var(--raw-deep-teal-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(24, 92, 88, 0.3);
+}
+
+/* Unauthenticated Gate */
+.authRequiredCard {
+  background-color: var(--color-surface);
+  border-radius: var(--radius-xl);
+  padding: var(--space-12) var(--space-6);
+  text-align: center;
+  box-shadow: var(--shadow-raised);
+  border: 1px solid var(--color-border-subtle);
+  max-width: 600px;
+  margin: var(--space-12) auto;
+}
+
+.loadingSpinner {
+  width: 44px;
+  height: 44px;
+  border: 3px solid rgba(24, 92, 88, 0.15);
+  border-radius: 50%;
+  border-top-color: var(--color-action-primary);
+  animation: spin 0.8s linear infinite;
+  margin: var(--space-8) auto;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+

@@ -53,14 +53,17 @@ class NormalizedBook:
 
     def to_document(self) -> dict[str, Any]:
         """Convert to a MongoDB document dict for upsert operations."""
+        identifiers: dict[str, str] = {}
+        if self.isbn10:
+            identifiers["isbn10"] = self.isbn10
+        if self.isbn13:
+            identifiers["isbn13"] = self.isbn13
+
         return {
             "title": self.title,
             "authors": [{"name": a} for a in self.authors],
             "description": self.description,
-            "identifiers": {
-                "isbn10": self.isbn10,
-                "isbn13": self.isbn13,
-            },
+            "identifiers": identifiers,
             "publication": {
                 "publisher": self.publisher,
                 "published_date": self.published_date,

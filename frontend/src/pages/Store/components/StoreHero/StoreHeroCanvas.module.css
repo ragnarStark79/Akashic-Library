@@ -1,0 +1,79 @@
+.heroBg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+  color: var(--store-bg-yellow, #ff6969);
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.ambientCanvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.65;
+}
+
+.heroBgSvgDesktop {
+  width: 100%;
+  height: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: visible !important;
+  z-index: 1;
+}
+
+.heroBgSvgMobile {
+  display: none;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: visible !important;
+  z-index: 1;
+}
+
+.organicPathTeal {
+  fill: #59f2f5;
+  stroke: #1CE8ED;
+  transform-box: fill-box;
+  transform-origin: center center;
+  transition: stroke-width 0.1s ease;
+  opacity: 0.92;
+}
+
+.organicPathYellow {
+  fill: #FAED8F;
+  stroke: #FAED8F;
+  transform-box: fill-box;
+  transform-origin: center center;
+  transition: stroke-width 0.1s ease;
+}
+
+.organicPathOrange {
+  fill: #F9A220;
+  stroke: #F9A220;
+  transform-box: fill-box;
+  transform-origin: center center;
+  transition: stroke-width 0.1s ease;
+}
+
+@media (max-width: 991px) {
+  .heroBgSvgDesktop {
+    display: none;
+  }
+
+  .heroBgSvgMobile {
+    display: block;
+  }
+}

@@ -1,0 +1,104 @@
+/**
+ * Akashic Library Discovery Design System — Phase 0
+ * Design Tokens: Color, Spacing, Radius, Borders, Shadows, and Icon Sizes.
+ * Approved Visual Authority: Akashic_Library_Discovery_Design_System_v1.docx
+ */
+
+:root {
+  /* ── 1. Color Palette: Raw Baseline ────────────────────────────────── */
+  --raw-warm-ivory: #F5F1E9;
+  --raw-soft-porcelain: #FCFAF5;
+  --raw-warm-stone: #EAE3D8;
+  --raw-deep-teal: #185C58;
+  --raw-deep-teal-hover: #134B48;
+  --raw-deep-teal-pressed: #0F3C39;
+  --raw-soft-sage: #A8BDAE;
+  --raw-soft-sage-hover: #97AC9D;
+  --raw-soft-sage-pressed: #869B8C;
+  --raw-muted-terracotta: #C58B70;
+  --raw-muted-terracotta-hover: #B47A5F;
+  --raw-muted-terracotta-pressed: #A3694E;
+  --raw-ink-green: #263633;
+  --raw-warm-grey: #827E75;
+  --raw-warm-grey-dark: #635F57; /* Adjusted for WCAG AA 4.5:1 text contrast on light surfaces */
+
+  /* ── 2. Semantic Color Roles ────────────────────────────────────────── */
+  --color-bg-page: var(--raw-warm-ivory);
+  --color-surface: var(--raw-soft-porcelain);
+  --color-surface-raised: var(--raw-soft-porcelain);
+  --color-surface-inset: var(--raw-warm-stone);
+  --color-surface-hover: #F7F4EC;
+
+  --color-text-primary: var(--raw-ink-green);
+  --color-text-secondary: var(--raw-warm-grey-dark);
+  --color-text-muted: var(--raw-warm-grey);
+  --color-text-inverse: #FFFFFF;
+
+  --color-action-primary: var(--raw-deep-teal);
+  --color-action-primary-hover: var(--raw-deep-teal-hover);
+  --color-action-primary-pressed: var(--raw-deep-teal-pressed);
+  --color-action-primary-text: #FFFFFF;
+
+  --color-action-secondary: var(--raw-soft-sage);
+  --color-action-secondary-hover: var(--raw-soft-sage-hover);
+  --color-action-secondary-pressed: var(--raw-soft-sage-pressed);
+  --color-action-secondary-text: var(--raw-ink-green);
+
+  --color-accent-secondary: var(--raw-soft-sage);
+  --color-accent-highlight: var(--raw-muted-terracotta);
+
+  --color-border-subtle: #E2DACD;
+  --color-border-strong: var(--raw-ink-green);
+  --color-border-focus: var(--raw-deep-teal);
+
+  --color-feedback-error: #B94A2D;
+  --color-feedback-error-bg: #FDF3F0;
+  --color-feedback-error-border: #E8ADA0;
+  --color-feedback-success: #185C58;
+  --color-feedback-success-bg: #EFF6F5;
+  --color-feedback-warning: #B37128;
+  --color-feedback-warning-bg: #FCF6EC;
+
+  --color-focus-ring: rgba(24, 92, 88, 0.4);
+
+  /* ── 3. Spacing Scale ────────────────────────────────────────────────── */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-12: 48px;
+  --space-16: 64px;
+
+  /* ── 4. Shape & Radius Scale ─────────────────────────────────────────── */
+  --radius-xs: 4px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-pill: 9999px;
+
+  /* ── 5. Border Thickness Tokens ──────────────────────────────────────── */
+  --border-thin: 1px;
+  --border-strong: 2px;
+
+  /* ── 6. Icon Sizing Tokens ───────────────────────────────────────────── */
+  --icon-sm: 16px;
+  --icon-md: 20px;
+  --icon-lg: 24px;
+
+  /* ── 7. Soft Neumorphic Shadows & Elevation ─────────────────────────── */
+  --shadow-none: none;
+  --shadow-soft: 0 4px 12px rgba(38, 54, 51, 0.08), 0 1px 3px rgba(38, 54, 51, 0.05);
+  --shadow-raised: 0 8px 20px rgba(38, 54, 51, 0.10), 0 2px 6px rgba(38, 54, 51, 0.06);
+  --shadow-inset: inset 2px 2px 6px rgba(38, 54, 51, 0.10), inset -2px -2px 6px rgba(255, 255, 255, 0.75);
+  --shadow-overlay: 0 16px 40px rgba(38, 54, 51, 0.16), 0 4px 12px rgba(38, 54, 51, 0.08);
+  --shadow-glass: 0 8px 32px rgba(38, 54, 51, 0.08), 0 2px 8px rgba(38, 54, 51, 0.04);
+
+  /* ── 8. Glassmorphism Tokens ─────────────────────────────────────────── */
+  --glass-bg: rgba(252, 250, 245, 0.82);
+  --glass-blur: blur(12px);
+  --glass-border: 1px solid rgba(255, 255, 255, 0.65);
+}
+

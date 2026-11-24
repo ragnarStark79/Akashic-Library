@@ -36,8 +36,19 @@ class BookProvider(abc.ABC):
     name: str = ""
 
     @abc.abstractmethod
-    def search(self, query: str, *, page: int = 1) -> list[NormalizedBook]:
-        """Search the provider for books matching query.
+    def search(
+        self,
+        query: str = "",
+        *,
+        title: str = "",
+        author: str = "",
+        isbn: str = "",
+        subject: str = "",
+        publisher: str = "",
+        language: str = "",
+        page: int = 1,
+    ) -> list[NormalizedBook]:
+        """Search the provider for books matching query, title, author, isbn, subject, etc.
 
         Returns a list of NormalizedBook objects (may be empty).
 

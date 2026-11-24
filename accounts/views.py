@@ -10,13 +10,34 @@ Views do NOT contain authentication logic, password handling, or
 user-creation logic — those live in services.py.
 """
 
+from django.conf import settings
 from rest_framework import status
-from rest_framework.decorators import api_view, authentication_classes, permission_classes
+from rest_framework.decorators import (
+    api_view,
+    authentication_classes,
+    permission_classes,
+    throttle_classes,
+)
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
+from rest_framework.throttling import AnonRateThrottle
 
-from .serializers import LoginSerializer, RegistrationSerializer, UserSerializer
+from .serializers import (
+    LoginSerializer,
+    PasswordChangeSerializer,
+    PasswordResetConfirmSerializer,
+    PasswordResetRequestSerializer,
+    RegistrationSerializer,
+    UserProfileUpdateSerializer,
+    UserSerializer,
+)
 from .services import AccountService
+
+
+class PasswordResetRateThrottle(AnonRateThrottle):
+    """Abuse-protection rate limiter for unauthenticated password reset requests."""
+    scope = "password_reset"
+    rate = "10/hour"
 
 
 # ─── Registration ─────────────────────────────────────────────────────────────
@@ -45,6 +66,8 @@ def register(request):
         username=serializer.validated_data["username"],
         email=serializer.validated_data["email"],
         password=serializer.validated_data["password"],
+        role=serializer.validated_data.get("role", "USER"),
+        business_name=serializer.validated_data.get("business_name", ""),
     )
 
     return Response(
@@ -115,19 +138,135 @@ def logout_view(request):
 # ─── Current user ─────────────────────────────────────────────────────────────
 
 
-@api_view(["GET"])
+@api_view(["GET", "PATCH"])
 @permission_classes([IsAuthenticated])
 def me(request):
     """GET /api/auth/me/
+    PATCH /api/auth/me/
 
-    Return safe account information for the currently authenticated user.
-    Unauthenticated requests receive 403 Forbidden (DRF default for
-    SessionAuthentication without credentials).
+    GET: Return safe account information for the currently authenticated user.
+    PATCH: Update editable profile fields (display_name, bio) for the user.
 
+    Unauthenticated requests receive 403 Forbidden.
     Never returns: password, password hash, session key, or SECRET_KEY.
 
     Responses:
         200 OK          — authenticated user data
+        400 Bad Request — validation error on PATCH
         403 Forbidden   — not authenticated
     """
+    if request.method == "PATCH":
+        serializer = UserProfileUpdateSerializer(request.user, data=request.data, partial=True)
+        serializer.is_valid(raise_exception=True)
+        user = AccountService.update_profile(
+            user=request.user,
+            validated_data=serializer.validated_data,
+        )
+        return Response(UserSerializer(user).data, status=status.HTTP_200_OK)
+
     return Response(UserSerializer(request.user).data, status=status.HTTP_200_OK)
+
+
+# ─── Password Change ──────────────────────────────────────────────────────────
+
+
+@api_view(["POST"])
+@permission_classes([IsAuthenticated])
+def password_change(request):
+    """POST /api/auth/password/change/
+
+    Change password for the currently authenticated user.
+    Requires current password verification and validates new password strength.
+    Preserves active user session while invalidating other sessions.
+
+    Responses:
+        200 OK          — password changed successfully
+        400 Bad Request — invalid current password or validation error
+        403 Forbidden   — not authenticated
+    """
+    serializer = PasswordChangeSerializer(data=request.data, context={"request": request})
+    serializer.is_valid(raise_exception=True)
+
+    AccountService.change_password(
+        request=request,
+        user=request.user,
+        new_password=serializer.validated_data["new_password"],
+    )
+
+    return Response(
+        {"detail": "Password changed successfully."},
+        status=status.HTTP_200_OK,
+    )
+
+
+# ─── Password Reset Request ───────────────────────────────────────────────────
+
+
+@api_view(["POST"])
+@authentication_classes([])
+@permission_classes([])
+@throttle_classes([PasswordResetRateThrottle])
+def password_reset_request(request):
+    """POST /api/auth/password/reset/
+
+    Initiate forgotten-password recovery for the provided email address.
+    Strict account-enumeration resistance: always returns 200 OK with identical
+    generic confirmation regardless of whether the account exists.
+
+    Responses:
+        200 OK          — generic confirmation response
+        400 Bad Request — invalid email format
+        429 Throttled   — rate limit exceeded
+    """
+    serializer = PasswordResetRequestSerializer(data=request.data)
+    serializer.is_valid(raise_exception=True)
+
+    frontend_url = getattr(settings, "FRONTEND_URL", "http://localhost:3000")
+    AccountService.request_password_reset(
+        email=serializer.validated_data["email"],
+        frontend_url=frontend_url,
+    )
+
+    return Response(
+        {
+            "detail": (
+                "If an account exists for this address, password recovery instructions will be sent."
+            )
+        },
+        status=status.HTTP_200_OK,
+    )
+
+
+# ─── Password Reset Confirm ───────────────────────────────────────────────────
+
+
+@api_view(["POST"])
+@authentication_classes([])
+@permission_classes([])
+def password_reset_confirm(request):
+    """POST /api/auth/password/reset/confirm/
+
+    Complete forgotten-password reset with cryptographic token and new password.
+    Validates token integrity and expiry, enforces password rules, and sets
+    new password.
+
+    Responses:
+        200 OK          — password successfully reset
+        400 Bad Request — invalid/expired token or password validation error
+    """
+    serializer = PasswordResetConfirmSerializer(data=request.data)
+    serializer.is_valid(raise_exception=True)
+
+    AccountService.confirm_password_reset(
+        user=serializer.validated_data["user"],
+        new_password=serializer.validated_data["new_password"],
+    )
+
+    return Response(
+        {
+            "detail": (
+                "Password has been reset successfully. You may now sign in with your new password."
+            )
+        },
+        status=status.HTTP_200_OK,
+    )

@@ -1,0 +1,356 @@
+/* Why Akashic Section — Stage 1D Implementation */
+
+.benefitsSection {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  min-height: 820px;
+  display: flex;
+  position: relative;
+  box-sizing: border-box;
+  margin: 0;
+  z-index: 1;
+}
+
+/* Authentic underlay extension: connects seamlessly behind the bottom rounded boundary of Choose From */
+.benefitsSection::before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: -8rem;
+  left: 0;
+  width: 100%;
+  height: 8.5rem;
+  background-color: var(--store-color-pale-yellow, #FAED8F);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.benefitsContainer {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  position: relative;
+  z-index: 1;
+}
+
+.benefitsInner {
+  width: 100%;
+  height: 100%;
+  background-color: var(--store-color-pale-yellow, #FAED8F);
+  clip-path: inset(0 round 0 0 7.5rem 7.5rem);
+  display: grid;
+  position: relative;
+  overflow: clip;
+}
+
+/* ── Central Brand Composition: Curved Title & Circular Seal ── */
+.benefitsContent {
+  grid-area: 1 / 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  padding-bottom: 4rem;
+  user-select: none;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.benefitsLogoText {
+  width: 38rem;
+  max-width: 90%;
+  height: 14rem;
+  margin-bottom: -7rem;
+  z-index: 2;
+  pointer-events: none;
+  overflow: visible;
+}
+
+.benefitsLogo {
+  width: 32rem;
+  height: 32rem;
+  max-width: 80%;
+  z-index: 1;
+  pointer-events: none;
+  filter: drop-shadow(0 8px 24px rgba(0, 0, 0, 0.05));
+}
+
+/* ── Five Floating Editorial Feature Capsules ── */
+.benefitsLabelWrap {
+  grid-area: 1 / 1;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: clip;
+  z-index: 3;
+  pointer-events: auto;
+}
+
+.benefitsLabel {
+  position: absolute;
+  user-select: none;
+  cursor: pointer;
+  will-change: transform;
+}
+
+.benefitsLabelInner {
+  border-radius: 9999px;
+  justify-content: center;
+  align-items: center;
+  padding: 1.4rem 2.4rem;
+  display: inline-flex;
+  font-family: var(--store-font-champ, 'Champ-ExtraBold-w', 'Degular', sans-serif);
+  font-size: 2.75rem; /* ~44px */
+  font-weight: 800;
+  line-height: 0.85;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.12);
+  transition: box-shadow 0.25s ease;
+  will-change: transform;
+}
+
+.benefitsLabel:hover .benefitsLabelInner {
+  box-shadow: 0 22px 48px rgba(0, 0, 0, 0.18);
+}
+
+/* Individual Asymmetrical Positioning Matching Reference */
+.isFirst {
+  top: 36%;
+  left: 8%;
+  transform: rotate(-5deg);
+}
+
+.isSecond {
+  top: 47%;
+  right: 4%;
+  transform: rotate(-1.8deg);
+}
+
+.isThird {
+  z-index: 4;
+  top: 63%;
+  left: 13%;
+  transform: rotate(2.5deg);
+}
+
+.isFourth {
+  top: 67%;
+  right: 13%;
+  transform: rotate(5.8deg);
+}
+
+.isFifth {
+  top: 77%;
+  left: 2%;
+  transform: rotate(-5.3deg);
+}
+
+/* ── Decorative Layered Wave SVGs ── */
+.benefitsBg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  pointer-events: none;
+  color: var(--store-color-yellow, #FFD24A);
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  overflow: visible;
+}
+
+.benefitsBgSvg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  overflow: visible !important;
+}
+
+.isDesktop {
+  display: block;
+}
+
+.isMobile {
+  display: none;
+}
+
+/* ── Responsive Adaptations ── */
+@media screen and (max-width: 1200px) {
+  .benefitsSection {
+    min-height: 720px;
+  }
+
+  .benefitsLabelInner {
+    font-size: 2.25rem;
+    padding: 1.15rem 2rem;
+  }
+
+  .benefitsLogoText {
+    width: 32rem;
+    height: 11.5rem;
+    margin-bottom: -5.5rem;
+  }
+
+  .benefitsLogo {
+    width: 26rem;
+    height: 26rem;
+  }
+
+  .isFirst {
+    top: 34%;
+    left: 4%;
+  }
+
+  .isSecond {
+    top: 46%;
+    right: 2%;
+  }
+
+  .isThird {
+    top: 62%;
+    left: 8%;
+  }
+
+  .isFourth {
+    top: 67%;
+    right: 8%;
+  }
+
+  .isFifth {
+    top: 77%;
+    left: 1%;
+  }
+}
+
+@media screen and (max-width: 991px) {
+  .benefitsSection {
+    aspect-ratio: auto;
+    min-height: 640px;
+  }
+
+  .benefitsSection::before {
+    top: -3.5rem;
+    height: 4rem;
+  }
+
+  .benefitsInner {
+    clip-path: inset(0 round 0 0 2.5rem 2.5rem);
+    padding: 2.5rem 0 3.5rem;
+  }
+
+  .benefitsLogoText {
+    width: 24rem;
+    height: 9rem;
+    margin-bottom: -4rem;
+  }
+
+  .benefitsLogo {
+    width: 20rem;
+    height: 20rem;
+  }
+
+  .benefitsLabelInner {
+    font-size: 1.625rem;
+    padding: 0.85rem 1.4rem;
+    border-radius: 2.5rem;
+  }
+
+  .isFirst {
+    top: 32%;
+    left: 2%;
+    transform: rotate(-8deg);
+  }
+
+  .isSecond {
+    top: 44%;
+    right: 1%;
+    transform: rotate(4deg);
+  }
+
+  .isThird {
+    top: 60%;
+    left: 5%;
+  }
+
+  .isFourth {
+    top: 66%;
+    right: 4%;
+    z-index: 4;
+  }
+
+  .isFifth {
+    top: 76%;
+    left: 0%;
+  }
+
+  .isDesktop {
+    display: none;
+  }
+
+  .isMobile {
+    display: block;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .benefitsSection {
+    min-height: 560px;
+  }
+
+  .benefitsLogoText {
+    width: 17rem;
+    height: 6.5rem;
+    margin-bottom: -2.75rem;
+  }
+
+  .benefitsLogo {
+    width: 13.5rem;
+    height: 13.5rem;
+  }
+
+  .benefitsLabelInner {
+    font-size: 1.15rem;
+    padding: 0.55rem 0.95rem;
+    border-radius: 1.5rem;
+  }
+
+  .isFirst {
+    top: 30%;
+    left: 1%;
+  }
+
+  .isSecond {
+    top: 42%;
+    right: 1%;
+  }
+
+  .isThird {
+    top: 57%;
+    left: 2%;
+  }
+
+  .isFourth {
+    top: 65%;
+    right: 1%;
+  }
+
+  .isFifth {
+    top: 75%;
+    left: 0%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .benefitsLabel,
+  .benefitsLabelInner,
+  .benefitsBgSvg path {
+    transition: none !important;
+    animation: none !important;
+    transform: none !important;
+  }
+}

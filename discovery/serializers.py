@@ -87,6 +87,7 @@ class BookDetailSerializer(serializers.Serializer):
     # Placeholders — null/empty until future steps add these systems.
     community = serializers.SerializerMethodField()
     store = serializers.SerializerMethodField()
+    access_options = serializers.SerializerMethodField()
 
     def get_authors(self, obj):
         return [a.get("name", "") for a in (obj.get("authors") or [])]
@@ -121,3 +122,10 @@ class BookDetailSerializer(serializers.Serializer):
             "available": store_info.get("available", False),
             "product_id": store_info.get("product_id")
         }
+
+    def get_access_options(self, obj):
+        try:
+            from recommendations.services import ExternalIntegrationService
+            return ExternalIntegrationService.get_access_options(obj)
+        except Exception:
+            return []

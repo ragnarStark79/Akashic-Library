@@ -1,0 +1,560 @@
+/* ── Gifting Page Styling ─────────────────────────────────────────────────── */
+
+.giftingRoot {
+  width: 100%;
+  overflow-x: hidden;
+  background-color: var(--store-bg-cream, #FAF7F2);
+  color: var(--store-text, #1C2826);
+  font-family: var(--store-font-body, 'Degular', system-ui, sans-serif);
+}
+
+/* ── Section 1: Hero Section ── */
+.heroSection {
+  position: relative;
+  background-color: #FFB3D9;
+  background: linear-gradient(180deg, #FFA6D5 0%, #FFBDE1 100%);
+  clip-path: inset(0% round 0 0 8em 8em);
+  padding: 5rem 1.5rem 12rem 1.5rem;
+  overflow: hidden;
+}
+
+@media (max-width: 991px) {
+  .heroSection {
+    clip-path: inset(0% round 0 0 5em 5em);
+    padding: 3.5rem 1rem 8rem 1rem;
+  }
+}
+
+@media (max-width: 479px) {
+  .heroSection {
+    clip-path: inset(0% round 0 0 3em 3em);
+    padding: 2.5rem 1rem 6rem 1rem;
+  }
+}
+
+.heroContainer {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  align-items: center;
+  gap: 3rem;
+  position: relative;
+  z-index: 2;
+}
+
+@media (max-width: 991px) {
+  .heroContainer {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 2.5rem;
+  }
+}
+
+.heroContent {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+@media (max-width: 991px) {
+  .heroContent {
+    align-items: center;
+  }
+}
+
+.heroTitle {
+  font-family: var(--store-font-champ, 'Champ', Georgia, serif);
+  font-size: clamp(2.5rem, 5.5vw, 4.5rem);
+  font-weight: 800;
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+  color: #111827;
+  margin: 0 0 2rem 0;
+  text-wrap: balance;
+}
+
+.heroCtaWrap {
+  display: inline-flex;
+  align-items: center;
+  margin-bottom: 2.5rem;
+}
+
+.giftNowBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  background-color: #FF007A;
+  color: #FFFFFF;
+  padding: 0.9rem 2.2rem;
+  border-radius: 9999px;
+  font-family: var(--store-font-body, 'Degular', system-ui, sans-serif);
+  font-size: 1.15rem;
+  font-weight: 700;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 8px 24px rgba(255, 0, 122, 0.35);
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s ease, background-color 0.2s ease;
+}
+
+.giftNowBtn:hover {
+  transform: translateY(-3px) scale(1.02);
+  background-color: #E0006C;
+  box-shadow: 0 12px 28px rgba(255, 0, 122, 0.45);
+}
+
+.heroPressRow {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+@media (max-width: 991px) {
+  .heroPressRow {
+    align-items: center;
+  }
+}
+
+.pressLabel {
+  font-family: var(--store-font-organic, 'Organichand', cursive, sans-serif);
+  font-size: 1.35rem;
+  color: #4A1525;
+  transform: rotate(-3deg);
+  display: inline-block;
+}
+
+.pressLogos {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+}
+
+.pressPill {
+  background-color: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(8px);
+  padding: 0.4rem 0.9rem;
+  border-radius: 9999px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #4A1525;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+}
+
+.heroVisualWrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.heroVisualImg {
+  width: 100%;
+  max-width: 440px;
+  height: auto;
+  border-radius: 1.5rem;
+  box-shadow: 0 20px 40px rgba(74, 21, 37, 0.15);
+  transform: rotate(2deg);
+  transition: transform 0.4s ease;
+}
+
+.heroVisualImg:hover {
+  transform: rotate(0deg) scale(1.03);
+}
+
+/* ── Section 2: Subscriptions ── */
+.subscriptionSection {
+  padding: 6rem 1.5rem;
+  max-width: 1320px;
+  margin: 0 auto;
+}
+
+.sectionHeader {
+  text-align: center;
+  margin-bottom: 3.5rem;
+}
+
+.sectionTitle {
+  font-family: var(--store-font-champ, 'Champ', Georgia, serif);
+  font-size: clamp(2.2rem, 4vw, 3.2rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: #111827;
+  margin: 0 0 1.5rem 0;
+}
+
+.regionToggle {
+  display: inline-flex;
+  align-items: center;
+  background-color: #FCE7F3;
+  padding: 0.35rem;
+  border-radius: 9999px;
+  border: 1px solid rgba(255, 0, 122, 0.15);
+}
+
+.regionBtn {
+  background: none;
+  border: none;
+  padding: 0.5rem 1.4rem;
+  border-radius: 9999px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #831843;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.regionBtnActive {
+  background-color: #FF007A;
+  color: #FFFFFF;
+  box-shadow: 0 2px 8px rgba(255, 0, 122, 0.3);
+}
+
+.cardsGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+}
+
+@media (max-width: 1100px) {
+  .cardsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .cardsGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.subCard {
+  background-color: #FFF0F5;
+  border-radius: 2rem;
+  padding: 2.2rem 1.8rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  border: 1px solid #FCE7F3;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease;
+}
+
+.subCard:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 32px rgba(255, 0, 122, 0.12);
+}
+
+.popularBadge {
+  position: absolute;
+  top: -12px;
+  background-color: #FF007A;
+  color: #FFFFFF;
+  font-size: 0.75rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.3rem 0.8rem;
+  border-radius: 9999px;
+  box-shadow: 0 4px 10px rgba(255, 0, 122, 0.3);
+}
+
+.bestValueBadge {
+  position: absolute;
+  top: -12px;
+  background-color: #064E3B;
+  color: #FFFFFF;
+  font-size: 0.75rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.3rem 0.8rem;
+  border-radius: 9999px;
+  box-shadow: 0 4px 10px rgba(6, 78, 59, 0.3);
+}
+
+.cardTitle {
+  font-family: var(--store-font-champ, 'Champ', Georgia, serif);
+  font-size: 1.35rem;
+  font-weight: 800;
+  line-height: 1.15;
+  color: #111827;
+  margin: 0 0 0.75rem 0;
+  min-height: 3.2rem;
+  display: flex;
+  align-items: center;
+}
+
+.cardPrice {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #FF007A;
+  margin-bottom: 0.5rem;
+}
+
+.cardSubtitle {
+  font-size: 0.9rem;
+  color: #6B7280;
+  line-height: 1.4;
+  margin: 0 0 1.8rem 0;
+  flex-grow: 1;
+}
+
+.cardActionBtn {
+  width: 100%;
+  background-color: #111827;
+  color: #FFFFFF;
+  border: none;
+  padding: 0.85rem 1.25rem;
+  border-radius: 9999px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.cardActionBtn:hover {
+  background-color: #FF007A;
+  transform: scale(1.02);
+}
+
+/* ── Section 3: Animated Marquee ── */
+.marqueeSection {
+  background-color: #111827;
+  color: #FFFFFF;
+  padding: 2.5rem 0;
+  overflow: hidden;
+  white-space: nowrap;
+  display: flex;
+}
+
+.marqueeTrack {
+  display: flex;
+  gap: 3rem;
+  animation: marquee 25s linear infinite;
+  will-change: transform;
+}
+
+.marqueeText {
+  font-family: var(--store-font-champ, 'Champ', Georgia, serif);
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: #FAF5EF;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.marqueeDot {
+  color: #FF007A;
+  font-size: 1.5rem;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* ── Section 4: Editorial Feature Rows ── */
+.featuresSection {
+  padding: 6rem 1.5rem;
+  max-width: 1240px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 6rem;
+}
+
+.featureRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 4rem;
+}
+
+.featureRowReversed {
+  direction: rtl;
+}
+
+.featureRowReversed > * {
+  direction: ltr;
+}
+
+@media (max-width: 900px) {
+  .featureRow,
+  .featureRowReversed {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    text-align: center;
+    direction: ltr;
+  }
+}
+
+.featureContent {
+  display: flex;
+  flex-direction: column;
+}
+
+.featureTitle {
+  font-family: var(--store-font-champ, 'Champ', Georgia, serif);
+  font-size: clamp(2rem, 3.5vw, 2.75rem);
+  font-weight: 800;
+  line-height: 1.05;
+  color: #111827;
+  margin: 0 0 1rem 0;
+  letter-spacing: -0.02em;
+}
+
+.featureDesc {
+  font-size: 1.15rem;
+  line-height: 1.6;
+  color: #4B5563;
+  margin: 0;
+}
+
+.featureVisual {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.featureImg {
+  width: 100%;
+  max-width: 520px;
+  height: auto;
+  border-radius: 2rem;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.08);
+  transition: transform 0.4s ease;
+}
+
+.featureImg:hover {
+  transform: scale(1.02);
+}
+
+/* ── Section 5: Gifting FAQ ── */
+.faqSection {
+  background-color: #EDF9F8;
+  clip-path: inset(0% round 6em 6em 0 0);
+  padding: 6rem 1.5rem 8rem 1.5rem;
+}
+
+@media (max-width: 767px) {
+  .faqSection {
+    clip-path: inset(0% round 3.5em 3.5em 0 0);
+    padding: 4rem 1rem 6rem 1rem;
+  }
+}
+
+.faqContainer {
+  max-width: 840px;
+  margin: 0 auto;
+}
+
+.faqHeading {
+  font-family: var(--store-font-champ, 'Champ', Georgia, serif);
+  font-size: clamp(2.2rem, 4vw, 3.2rem);
+  font-weight: 800;
+  text-align: center;
+  color: #111827;
+  margin: 0 0 3rem 0;
+}
+
+.accordionList {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.accordionItem {
+  background-color: #FFFFFF;
+  border-radius: 1.5rem;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+  overflow: hidden;
+  transition: all 0.25s ease;
+}
+
+.accordionItemOpen {
+  border-color: #064E3B;
+  box-shadow: 0 8px 24px rgba(6, 78, 59, 0.08);
+}
+
+.accordionTrigger {
+  width: 100%;
+  padding: 1.5rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: none;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+  font-family: var(--store-font-body, 'Degular', system-ui, sans-serif);
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #111827;
+  gap: 1rem;
+}
+
+.accordionIcon {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: #F3F4F6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-size: 1.25rem;
+  font-weight: 400;
+  color: #111827;
+  transition: transform 0.25s ease, background-color 0.25s ease;
+}
+
+.accordionItemOpen .accordionIcon {
+  background-color: #064E3B;
+  color: #FFFFFF;
+  transform: rotate(45deg);
+}
+
+.accordionPanel {
+  padding: 0 2rem 1.75rem 2rem;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: #4B5563;
+}
+
+/* ── Toast notification for gift action ── */
+.giftToast {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  background-color: #111827;
+  color: #FFFFFF;
+  padding: 1rem 1.5rem;
+  border-radius: 1rem;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.25);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  z-index: 1000;
+  animation: slideInUp 0.3s ease-out;
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

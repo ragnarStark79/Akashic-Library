@@ -1,0 +1,286 @@
+.modalOverlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(20, 18, 16, 0.65);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-4);
+  z-index: 1050;
+  animation: fadeIn 0.15s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.modalDialog {
+  background-color: var(--color-surface, #ffffff);
+  border: 1px solid var(--color-border-subtle, #e8e3d9);
+  border-radius: var(--radius-lg, 12px);
+  width: 100%;
+  max-width: 520px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  animation: slideUp 0.18s ease-out;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.modalHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: var(--space-5) var(--space-6) var(--space-4);
+  border-bottom: 1px solid var(--color-border-subtle, #e8e3d9);
+}
+
+.headerTextGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.modalTitle {
+  font-family: var(--font-family-heading, 'Cinzel', serif);
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--color-text-primary, #1c1917);
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.modalSubtitle {
+  font-size: 13px;
+  color: var(--color-text-secondary, #78716c);
+  margin: 0;
+}
+
+.closeButton {
+  background: none;
+  border: none;
+  color: var(--color-text-secondary, #78716c);
+  cursor: pointer;
+  padding: 4px;
+  border-radius: var(--radius-sm, 4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.15s, background-color 0.15s;
+}
+
+.closeButton:hover {
+  color: var(--color-text-primary, #1c1917);
+  background-color: var(--color-surface-hover, #f5f2eb);
+}
+
+.modalBody {
+  padding: var(--space-5) var(--space-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.errorBanner {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  background-color: #fef2f2;
+  border: 1px solid #fecaca;
+  border-radius: var(--radius-md, 8px);
+  color: #991b1b;
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.formLabel {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-text-primary, #1c1917);
+}
+
+.selectWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.selectInput {
+  width: 100%;
+  appearance: none;
+  background-color: var(--color-surface, #ffffff);
+  border: 1px solid var(--color-border, #d6cfc4);
+  border-radius: var(--radius-md, 8px);
+  padding: 9px 36px 9px 12px;
+  font-size: 14px;
+  color: var(--color-text-primary, #1c1917);
+  font-family: inherit;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.selectInput:focus {
+  outline: none;
+  border-color: var(--color-action-primary, #8b2626);
+  box-shadow: 0 0 0 2px rgba(139, 38, 38, 0.12);
+}
+
+.selectIcon {
+  position: absolute;
+  right: 12px;
+  pointer-events: none;
+  color: var(--color-text-secondary, #78716c);
+}
+
+.reasonDescription {
+  font-size: 12px;
+  color: var(--color-text-secondary, #78716c);
+  margin-top: 2px;
+  font-style: italic;
+}
+
+.textareaHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.charCounter {
+  font-size: 11px;
+  color: var(--color-text-secondary, #78716c);
+}
+
+.textareaInput {
+  width: 100%;
+  background-color: var(--color-surface, #ffffff);
+  border: 1px solid var(--color-border, #d6cfc4);
+  border-radius: var(--radius-md, 8px);
+  padding: 10px 12px;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--color-text-primary, #1c1917);
+  font-family: inherit;
+  resize: vertical;
+  min-height: 72px;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.textareaInput:focus {
+  outline: none;
+  border-color: var(--color-action-primary, #8b2626);
+  box-shadow: 0 0 0 2px rgba(139, 38, 38, 0.12);
+}
+
+.custodialNotice {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  background-color: var(--color-surface-inset, #faf8f5);
+  border: 1px solid var(--color-border-subtle, #e8e3d9);
+  border-radius: var(--radius-md, 8px);
+  padding: 8px 12px;
+  font-size: 12px;
+  color: var(--color-text-secondary, #78716c);
+  line-height: 1.45;
+}
+
+.modalFooter {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--space-3);
+  padding: var(--space-4) var(--space-6);
+  border-top: 1px solid var(--color-border-subtle, #e8e3d9);
+  background-color: var(--color-surface-inset, #faf8f5);
+}
+
+.cancelBtn {
+  background: none;
+  border: 1px solid var(--color-border, #d6cfc4);
+  color: var(--color-text-secondary, #78716c);
+  padding: 8px 16px;
+  border-radius: var(--radius-pill, 9999px);
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.cancelBtn:hover {
+  background-color: var(--color-surface-hover, #f5f2eb);
+  color: var(--color-text-primary, #1c1917);
+}
+
+.submitBtn {
+  background-color: var(--color-action-primary, #8b2626);
+  border: none;
+  color: #ffffff;
+  padding: 8px 20px;
+  border-radius: var(--radius-pill, 9999px);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.15s, opacity 0.15s;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.submitBtn:hover:not(:disabled) {
+  background-color: #6d1e1e;
+}
+
+.submitBtn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.successView {
+  padding: var(--space-8) var(--space-6);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--space-3);
+}
+
+.successTitle {
+  font-family: var(--font-family-heading, 'Cinzel', serif);
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--color-text-primary, #1c1917);
+  margin: 0;
+}
+
+.successText {
+  font-size: 14px;
+  color: var(--color-text-secondary, #78716c);
+  line-height: 1.5;
+  max-width: 400px;
+  margin: 0;
+}

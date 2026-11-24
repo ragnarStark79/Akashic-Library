@@ -1,0 +1,121 @@
+/**
+ * Akashic Library Discovery Design System — Phase 0
+ * Global Styles, CSS Resets, Focus Indicators, and Accessibility Utilities.
+ */
+
+@import './tokens.css';
+@import './typography.css';
+@import './surfaces.css';
+@import './motion.css';
+
+/* ── 1. Resets & Box Model ───────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  min-height: 100vh;
+  background-color: var(--color-bg-page);
+  color: var(--color-text-primary);
+  font-family: var(--font-family-body);
+  overflow-x: hidden;
+}
+
+/* ── 2. Native Interactive Defaults & Focus ──────────────────────────── */
+button,
+input,
+select,
+textarea {
+  font: inherit;
+  color: inherit;
+}
+
+button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+button:disabled,
+input:disabled,
+select:disabled,
+textarea:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Accessible Focus Indicator (WCAG 2.4.7 Focus Visible Level AA) */
+:focus-visible {
+  outline: 2px solid var(--color-action-primary);
+  outline-offset: 2px;
+}
+
+/* High Contrast Mode fallback for Windows / Assistive Tech */
+@media (forced-colors: active) {
+  :focus-visible {
+    outline: 2px solid Highlight;
+    outline-offset: 2px;
+  }
+}
+
+/* Suppress outline for mouse users, retain for keyboard (:focus-visible) */
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* ── 3. Accessibility Utility Classes ────────────────────────────────── */
+
+/* Visually Hidden (Accessible to Screen Readers) */
+.visually-hidden:where(:not(:focus-within, :active)) {
+  position: absolute !important;
+  clip-path: inset(50%) !important;
+  overflow: hidden !important;
+  width: 1px !important;
+  height: 1px !important;
+  margin: -1px !important;
+  padding: 0 !important;
+  border: 0 !important;
+  white-space: nowrap !important;
+}
+
+/* Skip link for keyboard users */
+.skip-link {
+  position: absolute;
+  top: var(--space-4);
+  left: var(--space-4);
+  background: var(--color-action-primary);
+  color: var(--color-action-primary-text);
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-sm);
+  z-index: 9999;
+  font-weight: var(--font-weight-medium);
+  box-shadow: var(--shadow-raised);
+}
+
+.skip-link:where(:not(:focus-within, :active)) {
+  position: absolute !important;
+  clip-path: inset(50%) !important;
+  overflow: hidden !important;
+  width: 1px !important;
+  height: 1px !important;
+  margin: -1px !important;
+  padding: 0 !important;
+  border: 0 !important;
+  white-space: nowrap !important;
+}
+

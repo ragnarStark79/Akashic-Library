@@ -1,0 +1,154 @@
+/* ── Reference .books-list styling ── */
+.catalogueWrapper {
+  width: 100%;
+  position: relative;
+  padding-bottom: 6rem;
+  overflow-x: hidden;
+  box-sizing: border-box;
+}
+
+.genreSection {
+  margin-bottom: 5.5rem;
+  position: relative;
+  overflow: visible;
+}
+
+@media (min-width: 992px) {
+  .genreSection {
+    margin-bottom: 7.5rem;
+  }
+}
+
+.sectionHeader {
+  max-width: 90rem;
+  margin: 0 auto;
+  padding: 0 1.5rem 2.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.headerTitleGroup {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+}
+
+.genreTitle {
+  font-family: var(--store-font-champ, 'Champ', sans-serif);
+  font-size: 2.25rem;
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: #111827;
+  margin: 0;
+}
+
+@media (min-width: 992px) {
+  .genreTitle {
+    font-size: 3.5rem;
+  }
+}
+
+.genreCount {
+  font-family: var(--store-font-body, 'Degular', sans-serif);
+  font-size: 1rem;
+  font-weight: 700;
+  color: #6b7280;
+  background: #f3f4f6;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  line-height: 1;
+}
+
+.carouselWrap {
+  width: 100%;
+  position: relative;
+  overflow: visible;
+}
+
+/* ── States ── */
+.stateContainer {
+  max-width: 40rem;
+  margin: 4rem auto;
+  padding: 3rem 2rem;
+  text-align: center;
+  background: #ffffff;
+  border-radius: 2rem;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.stateIcon {
+  font-size: 3.5rem;
+  line-height: 1;
+}
+
+.stateTitle {
+  font-family: var(--store-font-champ, 'Champ', sans-serif);
+  font-size: 2rem;
+  font-weight: 800;
+  color: #111827;
+  margin: 0;
+}
+
+.stateParagraph {
+  font-family: var(--store-font-body, 'Degular', sans-serif);
+  font-size: 1.15rem;
+  color: #4b5563;
+  margin: 0;
+  line-height: 1.4;
+}
+
+.resetButton {
+  background-color: #ff008f;
+  color: #ffffff;
+  font-family: var(--store-font-body, 'Degular', sans-serif);
+  font-size: 1rem;
+  font-weight: 700;
+  padding: 0.75rem 1.75rem;
+  border-radius: 9999px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.15s ease;
+  box-shadow: 0 4px 14px rgba(255, 0, 143, 0.3);
+}
+
+.resetButton:hover {
+  background-color: #e0007e;
+  transform: scale(1.04);
+}
+
+/* ── Skeleton Loading ── */
+.skeletonRail {
+  display: flex;
+  gap: 2rem;
+  padding: 1rem 2rem;
+  overflow: hidden;
+  max-width: 90rem;
+  margin: 0 auto;
+}
+
+.skeletonCard {
+  width: 19.5rem;
+  height: 28rem;
+  border-radius: 1.75rem;
+  background: linear-gradient(90deg, #f3f4f6 25%, #e5e7eb 50%, #f3f4f6 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  flex: none;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}

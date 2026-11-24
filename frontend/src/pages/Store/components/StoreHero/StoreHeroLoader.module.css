@@ -1,0 +1,149 @@
+.loaderOverlay {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 9999;
+  background-color: var(--store-bg-yellow, #fbe485);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  pointer-events: auto;
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.6s var(--store-ease-osmo, cubic-bezier(0.625, 0.05, 0, 1)),
+    visibility 0.6s;
+}
+
+.loaderOverlay.loaded {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.loaderInner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  text-align: center;
+}
+
+.sealWrap {
+  position: relative;
+  width: 90px;
+  height: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sealRing {
+  position: absolute;
+  inset: -10px;
+  width: 110px;
+  height: 110px;
+  animation: rotateRing 12s linear infinite;
+  opacity: 0.85;
+}
+
+.sealLogo {
+  width: 64px;
+  height: 64px;
+  background-color: var(--store-text, #1C2826);
+  color: var(--store-bg-yellow, #fbe485);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 24px rgba(28, 40, 38, 0.2);
+  animation: pulseLogo 2s ease-in-out infinite alternate;
+}
+
+.sealLogo svg {
+  width: 36px;
+  height: 36px;
+}
+
+.loaderTitle {
+  font-family: 'Champ', Georgia, serif;
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--store-text, #1C2826);
+  letter-spacing: -0.01em;
+  margin: 0;
+}
+
+.loaderSubtitle {
+  font-family: 'Degular', -apple-system, sans-serif;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: rgba(28, 40, 38, 0.7);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.progressBar {
+  width: 120px;
+  height: 3px;
+  background-color: rgba(28, 40, 38, 0.15);
+  border-radius: 999px;
+  overflow: hidden;
+  position: relative;
+}
+
+.progressIndicator {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 40%;
+  background-color: var(--store-text, #1C2826);
+  border-radius: 999px;
+  animation: slideProgress 1.4s ease-in-out infinite;
+}
+
+@keyframes rotateRing {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes pulseLogo {
+  from {
+    transform: scale(0.96);
+  }
+
+  to {
+    transform: scale(1.04);
+  }
+}
+
+@keyframes slideProgress {
+  0% {
+    left: -40%;
+  }
+
+  50% {
+    left: 40%;
+  }
+
+  100% {
+    left: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  .sealRing,
+  .sealLogo,
+  .progressIndicator {
+    animation: none;
+  }
+}

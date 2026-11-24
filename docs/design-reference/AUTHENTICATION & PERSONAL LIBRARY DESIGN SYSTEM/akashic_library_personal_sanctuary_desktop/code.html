@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_standard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Lora:ital,wght@0,500;0,600;1,400&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base { html, body { margin: 0; padding: 0; } body { overscroll-behavior: none; } main > :first-child { margin-top: 0 !important; } main > :last-child { margin-bottom: 0 !important; } } ::-webkit-scrollbar { display: none; }</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "background": "#ebfdf8", "on-error": "#ffffff", "tertiary": "#5b311c", "secondary-container": "#d2e8d8", "surface-container-low": "#e5f8f3", "inverse-on-surface": "#e2f5f0", "primary": "#004440", "primary-fixed-dim": "#93d2cc", "on-tertiary-fixed-variant": "#683b26", "surface": "#ebfdf8", "surface-container": "#dff2ed", "accent-sage": "#A8BDAE", "accent-teal": "#185C58", "tertiary-fixed": "#ffdbcc", "on-primary": "#ffffff", "on-tertiary-container": "#f8b89b", "surface-container-high": "#daece7", "surface-glass": "rgba(252, 250, 245, 0.82)", "outline": "#6f7978", "text-secondary": "#827E75", "primary-container": "#185c58", "outline-variant": "#bfc8c7", "error": "#ba1a1a", "inverse-primary": "#93d2cc", "accent-terracotta": "#C58B70", "on-background": "#0e1e1c", "primary-fixed": "#afeee9", "on-secondary": "#ffffff", "tertiary-fixed-dim": "#f8b89b", "on-secondary-fixed-variant": "#384b3f", "surface-dim": "#ccded9", "on-primary-fixed-variant": "#02504c", "surface-tint": "#276864", "surface-container-lowest": "#ffffff", "on-surface": "#0e1e1c", "on-tertiary-fixed": "#331202", "on-surface-variant": "#3f4947", "surface-inset": "#EAE3D8", "tertiary-container": "#764730", "on-tertiary": "#ffffff", "secondary": "#506356", "glass-border": "rgba(234, 227, 216, 0.65)", "bg-page": "#F5F1E9", "on-primary-fixed": "#00201e", "secondary-fixed": "#d2e8d8", "error-container": "#ffdad6", "secondary-fixed-dim": "#b6ccbc", "inverse-surface": "#233330", "surface-porcelain": "#FCFAF5", "on-error-container": "#93000a", "surface-container-highest": "#d4e6e2", "text-primary": "#263633", "surface-bright": "#ebfdf8", "on-secondary-fixed": "#0d1f15", "on-primary-container": "#93d2cc", "on-secondary-container": "#55695c", "surface-variant": "#d4e6e2" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "space-xs": "0.25rem", "space-md": "1rem", "gutter-mobile": "1rem", "space-lg": "1.5rem", "gutter": "1.5rem", "margin": "3rem", "space-sm": "0.5rem", "margin-mobile": "1.25rem", "space-xl": "2.5rem" }, "fontFamily": { "headline-sm": [ "Lora" ], "caption": [ "Inter" ], "display": [ "Lora" ], "body-sm": [ "Inter" ], "display-mobile": [ "Lora" ], "body-base": [ "Inter" ], "body-lead": [ "Inter" ], "label-sm": [ "Inter" ], "headline-lg-mobile": [ "Lora" ], "headline-lg": [ "Lora" ], "headline-md": [ "Lora" ], "label-md": [ "Inter" ] }, "fontSize": { "headline-sm": [ "20px", { "lineHeight": "28px", "fontWeight": "600" } ], "caption": [ "11px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500" } ], "display": [ "48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "500" } ], "body-sm": [ "13px", { "lineHeight": "20px", "fontWeight": "400" } ], "display-mobile": [ "34px", { "lineHeight": "42px", "letterSpacing": "-0.01em", "fontWeight": "500" } ], "body-base": [ "15px", { "lineHeight": "24px", "fontWeight": "400" } ], "body-lead": [ "18px", { "lineHeight": "28px", "fontWeight": "400" } ], "label-sm": [ "12px", { "lineHeight": "16px", "letterSpacing": "0.04em", "fontWeight": "600" } ], "headline-lg-mobile": [ "28px", { "lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "500" } ], "headline-lg": [ "36px", { "lineHeight": "44px", "letterSpacing": "-0.015em", "fontWeight": "500" } ], "headline-md": [ "26px", { "lineHeight": "34px", "fontWeight": "500" } ], "label-md": [ "14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500" } ] } } } };</script></head><body class="bg-bg-page font-body-base text-body-base text-on-surface antialiased"><header class="fixed top-0 left-0 right-0 z-50 pointer-events-none"><div class="max-w-[1360px] mx-auto px-margin-mobile md:px-margin pt-4 pb-2"><div class="pointer-events-auto h-20 bg-surface-glass backdrop-blur-md rounded-full px-space-md md:px-space-lg flex items-center justify-between shadow-[0_4px_16px_rgba(38,54,51,0.06)]"><div class="flex items-center gap-space-lg"><a class="flex items-center gap-space-sm group" data-path="discover" href="#"><div class="w-9 h-9 rounded-full bg-primary flex items-center justify-center text-on-primary transition-transform duration-300 group-hover:scale-105"><span class="material-symbols-outlined text-[20px]">auto_stories</span></div><span class="font-headline-sm text-headline-sm text-primary tracking-tight font-serif">Akashic Library</span></a><nav class="hidden lg:flex items-center gap-space-xs p-1" data-active-classes="bg-primary text-on-primary font-medium rounded-full shadow-sm"><a class="px-space-md py-space-xs text-on-surface-variant font-label-md text-label-md rounded-full hover:text-on-surface transition-all" data-path="discover" href="#">Discover</a><a class="px-space-md py-space-xs text-on-surface-variant font-label-md text-label-md rounded-full hover:text-on-surface transition-all" data-path="genres" href="#">Genres</a><a class="px-space-md py-space-xs text-on-surface-variant font-label-md text-label-md rounded-full hover:text-on-surface transition-all" data-path="community" href="#">Community</a><a aria-current="page" class="px-space-md py-space-xs transition-all bg-primary text-on-primary font-medium rounded-full shadow-sm" data-path="my-library" href="#">My Library</a><a class="px-space-md py-space-xs text-on-surface-variant font-label-md text-label-md rounded-full hover:text-on-surface transition-all" data-path="about" href="#">About</a></nav></div><div class="flex items-center gap-space-sm md:gap-space-md"><button aria-label="Search Archive" class="w-10 h-10 rounded-full flex items-center justify-center text-on-surface-variant hover:text-primary hover:bg-secondary-container/40 transition-colors" type="button"><span class="material-symbols-outlined text-[22px]">search</span></button><div class="relative group"><button class="flex items-center gap-space-sm pl-1 pr-space-md py-1 rounded-full bg-surface-porcelain hover:bg-surface-container-low transition-all" type="button"><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-on-primary font-caption text-caption font-semibold tracking-wider">ES</div><span class="hidden md:inline-block font-label-md text-label-md text-on-surface font-medium">Elena Solanas</span><span class="material-symbols-outlined text-[18px] text-on-surface-variant">expand_more</span></button><div class="absolute right-0 top-full mt-2 w-64 bg-surface-porcelain/95 backdrop-blur-xl rounded-xl p-space-sm shadow-[0_12px_32px_rgba(38,54,51,0.12)] opacity-0 translate-y-2 pointer-events-none group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto transition-all duration-200 z-50"><div class="px-space-md py-space-sm"><p class="font-label-md text-label-md text-on-surface font-semibold">Elena Solanas</p><p class="font-caption text-caption text-text-secondary">Archival Patron #1042</p></div><div class="my-space-xs"></div><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-secondary-container/50 hover:text-on-surface font-label-md text-label-md transition-colors" data-path="my-sanctuary" href="#"><span class="material-symbols-outlined text-[18px]">menu_book</span>My Sanctuary</a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-secondary-container/50 hover:text-on-surface font-label-md text-label-md transition-colors" data-path="shelves" href="#"><span class="material-symbols-outlined text-[18px]">shelves</span>Shelves</a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-secondary-container/50 hover:text-on-surface font-label-md text-label-md transition-colors" data-path="reading-notes" href="#"><span class="material-symbols-outlined text-[18px]">edit_note</span>Reading Notes</a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-secondary-container/50 hover:text-on-surface font-label-md text-label-md transition-colors" data-path="preferences" href="#"><span class="material-symbols-outlined text-[18px]">settings</span>Preferences</a><div class="my-space-xs"></div><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-error hover:bg-error-container/40 font-label-md text-label-md transition-colors" data-path="sign-out" href="#"><span class="material-symbols-outlined text-[18px]">logout</span>Sign Out</a></div></div><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center lg:hidden"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></div></header><main class="w-full pt-20 bg-bg-page min-h-screen"><div class="flex flex-col w-full">
+<!-- Subtle Ambient Glow -->
+<div class="relative w-full max-w-[1360px] mx-auto px-margin-mobile md:px-margin pb-space-xl">
+<!-- Top Editorial Metadata & Breadcrumbs -->
+<div class="pt-6 pb-4 flex flex-col md:flex-row md:items-center justify-between gap-4">
+<div class="flex items-center gap-space-sm text-text-secondary font-caption text-caption tracking-wider">
+<a class="hover:text-primary transition-colors flex items-center gap-1" data-path="discover" href="#">
+<span class="material-symbols-outlined text-[14px]">west</span>
+<span>Return to Public Discovery</span>
+</a>
+<span>/</span>
+<span class="text-on-surface-variant font-medium">Personal Sanctuary</span>
+<span>/</span>
+<span class="text-primary font-semibold">Reading Room</span>
+</div>
+<div class="flex items-center gap-space-sm self-start md:self-auto">
+<button class="group px-space-md py-1.5 rounded-full bg-surface-porcelain hover:bg-surface-container-low transition-all duration-200 shadow-sm flex items-center gap-2 text-primary font-label-sm text-label-sm" type="button">
+<span class="material-symbols-outlined text-[16px] text-accent-teal transition-transform group-hover:rotate-90 duration-300">add</span>
+<span>Curate New Shelf</span>
+</button>
+<button class="px-space-md py-1.5 rounded-full bg-surface-porcelain hover:bg-surface-container-low transition-all duration-200 shadow-sm flex items-center gap-2 text-on-surface-variant hover:text-on-surface font-label-sm text-label-sm" type="button">
+<span class="material-symbols-outlined text-[16px] text-text-secondary">download</span>
+<span>Export Ledger</span>
+</button>
+</div>
+</div>
+<!-- Editorial Header Sanctuary Hero Canvas -->
+<section class="mt-2 mb-8 bg-surface-porcelain rounded-xl p-space-lg md:p-space-xl shadow-[0_4px_16px_rgba(38,54,51,0.04)] relative overflow-hidden">
+<!-- Decorative watermarked archival sigil in SVG background -->
+<div class="absolute -right-8 -bottom-10 pointer-events-none opacity-[0.035] text-primary select-none">
+<svg fill="currentColor" height="340" viewbox="0 0 100 100" width="340">
+<circle cx="50" cy="50" fill="none" r="46" stroke="currentColor" stroke-width="1.5"></circle>
+<circle cx="50" cy="50" fill="none" r="38" stroke="currentColor" stroke-width="0.5"></circle>
+<path d="M50 4 V96 M4 50 H96 M17 17 L83 83 M17 83 L83 17" stroke="currentColor" stroke-width="0.8"></path>
+<polygon fill="none" points="50,15 62,38 85,50 62,62 50,85 38,62 15,50 38,38" stroke="currentColor" stroke-width="0.75"></polygon>
+</svg>
+</div>
+<div class="relative z-10 flex flex-col lg:flex-row lg:items-end justify-between gap-6">
+<div class="space-y-space-sm max-w-2xl">
+<div class="inline-flex items-center gap-2 px-space-sm py-0.5 rounded-full bg-secondary-container/40 text-primary font-caption text-caption uppercase tracking-wider font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-accent-teal animate-pulse"></span>
+            Private Reading Quarters
+          </div>
+<h1 class="font-headline-lg text-headline-lg text-primary tracking-tight font-serif">
+            Sanctuary of Elena Solanas
+          </h1>
+<p class="font-body-base text-body-base text-text-secondary leading-relaxed">
+            Patron Member since 1994 <span class="mx-1.5 opacity-40">•</span> Folio Ledger No. 892-BOR <span class="mx-1.5 opacity-40">•</span> <span class="text-on-surface font-medium">28 Folios</span> in Quiet Custody
+          </p>
+</div>
+<!-- Archival Ledger Summary Pill -->
+<div class="flex items-center gap-space-lg bg-surface-inset/60 backdrop-blur-sm px-space-lg py-space-sm rounded-xl self-start lg:self-auto">
+<div class="space-y-0.5">
+<div class="font-caption text-caption uppercase tracking-widest text-text-secondary font-semibold">Annual Pace</div>
+<div class="font-headline-sm text-headline-sm text-primary font-serif">14 <span class="font-body-sm text-body-sm text-text-secondary font-sans font-normal">of 18 bound</span></div>
+</div>
+<div class="h-8 w-px bg-outline-variant/40"></div>
+<div class="space-y-0.5">
+<div class="font-caption text-caption uppercase tracking-widest text-text-secondary font-semibold">Marginalia</div>
+<div class="font-headline-sm text-headline-sm text-primary font-serif">94 <span class="font-body-sm text-body-sm text-text-secondary font-sans font-normal">inscriptions</span></div>
+</div>
+</div>
+</div>
+<!-- Quiet Reading Epigraph Banner -->
+<div class="mt-space-lg pt-space-md border-t-0 bg-surface-container-low/40 -mx-space-lg md:-mx-space-xl -mb-space-lg md:-mb-space-xl px-space-lg md:px-space-xl py-space-sm flex items-center gap-space-md">
+<span class="material-symbols-outlined text-accent-terracotta text-[20px] select-none">format_quote</span>
+<p class="font-headline-sm text-body-lead text-on-surface-variant italic font-serif tracking-normal">
+          “A library is an infinite labyrinth of quiet rooms where time folds gently upon thought.”
+        </p>
+</div>
+</section>
+<!-- Reading Shelves Tab Bar & Search Recess -->
+<div class="flex flex-col lg:flex-row lg:items-center justify-between gap-space-md pb-6">
+<!-- Tactile Tabs -->
+<div class="flex items-center gap-1.5 p-1 rounded-full bg-surface-inset shadow-[inset_1px_1px_3px_rgba(38,54,51,0.08),inset_-1px_-1px_3px_rgba(255,255,255,0.7)] overflow-x-auto scrollbar-none" id="shelfTabs">
+<button class="tab-btn active px-space-md py-1.5 rounded-full bg-primary text-on-primary font-label-md text-label-md shadow-sm transition-all flex items-center gap-2 whitespace-nowrap" data-tab="currently-reading" type="button">
+<span>Currently Reading</span>
+<span class="w-5 h-5 rounded-full bg-surface-porcelain/20 text-on-primary font-caption text-caption flex items-center justify-center font-semibold">3</span>
+</button>
+<button class="tab-btn px-space-md py-1.5 rounded-full text-on-surface-variant hover:text-on-surface font-label-md text-label-md transition-all flex items-center gap-2 whitespace-nowrap" data-tab="want-to-read" type="button">
+<span>Want to Read</span>
+<span class="px-1.5 py-0.2 rounded-full bg-surface-porcelain/70 text-text-secondary font-caption text-caption">14</span>
+</button>
+<button class="tab-btn px-space-md py-1.5 rounded-full text-on-surface-variant hover:text-on-surface font-label-md text-label-md transition-all flex items-center gap-2 whitespace-nowrap" data-tab="completed" type="button">
+<span>Completed &amp; Reflected</span>
+<span class="px-1.5 py-0.2 rounded-full bg-surface-porcelain/70 text-text-secondary font-caption text-caption">11</span>
+</button>
+<button class="tab-btn px-space-md py-1.5 rounded-full text-on-surface-variant hover:text-on-surface font-label-md text-label-md transition-all flex items-center gap-2 whitespace-nowrap" data-tab="all" type="button">
+<span>All Curated Folios</span>
+<span class="px-1.5 py-0.2 rounded-full bg-surface-porcelain/70 text-text-secondary font-caption text-caption">28</span>
+</button>
+</div>
+<!-- Controls: Recessed Inset Search & Sort Dropdown -->
+<div class="flex items-center gap-space-sm flex-wrap sm:flex-nowrap">
+<div class="relative w-full sm:w-64">
+<div class="w-full flex items-center gap-2 px-space-md py-2 rounded-full bg-surface-inset shadow-[inset_1px_1px_3px_rgba(38,54,51,0.09),inset_-1px_-1px_3px_rgba(255,255,255,0.7)] text-on-surface transition-all focus-within:bg-surface-porcelain focus-within:shadow-[0_0_0_2px_#185C58]">
+<span class="material-symbols-outlined text-text-secondary text-[18px]">search</span>
+<input class="w-full bg-transparent font-body-sm text-body-sm text-on-surface placeholder:text-text-secondary outline-none border-none p-0 focus:ring-0" placeholder="Filter private shelves..." type="text"/>
+</div>
+</div>
+<!-- Sort Pill -->
+<div class="flex items-center gap-1.5 bg-surface-porcelain px-3 py-1.5 rounded-full shadow-[0_2px_6px_rgba(38,54,51,0.04)] text-on-surface font-label-sm text-label-sm whitespace-nowrap cursor-pointer hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined text-[16px] text-text-secondary">sort</span>
+<span class="text-text-secondary">Sort:</span>
+<span class="font-medium text-primary">Last Contemplated</span>
+<span class="material-symbols-outlined text-[16px] text-text-secondary">expand_more</span>
+</div>
+</div>
+</div>
+<!-- MAIN BODY GRID: Active Reading Desk (2 Cols on LG) + Marginalia Sidebar -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg items-start">
+<!-- Primary Desk Column (8 cols) -->
+<div class="lg:col-span-8 space-y-space-xl">
+<!-- SECTION 1: Active Reading Desk -->
+<div class="space-y-space-md">
+<div class="flex items-baseline justify-between">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-accent-teal"></span>
+<h2 class="font-headline-sm text-headline-sm text-primary font-serif">The Active Reading Desk</h2>
+</div>
+<span class="font-caption text-caption text-text-secondary">3 Volumes Currently In Hand</span>
+</div>
+<!-- Active Books Stack -->
+<div class="space-y-space-md">
+<!-- Book Card 1: Ficciones -->
+<article class="p-space-lg bg-surface-porcelain rounded-xl shadow-[0_4px_14px_rgba(38,54,51,0.05)] hover:shadow-[0_8px_24px_rgba(38,54,51,0.08)] transition-all duration-300 flex flex-col md:flex-row gap-space-lg group">
+<!-- Physical Book Jacket Representation (2:3 Aspect Ratio) -->
+<div class="w-full md:w-40 flex-shrink-0 flex items-center justify-center">
+<div class="relative w-36 h-52 rounded shadow-[0_6px_14px_rgba(38,54,51,0.18)] overflow-hidden transition-transform duration-300 group-hover:-translate-y-1">
+<div class="w-full h-full bg-cover bg-center" data-alt="Vintage hardcover book jacket of Ficciones by Jorge Luis Borges, displaying an intricate labyrinth engraved pattern in deep teal, warm parchment paper and subtle gilt bronze foil typography, architectural editorial book cover photo." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAgV3rH5Iig61rxfXtNR3S6EXkH3n2DVRJsFmzKk6yhY5DcF0yWZR3LU8cT9zdCECkLF7GicuzYt0yosFVB7uPz7M-I9yCaJonrmyIwe7ld-C_AnjS1nPN2ublINMizj7ebrTk7_EBEcDXiVT218vQrZ41kBoxeyFy508oKPMwus9QhzKAPkdwLYaXVKnlflA9pC4Pf3cuhctDBrHXlYa8sab9ODEQcDV7MeufCij0')"></div>
+<!-- Tactile spine sheen highlight -->
+<div class="absolute inset-y-0 left-0 w-3 bg-gradient-to-r from-black/20 via-white/15 to-transparent pointer-events-none"></div>
+<div class="absolute inset-0 ring-1 ring-inset ring-black/10 rounded pointer-events-none"></div>
+</div>
+</div>
+<!-- Book Details & Marginalia Record -->
+<div class="flex-1 flex flex-col justify-between space-y-space-sm min-w-0">
+<div>
+<div class="flex items-center justify-between gap-2">
+<span class="px-2 py-0.5 rounded-full bg-secondary-container/60 text-secondary font-caption text-caption uppercase tracking-wider font-semibold">Folio Rare 1944</span>
+<span class="font-caption text-caption text-text-secondary flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">schedule</span> Contemplated Yesterday
+                    </span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-primary font-serif mt-1 group-hover:text-accent-teal transition-colors">
+                    Ficciones
+                  </h3>
+<p class="font-body-sm text-body-sm text-text-secondary mt-0.5 font-medium">
+                    Jorge Luis Borges <span class="font-normal opacity-70">• Editorial Sur / Archival Edition</span>
+</p>
+<!-- Recent Marginalia Excerpt Callout -->
+<div class="mt-3 p-space-sm rounded-lg bg-surface-container-low/60 flex items-start gap-2.5">
+<span class="material-symbols-outlined text-accent-terracotta text-[18px] flex-shrink-0 mt-0.5">edit_note</span>
+<div class="min-w-0">
+<p class="font-caption text-caption text-text-secondary uppercase tracking-wider font-semibold">Marginalia Inscription • Page 114</p>
+<p class="font-body-sm text-body-sm text-on-surface italic font-serif line-clamp-1">
+                        “On the infinite permutations of the hexagonal galleries: geometry as prayer...”
+                      </p>
+</div>
+</div>
+</div>
+<!-- Progress & Action -->
+<div class="pt-2 space-y-2">
+<div class="flex items-center justify-between text-caption font-caption">
+<span class="text-text-secondary">Progress: <strong class="text-primary font-semibold">68%</strong> (Folio 118 of 174)</span>
+<span class="text-text-secondary">56 folios remaining</span>
+</div>
+<!-- Progress Bar -->
+<div class="w-full h-1.5 rounded-full bg-surface-inset overflow-hidden shadow-[inset_0_1px_2px_rgba(0,0,0,0.1)]">
+<div class="h-full bg-accent-teal rounded-full" style="width: 68%;"></div>
+</div>
+<div class="pt-2 flex items-center gap-space-sm flex-wrap">
+<button class="px-space-md py-1.5 rounded-full bg-primary hover:bg-primary-container text-on-primary font-label-md text-label-md transition-all shadow-[0_2px_6px_rgba(24,92,88,0.25)] flex items-center gap-1.5" type="button">
+<span class="material-symbols-outlined text-[16px]">menu_book</span>
+<span>Open Folio Reader</span>
+</button>
+<button class="px-space-md py-1.5 rounded-full bg-surface-porcelain hover:bg-surface-container-low text-on-surface-variant font-label-md text-label-md transition-colors flex items-center gap-1.5 shadow-sm" type="button">
+<span class="material-symbols-outlined text-[16px] text-accent-terracotta">edit</span>
+<span>Log Contemplation</span>
+</button>
+<button aria-label="Folio options" class="w-8 h-8 rounded-full flex items-center justify-center text-text-secondary hover:text-on-surface hover:bg-surface-inset transition-colors ml-auto" type="button">
+<span class="material-symbols-outlined text-[18px]">more_vert</span>
+</button>
+</div>
+</div>
+</div>
+</article>
+<!-- Book Card 2: The Dispossessed -->
+<article class="p-space-lg bg-surface-porcelain rounded-xl shadow-[0_4px_14px_rgba(38,54,51,0.05)] hover:shadow-[0_8px_24px_rgba(38,54,51,0.08)] transition-all duration-300 flex flex-col md:flex-row gap-space-lg group">
+<div class="w-full md:w-40 flex-shrink-0 flex items-center justify-center">
+<div class="relative w-36 h-52 rounded shadow-[0_6px_14px_rgba(38,54,51,0.18)] overflow-hidden transition-transform duration-300 group-hover:-translate-y-1">
+<div class="w-full h-full bg-cover bg-center" data-alt="Cover of Ursula K Le Guin novel The Dispossessed, featuring minimalist windswept desert dunes on planet Anarres with terracotta red and soft sage horizon, subtle geometric moon, archival paper texture." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuC4-DO7Nbh-nl01j5GexGlsMCmyyzXG-y1-KYPZvk_QrMli1lauzlILeKbDFPr_jMd02ywhueq0H62Ja531ZHSSjG7NkTGZTpuDSGvYlwF--LHOB5-bH5G5fz89roBcJBslMy2PNcVdYNyysN21a0hCW77wlJPkCYGl2SxzlA_fhtH2zI1nyvslw0S_f5cdLbjDLlBFnjwKvzDBnIIqJ6LICG99NkNIsmCuzSoOPcg')"></div>
+<div class="absolute inset-y-0 left-0 w-3 bg-gradient-to-r from-black/20 via-white/15 to-transparent pointer-events-none"></div>
+<div class="absolute inset-0 ring-1 ring-inset ring-black/10 rounded pointer-events-none"></div>
+</div>
+</div>
+<div class="flex-1 flex flex-col justify-between space-y-space-sm min-w-0">
+<div>
+<div class="flex items-center justify-between gap-2">
+<span class="px-2 py-0.5 rounded-full bg-secondary-container/60 text-secondary font-caption text-caption uppercase tracking-wider font-semibold">Speculative Thought 1974</span>
+<span class="font-caption text-caption text-text-secondary flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">schedule</span> 3 days ago
+                    </span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-primary font-serif mt-1 group-hover:text-accent-teal transition-colors">
+                    The Dispossessed
+                  </h3>
+<p class="font-body-sm text-body-sm text-text-secondary mt-0.5 font-medium">
+                    Ursula K. Le Guin <span class="font-normal opacity-70">• Hainish Cycle Ledger</span>
+</p>
+<div class="mt-3 p-space-sm rounded-lg bg-surface-container-low/60 flex items-start gap-2.5">
+<span class="material-symbols-outlined text-accent-terracotta text-[18px] flex-shrink-0 mt-0.5">edit_note</span>
+<div class="min-w-0">
+<p class="font-caption text-caption text-text-secondary uppercase tracking-wider font-semibold">Marginalia Inscription • Page 152</p>
+<p class="font-body-sm text-body-sm text-on-surface italic font-serif line-clamp-1">
+                        “Anarres ambiguity of freedom: you cannot buy what has no price, yet you may freeze in solitude...”
+                      </p>
+</div>
+</div>
+</div>
+<div class="pt-2 space-y-2">
+<div class="flex items-center justify-between text-caption font-caption">
+<span class="text-text-secondary">Progress: <strong class="text-primary font-semibold">42%</strong> (Folio 160 of 384)</span>
+<span class="text-text-secondary">224 folios remaining</span>
+</div>
+<div class="w-full h-1.5 rounded-full bg-surface-inset overflow-hidden shadow-[inset_0_1px_2px_rgba(0,0,0,0.1)]">
+<div class="h-full bg-accent-teal rounded-full" style="width: 42%;"></div>
+</div>
+<div class="pt-2 flex items-center gap-space-sm flex-wrap">
+<button class="px-space-md py-1.5 rounded-full bg-primary hover:bg-primary-container text-on-primary font-label-md text-label-md transition-all shadow-[0_2px_6px_rgba(24,92,88,0.25)] flex items-center gap-1.5" type="button">
+<span class="material-symbols-outlined text-[16px]">auto_stories</span>
+<span>Continue Reading</span>
+</button>
+<button class="px-space-md py-1.5 rounded-full bg-surface-porcelain hover:bg-surface-container-low text-on-surface-variant font-label-md text-label-md transition-colors flex items-center gap-1.5 shadow-sm" type="button">
+<span class="material-symbols-outlined text-[16px] text-accent-terracotta">edit</span>
+<span>Log Contemplation</span>
+</button>
+<button aria-label="Folio options" class="w-8 h-8 rounded-full flex items-center justify-center text-text-secondary hover:text-on-surface hover:bg-surface-inset transition-colors ml-auto" type="button">
+<span class="material-symbols-outlined text-[18px]">more_vert</span>
+</button>
+</div>
+</div>
+</div>
+</article>
+<!-- Book Card 3: Invisible Cities -->
+<article class="p-space-lg bg-surface-porcelain rounded-xl shadow-[0_4px_14px_rgba(38,54,51,0.05)] hover:shadow-[0_8px_24px_rgba(38,54,51,0.08)] transition-all duration-300 flex flex-col md:flex-row gap-space-lg group">
+<div class="w-full md:w-40 flex-shrink-0 flex items-center justify-center">
+<div class="relative w-36 h-52 rounded shadow-[0_6px_14px_rgba(38,54,51,0.18)] overflow-hidden transition-transform duration-300 group-hover:-translate-y-1">
+<div class="w-full h-full bg-cover bg-center" data-alt="Cover of Invisible Cities by Italo Calvino, displaying abstract architectural arches and slender bridges suspended over serene emerald mist, classical Italian typography, fine art museum folio aesthetic." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBrWNOq7PKN5zNQDrkwfk24SEB66NnT9ffh48r3qRd-7PmYTzZYQupt_gn-golqdmr1TQINXq1qTwBuWp8vH77KOML0DAY4vN56_I2o70gpj8J75TXdZhVJ3QBxgZzipkoSNg8iOPnqGpQq3km1TtetV633I0p2LSgDo1j0v6QZyh2AjrZuFPftiEcI0QX9vLMqre6ze81-EQDjwVIuingBZVTh8RylkR_t3UpdHeo')"></div>
+<div class="absolute inset-y-0 left-0 w-3 bg-gradient-to-r from-black/20 via-white/15 to-transparent pointer-events-none"></div>
+<div class="absolute inset-0 ring-1 ring-inset ring-black/10 rounded pointer-events-none"></div>
+</div>
+</div>
+<div class="flex-1 flex flex-col justify-between space-y-space-sm min-w-0">
+<div>
+<div class="flex items-center justify-between gap-2">
+<span class="px-2 py-0.5 rounded-full bg-secondary-container/60 text-secondary font-caption text-caption uppercase tracking-wider font-semibold">Poetics &amp; Cities 1972</span>
+<span class="font-caption text-caption text-text-secondary flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">schedule</span> Last week
+                    </span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-primary font-serif mt-1 group-hover:text-accent-teal transition-colors">
+                    Invisible Cities
+                  </h3>
+<p class="font-body-sm text-body-sm text-text-secondary mt-0.5 font-medium">
+                    Italo Calvino <span class="font-normal opacity-70">• Tr. William Weaver</span>
+</p>
+<div class="mt-3 p-space-sm rounded-lg bg-surface-container-low/60 flex items-start gap-2.5">
+<span class="material-symbols-outlined text-accent-terracotta text-[18px] flex-shrink-0 mt-0.5">edit_note</span>
+<div class="min-w-0">
+<p class="font-caption text-caption text-text-secondary uppercase tracking-wider font-semibold">Marginalia Inscription • Page 138</p>
+<p class="font-body-sm text-body-sm text-on-surface italic font-serif line-clamp-1">
+                        “Kublai Khan listening to Marco Polo describe the thin city of Octavia, suspended over the void...”
+                      </p>
+</div>
+</div>
+</div>
+<div class="pt-2 space-y-2">
+<div class="flex items-center justify-between text-caption font-caption">
+<span class="text-text-secondary">Progress: <strong class="text-primary font-semibold">85%</strong> (Folio 140 of 165)</span>
+<span class="text-text-secondary">25 folios remaining</span>
+</div>
+<div class="w-full h-1.5 rounded-full bg-surface-inset overflow-hidden shadow-[inset_0_1px_2px_rgba(0,0,0,0.1)]">
+<div class="h-full bg-accent-teal rounded-full" style="width: 85%;"></div>
+</div>
+<div class="pt-2 flex items-center gap-space-sm flex-wrap">
+<button class="px-space-md py-1.5 rounded-full bg-primary hover:bg-primary-container text-on-primary font-label-md text-label-md transition-all shadow-[0_2px_6px_rgba(24,92,88,0.25)] flex items-center gap-1.5" type="button">
+<span class="material-symbols-outlined text-[16px]">auto_stories</span>
+<span>Continue Reading</span>
+</button>
+<button class="px-space-md py-1.5 rounded-full bg-surface-porcelain hover:bg-surface-container-low text-on-surface-variant font-label-md text-label-md transition-colors flex items-center gap-1.5 shadow-sm" type="button">
+<span class="material-symbols-outlined text-[16px] text-accent-terracotta">edit</span>
+<span>Log Contemplation</span>
+</button>
+<button aria-label="Folio options" class="w-8 h-8 rounded-full flex items-center justify-center text-text-secondary hover:text-on-surface hover:bg-surface-inset transition-colors ml-auto" type="button">
+<span class="material-symbols-outlined text-[18px]">more_vert</span>
+</button>
+</div>
+</div>
+</div>
+</article>
+</div>
+</div>
+<!-- SECTION 2: Want to Read Shelf (Acquisitions Wishlist) Preview Grid -->
+<div class="pt-space-sm space-y-space-md">
+<div class="flex items-center justify-between">
+<div class="space-y-0.5">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[20px] text-primary">bookmark_manager</span>
+<h2 class="font-headline-sm text-headline-sm text-primary font-serif">Want to Read Shelf</h2>
+</div>
+<p class="font-caption text-caption text-text-secondary">Folios awaiting arrival at your study table</p>
+</div>
+<a class="group font-label-sm text-label-sm text-primary font-medium flex items-center gap-1 hover:text-accent-teal transition-colors" href="#">
+<span>View All 14 Folios</span>
+<span class="material-symbols-outlined text-[16px] transition-transform group-hover:translate-x-1">arrow_forward</span>
+</a>
+</div>
+<!-- 4 Tactile Book Cards Grid -->
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-space-md">
+<!-- Book Item 1 -->
+<div class="p-space-sm bg-surface-porcelain rounded-xl shadow-[0_3px_10px_rgba(38,54,51,0.04)] hover:shadow-[0_8px_18px_rgba(38,54,51,0.08)] transition-all duration-200 flex flex-col group">
+<div class="relative w-full aspect-[2/3] rounded overflow-hidden shadow-sm mb-3">
+<div class="w-full h-full bg-cover bg-center transition-transform duration-300 group-hover:scale-105" data-alt="Cover of The Book of Disquiet by Fernando Pessoa, Portuguese Lisbon street corner in gentle monochrome dusk with quiet silhouette and sepia ink typography." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCNTSvmM6OPlKoT2ShgUqgIaF0Y2F2nZANSYguT3EgEl3NpMWFCT5WwdsInT98tIdb80-D7kZivpN_GlXEne6hG7xn5tliW2hDRhaa47w9dnJFSP1nByCvtbg2pusRNP6kMDJEdGeLsrB26Qg8lhEf2gmzC0j48DO_C9K6xwKNVm_QFKeS-M8ukhKfuJFOBa4PMs0o5RBwgFc_ghMzjH-zh9X6RM6q_-YNJn2w_tFM')"></div>
+<span class="absolute top-2 left-2 px-1.5 py-0.5 rounded-full bg-surface-porcelain/90 backdrop-blur text-primary font-caption text-caption font-semibold">1982</span>
+</div>
+<div class="flex-1 flex flex-col justify-between">
+<div>
+<h4 class="font-headline-sm text-body-base text-primary font-serif font-semibold line-clamp-1 group-hover:text-accent-teal transition-colors">
+                    The Book of Disquiet
+                  </h4>
+<p class="font-caption text-caption text-text-secondary mt-0.5">
+                    Fernando Pessoa
+                  </p>
+</div>
+<div class="mt-3 pt-2 border-t-0 flex items-center justify-between gap-1">
+<span class="inline-flex items-center gap-1 text-[11px] font-caption text-secondary font-medium">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span> In Queue
+                  </span>
+<div class="relative group/menu">
+<button aria-label="Shelf action" class="p-1 rounded-full text-text-secondary hover:text-primary hover:bg-surface-inset transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">drive_file_move</span>
+</button>
+<!-- Quick Dropdown -->
+<div class="absolute right-0 bottom-full mb-1 w-40 bg-surface-porcelain rounded-lg shadow-lg p-1 hidden group-hover/menu:block z-30">
+<button class="w-full text-left px-2 py-1 rounded text-caption font-caption text-primary hover:bg-secondary-container/40" type="button">Move to Reading</button>
+<button class="w-full text-left px-2 py-1 rounded text-caption font-caption text-text-secondary hover:bg-surface-container-low" type="button">Mark Contemplated</button>
+<button class="w-full text-left px-2 py-1 rounded text-caption font-caption text-error hover:bg-error-container/30" type="button">Release Shelf</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Book Item 2 -->
+<div class="p-space-sm bg-surface-porcelain rounded-xl shadow-[0_3px_10px_rgba(38,54,51,0.04)] hover:shadow-[0_8px_18px_rgba(38,54,51,0.08)] transition-all duration-200 flex flex-col group">
+<div class="relative w-full aspect-[2/3] rounded overflow-hidden shadow-sm mb-3">
+<div class="w-full h-full bg-cover bg-center transition-transform duration-300 group-hover:scale-105" data-alt="Cover of Godel Escher Bach An Eternal Golden Braid by Douglas Hofstadter, mathematical visual woodcut motifs, optical geometric illusion in muted teal and cream." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDxv5ZBVn1Sw7f4drDI7D04x8OlNBpx2kvc8fCgLRvfLxWaIZt1ZXEZuRuTjDC4m_fr0fo5pcxgFcV9RwXHYckCJ8zxTz4mXuoAYumwJ3Jb_4VgDwKiitODy-Ej8PHuwjWcIeG4l4OOhezg8EpdiwCaxL2wliNM7ECB8gdNkp_RJ3QVqhgtbE5XQw_mawj_i8oZjvlcPOXlOeBMQLxFmt8M0UlXdeFHueC8nJeJ8eM')"></div>
+<span class="absolute top-2 left-2 px-1.5 py-0.5 rounded-full bg-surface-porcelain/90 backdrop-blur text-primary font-caption text-caption font-semibold">1979</span>
+</div>
+<div class="flex-1 flex flex-col justify-between">
+<div>
+<h4 class="font-headline-sm text-body-base text-primary font-serif font-semibold line-clamp-1 group-hover:text-accent-teal transition-colors">
+                    Gödel, Escher, Bach
+                  </h4>
+<p class="font-caption text-caption text-text-secondary mt-0.5">
+                    Douglas Hofstadter
+                  </p>
+</div>
+<div class="mt-3 pt-2 flex items-center justify-between gap-1">
+<span class="inline-flex items-center gap-1 text-[11px] font-caption text-secondary font-medium">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span> In Queue
+                  </span>
+<div class="relative group/menu">
+<button aria-label="Shelf action" class="p-1 rounded-full text-text-secondary hover:text-primary hover:bg-surface-inset transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">drive_file_move</span>
+</button>
+<div class="absolute right-0 bottom-full mb-1 w-40 bg-surface-porcelain rounded-lg shadow-lg p-1 hidden group-hover/menu:block z-30">
+<button class="w-full text-left px-2 py-1 rounded text-caption font-caption text-primary hover:bg-secondary-container/40" type="button">Move to Reading</button>
+<button class="w-full text-left px-2 py-1 rounded text-caption font-caption text-text-secondary hover:bg-surface-container-low" type="button">Mark Contemplated</button>
+<button class="w-full text-left px-2 py-1 rounded text-caption font-caption text-error hover:bg-error-container/30" type="button">Release Shelf</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Book Item 3 -->
+<div class="p-space-sm bg-surface-porcelain rounded-xl shadow-[0_3px_10px_rgba(38,54,51,0.04)] hover:shadow-[0_8px_18px_rgba(38,54,51,0.08)] transition-all duration-200 flex flex-col group">
+<div class="relative w-full aspect-[2/3] rounded overflow-hidden shadow-sm mb-3">
+<div class="w-full h-full bg-cover bg-center transition-transform duration-300 group-hover:scale-105" data-alt="Cover of Solaris by Stanislaw Lem, colloidal glowing living ocean surface with ethereal cosmic reflections in turquoise and deep umber tones." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuB8GiE_UZwby6CydffWC3bVzHgu0K55Bf1XxI4zsZXP8XdWMweILCmd2o8nDgrDJhji07rC1ccsc0ihThzSYPo2215YZzdJfGfQ9Tt8CQ01ps3DZwDZ2wbVXfhy--888Q_WjLFbvXPXOv6A-VI47xDFwToA32aIAHxDwRkOUHtdhDo3Xu0L1mpL192W8B7EpjRPgee74lU9XY0AsQOvpRXgTiopD5YP0ggU-qJYNpU')"></div>
+<span class="absolute top-2 left-2 px-1.5 py-0.5 rounded-full bg-surface-porcelain/90 backdrop-blur text-primary font-caption text-caption font-semibold">1961</span>
+</div>
+<div class="flex-1 flex flex-col justify-between">
+<div>
+<h4 class="font-headline-sm text-body-base text-primary font-serif font-semibold line-clamp-1 group-hover:text-accent-teal transition-colors">
+                    Solaris
+                  </h4>
+<p class="font-caption text-caption text-text-secondary mt-0.5">
+                    Stanisław Lem
+                  </p>
+</div>
+<div class="mt-3 pt-2 flex items-center justify-between gap-1">
+<span class="inline-flex items-center gap-1 text-[11px] font-caption text-secondary font-medium">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span> In Queue
+                  </span>
+<div class="relative group/menu">
+<button aria-label="Shelf action" class="p-1 rounded-full text-text-secondary hover:text-primary hover:bg-surface-inset transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">drive_file_move</span>
+</button>
+<div class="absolute right-0 bottom-full mb-1 w-40 bg-surface-porcelain rounded-lg shadow-lg p-1 hidden group-hover/menu:block z-30">
+<button class="w-full text-left px-2 py-1 rounded text-caption font-caption text-primary hover:bg-secondary-container/40" type="button">Move to Reading</button>
+<button class="w-full text-left px-2 py-1 rounded text-caption font-caption text-text-secondary hover:bg-surface-container-low" type="button">Mark Contemplated</button>
+<button class="w-full text-left px-2 py-1 rounded text-caption font-caption text-error hover:bg-error-container/30" type="button">Release Shelf</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Book Item 4 -->
+<div class="p-space-sm bg-surface-porcelain rounded-xl shadow-[0_3px_10px_rgba(38,54,51,0.04)] hover:shadow-[0_8px_18px_rgba(38,54,51,0.08)] transition-all duration-200 flex flex-col group">
+<div class="relative w-full aspect-[2/3] rounded overflow-hidden shadow-sm mb-3">
+<div class="w-full h-full bg-cover bg-center transition-transform duration-300 group-hover:scale-105" data-alt="Book jacket cover of The Poetics of Space by Gaston Bachelard, intimate attic beam light architecture, tactile warm ivory linen texture with minimalist serif ink typesetting." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBqHpdS7Je1N4UdPOVcKi3Rf8wzn7Ru5txKBPP78Xx1mEe-Ka-1U3gZGfzZEG1uDtw2tqe04592OGe01T6kzLbQ9wo8dX3rz9etBnXxmNN4sPwmG-mW3GPWkslWbceftOHlm9g4jiZe1FDquACWwM0_K2wBuM3xGFHA_nZ8-hUpEW831-6riG7QmutKmBFKMf1bLnD4_0cwwKs82RxtLBaQjo1VKkJpzI3bsgbNXXw')"></div>
+<span class="absolute top-2 left-2 px-1.5 py-0.5 rounded-full bg-surface-porcelain/90 backdrop-blur text-primary font-caption text-caption font-semibold">1958</span>
+</div>
+<div class="flex-1 flex flex-col justify-between">
+<div>
+<h4 class="font-headline-sm text-body-base text-primary font-serif font-semibold line-clamp-1 group-hover:text-accent-teal transition-colors">
+                    The Poetics of Space
+                  </h4>
+<p class="font-caption text-caption text-text-secondary mt-0.5">
+                    Gaston Bachelard
+                  </p>
+</div>
+<div class="mt-3 pt-2 flex items-center justify-between gap-1">
+<span class="inline-flex items-center gap-1 text-[11px] font-caption text-secondary font-medium">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span> In Queue
+                  </span>
+<div class="relative group/menu">
+<button aria-label="Shelf action" class="p-1 rounded-full text-text-secondary hover:text-primary hover:bg-surface-inset transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">drive_file_move</span>
+</button>
+<div class="absolute right-0 bottom-full mb-1 w-40 bg-surface-porcelain rounded-lg shadow-lg p-1 hidden group-hover/menu:block z-30">
+<button class="w-full text-left px-2 py-1 rounded text-caption font-caption text-primary hover:bg-secondary-container/40" type="button">Move to Reading</button>
+<button class="w-full text-left px-2 py-1 rounded text-caption font-caption text-text-secondary hover:bg-surface-container-low" type="button">Mark Contemplated</button>
+<button class="w-full text-left px-2 py-1 rounded text-caption font-caption text-error hover:bg-error-container/30" type="button">Release Shelf</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Sidebar Column (4 cols): Contemplations Ledger & Meaningful Empty State Preview -->
+<aside class="lg:col-span-4 space-y-space-lg">
+<!-- Recent Contemplations & Reading Marginalia Drawer -->
+<div class="bg-surface-porcelain rounded-xl p-space-lg shadow-[0_4px_16px_rgba(38,54,51,0.05)] space-y-space-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-accent-terracotta text-[22px]">history_edu</span>
+<h3 class="font-headline-sm text-headline-sm text-primary font-serif">Recent Marginalia</h3>
+</div>
+<span class="w-6 h-6 rounded-full bg-surface-container-low text-accent-teal font-caption text-caption flex items-center justify-center font-semibold">2</span>
+</div>
+<p class="font-body-sm text-body-sm text-text-secondary">
+            Elena’s recent handwritten inscriptions transcribed into your quiet archival ledger.
+          </p>
+<div class="space-y-space-md">
+<!-- Entry 1 -->
+<div class="p-space-md rounded-lg bg-surface-container-low/50 hover:bg-surface-container-low transition-colors space-y-2 group">
+<div class="flex items-center justify-between text-caption font-caption">
+<span class="font-medium text-primary">On Ficciones</span>
+<span class="text-text-secondary">Oct 28</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface font-serif italic leading-relaxed">
+                “The labyrinth is not merely geometric; it is temporal and linguistic. Each sentence branched into divergent bifurcations.”
+              </p>
+<div class="flex items-center justify-between pt-1">
+<span class="font-caption text-caption text-text-secondary">Chapter: The Garden of Forking Paths</span>
+<button aria-label="View note" class="text-accent-teal opacity-0 group-hover:opacity-100 transition-opacity" type="button">
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Entry 2 -->
+<div class="p-space-md rounded-lg bg-surface-container-low/50 hover:bg-surface-container-low transition-colors space-y-2 group">
+<div class="flex items-center justify-between text-caption font-caption">
+<span class="font-medium text-primary">On Invisible Cities</span>
+<span class="text-text-secondary">Oct 21</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface font-serif italic leading-relaxed">
+                “Memory’s images, once fixed in words, are erased. Marco Polo’s melancholy lies in having conquered memory through geography.”
+              </p>
+<div class="flex items-center justify-between pt-1">
+<span class="font-caption text-caption text-text-secondary">Section: Cities &amp; Memory 4</span>
+<button aria-label="View note" class="text-accent-teal opacity-0 group-hover:opacity-100 transition-opacity" type="button">
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+<button class="w-full py-2.5 px-space-md rounded-full bg-surface-inset hover:bg-surface-container transition-colors text-primary font-label-md text-label-md flex items-center justify-center gap-2" type="button">
+<span class="material-symbols-outlined text-[18px]">stylus</span>
+<span>Inscribe New Reading Note</span>
+</button>
+</div>
+<!-- Archival Preservation Dial (Visual Artifact) -->
+<div class="p-space-lg bg-surface-porcelain rounded-xl shadow-[0_4px_16px_rgba(38,54,51,0.05)] space-y-space-md">
+<div class="flex items-center justify-between">
+<h4 class="font-label-md text-label-md text-primary font-semibold uppercase tracking-wider">Custody Status</h4>
+<span class="px-2 py-0.5 rounded-full bg-secondary-container/40 text-secondary font-caption text-caption">Autumn Solstice</span>
+</div>
+<div class="flex items-center gap-space-md">
+<!-- Inline SVG Gauge under 2KB -->
+<div class="relative w-20 h-20 flex-shrink-0">
+<svg class="w-full h-full transform -rotate-90" viewbox="0 0 36 36">
+<path class="text-surface-inset" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-width="3"></path>
+<path class="text-accent-teal" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-dasharray="78, 100" stroke-linecap="round" stroke-width="3"></path>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center">
+<span class="font-headline-sm text-body-lead font-serif text-primary font-semibold">78%</span>
+</div>
+</div>
+<div class="space-y-1">
+<div class="font-label-md text-label-md text-on-surface font-medium">Sanctuary Depth</div>
+<p class="font-caption text-caption text-text-secondary leading-snug">
+                78% of shelf volumes annotated with marginalia or preservation bookmarks.
+              </p>
+</div>
+</div>
+</div>
+<!-- Meaningful Empty State Preview (Interactive Toggle Concept) -->
+<div class="bg-surface-porcelain rounded-xl p-space-lg shadow-[0_4px_16px_rgba(38,54,51,0.05)] relative overflow-hidden">
+<div class="flex items-center justify-between mb-3">
+<span class="font-caption text-caption uppercase tracking-wider text-text-secondary font-semibold">Curatorial View Mode</span>
+<button class="text-caption font-caption text-accent-teal hover:underline flex items-center gap-1 font-medium" id="toggleEmptyStateBtn" type="button">
+<span class="material-symbols-outlined text-[14px]">visibility</span>
+<span id="toggleText">Preview Empty Shelf State</span>
+</button>
+</div>
+<div class="p-space-lg rounded-xl bg-surface-container-low/40 text-center space-y-space-md transition-all" id="emptyShelfBox">
+<!-- Inline SVG delicate bookstand illustration -->
+<div class="mx-auto w-16 h-16 flex items-center justify-center text-accent-sage">
+<svg fill="none" height="60" stroke="currentColor" viewbox="0 0 64 64" width="60">
+<path d="M12 48 L52 48" stroke-linecap="round" stroke-width="2"></path>
+<path d="M20 48 L20 28 C20 24 24 20 28 20 L36 20 C40 20 44 24 44 28 L44 48" stroke-dasharray="3 3" stroke-width="1.5"></path>
+<path d="M32 20 L32 48" stroke-dasharray="2 2" stroke-width="1"></path>
+<circle cx="32" cy="14" r="3" stroke-width="1.2"></circle>
+</svg>
+</div>
+<div class="space-y-1 max-w-xs mx-auto">
+<h4 class="font-headline-sm text-headline-sm text-primary font-serif">A Blank Reading Desk</h4>
+<p class="font-body-sm text-body-sm text-text-secondary leading-relaxed">
+                Your Completed shelf awaits your reflections. As you finish folios, their marginalia and preservation records will appear here.
+              </p>
+</div>
+<div class="pt-1">
+<a class="inline-flex items-center gap-2 px-space-md py-2 rounded-full bg-primary hover:bg-primary-container text-on-primary font-label-md text-label-md transition-colors shadow-sm" data-path="discover" href="#">
+<span class="material-symbols-outlined text-[16px]">travel_explore</span>
+<span>Explore Catalog for Next Read</span>
+</a>
+</div>
+</div>
+</div>
+</aside>
+</div>
+</div>
+<!-- Interactive Logic for Tab Switching & Empty State Demo -->
+<script>
+    (function initSanctuary() {
+      // Tab pill styling interaction
+      const tabButtons = document.querySelectorAll('#shelfTabs .tab-btn');
+      tabButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+          tabButtons.forEach(b => {
+            b.classList.remove('bg-primary', 'text-on-primary', 'shadow-sm');
+            b.classList.add('text-on-surface-variant');
+            const badge = b.querySelector('span:last-child');
+            if (badge) {
+              badge.classList.remove('bg-surface-porcelain/20', 'text-on-primary');
+              badge.classList.add('bg-surface-porcelain/70', 'text-text-secondary');
+            }
+          });
+          btn.classList.add('bg-primary', 'text-on-primary', 'shadow-sm');
+          btn.classList.remove('text-on-surface-variant');
+          const activeBadge = btn.querySelector('span:last-child');
+          if (activeBadge) {
+            activeBadge.classList.add('bg-surface-porcelain/20', 'text-on-primary');
+            activeBadge.classList.remove('bg-surface-porcelain/70', 'text-text-secondary');
+          }
+        });
+      });
+
+      // Toggle preview of empty state simulation
+      const toggleBtn = document.getElementById('toggleEmptyStateBtn');
+      const emptyBox = document.getElementById('emptyShelfBox');
+      const toggleText = document.getElementById('toggleText');
+      let isPreviewActive = false;
+
+      if (toggleBtn && emptyBox && toggleText) {
+        toggleBtn.addEventListener('click', () => {
+          isPreviewActive = !isPreviewActive;
+          if (isPreviewActive) {
+            emptyBox.classList.add('ring-2', 'ring-accent-teal', 'bg-surface-container-low');
+            toggleText.textContent = 'Hide Empty Shelf Demo';
+          } else {
+            emptyBox.classList.remove('ring-2', 'ring-accent-teal', 'bg-surface-container-low');
+            toggleText.textContent = 'Preview Empty Shelf State';
+          }
+        });
+      }
+    })();
+  </script>
+</div></main><footer class="w-full bg-surface-porcelain shadow-[0_-4px_20px_rgba(38,54,51,0.03)]"><div class="max-w-[1360px] mx-auto px-margin-mobile md:px-margin py-space-xl"><div class="grid grid-cols-1 md:grid-cols-3 gap-space-xl items-start"><div class="space-y-space-md"><div class="flex items-center gap-space-sm"><div class="w-7 h-7 rounded-full bg-primary flex items-center justify-center text-on-primary"><span class="material-symbols-outlined text-[16px]">auto_stories</span></div><span class="font-headline-sm text-headline-sm text-primary font-serif">Akashic Library</span></div><p class="font-body-sm text-body-sm text-text-secondary leading-relaxed max-w-sm">A curated sanctuary for intellectual inquiry, bibliographic devotion, and architectural typography. Preserving canonical texts and contemplative spaces for the curious mind.</p><p class="font-caption text-caption text-text-secondary">© 2024 Akashic Library Archive. Handcrafted with reverence.</p></div><div class="space-y-space-md"><h4 class="font-label-md text-label-md text-primary uppercase tracking-wider font-semibold">The Reading Rooms</h4><ul class="space-y-space-sm"><li class="font-body-sm text-body-sm"><span class="text-on-surface font-medium">North Wing:</span> <span class="text-text-secondary">Natural Philosophy &amp; Astrolabes</span></li><li class="font-body-sm text-body-sm"><span class="text-on-surface font-medium">East Atrium:</span> <span class="text-text-secondary">Poetics, Translations &amp; Epistles</span></li><li class="font-body-sm text-body-sm"><span class="text-on-surface font-medium">The Crypt:</span> <span class="text-text-secondary">Illuminated Folios &amp; Cartography</span></li><li class="font-body-sm text-body-sm"><span class="text-on-surface font-medium">Hours:</span> <span class="text-text-secondary">Open from dusk until the morning bells</span></li></ul></div><div class="space-y-space-md"><h4 class="font-label-md text-label-md text-primary uppercase tracking-wider font-semibold">Colophon &amp; Custody</h4><p class="font-body-sm text-body-sm text-text-secondary leading-relaxed">Set in Lora and Inter. Typeset on a 12-column responsive fluid grid with Warm Ivory stock (#F5F1E9) and Deep Teal ink.</p><div class="space-y-space-xs font-caption text-caption text-text-secondary"><p>Binding: Soft Editorial Neumorphism</p><p>Keeper of the Catalog: Elena Solanas, Senior Patron</p><p>Inquiries: custodians@akashiclibrary.org</p></div></div></div></div></footer></body></html>

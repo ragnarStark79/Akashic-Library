@@ -29,16 +29,23 @@ from typing import Any
 
 from . import repository
 from .exceptions import BookNotFoundError, InvalidQueryError, MongoDBUnavailableError, ProviderError
+from .genre_mappings import resolve_subject_aliases
 from .providers.base import BookProvider
 from .providers.google_books import GoogleBooksProvider
 from .providers.open_library import OpenLibraryProvider
 
 logger = logging.getLogger(__name__)
 
-# Provider chain — order defines priority. Google Books first.
+# Provider chain — order defines priority.
+# Open Library is primary and currently active provider for Phase 2B.1.
+# GoogleBooksProvider is retained for future optional fallback.
 _PROVIDERS = [
-    GoogleBooksProvider(),
     OpenLibraryProvider(),
+]
+
+_ALL_PROVIDERS = [
+    OpenLibraryProvider(),
+    GoogleBooksProvider(),
 ]
 
 # Minimum local results before triggering external provider fallback.
@@ -74,6 +81,7 @@ class BookSearchService:
     def search(
         *,
         query: str = "",
+        title: str = "",
         author: str = "",
         isbn: str = "",
         subject: str = "",
@@ -83,11 +91,12 @@ class BookSearchService:
         year_to: int | None = None,
         page: int = 1,
         page_size: int = repository.DEFAULT_PAGE_SIZE,
+        featured: bool = False,
     ) -> dict[str, Any]:
         """Search books — local first, external providers as fallback.
 
         External providers are queried only when:
-          - A full-text query string is provided (q=...), AND
+          - Search criteria are provided (q, title, author, isbn, subject), AND
           - The local catalog returns fewer than _MIN_LOCAL_RESULTS.
 
         Returns the paginated search result dict from the repository.
@@ -95,6 +104,7 @@ class BookSearchService:
         # 1. Query local catalog.
         local = repository.search_books(
             query=query,
+            title=title,
             author=author,
             isbn=isbn,
             subject=subject,
@@ -104,19 +114,60 @@ class BookSearchService:
             year_to=year_to,
             page=page,
             page_size=page_size,
+            featured=featured,
         )
 
-        # 2. If local has results or no full-text query, return immediately.
-        if local["count"] >= _MIN_LOCAL_RESULTS or not query:
+        has_search_criteria = bool(
+            query.strip()
+            or title.strip()
+            or author.strip()
+            or isbn.strip()
+            or subject.strip()
+        )
+
+        # 2. Determine if external provider fallback should be triggered:
+        # - On page 1: when local catalog has fewer than _MIN_LOCAL_RESULTS (0 results).
+        # - On page > 1: when local catalog does not have enough results to satisfy the requested page.
+        should_fetch_from_provider = False
+        if has_search_criteria:
+            if page == 1 and local["count"] < _MIN_LOCAL_RESULTS:
+                should_fetch_from_provider = True
+            elif page > 1 and local["count"] < (page * page_size):
+                should_fetch_from_provider = True
+
+        if not should_fetch_from_provider:
+            local["upstream_count"] = getattr(_PROVIDERS[0], "last_num_found", None) if _PROVIDERS else None
             return local
 
-        # 3. Try external providers (only on page 1 to avoid expensive chained fetches).
-        if page == 1:
-            BookSearchService._fetch_from_providers(query=query, page=page)
+        # 3. Try external providers.
+        target_items = page * page_size
+        provider_batch_size = 20
+        needed_batches = max(1, (target_items + provider_batch_size - 1) // provider_batch_size)
+        if local["count"] == 0:
+            start_batch = 1
+            end_batch = min(needed_batches, 2)
+        else:
+            start_batch = max(2, (local["count"] + provider_batch_size - 1) // provider_batch_size)
+            end_batch = max(start_batch, min(needed_batches, start_batch + 1))
+
+        fetch_query = query.strip()
+
+        for p in range(start_batch, end_batch + 1):
+            BookSearchService._fetch_from_providers(
+                query=fetch_query,
+                title=title.strip(),
+                author=author.strip(),
+                isbn=isbn.strip(),
+                subject=subject.strip(),
+                language=language.strip(),
+                publisher=publisher.strip(),
+                page=p,
+            )
 
         # 4. Re-query local after potential upsert from providers.
         result = repository.search_books(
             query=query,
+            title=title,
             author=author,
             isbn=isbn,
             subject=subject,
@@ -126,8 +177,12 @@ class BookSearchService:
             year_to=year_to,
             page=page,
             page_size=page_size,
+            featured=featured,
         )
-        
+
+        upstream_count = getattr(_PROVIDERS[0], "last_num_found", None) if _PROVIDERS else None
+        result["upstream_count"] = upstream_count
+
         try:
             from store.services import StoreService
             book_ids = [book["_id"] if "_id" in book else book.get("id") for book in result.get("books", [])]
@@ -141,11 +196,50 @@ class BookSearchService:
         return result
 
     @staticmethod
-    def _fetch_from_providers(*, query: str, page: int) -> None:
+    def _fetch_from_providers(
+        *,
+        query: str = "",
+        title: str = "",
+        author: str = "",
+        isbn: str = "",
+        subject: str = "",
+        publisher: str = "",
+        language: str = "",
+        page: int = 1,
+    ) -> None:
         """Try each provider in order; persist results; swallow provider failures."""
+        subject_aliases = resolve_subject_aliases(subject) if subject else []
+        if subject and subject_aliases and subject.strip().lower() in [a.lower() for a in subject_aliases]:
+            primary_subject = subject.strip()
+        elif subject_aliases:
+            primary_subject = subject_aliases[0]
+        else:
+            primary_subject = subject
+
         for provider in _PROVIDERS:
             try:
-                books = provider.search(query, page=page)
+                books = provider.search(
+                    query=query,
+                    title=title,
+                    author=author,
+                    isbn=isbn,
+                    subject=primary_subject,
+                    publisher=publisher,
+                    language=language,
+                    page=page,
+                )
+                # If subject search returned 0 and secondary aliases exist, try the second alias
+                if not books and len(subject_aliases) > 1 and page == 1:
+                    books = provider.search(
+                        query=query,
+                        title=title,
+                        author=author,
+                        isbn=isbn,
+                        subject=subject_aliases[1],
+                        publisher=publisher,
+                        language=language,
+                        page=page,
+                    )
                 if books:
                     for book in books:
                         try:
@@ -155,10 +249,15 @@ class BookSearchService:
                                 "Failed to upsert book from %s: %s", provider.name, exc
                             )
                     logger.info(
-                        "Discovery: fetched %d books from %s for query=%r",
+                        "Discovery: fetched %d books from %s for query=%r, title=%r, author=%r, isbn=%r, subject=%r, page=%d",
                         len(books),
                         provider.name,
                         query,
+                        title,
+                        author,
+                        isbn,
+                        primary_subject,
+                        page,
                     )
                     # Stop after first successful provider to avoid duplicates.
                     return
@@ -174,7 +273,7 @@ class BookSearchService:
 
 # ─── Provider registry ────────────────────────────────────────────────────────
 
-_PROVIDER_REGISTRY: dict[str, "BookProvider"] = {p.name: p for p in _PROVIDERS}
+_PROVIDER_REGISTRY: dict[str, "BookProvider"] = {p.name: p for p in _ALL_PROVIDERS}
 
 
 def get_provider_by_name(name: str):
